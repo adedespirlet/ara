@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "kernel/imatmul.h"
+#include "kernel/kmeans.h"
 #include "runtime.h"
 #include "util.h"
 
@@ -50,18 +50,19 @@ int main() {
 // #else
 //   for (int s = 4; s <= M; s *= 2) {
 // #endif
-    printf("\n");
-    printf("------------------------------------------------------------\n");
-    printf("Calculating a (%d x %d) x (%d x %d) matrix multiplication...\n", s,
-           s, s, s);
-    printf("------------------------------------------------------------\n");
-    printf("\n");
+    // printf("\n");
+    // printf("------------------------------------------------------------\n");
+    // printf("Calculating a (%d x %d) x (%d x %d) matrix multiplication...\n", s,
+    //        s, s, s);
+    // printf("------------------------------------------------------------\n");
+    // printf("\n");
+    kmeans_result result;
 
     // Matrices are initialized --> Start calculating
     printf("Calculating kmeans...\n");
     start_timer();
     //imatmul(c, a, b, s, s, s);
-    result= kmeans(p, c, k,b) ;
+    result= kmeans(a, c, k,b) ;
     printf("K-Means result: %d\n", result);
     stop_timer();
 

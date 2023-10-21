@@ -3,10 +3,8 @@
 #include <math.h>
 #include <float.h> // Include the header for DBL_MAX
 #include <time.h>
-#include "kmeansNEW.h"
+#include "kmeans.h"
 #include <string.h>
-
-
 
 
 
@@ -96,7 +94,7 @@ void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clus
 }
 
 
-void custom_memcpy(void *dest, const void *src, size_t size) {
+void custom_memcpy(int64_t*dest, int64_t *src, size_t size) {
     char *d = (char *)dest;
     const char *s = (const char *)src;
     for (size_t i = 0; i < size; i++) {
@@ -114,7 +112,7 @@ bool custom_memcmp(const int64_t *array1, const int64_t *array2, size_t size) {
 }
 
 
-kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *clusters,int64_t clusters_last){
+kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *clusters,int64_t *clusters_last){
 	int iterations = 0;
 	
     size_t clusters_sz = NUM_POINTS * sizeof(int);

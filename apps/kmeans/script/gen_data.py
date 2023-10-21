@@ -28,7 +28,7 @@ def emit(name, array, alignment='8'):
   print(".global %s" % name)
   print(".balign " + alignment)
   print("%s:" % name)
-  bs = array.tobytes()
+  bs = array.data.tobytes()
   for i in range(0, len(bs), 4):
     s = ""
     for n in range(4):
@@ -39,14 +39,11 @@ def emit(name, array, alignment='8'):
 ## SCRIPT ##
 ############
 
-if len(sys.argv) == 4:
-  M = int(sys.argv[1])
-  N = int(sys.argv[2])
-  P = int(sys.argv[3])
-else:
-  print("Error. Give me three argument: M, N, P.")
-  print("M = Number of DataPoints, N=Number of features such that A=MxN, P=number of clusters such that K=PxN")
-  sys.exit()
+
+M = 100
+N = 3
+P = 3
+
 
 dtype = np.int64
 
@@ -54,9 +51,10 @@ UPPER_LIMIT = 10000
 LOWER_LIMIT = 0
 
 # Matrices and results
-A = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(M, N)).astype(dtype)
-K = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(P, N)).astype(dtype)
-C = np.zeros([M, 1], dtype=dtype)
+A = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(M, N)).astype(dtype) #contains data points
+K = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(P, N)).astype(dtype) #contains cluster's centers
+C = np.zeros([M, 1], dtype=dtype) # contains the assigned cluster to each data point
+B= np.zeros([M,1],dtype=dtype) ##set empty array to copy last clusters values
 # Golden result matrix
 #G = np.matmul(A, B).astype(dtype)
 
@@ -66,9 +64,9 @@ emit("M", np.array(M, dtype=np.uint64))
 emit("N", np.array(N, dtype=np.uint64))
 emit("P", np.array(P, dtype=np.uint64))
 emit("a", A, 'NR_LANES*4')
-emit("b", K, 'NR_LANES*4')
+emit("k", K, 'NR_LANES*4')
 emit("c", C, 'NR_LANES*4')
-#emit("g", G, 'NR_LANES*4')
+emit("b", B, 'NR_LANES*4')
 
 # # Create the file
 # print(".section .data,\"aw\",@progbits")
@@ -79,3 +77,4 @@ emit("c", C, 'NR_LANES*4')
 # emit("b", B, 'NR_LANES*4')
 # emit("c", C, 'NR_LANES*4')
 # emit("g", G, 'NR_LANES*4')
+
