@@ -61,6 +61,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
 void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clusters) {
     double totalVariation = 0.0;
+    double clusterVariance=0.0;
 
     // For each cluster
     for (int clusterIndex = 0; clusterIndex < NUM_CLUSTERS; clusterIndex++) {
@@ -84,7 +85,7 @@ void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clus
 
         if (numPointsInCluster > 0) {
             // Calculate the average squared distance (variance) within the cluster
-            double clusterVariance = sumOfSquaredDistances / numPointsInCluster;
+            clusterVariance = sumOfSquaredDistances / numPointsInCluster;
             totalVariation += clusterVariance;
             printf("Cluster %d Variance: %lf\n", clusterIndex, clusterVariance);
         }

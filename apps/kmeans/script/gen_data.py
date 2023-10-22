@@ -59,7 +59,6 @@ selected_rows = np.random.choice(M, P, replace=False)
 K = A[selected_rows]
 
 
-
 C = np.zeros([M, 1], dtype=dtype) # contains the assigned cluster to each data point
 B= np.zeros([M,1],dtype=dtype) ##set empty array to copy last clusters values
 # Golden result matrix
