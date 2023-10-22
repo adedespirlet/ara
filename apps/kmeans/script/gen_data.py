@@ -51,8 +51,15 @@ UPPER_LIMIT = 10000
 LOWER_LIMIT = 0
 
 # Matrices and results
-A = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(M, N)).astype(dtype) #contains data points
-K = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(P, N)).astype(dtype) #contains cluster's centers
+# Generate random data points
+A = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(M, N)).astype(dtype)
+
+# Randomly select P rows from A to initialize K
+selected_rows = np.random.choice(M, P, replace=False)
+K = A[selected_rows]
+
+
+
 C = np.zeros([M, 1], dtype=dtype) # contains the assigned cluster to each data point
 B= np.zeros([M,1],dtype=dtype) ##set empty array to copy last clusters values
 # Golden result matrix

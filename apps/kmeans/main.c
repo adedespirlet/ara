@@ -56,6 +56,15 @@ int main() {
     //        s, s, s);
     // printf("------------------------------------------------------------\n");
     // printf("\n");
+
+    printf("Matrix A:\n");
+    for (uint64_t i = 0; i < M; ++i) {
+        for (uint64_t j = 0; j < N; ++j) {
+            printf("%lld ", a[i * N + j]);
+        }
+        printf("\n");
+    }
+    
     kmeans_result result;
 
     // Matrices are initialized --> Start calculating
