@@ -52,11 +52,12 @@ LOWER_LIMIT = 0
 
 # Matrices and results
 # Generate random data points
-A = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(M, N)).astype(dtype)
+A = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(N, M)).astype(dtype)    ##rows contain the features and each column is a datapoint
 
-# Randomly select P rows from A to initialize K
-selected_rows = np.random.choice(M, P, replace=False)
-K = A[selected_rows]
+# Randomly select P columns from A to initialize K
+selected_columns = np.random.choice(N, P, replace=False)
+K = A[:, selected_columns]
+
 
 
 C = np.zeros([M, 1], dtype=dtype) # contains the assigned cluster to each data point
