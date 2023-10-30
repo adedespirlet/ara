@@ -176,14 +176,14 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vdivu.vv v26, v26, v24"); 
         asm volatile("vdivu.vv v22, v22, v20"); 
         
-        centers_= centers_+i*NUM_CLUSTERS*8;
         int64_t *centers1_= centers_+8;
         int64_t *centers2_=centers_+16;
-        //Store back each new computed cluster center
-        asm volatile("vse64.v   v30, (centers_)");  
-        asm volatile("vse64.v   v26, (centers1_)");  
-        asm volatile("vse64.v   v22, (centers2_)");  
-    }
+        // Store back each new computed cluster center
+        asm volatile("vse64.v   v30, (%0)" :: "r"(centers_));  
+        asm volatile("vse64.v   v26, (%0)" :: "r"(centers1_));  
+        asm volatile("vse64.v   v22, (%0)" :: "r"(centers2_));
+
+        centers_= centers_+i*NUM_CLUSTERS*8;
 
 }
 
