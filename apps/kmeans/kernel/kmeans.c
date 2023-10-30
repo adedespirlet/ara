@@ -238,43 +238,72 @@ void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clus
     printf("Total Variation: %lf\n", totalVariation);
 }
 void assessQualityCluster(){
+    asm volatile("vmv.vi v2, 0"); // Initialize group0 to zero (accumulation group)
+    asm volatile("vmv.vi v4, 0"); // Initialize group1 to zero
+    asm volatile("vmv.vi v6, 0"); // Initialize group2 to zero
+    //vector v8 contains scalar element
 
-    ///// MAKING THREE CLUSTERS
-    for (; avl > 0; avl -= vl) {
-        counter++;
-        double minDist = DBL_MAX;
-        //set distance for each datapoint to each cluster to zero v0 used as mask
-        asm volatile("vmv.s.x v4, zero");
-        asm volatile("vmv.s.x v8, zero");
-        asm volatile("vmv.s.x v12, zero");
-        //initialize centers vector to zero
-        asm volatile("vmv.s.x v12, zero");
-        //initialize ,cluster number to 0
-        asm volatile("vmv.s.x v16, zero");
-        int64_t *clusters_ = (int64_t *)clusters +(counter-1)*vl*8;
-        asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
-            //////////////// REPEATING THIS FOR EACH CLUSTER CENTER POINT //////////////// n*0
-        for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
-            points_ = points_ +i*NUM_POINTS*8;// for each coordinate go to the next row which is number of datapoint times bytes per point
-            int64_t *centers_ = (int64_t *)centers +i*NUM_CLUSTERS*8;
-            //LOAD first coordinate
-            asm volatile("vle64.v v20,  (%0)" ::"r"(points_ )); //load datapoints to v20
-            asm volatile("ld %[scalar], (%[pointer])": [scalar] "=r"(r1): [pointer] "r"(centers_)); //load center coordinate to r1
+    int64_t *points_ = (int64_t *)points;
+    int64_t *clusters_ = (int64_t *)clusters;
+    int64_t *centers_ = (int64_t *)centers;
+
+    asm volatile("vsetvli %0, %1, e64, m2, ta, ma" : "=r"(vl) : "r"(avl));
+ for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
+        points_ = points_ +i*NUM_POINTS*8;
+        centers1_= centers_+8;
+        centers2_= centers_+16; 
+
+        asm volatile("ld %[scalar], (%[pointer])": [scalar] "=r"(r1): [pointer] "r"(centers_)); //load center coordinate to r1
+        asm volatile("ld %[scalar], (%[pointer])": [scalar] "=r"(r2): [pointer] "r"(centers1_)); //load center coordinate to r1
+        asm volatile("ld %[scalar], (%[pointer])": [scalar] "=r"(r3): [pointer] "r"(centers2_)); //load center coordinate to r1
+
+        asm volatile("vsetvli t1, t0, e64, m1");  // Set VL to the appropriate vector length
+        asm volatile("vmv.v.x v8, r1");  // Move the scalar to vector register v8
+        asm volatile("vmv.v.x v10, r2");  // Move the scalar to vector register v10
+        asm volatile("vmv.v.x v12, r3");  // Move the scalar to vector register v12
+        asm volatile("vsetvli %0, %1, e64, m2, ta, ma" : "=r"(vl) : "r"(avl));
+
+        for (; avl > 0; avl -= vl) {
+            asm volatile("vsetvli %0, %1, e64, m2, ta, ma" : "=r"(vl) : "r"(avl));
+            
+            asm volatile("vle64.v v14, (%0)" ::"r"(points_)); // Load vector cooridnate x
+            asm volatile("vle64.v v16, (%0)" ::"r"(clusters_)); // Load clusters 
+
+            //group0
+            asm volatile("vseq.x v18, v16, 0"); // Mask in v12 for elements equal to 0 in v16
+            asm volatile("vsub.vm v14, v14, v8, v18");
+            asm volatile("vmul.vm v14, v14, v14, v18");
+            asm volatile("vredsum.vm v2, v14, v14, v18");
+
+            //group1
+            asm volatile("vseq.x v18, v16, 1"); // Mask in v12 for elements equal to 0 in v10
+            asm volatile("vsub.vm v14, v14, 10, v18");
+            asm volatile("vmul.vm v14, v14, v14, v18");
+            asm volatile("vredsum.vm v4, v14, v14, v18");
+
+            //group1
+            asm volatile("vseq.x v18, v16, 2"); // Mask in v12 for elements equal to 0 in v10
+            asm volatile("vsub.vm v14, v14, v12, v18");
+            asm volatile("vmul.vm v14, v14, v14, v18");
+            asm volatile("vredsum.vm v6, v14, v14, v18");
+            points_+=vl;
+            clusters_+=vl;
+            }
+        centers_= centers_+i*NUM_CLUSTERS*8;
+        }
+int64_t variance0;
+int64_t variance1;
+int64_t variance2;
 
 
-            // Broadcast the scalar value to a vector register
-            asm volatile("vsetvli t1, t0, e64, m1");  // Set VL to the appropriate vector length
-            asm volatile("vmv.v.x v24, r1");  // Move the scalar to vector register v24
+asm volatile("vse64.v v2, (%0)" :: "r"(&variance0)); // Store v8 to scalar_value
+asm volatile("vse64.v v4, (%0)" :: "r"(&variance1)); // Store v8 to scalar_value
+asm volatile("vse64.v v6, (%0)" :: "r"(&variance2)); // Store v8 to scalar_value
 
-            asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
 
-            //Subtract the scalar value from all elements of the vector
-            asm volatile("vsub.vv v20, v20, v24") ; //Subtract vector v1 from vector v0 
-            asm volatile("vmul.vv v20, v20, v20");
-            asm volatile("vadd.vv v4 , v4, v20");  //accumulate v4 with first coordinate     
+printf("Variance of cluster 0 is : %ld, of cluster 1 is : %ld , of cluster 2 is : %ld \n", variance0, variance1, variance2 );
 
-            //take the sqrt of the accumulation vector 
-        asm volatile (vsqrt.vv v4, v4);
+    
 }
 
 
