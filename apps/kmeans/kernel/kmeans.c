@@ -9,13 +9,13 @@
 
 void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64_t *clusters) {
 
-    size_t avl=NUM_POINTS;
     size_t vl;
     //stripmine
     asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
     int64_t counter=0;
     int64_t *points_ = (int64_t *)points ;
     int64_t r1;
+    size_t vl;
 
     ///// MAKING THREE CLUSTERS
     for (; avl > 0; avl -= vl) {
@@ -37,6 +37,8 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 
             points_ = points_ +i*NUM_POINTS*8;// for each coordinate go to the next row which is number of datapoint times bytes per point
             int64_t *centers_ = (int64_t *)centers +i*NUM_CLUSTERS*8;
+
+
             //LOAD first coordinate
             asm volatile("vle64.v v20,  (%0)" ::"r"(points_ )); //load datapoints to v20
             asm volatile("ld %[scalar], (%[pointer])": [scalar] "=r"(r1): [pointer] "r"(centers_)); //load center coordinate to r1
@@ -81,9 +83,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 
         //take the sqrt of the accumulation vector 
         asm volatile ("vsqrt.vv v8, v8");
-        
         asm volatile("vmslt.vv v0, v8, v4");    //mask vector set if elements in v8 are smaller than v4
-
         asm volatile("vmv.vi v16, 1, v0"); //set cluster number to 1 if mask is set
         asm volatile("vmerge.vvm v4, v8, v4, v0") ;//replace elements in v4 by v8 if mask is set
 
@@ -136,6 +136,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     int64_t *points_ = (int64_t *)points;
     int64_t *clusters_ = (int64_t *)clusters;
     int64_t *centers_ = (int64_t *)centers;
+    size_t vl;
     //stripmine
     asm volatile("vsetvli %0, %1, e64, m2, ta, ma" : "=r"(vl) : "r"(avl));
     // vector registers for accumulation: v28 and v30 v24 v26
@@ -172,8 +173,8 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vdivu.vv v22, v22, v20"); 
         
         centers_= centers_+i*NUM_CLUSTERS*8;
-        centers1_= centers_+8;
-        centers2_=centers_+16;
+        int64_t *centers1_= centers_+8;
+        int64_t *centers2_=centers_+16;
         //Store back each new computed cluster center
         asm volatile("vse64.v   v30, (centers_)");  
         asm volatile("vse64.v   v26, (centers1_)");  
@@ -191,12 +192,13 @@ void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clus
     int64_t *points_ = (int64_t *)points;
     int64_t *clusters_ = (int64_t *)clusters;
     int64_t *centers_ = (int64_t *)centers;
+    size_t vl;
 
     asm volatile("vsetvli %0, %1, e64, m2, ta, ma" : "=r"(vl) : "r"(avl));
  for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
         points_ = points_ +i*NUM_POINTS*8;
-        centers1_= centers_+8;
-        centers2_= centers_+16; 
+        int64_t * centers1_= centers_+8;
+        int64_t centers2_= centers_+16; 
 
         asm volatile("ld %[scalar], (%[pointer])": [scalar] "=r"(r1): [pointer] "r"(centers_)); //load center coordinate to r1
         asm volatile("ld %[scalar], (%[pointer])": [scalar] "=r"(r2): [pointer] "r"(centers1_)); //load center coordinate to r1
@@ -271,7 +273,7 @@ bool custom_memcmp(const int64_t *array1, const int64_t *array2, size_t size) {
 
 kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *clusters,int64_t *clusters_last){
 	int iterations = 0;
-	
+    size_t avl=NUM_POINTS;
     size_t clusters_sz = NUM_POINTS * sizeof(int);
 	
 	while (1)
