@@ -4,40 +4,366 @@
 =============
 
 
+Matrix A:
+66 84 143 
+191 54 18 
+152 38 107 
+96 119 0 
+2 64 99 
+105 137 198 
+45 152 156 
+77 74 193 
+21 79 117 
+168 56 78 
+171 73 159 
+112 167 0 
+120 42 24 
+128 62 103 
+131 2 55 
+144 180 124 
+131 170 74 
+174 171 160 
+72 58 96 
+163 61 171 
+13 44 38 
+84 162 82 
+3 148 97 
+105 106 19 
+132 81 194 
+111 152 100 
+36 199 170 
+197 93 90 
+167 61 47 
+172 13 86 
+43 193 44 
+67 152 20 
+134 98 69 
+92 35 102 
+195 76 72 
+142 104 169 
+134 145 25 
+119 38 151 
+118 91 196 
+158 167 187 
+168 170 164 
+51 69 63 
+4 31 122 
+47 112 150 
+61 95 123 
+138 178 97 
+162 57 124 
+57 145 87 
+82 60 64 
+114 195 39 
+33 69 191 
+81 164 21 
+142 191 119 
+84 23 153 
+182 185 4 
+177 2 0 
+103 81 108 
+187 150 14 
+93 16 60 
+33 195 11 
+40 137 37 
+89 24 142 
+86 110 172 
+110 186 78 
+126 84 163 
+168 168 113 
+87 111 22 
+155 166 27 
+39 49 70 
+104 188 128 
+144 177 133 
+185 58 148 
+131 55 187 
+196 7 151 
+87 125 96 
+86 131 99 
+64 63 60 
+88 196 34 
+65 66 22 
+30 86 132 
+37 167 157 
+118 65 119 
+147 21 46 
+150 66 34 
+119 105 58 
+81 17 107 
+20 31 113 
+172 109 191 
+81 71 134 
+32 108 27 
+81 19 7 
+51 91 17 
+181 66 23 
+181 118 72 
+127 6 198 
+99 106 91 
+138 45 188 
+44 196 147 
+25 137 131 
+103 73 124 
+Matrix K:
+163 61 171 
+138 178 97 
+191 54 18 
 Calculating kmeans...
-Cluster 0 Variance: %lf
-Total Variation: %lf
-Cluster 0 Variance: %lf
-Cluster 1 Variance: %lf
-Total Variation: %lf
-Cluster 0 Variance: %lf
-Cluster 1 Variance: %lf
-Total Variation: %lf
-Cluster 0 Variance: %lf
-Cluster 1 Variance: %lf
-Total Variation: %lf
-Cluster 0 Variance: %lf
-Cluster 1 Variance: %lf
-Total Variation: %lf
-Cluster 0 Variance: %lf
-Cluster 1 Variance: %lf
-Total Variation: %lf
-Cluster 0 Variance: %lf
-Cluster 1 Variance: %lf
-Total Variation: %lf
-Cluster 0 Variance: %lf
-Cluster 1 Variance: %lf
-Total Variation: %lf
-Cluster 0 Variance: %lf
-Cluster 1 Variance: %lf
-Total Variation: %lf
-Cluster 0 Variance: %lf
-Cluster 1 Variance: %lf
-Total Variation: %lf
-Cluster 0 Variance: %lf
-Cluster 1 Variance: %lf
-Total Variation: %lf
-Cluster 0 Variance: %lf
-Cluster 1 Variance: %lf
-Total Variation: %lf
+Matrix C:
+0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	Cluster 0 Variance: 6300
+Total Variation: 6300
+Matrix C:
+0 	0 	1 	0 	0 	0 	1 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	Cluster 0 Variance: 6210
+Cluster 1 Variance: 1205
+Total Variation: 7415
+Matrix C:
+0 	0 	1 	0 	0 	1 	1 	0 	0 	0 	0 	0 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	Cluster 0 Variance: 4393
+Cluster 1 Variance: 6418
+Total Variation: 10811
+Matrix C:
+1 	0 	2 	1 	1 	1 	2 	1 	0 	0 	1 	1 	1 	0 	0 	0 	0 	1 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	1 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	Cluster 0 Variance: 6098
+Cluster 1 Variance: 5064
+Cluster 2 Variance: 1205
+Total Variation: 12367
+Matrix C:
+1 	0 	2 	1 	0 	1 	2 	0 	0 	0 	0 	0 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	0 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 7113
+Cluster 1 Variance: 3066
+Cluster 2 Variance: 6256
+Total Variation: 16435
+Matrix C:
+1 	0 	1 	1 	2 	1 	1 	2 	0 	0 	2 	2 	1 	2 	2 	0 	0 	2 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	2 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	Cluster 0 Variance: 6098
+Cluster 1 Variance: 3780
+Cluster 2 Variance: 7544
+Total Variation: 17422
+Matrix C:
+2 	0 	1 	2 	0 	1 	1 	0 	0 	0 	0 	2 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 3218
+Cluster 1 Variance: 3264
+Cluster 2 Variance: 6271
+Total Variation: 12753
+Matrix C:
+2 	0 	1 	2 	2 	1 	1 	2 	0 	0 	2 	0 	1 	2 	2 	0 	1 	0 	0 	1 	1 	0 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	0 	1 	1 	1 	1 	1 	1 	0 	1 	1 	1 	1 	0 	1 	1 	1 	0 	1 	1 	1 	1 	1 	1 	1 	1 	1 	0 	1 	1 	0 	1 	1 	1 	1 	0 	0 	1 	1 	1 	0 	1 	0 	0 	1 	1 	1 	1 	1 	0 	1 	1 	0 	0 	1 	0 	1 	1 	1 	1 	1 	0 	1 	1 	1 	1 	Cluster 0 Variance: 5395
+Cluster 1 Variance: 5399
+Cluster 2 Variance: 1733
+Total Variation: 12527
+Matrix C:
+1 	1 	2 	0 	2 	0 	1 	1 	1 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 1036
+Cluster 1 Variance: 5240
+Cluster 2 Variance: 6288
+Total Variation: 12564
+Matrix C:
+2 	1 	0 	0 	2 	0 	1 	2 	1 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 2240
+Cluster 1 Variance: 6639
+Cluster 2 Variance: 6126
+Total Variation: 15005
+Matrix C:
+2 	1 	0 	0 	2 	0 	1 	2 	1 	1 	2 	1 	1 	2 	2 	0 	0 	2 	0 	1 	1 	0 	1 	0 	1 	1 	0 	0 	1 	1 	1 	1 	0 	1 	1 	0 	0 	0 	0 	1 	1 	0 	0 	1 	1 	1 	1 	0 	0 	1 	1 	0 	1 	1 	1 	1 	1 	0 	0 	1 	1 	0 	0 	1 	0 	1 	1 	1 	0 	0 	0 	0 	0 	1 	0 	1 	0 	0 	1 	0 	1 	1 	1 	2 	0 	1 	0 	0 	0 	0 	1 	1 	1 	1 	0 	0 	0 	1 	0 	1 	Cluster 0 Variance: 3113
+Cluster 1 Variance: 4598
+Cluster 2 Variance: 5552
+Total Variation: 13263
+Matrix C:
+2 	1 	2 	0 	2 	0 	2 	2 	1 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 1036
+Cluster 1 Variance: 3349
+Cluster 2 Variance: 6230
+Total Variation: 10615
+Matrix C:
+2 	1 	0 	0 	2 	0 	2 	2 	1 	1 	0 	1 	0 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 2512
+Cluster 1 Variance: 2515
+Cluster 2 Variance: 6192
+Total Variation: 11219
+Matrix C:
+2 	1 	0 	0 	2 	0 	0 	2 	1 	1 	2 	1 	0 	2 	2 	0 	0 	2 	0 	1 	0 	0 	1 	0 	0 	1 	0 	0 	0 	1 	1 	1 	0 	1 	0 	0 	0 	0 	0 	1 	0 	0 	0 	1 	1 	1 	0 	0 	0 	0 	1 	0 	0 	0 	0 	1 	1 	0 	0 	0 	0 	0 	0 	1 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	1 	0 	0 	0 	0 	1 	0 	1 	2 	0 	0 	0 	0 	0 	0 	1 	1 	1 	0 	0 	0 	0 	0 	0 	0 	Cluster 0 Variance: 4806
+Cluster 1 Variance: 3421
+Cluster 2 Variance: 5552
+Total Variation: 13779
+Matrix C:
+2 	0 	2 	0 	0 	2 	1 	2 	0 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 4909
+Cluster 1 Variance: 2726
+Cluster 2 Variance: 6284
+Total Variation: 13919
+Matrix C:
+2 	0 	2 	2 	2 	2 	1 	2 	0 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 1606
+Cluster 1 Variance: 2726
+Cluster 2 Variance: 6212
+Total Variation: 10544
+Matrix C:
+2 	0 	2 	2 	2 	2 	1 	2 	0 	1 	2 	1 	1 	2 	2 	0 	0 	2 	0 	1 	1 	0 	1 	0 	1 	1 	0 	0 	1 	1 	1 	1 	0 	1 	1 	0 	0 	0 	0 	1 	1 	0 	0 	1 	1 	1 	1 	0 	0 	1 	1 	0 	1 	1 	1 	1 	1 	0 	0 	1 	1 	0 	0 	1 	0 	1 	1 	1 	0 	0 	0 	0 	0 	1 	0 	1 	0 	0 	1 	0 	1 	1 	1 	2 	0 	1 	0 	0 	0 	0 	1 	1 	1 	1 	0 	0 	0 	1 	0 	1 	Cluster 0 Variance: 3489
+Cluster 1 Variance: 4444
+Cluster 2 Variance: 4670
+Total Variation: 12603
+Matrix C:
+2 	1 	2 	0 	2 	2 	2 	1 	1 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 365
+Cluster 1 Variance: 3368
+Cluster 2 Variance: 6345
+Total Variation: 10078
+Matrix C:
+2 	1 	2 	0 	2 	0 	2 	2 	1 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 1036
+Cluster 1 Variance: 3349
+Cluster 2 Variance: 6230
+Total Variation: 10615
+Matrix C:
+2 	1 	0 	0 	2 	0 	2 	2 	1 	1 	0 	1 	0 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 2512
+Cluster 1 Variance: 2515
+Cluster 2 Variance: 6192
+Total Variation: 11219
+Matrix C:
+2 	1 	0 	0 	2 	0 	0 	2 	1 	1 	2 	1 	0 	2 	2 	0 	0 	2 	0 	1 	0 	0 	1 	0 	0 	1 	0 	0 	0 	1 	1 	1 	0 	1 	0 	0 	0 	0 	0 	1 	0 	0 	0 	1 	1 	1 	0 	0 	0 	0 	1 	0 	0 	0 	0 	1 	1 	0 	0 	0 	0 	0 	0 	1 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	1 	0 	0 	0 	0 	1 	0 	1 	2 	0 	0 	0 	0 	0 	0 	1 	1 	1 	0 	0 	0 	0 	0 	0 	0 	Cluster 0 Variance: 4806
+Cluster 1 Variance: 3421
+Cluster 2 Variance: 5552
+Total Variation: 13779
+Matrix C:
+2 	0 	2 	0 	0 	2 	1 	2 	0 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 4909
+Cluster 1 Variance: 2726
+Cluster 2 Variance: 6284
+Total Variation: 13919
+Matrix C:
+2 	0 	2 	2 	2 	2 	1 	2 	0 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 1606
+Cluster 1 Variance: 2726
+Cluster 2 Variance: 6212
+Total Variation: 10544
+Matrix C:
+2 	0 	2 	2 	2 	2 	1 	2 	0 	1 	2 	1 	1 	2 	2 	0 	0 	2 	0 	1 	1 	0 	1 	0 	1 	1 	0 	0 	1 	1 	1 	1 	0 	1 	1 	0 	0 	0 	0 	1 	1 	0 	0 	1 	1 	1 	1 	0 	0 	1 	1 	0 	1 	1 	1 	1 	1 	0 	0 	1 	1 	0 	0 	1 	0 	1 	1 	1 	0 	0 	0 	0 	0 	1 	0 	1 	0 	0 	1 	0 	1 	1 	1 	2 	0 	1 	0 	0 	0 	0 	1 	1 	1 	1 	0 	0 	0 	1 	0 	1 	Cluster 0 Variance: 3489
+Cluster 1 Variance: 4444
+Cluster 2 Variance: 4670
+Total Variation: 12603
+Matrix C:
+2 	1 	2 	0 	2 	2 	2 	1 	1 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 365
+Cluster 1 Variance: 3368
+Cluster 2 Variance: 6345
+Total Variation: 10078
+Matrix C:
+2 	1 	2 	0 	2 	0 	2 	2 	1 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 1036
+Cluster 1 Variance: 3349
+Cluster 2 Variance: 6230
+Total Variation: 10615
+Matrix C:
+2 	1 	0 	0 	2 	0 	2 	2 	1 	1 	0 	1 	0 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 2512
+Cluster 1 Variance: 2515
+Cluster 2 Variance: 6192
+Total Variation: 11219
+Matrix C:
+2 	1 	0 	0 	2 	0 	0 	2 	1 	1 	2 	1 	0 	2 	2 	0 	0 	2 	0 	1 	0 	0 	1 	0 	0 	1 	0 	0 	0 	1 	1 	1 	0 	1 	0 	0 	0 	0 	0 	1 	0 	0 	0 	1 	1 	1 	0 	0 	0 	0 	1 	0 	0 	0 	0 	1 	1 	0 	0 	0 	0 	0 	0 	1 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	1 	0 	0 	0 	0 	1 	0 	1 	2 	0 	0 	0 	0 	0 	0 	1 	1 	1 	0 	0 	0 	0 	0 	0 	0 	Cluster 0 Variance: 4806
+Cluster 1 Variance: 3421
+Cluster 2 Variance: 5552
+Total Variation: 13779
+Matrix C:
+2 	0 	2 	0 	0 	2 	1 	2 	0 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 4909
+Cluster 1 Variance: 2726
+Cluster 2 Variance: 6284
+Total Variation: 13919
+Matrix C:
+2 	0 	2 	2 	2 	2 	1 	2 	0 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 1606
+Cluster 1 Variance: 2726
+Cluster 2 Variance: 6212
+Total Variation: 10544
+Matrix C:
+2 	0 	2 	2 	2 	2 	1 	2 	0 	1 	2 	1 	1 	2 	2 	0 	0 	2 	0 	1 	1 	0 	1 	0 	1 	1 	0 	0 	1 	1 	1 	1 	0 	1 	1 	0 	0 	0 	0 	1 	1 	0 	0 	1 	1 	1 	1 	0 	0 	1 	1 	0 	1 	1 	1 	1 	1 	0 	0 	1 	1 	0 	0 	1 	0 	1 	1 	1 	0 	0 	0 	0 	0 	1 	0 	1 	0 	0 	1 	0 	1 	1 	1 	2 	0 	1 	0 	0 	0 	0 	1 	1 	1 	1 	0 	0 	0 	1 	0 	1 	Cluster 0 Variance: 3489
+Cluster 1 Variance: 4444
+Cluster 2 Variance: 4670
+Total Variation: 12603
+Matrix C:
+2 	1 	2 	0 	2 	2 	2 	1 	1 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 365
+Cluster 1 Variance: 3368
+Cluster 2 Variance: 6345
+Total Variation: 10078
+Matrix C:
+2 	1 	2 	0 	2 	0 	2 	2 	1 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 1036
+Cluster 1 Variance: 3349
+Cluster 2 Variance: 6230
+Total Variation: 10615
+Matrix C:
+2 	1 	0 	0 	2 	0 	2 	2 	1 	1 	0 	1 	0 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 2512
+Cluster 1 Variance: 2515
+Cluster 2 Variance: 6192
+Total Variation: 11219
+Matrix C:
+2 	1 	0 	0 	2 	0 	0 	2 	1 	1 	2 	1 	0 	2 	2 	0 	0 	2 	0 	1 	0 	0 	1 	0 	0 	1 	0 	0 	0 	1 	1 	1 	0 	1 	0 	0 	0 	0 	0 	1 	0 	0 	0 	1 	1 	1 	0 	0 	0 	0 	1 	0 	0 	0 	0 	1 	1 	0 	0 	0 	0 	0 	0 	1 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	1 	0 	0 	0 	0 	1 	0 	1 	2 	0 	0 	0 	0 	0 	0 	1 	1 	1 	0 	0 	0 	0 	0 	0 	0 	Cluster 0 Variance: 4806
+Cluster 1 Variance: 3421
+Cluster 2 Variance: 5552
+Total Variation: 13779
+Matrix C:
+2 	0 	2 	0 	0 	2 	1 	2 	0 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 4909
+Cluster 1 Variance: 2726
+Cluster 2 Variance: 6284
+Total Variation: 13919
+Matrix C:
+2 	0 	2 	2 	2 	2 	1 	2 	0 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 1606
+Cluster 1 Variance: 2726
+Cluster 2 Variance: 6212
+Total Variation: 10544
+Matrix C:
+2 	0 	2 	2 	2 	2 	1 	2 	0 	1 	2 	1 	1 	2 	2 	0 	0 	2 	0 	1 	1 	0 	1 	0 	1 	1 	0 	0 	1 	1 	1 	1 	0 	1 	1 	0 	0 	0 	0 	1 	1 	0 	0 	1 	1 	1 	1 	0 	0 	1 	1 	0 	1 	1 	1 	1 	1 	0 	0 	1 	1 	0 	0 	1 	0 	1 	1 	1 	0 	0 	0 	0 	0 	1 	0 	1 	0 	0 	1 	0 	1 	1 	1 	2 	0 	1 	0 	0 	0 	0 	1 	1 	1 	1 	0 	0 	0 	1 	0 	1 	Cluster 0 Variance: 3489
+Cluster 1 Variance: 4444
+Cluster 2 Variance: 4670
+Total Variation: 12603
+Matrix C:
+2 	1 	2 	0 	2 	2 	2 	1 	1 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 365
+Cluster 1 Variance: 3368
+Cluster 2 Variance: 6345
+Total Variation: 10078
+Matrix C:
+2 	1 	2 	0 	2 	0 	2 	2 	1 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 1036
+Cluster 1 Variance: 3349
+Cluster 2 Variance: 6230
+Total Variation: 10615
+Matrix C:
+2 	1 	0 	0 	2 	0 	2 	2 	1 	1 	0 	1 	0 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 2512
+Cluster 1 Variance: 2515
+Cluster 2 Variance: 6192
+Total Variation: 11219
+Matrix C:
+2 	1 	0 	0 	2 	0 	0 	2 	1 	1 	2 	1 	0 	2 	2 	0 	0 	2 	0 	1 	0 	0 	1 	0 	0 	1 	0 	0 	0 	1 	1 	1 	0 	1 	0 	0 	0 	0 	0 	1 	0 	0 	0 	1 	1 	1 	0 	0 	0 	0 	1 	0 	0 	0 	0 	1 	1 	0 	0 	0 	0 	0 	0 	1 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	1 	0 	0 	0 	0 	1 	0 	1 	2 	0 	0 	0 	0 	0 	0 	1 	1 	1 	0 	0 	0 	0 	0 	0 	0 	Cluster 0 Variance: 4806
+Cluster 1 Variance: 3421
+Cluster 2 Variance: 5552
+Total Variation: 13779
+Matrix C:
+2 	0 	2 	0 	0 	2 	1 	2 	0 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 4909
+Cluster 1 Variance: 2726
+Cluster 2 Variance: 6284
+Total Variation: 13919
+Matrix C:
+2 	0 	2 	2 	2 	2 	1 	2 	0 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 1606
+Cluster 1 Variance: 2726
+Cluster 2 Variance: 6212
+Total Variation: 10544
+Matrix C:
+2 	0 	2 	2 	2 	2 	1 	2 	0 	1 	2 	1 	1 	2 	2 	0 	0 	2 	0 	1 	1 	0 	1 	0 	1 	1 	0 	0 	1 	1 	1 	1 	0 	1 	1 	0 	0 	0 	0 	1 	1 	0 	0 	1 	1 	1 	1 	0 	0 	1 	1 	0 	1 	1 	1 	1 	1 	0 	0 	1 	1 	0 	0 	1 	0 	1 	1 	1 	0 	0 	0 	0 	0 	1 	0 	1 	0 	0 	1 	0 	1 	1 	1 	2 	0 	1 	0 	0 	0 	0 	1 	1 	1 	1 	0 	0 	0 	1 	0 	1 	Cluster 0 Variance: 3489
+Cluster 1 Variance: 4444
+Cluster 2 Variance: 4670
+Total Variation: 12603
+Matrix C:
+2 	1 	2 	0 	2 	2 	2 	1 	1 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 365
+Cluster 1 Variance: 3368
+Cluster 2 Variance: 6345
+Total Variation: 10078
+Matrix C:
+2 	1 	2 	0 	2 	0 	2 	2 	1 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 1036
+Cluster 1 Variance: 3349
+Cluster 2 Variance: 6230
+Total Variation: 10615
+Matrix C:
+2 	1 	0 	0 	2 	0 	2 	2 	1 	1 	0 	1 	0 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 2512
+Cluster 1 Variance: 2515
+Cluster 2 Variance: 6192
+Total Variation: 11219
+Matrix C:
+2 	1 	0 	0 	2 	0 	0 	2 	1 	1 	2 	1 	0 	2 	2 	0 	0 	2 	0 	1 	0 	0 	1 	0 	0 	1 	0 	0 	0 	1 	1 	1 	0 	1 	0 	0 	0 	0 	0 	1 	0 	0 	0 	1 	1 	1 	0 	0 	0 	0 	1 	0 	0 	0 	0 	1 	1 	0 	0 	0 	0 	0 	0 	1 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	1 	0 	0 	0 	0 	1 	0 	1 	2 	0 	0 	0 	0 	0 	0 	1 	1 	1 	0 	0 	0 	0 	0 	0 	0 	Cluster 0 Variance: 4806
+Cluster 1 Variance: 3421
+Cluster 2 Variance: 5552
+Total Variation: 13779
+Matrix C:
+2 	0 	2 	0 	0 	2 	1 	2 	0 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 4909
+Cluster 1 Variance: 2726
+Cluster 2 Variance: 6284
+Total Variation: 13919
+Matrix C:
+2 	0 	2 	2 	2 	2 	1 	2 	0 	1 	0 	1 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	Cluster 0 Variance: 1606
+Cluster 1 Variance: 2726
+Cluster 2 Variance: 6212
+Total Variation: 10544
+Matrix C:
+2 	0 	2 	2 	2 	2 	1 	2 	0 	1 	2 	1 	1 	2 	2 	0 	0 	2 	0 	1 	1 	0 	1 	0 	1 	1 	0 	0 	1 	1 	1 	1 	0 	1 	1 	0 	0 	0 	0 	1 	1 	0 	0 	1 	1 	1 	1 	0 	0 	1 	1 	0 	1 	1 	1 	1 	1 	0 	0 	1 	1 	0 	0 	1 	0 	1 	1 	1 	0 	0 	0 	0 	0 	1 	0 	1 	0 	0 	1 	0 	1 	1 	1 	2 	0 	1 	0 	0 	0 	0 	1 	1 	1 	1 	0 	0 	0 	1 	0 	1 	Cluster 0 Variance: 3489
+Cluster 1 Variance: 4444
+Cluster 2 Variance: 4670
+Total Variation: 12603
 K-Means result: 1

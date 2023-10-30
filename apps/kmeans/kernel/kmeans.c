@@ -60,22 +60,22 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
 
 void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clusters) {
-    double totalVariation = 0.0;
-    double clusterVariance=0.0;
+    int64_t totalVariation = 0.0;
+    int64_t clusterVariance=0.0;
 
     // For each cluster
     for (int clusterIndex = 0; clusterIndex < NUM_CLUSTERS; clusterIndex++) {
-        double sumOfSquaredDistances = 0.0;
-        int numPointsInCluster = 0;
+        int64_t sumOfSquaredDistances = 0.0;
+        int64_t numPointsInCluster = 0;
 
         // For each data point
         for (int dataIndex = 0; dataIndex < NUM_POINTS; dataIndex++) {
             // Check if the data point belongs to the current cluster
             if (clusters[dataIndex] == clusterIndex) {
                 // Calculate the squared distance between the data point and the cluster center
-                double squaredDistance = 0.0;
+                int64_t squaredDistance = 0.0;
                 for (int dimension = 0; dimension < SIZE_DATAPOINT; dimension++) {
-                    double diff = points[dataIndex * SIZE_DATAPOINT + dimension] - centers[clusterIndex * SIZE_DATAPOINT + dimension];
+                    int64_t diff = points[dataIndex * SIZE_DATAPOINT + dimension] - centers[clusterIndex * SIZE_DATAPOINT + dimension];
                     squaredDistance += diff * diff;
                 }
                 sumOfSquaredDistances += squaredDistance;
@@ -87,11 +87,11 @@ void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clus
             // Calculate the average squared distance (variance) within the cluster
             clusterVariance = sumOfSquaredDistances / numPointsInCluster;
             totalVariation += clusterVariance;
-            printf("Cluster %d Variance: %lf\n", clusterIndex, clusterVariance);
+            printf("Cluster %d Variance: %ld\n", clusterIndex, clusterVariance);
         }
     }
 
-    printf("Total Variation: %lf\n", totalVariation);
+    printf("Total Variation: %ld\n", totalVariation);
 }
 
 
@@ -123,12 +123,16 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 	while (1)
 	{
 		/* Store the previous state of the clustering */
-        custom_memcpy(clusters_last, clusters, clusters_sz);
-
+	        custom_memcpy(clusters_last, clusters, clusters_sz);
 
 		assignPointsToClusters(points, centers,clusters);
+		printf("Matrix C:\n");
+		for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+        		printf("%ld ", clusters[i]);
+			printf("\t");
+		}
 		updateClusterCenters(points, centers,clusters);
-        assessQualityCluster(points,centers,clusters);
+       		 assessQualityCluster(points,centers,clusters);
 
 		/*
 		 * if all the cluster numbers are unchanged since last time,

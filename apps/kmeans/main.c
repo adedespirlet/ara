@@ -60,11 +60,18 @@ int main() {
     printf("Matrix A:\n");
     for (uint64_t i = 0; i < M; ++i) {
         for (uint64_t j = 0; j < N; ++j) {
-            printf("%lld ", a[i * N + j]);
+            printf("%ld ", a[i * N + j]);
         }
         printf("\n");
     }
-    
+
+    printf("Matrix K:\n");
+    for (uint64_t i = 0; i < N; ++i) {
+        for (uint64_t j = 0; j < P; ++j) {
+           printf("%lld ", k[i * P + j]);
+    }
+    	printf("\n");
+}    
     kmeans_result result;
 
     // Matrices are initialized --> Start calculating
