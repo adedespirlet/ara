@@ -8,14 +8,13 @@
 
 
 void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64_t *clusters) {
-
+    size_t avl=NUM_POINTS;
     size_t vl;
     //stripmine
     asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
     int64_t counter=0;
     int64_t *points_ = (int64_t *)points ;
     int64_t r1;
-    size_t vl;
 
     ///// MAKING THREE CLUSTERS
     for (; avl > 0; avl -= vl) {
@@ -130,6 +129,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 
 void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters) {
 
+    size_t avl=NUM_POINTS;
     asm volatile("vmv.vi v22, 0"); // Initialize group0 to zero
     asm volatile("vmv.vi v26, 0"); // Initialize group1 to zero
     asm volatile("vmv.vi v30, 0"); // Initialize group2 to zero
@@ -184,6 +184,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 }
 
 void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clusters){
+    size_t avl=NUM_POINTS;
     asm volatile("vmv.vi v2, 0"); // Initialize group0 to zero (accumulation group)
     asm volatile("vmv.vi v4, 0"); // Initialize group1 to zero
     asm volatile("vmv.vi v6, 0"); // Initialize group2 to zero
@@ -193,6 +194,7 @@ void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clus
     int64_t *clusters_ = (int64_t *)clusters;
     int64_t *centers_ = (int64_t *)centers;
     size_t vl;
+    int64_t r1,r2,r3;
 
     asm volatile("vsetvli %0, %1, e64, m2, ta, ma" : "=r"(vl) : "r"(avl));
  for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
@@ -273,7 +275,7 @@ bool custom_memcmp(const int64_t *array1, const int64_t *array2, size_t size) {
 
 kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *clusters,int64_t *clusters_last){
 	int iterations = 0;
-    size_t avl=NUM_POINTS;
+    
     size_t clusters_sz = NUM_POINTS * sizeof(int);
 	
 	while (1)
