@@ -7,7 +7,9 @@
 #include <string.h>
 
 
-void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64_t *clusters) {
+void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64_t *clusters) 
+{
+
     size_t avl=NUM_POINTS;
     size_t vl;
     //stripmine
@@ -123,11 +125,13 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         points_+=vl;
     
     }
-
 }
 
 
-void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters) {
+
+
+void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters)
+{
 
     size_t avl=NUM_POINTS;
     asm volatile("vmv.vi v22, 0"); // Initialize group0 to zero
@@ -183,7 +187,8 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
 }
 
-void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clusters){
+void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clusters)
+{
     size_t avl=NUM_POINTS;
     asm volatile("vmv.vi v2, 0"); // Initialize group0 to zero (accumulation group)
     asm volatile("vmv.vi v4, 0"); // Initialize group1 to zero
@@ -197,10 +202,11 @@ void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clus
     int64_t r1,r2,r3;
 
     asm volatile("vsetvli %0, %1, e64, m2, ta, ma" : "=r"(vl) : "r"(avl));
- for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
+ for (unsigned int i=0;i<SIZE_DATAPOINT; i++)
+ {
         points_ = points_ +i*NUM_POINTS*8;
         int64_t * centers1_= centers_+8;
-        int64_t centers2_= centers_+16; 
+        int64_t *centers2_= centers_+16; 
 
         asm volatile("ld %[scalar], (%[pointer])": [scalar] "=r"(r1): [pointer] "r"(centers_)); //load center coordinate to r1
         asm volatile("ld %[scalar], (%[pointer])": [scalar] "=r"(r2): [pointer] "r"(centers1_)); //load center coordinate to r1
@@ -239,18 +245,14 @@ void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clus
             clusters_+=vl;
             }
         centers_= centers_+i*NUM_CLUSTERS*8;
-        }
-int64_t variance0;
-int64_t variance1;
-int64_t variance2;
+    }
+    int64_t variance0, variance1, variance2;
+    
+    asm volatile("vse64.v v2, (%0)" :: "r"(&variance0)); // Store v8 to scalar_value
+    asm volatile("vse64.v v4, (%0)" :: "r"(&variance1)); // Store v8 to scalar_value
+    asm volatile("vse64.v v6, (%0)" :: "r"(&variance2)); // Store v8 to scalar_value
 
-asm volatile("vse64.v v2, (%0)" :: "r"(&variance0)); // Store v8 to scalar_value
-asm volatile("vse64.v v4, (%0)" :: "r"(&variance1)); // Store v8 to scalar_value
-asm volatile("vse64.v v6, (%0)" :: "r"(&variance2)); // Store v8 to scalar_value
-
-
-printf("Variance of cluster 0 is : %ld, of cluster 1 is : %ld , of cluster 2 is : %ld \n", variance0, variance1, variance2 );
-
+    printf("Variance of cluster 0 is : %ld, of cluster 1 is : %ld , of cluster 2 is : %ld \n", variance0, variance1, variance2 );
     
 }
 
