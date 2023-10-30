@@ -15,6 +15,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
     asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
     int64_t counter=0;
     int64_t *points_ = (int64_t *)points ;
+    int64_t r1;
 
     ///// MAKING THREE CLUSTERS
     for (; avl > 0; avl -= vl) {
@@ -30,8 +31,10 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         asm volatile("vmv.s.x v16, zero");
         int64_t *clusters_ = (int64_t *)clusters +(counter-1)*vl*8;
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
+
             //////////////// REPEATING THIS FOR EACH CLUSTER CENTER POINT //////////////// n*0
         for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
+
             points_ = points_ +i*NUM_POINTS*8;// for each coordinate go to the next row which is number of datapoint times bytes per point
             int64_t *centers_ = (int64_t *)centers +i*NUM_CLUSTERS*8;
             //LOAD first coordinate
@@ -49,9 +52,9 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             asm volatile("vsub.vv v20, v20, v24") ; //Subtract vector v1 from vector v0 
             asm volatile("vmul.vv v20, v20, v20");
             asm volatile("vadd.vv v4 , v4, v20");  //accumulate v4 with first coordinate     
-
+        }
             //take the sqrt of the accumulation vector 
-        asm volatile (vsqrt.vv v4, v4);
+        asm volatile("vsqrt.vv v4, v4");
        
         
         //////////////// REPEATING THIS FOR EACH CLUSTER CENTER POINT //////////////// n*1
@@ -74,13 +77,15 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             asm volatile("vmul.vv v20, v20, v20");
             asm volatile("vadd.vv v8 , v8, v20");  //accumulate v0 with first coordinate    
 
+        }
+
         //take the sqrt of the accumulation vector 
-        asm volatile (vsqrt.vv v8, v8);
+        asm volatile ("vsqrt.vv v8, v8");
         
         asm volatile("vmslt.vv v0, v8, v4");    //mask vector set if elements in v8 are smaller than v4
 
         asm volatile("vmv.vi v16, 1, v0"); //set cluster number to 1 if mask is set
-        asm volatile("vmerge.vvm v4, v8, v4, v0") //replace elements in v4 by v8 if mask is set
+        asm volatile("vmerge.vvm v4, v8, v4, v0") ;//replace elements in v4 by v8 if mask is set
 
 
 
@@ -102,7 +107,8 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             //Subtract the scalar value from all elements of the vector
             asm volatile("vsub.vv v20, v20, v24") ; //Subtract vector v1 from vector v0 
             asm volatile("vmul.vv v20, v20, v20");
-            asm volatile("vadd.vv v12 , v12, v20");  //accumulate v0 with first coordinate    
+            asm volatile("vadd.vv v12 , v12, v20");  //accumulate v0 with first coordinate   
+        } 
 
         //take the sqrt of the accumulation vector 
         asm volatile ("vsqrt.vv v12, v12");
@@ -119,21 +125,6 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
     
     }
 
-
-    // for (int i = 0; i < NUM_POINTS; i++) {
-    //     double minDist = DBL_MAX;
-    //     for (int c = 0; c < NUM_CLUSTERS; c++) {
-    //         double sum = 0;
-    //         for (int j = 0; j < SIZE_DATAPOINT; j++) {
-    //             sum += pow(points[i * SIZE_DATAPOINT + j] - centers[c * SIZE_DATAPOINT + j], 2);
-    //         }
-    //         double dist = sqrt(sum);
-    //         if (dist < minDist) {
-    //             minDist = dist;
-    //             clusters[i] = c;
-    //         }
-    //     }
-    // }
 }
 
 
@@ -191,7 +182,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
 }
 
-void assessQualityCluster(){
+void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clusters){
     asm volatile("vmv.vi v2, 0"); // Initialize group0 to zero (accumulation group)
     asm volatile("vmv.vi v4, 0"); // Initialize group1 to zero
     asm volatile("vmv.vi v6, 0"); // Initialize group2 to zero
