@@ -7,8 +7,7 @@
 #include <string.h>
 
 
-void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64_t *clusters) 
-{
+void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64_t *clusters) {
 
     size_t avl=NUM_POINTS;
     size_t vl;
@@ -130,8 +129,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 
 
 
-void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters)
-{
+void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters){
 
     size_t avl=NUM_POINTS;
     asm volatile("vmv.vi v22, 0"); // Initialize group0 to zero
@@ -187,8 +185,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
 }
 
-void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clusters)
-{
+void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clusters){
     size_t avl=NUM_POINTS;
     asm volatile("vmv.vi v2, 0"); // Initialize group0 to zero (accumulation group)
     asm volatile("vmv.vi v4, 0"); // Initialize group1 to zero
