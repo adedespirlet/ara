@@ -11,13 +11,10 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 
     size_t avl=NUM_POINTS;
     size_t vl;
-
     //stripmine
     asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
     int64_t counter=0;
-
     int64_t *points_ = (int64_t *)points ;
-
 
     ///// MAKING THREE CLUSTERS
     for (; avl > 0; avl -= vl) {
@@ -140,12 +137,11 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 }
 
 
-
 void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters) {
 
-    asm volatile("vmv.vi v2, 0"); // Initialize group0 to zero
-    asm volatile("vmv.vi v4, 0"); // Initialize group1 to zero
-    asm volatile("vmv.vi v6, 0"); // Initialize group2 to zero
+    asm volatile("vmv.vi v22, 0"); // Initialize group0 to zero
+    asm volatile("vmv.vi v26, 0"); // Initialize group1 to zero
+    asm volatile("vmv.vi v30, 0"); // Initialize group2 to zero
     int64_t *points_ = (int64_t *)points;
     int64_t *clusters_ = (int64_t *)clusters;
     int64_t *centers_ = (int64_t *)centers;
@@ -164,23 +160,18 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
             //group0
             asm volatile("vseq.x v12, v10, 0"); // Mask in v12 for elements equal to 0 in v10
-            asm volatile("vmerge.vvm v2, v2, v8, v12"); //copy elemnt from points vector to group0 where mask v24 is set
-            asm volatile("vredsum.vs v28, v12, v28");  //store count value (number of elements copied) in v0  (aacumulate)
-            asm volatile("vredsum.vs v30, v2, v30"); //accumulate in v30
-
+            asm volatile("vredsum.vs v28, v12, v28");  //store count value (number of elements copied) in v28  (aacumulate)
+            asm volatile("vredsum.vm v30, v8, v30, v12"); //accumulate in v30
 
             //group1
             asm volatile("vseq.x v12, v10, 1"); // Mask for elements equal to 1 in v20
-            asm volatile("vmerge.vvm v4, v4, v8, v12"); //copy elemnt from vector points to group1 where mask v24 is set
             asm volatile("vredsum.vs v24, v12, v24");  //store count value (number of elements copied) in v24  (aacumulate)
-            asm volatile("vredsum.vs v26, v4, v26"); //accumulate in v26
+            asm volatile("vredsum.vm v26, v8, v26, v12"); //accumulate in v26
 
             //group2
             asm volatile("vseq.x v12, v10, 1"); // Mask for elements equal to 1 in v20
-            asm volatile("vmerge.vvm v4, v4, v8, v12"); //copy elemnt from vector points to group1 where mask v24 is set
-            asm volatile("vredsum.vs v20, v12, v20");  //store count value (number of elements copied) in v24  (aacumulate)
-            asm volatile("vredsum.vs v22, v4, v22"); //accumulate in v26
-
+            asm volatile("vredsum.vs v20, v12, v20");  //store count value (number of elements copied) in v20  (aacumulate)
+            asm volatile("vredsum.vm v22, v8, v22,v12"); //accumulate in v22
             points_+=vl;
 
         }
@@ -190,53 +181,16 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vdivu.vv v22, v22, v20"); 
         
         centers_= centers_+i*NUM_CLUSTERS*8;
-        
         centers1_= centers_+8;
         centers2_=centers_+16;
         //Store back each new computed cluster center
         asm volatile("vse64.v   v30, (centers_)");  
         asm volatile("vse64.v   v26, (centers1_)");  
         asm volatile("vse64.v   v22, (centers2_)");  
-   
     }
 
 }
 
-
-void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clusters) {
-    double totalVariation = 0.0;
-    double clusterVariance=0.0;
-
-    // For each cluster
-    for (int clusterIndex = 0; clusterIndex < NUM_CLUSTERS; clusterIndex++) {
-        double sumOfSquaredDistances = 0.0;
-        int numPointsInCluster = 0;
-
-        // For each data point
-        for (int dataIndex = 0; dataIndex < NUM_POINTS; dataIndex++) {
-            // Check if the data point belongs to the current cluster
-            if (clusters[dataIndex] == clusterIndex) {
-                // Calculate the squared distance between the data point and the cluster center
-                double squaredDistance = 0.0;
-                for (int dimension = 0; dimension < SIZE_DATAPOINT; dimension++) {
-                    double diff = points[dataIndex * SIZE_DATAPOINT + dimension] - centers[clusterIndex * SIZE_DATAPOINT + dimension];
-                    squaredDistance += diff * diff;
-                }
-                sumOfSquaredDistances += squaredDistance;
-                numPointsInCluster++;
-            }
-        }
-
-        if (numPointsInCluster > 0) {
-            // Calculate the average squared distance (variance) within the cluster
-            clusterVariance = sumOfSquaredDistances / numPointsInCluster;
-            totalVariation += clusterVariance;
-            printf("Cluster %d Variance: %lf\n", clusterIndex, clusterVariance);
-        }
-    }
-
-    printf("Total Variation: %lf\n", totalVariation);
-}
 void assessQualityCluster(){
     asm volatile("vmv.vi v2, 0"); // Initialize group0 to zero (accumulation group)
     asm volatile("vmv.vi v4, 0"); // Initialize group1 to zero
@@ -294,7 +248,6 @@ void assessQualityCluster(){
 int64_t variance0;
 int64_t variance1;
 int64_t variance2;
-
 
 asm volatile("vse64.v v2, (%0)" :: "r"(&variance0)); // Store v8 to scalar_value
 asm volatile("vse64.v v4, (%0)" :: "r"(&variance1)); // Store v8 to scalar_value
