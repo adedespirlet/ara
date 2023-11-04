@@ -69,7 +69,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             asm volatile("vadd.vv v4 , v4, v20");  //accumulate v4 with first coordinate 
             asm volatile("vse64.v   v4, (%0)"::"r"(acc_vctor));  
             asm volatile("vse64.v   v20, (%0)"::"r"(load_vctor));  
-            printf("distance value %ld \n", acc_vctor[0]);
+            printf("acc %ld \n", acc_vctor[0]);
             printf("distance value %ld \n", load_vctor[0]);
 
 
@@ -87,7 +87,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         
         asm volatile("vfsqrt.v v4, v4");
         asm volatile("vse64.v   v4, (%0)"::"r"(acc_vctor));  
-        
+        printf("total acc %ld \n", acc_vctor[0]);
         
         asm volatile ("vfsqrt.v v8, v8");
         asm volatile ("vfsqrt.v v12, v12");
