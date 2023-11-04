@@ -92,9 +92,9 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         clusters_+=vl;
 
         printf("Matrix c:\n");
-        for (uint64_t i = 0; i < M; ++i) {
+        for (uint64_t i = 0; i < NUM_POINTS; ++i) {
             
-            printf("%lld ", c[i]);
+            printf("%ld ", clusters[i]);
             printf("\n");
         }
 
