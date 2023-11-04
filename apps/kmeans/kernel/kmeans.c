@@ -17,6 +17,14 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
     int64_t *points_ = (int64_t *)points ;
     int64_t *clusters_ = (int64_t *)clusters;
 
+    printf("Matrix A:\n");
+    for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+        for (uint64_t j = 0; j < SIZE_DATAPOINT; ++j) {
+            printf("%lld ", points[i * N + j]);
+        }
+        printf("\n");
+    }
+
     ///// MAKING THREE CLUSTERS
     for (; avl > 0; avl -= vl) {
         
@@ -38,6 +46,9 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             int64_t centers0_ = *((int64_t *)centers +i*NUM_CLUSTERS*8);
             int64_t centers1_ = *((int64_t *)centers +i*NUM_CLUSTERS*8+1*8);
             int64_t centers2_ = *((int64_t *)centers +i*NUM_CLUSTERS*8+2*8);
+            printf("center0= %ld", centers0_);
+            printf("center1= %ld", centers1_);
+            printf("center2= %ld", centers2_);
 
             //LOAD first coordinate
             asm volatile("vle64.v v20,  (%0)" ::"r"(points_ )); //load datapoints to v20
