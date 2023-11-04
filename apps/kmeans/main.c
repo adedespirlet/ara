@@ -57,13 +57,32 @@ int main() {
     // printf("------------------------------------------------------------\n");
     // printf("\n");
 
-    printf("Matrix A:\n");
-    for (uint64_t i = 0; i < M; ++i) {
+    // printf("Matrix A:\n");
+    // for (uint64_t i = 0; i < M; ++i) {
+    //     for (uint64_t j = 0; j < N; ++j) {
+    //         printf("%lld ", a[i * N + j]);
+    //     }
+    //     printf("\n");
+    // }
+
+    printf("Matrix k:\n");
+    for (uint64_t i = 0; i < 3; ++i) {
         for (uint64_t j = 0; j < N; ++j) {
-            printf("%lld ", a[i * N + j]);
+            printf("%lld ", c[i * N + j]);
         }
         printf("\n");
     }
+
+    printf("Matrix c:\n");
+    for (uint64_t i = 0; i < M; ++i) {
+        
+        printf("%lld ", c[i]);
+        printf("\n");
+    }
+
+
+
+
     
     kmeans_result result;
 
