@@ -18,12 +18,14 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
     int64_t *clusters_ = (int64_t *)clusters;
 
     printf("Matrix A:\n");
-    for (uint64_t i = 0; i < NUM_POINTS; ++i) {
-        for (uint64_t j = 0; j < SIZE_DATAPOINT; ++j) {
+    for (uint64_t j = 0; j < NUM_POINTS; ++j) {
+        for (uint64_t i = 0; i < SIZE_DATAPOINT; ++i) {
             printf("%lld ", points[i * SIZE_DATAPOINT + j]);
         }
         printf("\n");
     }
+
+
     printf("AssignPoints to Clusters:");
 
     ///// MAKING THREE CLUSTERS
@@ -38,7 +40,8 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         asm volatile("vmv.v.i v16, 0");
         
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
-        int64_t acc_vctor[10]={0};
+        int64_t acc_vctor[100]={0};
+        int64_t load_vctor[100]={0};
             //////////////// REPEATING THIS FOR EACH CLUSTER CENTER POINT //////////////// n*0
         for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
            //we dont know what the size datapoint is so we load it repeatedly but if knows this could be done in advance before the stripming
@@ -64,8 +67,9 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 
             asm volatile("vadd.vv v4 , v4, v20");  //accumulate v4 with first coordinate 
             asm volatile("vse64.v   v4, (%0)"::"r"(acc_vctor));  
+            asm volatile("vse64.v   v20, (%0)"::"r"(load_vctor));  
             printf("distance value %ld \n", acc_vctor[0]);
-            printf("distance value %ld \n", acc_vctor[1]);
+            printf("distance value %ld \n", load_vctor[0]);
 
 
              //Subtract the scalar value from all elements of the vector
