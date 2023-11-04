@@ -43,11 +43,14 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
            //we dont know what the size datapoint is so we load it repeatedly but if knows this could be done in advance before the stripming
 
             points_ = points_ +i*NUM_POINTS*8;// for each coordinate go to the next row which is number of datapoint times bytes per point
-            int64_t centers0_ = *((int64_t *)centers +i*NUM_CLUSTERS*8);
-            int64_t centers1_ = *((int64_t *)centers +i*NUM_CLUSTERS*8+1*8);
-            int64_t centers2_ = *((int64_t *)centers +i*NUM_CLUSTERS*8+2*8);
+            //int64_t centers0_ = *((int64_t *)centers +i*NUM_CLUSTERS*8);
+            int64_t centers1_ = *((int64_t *)centers +i*NUM_CLUSTERS+1);
+            int64_t centers2_ = *((int64_t *)centers +i*NUM_CLUSTERS+2);
+
+            int64_t centers0_ = *((int64_t *)centers);
+            int64_t centers3_ = centers[0];
             printf("center0= %ld", centers0_);
-            printf("center1= %ld", centers1_);
+            printf("center1= %ld", centers3_);
             printf("center2= %ld", centers2_);
 
             //LOAD first coordinate
