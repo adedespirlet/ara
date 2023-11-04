@@ -149,57 +149,54 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clusters)
 {
     size_t avl=NUM_POINTS;
+    size_t vl;
    
     asm volatile("vmv.v.i v4, 0"); // Initialize group0 to zero (accumulation group)
     asm volatile("vmv.v.i v8, 0"); // Initialize group1 to zero
     asm volatile("vmv.v.i v12, 0"); // Initialize group2 to zero
 
-    int64_t *points_ = (int64_t *)points;
-    int64_t *clusters_ = (int64_t *)clusters;
+    
     int64_t *centers_ = (int64_t *)centers;
-    size_t vl;
-    int64_t t0,t1,t2;
+    int64_t center0,center1,center2;
 
-    asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
+    
     for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
-        points_ = points_ +i*NUM_POINTS*8;
-        int64_t * centers1_= centers_+8;
-        int64_t *centers2_= centers_+16; 
+        int64_t *points_ = (int64_t *)points;
+        points_ = points_ +i*NUM_POINTS; //times 8 or not is an element automatically assumed as 8bytes long?
+        int64_t *clusters_ = (int64_t *)clusters;
 
-        t0=*centers_;
-        t1=*centers1_;
-        t2=*centers2_;
+        center0=*centers_;
+        center1=*(centers_+1);
+        center2=*(centers_+2);
         
+        asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
 
         for (; avl > 0; avl -= vl) {
             asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
             asm volatile("vle64.v v20, (%0)" ::"r"(points_)); // Load vector cooridnate x
             asm volatile("vle64.v v16, (%0)" ::"r"(clusters_)); // Load clusters 
 
-            //group0
-            asm volatile("vmseq.vi v0, v16, 0"); // Mask in v12 for elements equal to 0 in v16
-          
-
-            asm volatile("vsub.vx v20, v20, %0, v0.t":: "r"(t0));
+            //compute the variance within cluster0
+            asm volatile("vmseq.vi v0, v16, 0"); // Set mask for elements equal to 0 in v16
+            asm volatile("vsub.vx v20, v20, %0, v0.t":: "r"(center0));
             asm volatile("vmul.vv v20, v20, v20, v0.t");
             asm volatile("vredsum.vs v4, v20, v20, v0.t"); //accumulate
 
-            //group1
-            asm volatile("vmseq.vi v0, v16, 1"); // Mask in v12 for elements equal to 1 in v10
-            
-            asm volatile("vsub.vx v20, v20, %0 ,v0.t":: "r"(t1));
+            //compute the variance within cluster1
+            asm volatile("vmseq.vi v0, v16, 1"); // Set mask for elements equal to 1 in v16
+            asm volatile("vsub.vx v20, v20, %0 ,v0.t":: "r"(center1));
             asm volatile("vmul.vv v20, v20, v20, v0.t");
             asm volatile("vredsum.vs v8, v20, v8, v0.t");
 
-            //group2
-            asm volatile("vmseq.vi v0, v16, 2"); // Mask in v12 for elements equal to 0 in v10
-            asm volatile("vsub.vx v20, v20, %0, v0.t":: "r"(t2));
+            //compute the variance within cluster2
+            asm volatile("vmseq.vi v0, v16, 2"); // Set mask for elements equal to 2 in v16
+            asm volatile("vsub.vx v20, v20, %0, v0.t":: "r"(center2));
             asm volatile("vmul.vv v20, v20, v20, v0.t");
             asm volatile("vredsum.vs v12, v20, v12, v0.t");
             points_+=vl;
             clusters_+=vl;
             }
-        centers_= centers_+i*NUM_CLUSTERS*8;
+        centers_= centers_+i*NUM_CLUSTERS;
     }
     int64_t variance0, variance1, variance2;
     
