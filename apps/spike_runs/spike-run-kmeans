@@ -5,9 +5,9 @@
 
 
 Matrix k:
-28 83 22 
-4 29 76 
-36 2 1 
+35 14 91 
+70 19 82 
+96 99 27 
 Matrix c:
 0 
 0 
@@ -110,19 +110,20 @@ Matrix c:
 0 
 0 
 Calculating kmeans...
-AssignPoints to Clusters:center0= 28 
-center1  83
-center2= 22 
+AssignPoints to Clusters:center0= 35 
+center1  14
+center2= 91 
 end loop
-center0= 4 
-center1  29
-center2= 76 
+center0= 70 
+center1  19
+center2= 82 
 end loop
-center0= 36 
-center1  2
-center2= 1 
+center0= 96 
+center1  99
+center2= 27 
 end loop
-distance value 2217581811133781509 
+distance value 2217483411288120600 
+distance value 2217532211609009486 
 Matrix c:
 0 
 0 
@@ -224,4 +225,3 @@ Matrix c:
 0 
 0 
 0 
-Variance of cluster 0 is : 0, of cluster 1 is : 0 , of cluster 2 is : 0 
