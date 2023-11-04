@@ -41,7 +41,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 
             //LOAD first coordinate
             asm volatile("vle64.v v20,  (%0)" ::"r"(points_ )); //load datapoints to v20
-            t0= centers_;
+          
             //Subtract the scalar value from all elements of the vector
             asm volatile("vsub.vx v20, v20, %0":: "r"(centers0_));
             asm volatile("vmul.vv v20, v20, v20");
@@ -125,7 +125,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             asm volatile("vredsum.vs v12, v8, v12,v0.t"); //accumulate in v12
             vectorCount2+=vectorCount;
             points_+=vl;
-            cluster_+=vl;
+            clusters_+=vl;
         }
 
         //divide total sum by number of elements for each cluster
@@ -168,7 +168,7 @@ void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clus
         center0=*centers_;
         center1=*(centers_+1);
         center2=*(centers_+2);
-        
+
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
 
         for (; avl > 0; avl -= vl) {
