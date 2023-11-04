@@ -74,7 +74,11 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             asm volatile("vadd.vv v12 , v12, v20");  //accumulate v0 with first coordinate   
         }
         //take the sqrt of the accumulation vector 
+        int64_t acc_vctor[vl];
         asm volatile("vfsqrt.v v4, v4");
+        asm volatile("vse64.v   v4, (%0)"::"r"(acc_vctor));  
+        printf("distance value %ld", acc_vctor[0]);
+        
         asm volatile ("vfsqrt.v v8, v8");
         asm volatile ("vfsqrt.v v12, v12");
 
