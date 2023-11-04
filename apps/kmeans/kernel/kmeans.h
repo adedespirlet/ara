@@ -10,9 +10,9 @@
 
 #define NUM_POINTS 100
 #define NUM_CLUSTERS 3
-#define MAX_ITERATIONS 10   // How many times is the cluster updated
+#define MAX_ITERATIONS 20   // How many times is the cluster updated
 #define NUM_RANDOMPOINTS 3  // Picking different initialization values 
-#define SIZE_DATAPOINT 2
+#define SIZE_DATAPOINT 3
 
 
 typedef enum {
