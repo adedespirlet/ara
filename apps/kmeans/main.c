@@ -68,7 +68,7 @@ int main() {
     printf("Matrix k:\n");
     for (uint64_t i = 0; i < 3; ++i) {
         for (uint64_t j = 0; j < N; ++j) {
-            printf("%lld ", c[i * N + j]);
+            printf("%lld ", k[i * N + j]);
         }
         printf("\n");
     }
@@ -90,7 +90,7 @@ int main() {
     printf("Calculating kmeans...\n");
     start_timer();
     //imatmul(c, a, b, s, s, s);
-    result= kmeans(a, c, k,b) ;
+    result= kmeans(a, k, c,b) ;
     printf("K-Means result: %d\n", result);
     stop_timer();
 

@@ -17,626 +17,626 @@ P:
 .global a
 .balign NR_LANES*4
 a:
-    .word 0x0000016d
+    .word 0x000002aa
     .word 0x00000000
-    .word 0x00000597
+    .word 0x000002e7
     .word 0x00000000
-    .word 0x000016f0
+    .word 0x00000253
     .word 0x00000000
-    .word 0x00001cf5
+    .word 0x00000252
     .word 0x00000000
-    .word 0x00000af9
+    .word 0x0000007b
     .word 0x00000000
-    .word 0x00000e9b
-    .word 0x00000000
-    .word 0x0000174a
-    .word 0x00000000
-    .word 0x0000028a
-    .word 0x00000000
-    .word 0x000007c7
-    .word 0x00000000
-    .word 0x000016ff
-    .word 0x00000000
-    .word 0x00000231
-    .word 0x00000000
-    .word 0x0000191d
-    .word 0x00000000
-    .word 0x00001ee4
-    .word 0x00000000
-    .word 0x0000151b
-    .word 0x00000000
-    .word 0x00000b9c
-    .word 0x00000000
-    .word 0x00000447
-    .word 0x00000000
-    .word 0x0000075d
-    .word 0x00000000
-    .word 0x00001466
-    .word 0x00000000
-    .word 0x00001729
-    .word 0x00000000
-    .word 0x00000b52
-    .word 0x00000000
-    .word 0x00001d56
-    .word 0x00000000
-    .word 0x00002194
-    .word 0x00000000
-    .word 0x00000930
-    .word 0x00000000
-    .word 0x00001eeb
-    .word 0x00000000
-    .word 0x00001596
-    .word 0x00000000
-    .word 0x00000b20
-    .word 0x00000000
-    .word 0x00001aa1
-    .word 0x00000000
-    .word 0x00000059
-    .word 0x00000000
-    .word 0x00000f0f
-    .word 0x00000000
-    .word 0x000017b7
-    .word 0x00000000
-    .word 0x000005c2
-    .word 0x00000000
-    .word 0x00002511
-    .word 0x00000000
-    .word 0x00002416
-    .word 0x00000000
-    .word 0x00001180
+    .word 0x000000c1
     .word 0x00000000
     .word 0x000002c6
     .word 0x00000000
-    .word 0x000002cc
+    .word 0x000001fb
     .word 0x00000000
-    .word 0x00001993
+    .word 0x000001e8
     .word 0x00000000
-    .word 0x00001089
+    .word 0x00000059
     .word 0x00000000
-    .word 0x000019c1
+    .word 0x00000260
     .word 0x00000000
-    .word 0x00002702
+    .word 0x0000027c
     .word 0x00000000
-    .word 0x000011c7
+    .word 0x00000124
     .word 0x00000000
-    .word 0x00001c06
+    .word 0x00000024
     .word 0x00000000
-    .word 0x00000d6b
+    .word 0x0000016c
     .word 0x00000000
-    .word 0x0000146d
+    .word 0x000002b8
     .word 0x00000000
-    .word 0x00000ef2
+    .word 0x00000293
     .word 0x00000000
-    .word 0x00000eb2
+    .word 0x000002de
     .word 0x00000000
-    .word 0x00002674
+    .word 0x00000013
     .word 0x00000000
-    .word 0x000021ba
+    .word 0x00000333
     .word 0x00000000
-    .word 0x00001efa
+    .word 0x00000350
     .word 0x00000000
-    .word 0x000021bf
+    .word 0x00000196
     .word 0x00000000
-    .word 0x00001b45
+    .word 0x00000060
     .word 0x00000000
-    .word 0x0000062f
+    .word 0x000000fd
     .word 0x00000000
-    .word 0x00002466
+    .word 0x000002b2
     .word 0x00000000
-    .word 0x00001048
+    .word 0x00000018
     .word 0x00000000
-    .word 0x00002200
+    .word 0x00000203
     .word 0x00000000
-    .word 0x00001faf
+    .word 0x0000015a
     .word 0x00000000
-    .word 0x0000257f
+    .word 0x000001c5
     .word 0x00000000
-    .word 0x00000072
+    .word 0x000003d4
     .word 0x00000000
-    .word 0x00000859
+    .word 0x000000ab
     .word 0x00000000
-    .word 0x000016cf
+    .word 0x000000db
     .word 0x00000000
-    .word 0x0000267d
+    .word 0x000000db
     .word 0x00000000
-    .word 0x00000a3f
+    .word 0x0000007e
     .word 0x00000000
-    .word 0x00000612
+    .word 0x00000058
     .word 0x00000000
-    .word 0x00000611
+    .word 0x00000045
     .word 0x00000000
-    .word 0x000024fb
+    .word 0x0000018b
     .word 0x00000000
-    .word 0x000005d4
+    .word 0x0000031c
     .word 0x00000000
-    .word 0x00000870
+    .word 0x0000031e
     .word 0x00000000
-    .word 0x000014a1
+    .word 0x00000139
     .word 0x00000000
-    .word 0x00000bf3
+    .word 0x0000036c
     .word 0x00000000
-    .word 0x00000bce
+    .word 0x000002af
     .word 0x00000000
-    .word 0x000007fb
+    .word 0x00000142
     .word 0x00000000
-    .word 0x0000059d
+    .word 0x0000018b
     .word 0x00000000
-    .word 0x00000428
+    .word 0x0000011f
     .word 0x00000000
-    .word 0x00000db1
+    .word 0x000002a4
     .word 0x00000000
-    .word 0x00001ba6
+    .word 0x000003b8
     .word 0x00000000
-    .word 0x00002090
+    .word 0x0000033b
     .word 0x00000000
-    .word 0x0000109b
+    .word 0x000001aa
     .word 0x00000000
-    .word 0x00000948
+    .word 0x000003a1
     .word 0x00000000
-    .word 0x000016b8
+    .word 0x000002d9
     .word 0x00000000
-    .word 0x00001854
+    .word 0x00000113
     .word 0x00000000
-    .word 0x00001dd2
+    .word 0x0000031d
     .word 0x00000000
-    .word 0x00001271
+    .word 0x00000147
     .word 0x00000000
-    .word 0x00001521
+    .word 0x00000322
     .word 0x00000000
-    .word 0x00002695
+    .word 0x00000273
     .word 0x00000000
-    .word 0x00001327
+    .word 0x0000003a
     .word 0x00000000
-    .word 0x0000266a
+    .word 0x00000111
     .word 0x00000000
-    .word 0x00000299
+    .word 0x0000007a
     .word 0x00000000
-    .word 0x000017d8
+    .word 0x00000067
     .word 0x00000000
-    .word 0x00002200
+    .word 0x00000384
     .word 0x00000000
-    .word 0x00001540
+    .word 0x000000a9
     .word 0x00000000
-    .word 0x000026f1
+    .word 0x00000290
     .word 0x00000000
-    .word 0x00000f40
+    .word 0x00000398
     .word 0x00000000
-    .word 0x00001d40
+    .word 0x0000029e
     .word 0x00000000
-    .word 0x0000144b
+    .word 0x00000372
     .word 0x00000000
-    .word 0x0000040c
+    .word 0x000002be
     .word 0x00000000
-    .word 0x00001a35
+    .word 0x00000344
     .word 0x00000000
-    .word 0x000011e2
+    .word 0x0000033c
     .word 0x00000000
-    .word 0x00000581
+    .word 0x00000371
     .word 0x00000000
-    .word 0x00000c64
+    .word 0x0000027f
     .word 0x00000000
-    .word 0x0000118b
+    .word 0x00000369
     .word 0x00000000
-    .word 0x00001401
+    .word 0x00000075
     .word 0x00000000
-    .word 0x0000143e
+    .word 0x000003b7
     .word 0x00000000
-    .word 0x00000ca8
+    .word 0x00000152
     .word 0x00000000
-    .word 0x000005b4
+    .word 0x000001fd
     .word 0x00000000
-    .word 0x0000198a
+    .word 0x0000035a
     .word 0x00000000
-    .word 0x00000ccb
+    .word 0x00000055
     .word 0x00000000
-    .word 0x000006b4
+    .word 0x000000bb
     .word 0x00000000
-    .word 0x000012e6
+    .word 0x00000157
     .word 0x00000000
-    .word 0x000002c5
+    .word 0x00000131
     .word 0x00000000
-    .word 0x0000218a
+    .word 0x00000210
     .word 0x00000000
-    .word 0x00000b98
+    .word 0x00000334
     .word 0x00000000
-    .word 0x00002026
+    .word 0x00000068
     .word 0x00000000
-    .word 0x00001185
+    .word 0x000002a4
     .word 0x00000000
-    .word 0x0000116e
+    .word 0x00000245
     .word 0x00000000
-    .word 0x00000ade
+    .word 0x00000061
     .word 0x00000000
-    .word 0x00002329
+    .word 0x0000005e
     .word 0x00000000
-    .word 0x0000200b
+    .word 0x00000190
     .word 0x00000000
-    .word 0x0000026e
+    .word 0x00000311
     .word 0x00000000
-    .word 0x00000658
+    .word 0x00000155
     .word 0x00000000
-    .word 0x00001487
+    .word 0x00000131
     .word 0x00000000
-    .word 0x000022c2
+    .word 0x00000199
     .word 0x00000000
-    .word 0x000021cd
+    .word 0x00000393
     .word 0x00000000
-    .word 0x00000e2b
+    .word 0x0000003d
     .word 0x00000000
-    .word 0x00001805
+    .word 0x00000308
     .word 0x00000000
-    .word 0x00000d69
+    .word 0x00000291
     .word 0x00000000
-    .word 0x00000881
+    .word 0x000000a0
     .word 0x00000000
-    .word 0x00000242
+    .word 0x00000386
     .word 0x00000000
-    .word 0x000005f7
+    .word 0x00000199
     .word 0x00000000
-    .word 0x00000911
+    .word 0x000003aa
     .word 0x00000000
-    .word 0x0000103e
+    .word 0x0000032f
     .word 0x00000000
-    .word 0x00001768
+    .word 0x00000306
     .word 0x00000000
-    .word 0x00000a3a
+    .word 0x000001c8
     .word 0x00000000
-    .word 0x000009b9
+    .word 0x00000109
     .word 0x00000000
-    .word 0x000006f4
+    .word 0x000001b7
     .word 0x00000000
-    .word 0x00001877
+    .word 0x0000007d
     .word 0x00000000
-    .word 0x00000793
+    .word 0x00000046
     .word 0x00000000
-    .word 0x00000647
+    .word 0x00000208
     .word 0x00000000
-    .word 0x000007bd
+    .word 0x0000000a
     .word 0x00000000
-    .word 0x00001c0e
+    .word 0x00000056
     .word 0x00000000
-    .word 0x00000cef
+    .word 0x0000004f
     .word 0x00000000
-    .word 0x0000111f
+    .word 0x00000059
     .word 0x00000000
-    .word 0x00002241
+    .word 0x000002e3
     .word 0x00000000
-    .word 0x00001f43
+    .word 0x00000048
     .word 0x00000000
-    .word 0x00001728
+    .word 0x00000248
     .word 0x00000000
-    .word 0x0000030d
+    .word 0x00000091
     .word 0x00000000
-    .word 0x000025c2
+    .word 0x000003db
     .word 0x00000000
-    .word 0x000011e5
+    .word 0x000001d1
     .word 0x00000000
-    .word 0x0000240d
+    .word 0x0000008d
     .word 0x00000000
-    .word 0x00000e29
+    .word 0x00000189
     .word 0x00000000
-    .word 0x00000a01
-    .word 0x00000000
-    .word 0x00001218
-    .word 0x00000000
-    .word 0x00001ab2
-    .word 0x00000000
-    .word 0x00001d98
-    .word 0x00000000
-    .word 0x00000610
-    .word 0x00000000
-    .word 0x00000d37
-    .word 0x00000000
-    .word 0x000021aa
-    .word 0x00000000
-    .word 0x000025cb
-    .word 0x00000000
-    .word 0x00000a2a
-    .word 0x00000000
-    .word 0x00000407
-    .word 0x00000000
-    .word 0x0000164a
-    .word 0x00000000
-    .word 0x00000c9d
-    .word 0x00000000
-    .word 0x000005b8
-    .word 0x00000000
-    .word 0x0000127b
-    .word 0x00000000
-    .word 0x00000bee
-    .word 0x00000000
-    .word 0x00000bf4
-    .word 0x00000000
-    .word 0x00001c01
-    .word 0x00000000
-    .word 0x00001093
-    .word 0x00000000
-    .word 0x00000d9d
-    .word 0x00000000
-    .word 0x00000e38
-    .word 0x00000000
-    .word 0x000014d7
-    .word 0x00000000
-    .word 0x000013bd
-    .word 0x00000000
-    .word 0x000000ca
-    .word 0x00000000
-    .word 0x000022e6
-    .word 0x00000000
-    .word 0x000009bc
-    .word 0x00000000
-    .word 0x0000189b
-    .word 0x00000000
-    .word 0x000015ea
-    .word 0x00000000
-    .word 0x000010da
-    .word 0x00000000
-    .word 0x00001627
-    .word 0x00000000
-    .word 0x00001c21
-    .word 0x00000000
-    .word 0x00001ad3
-    .word 0x00000000
-    .word 0x0000050e
-    .word 0x00000000
-    .word 0x000006db
-    .word 0x00000000
-    .word 0x00001e42
-    .word 0x00000000
-    .word 0x000014d2
-    .word 0x00000000
-    .word 0x00001080
-    .word 0x00000000
-    .word 0x00000928
-    .word 0x00000000
-    .word 0x000023cd
-    .word 0x00000000
-    .word 0x000004da
-    .word 0x00000000
-    .word 0x00001bf5
-    .word 0x00000000
-    .word 0x000005bc
-    .word 0x00000000
-    .word 0x00001f6c
+    .word 0x0000032b
     .word 0x00000000
     .word 0x00000200
     .word 0x00000000
-    .word 0x000023c6
+    .word 0x00000121
     .word 0x00000000
-    .word 0x00000215
+    .word 0x0000027d
     .word 0x00000000
-    .word 0x00000bdb
+    .word 0x0000030e
     .word 0x00000000
-    .word 0x00001702
+    .word 0x000003bb
     .word 0x00000000
-    .word 0x00000696
+    .word 0x0000007b
     .word 0x00000000
-    .word 0x00001be4
+    .word 0x000002f3
     .word 0x00000000
-    .word 0x0000031b
+    .word 0x0000028e
     .word 0x00000000
-    .word 0x00002612
+    .word 0x00000266
     .word 0x00000000
-    .word 0x000022a7
+    .word 0x000003e6
     .word 0x00000000
-    .word 0x00000dbe
+    .word 0x0000004c
     .word 0x00000000
-    .word 0x000023df
+    .word 0x0000026b
     .word 0x00000000
-    .word 0x000004dd
+    .word 0x0000008c
     .word 0x00000000
-    .word 0x00000944
+    .word 0x000002a4
     .word 0x00000000
-    .word 0x000007f9
+    .word 0x000000c6
     .word 0x00000000
-    .word 0x00000d39
+    .word 0x000001d2
     .word 0x00000000
-    .word 0x00000f2a
+    .word 0x00000391
     .word 0x00000000
-    .word 0x00000d58
+    .word 0x0000010d
     .word 0x00000000
-    .word 0x0000270d
+    .word 0x000002f6
     .word 0x00000000
-    .word 0x00002484
+    .word 0x00000239
+    .word 0x00000000
+    .word 0x000002b0
     .word 0x00000000
     .word 0x0000033f
     .word 0x00000000
-    .word 0x00000a6a
+    .word 0x000001e1
     .word 0x00000000
-    .word 0x00000857
+    .word 0x00000382
     .word 0x00000000
-    .word 0x000023f0
+    .word 0x00000105
     .word 0x00000000
-    .word 0x000001c6
+    .word 0x000001c0
+    .word 0x00000000
+    .word 0x00000350
+    .word 0x00000000
+    .word 0x0000012c
+    .word 0x00000000
+    .word 0x00000279
+    .word 0x00000000
+    .word 0x00000107
+    .word 0x00000000
+    .word 0x00000216
+    .word 0x00000000
+    .word 0x00000349
+    .word 0x00000000
+    .word 0x0000034e
+    .word 0x00000000
+    .word 0x00000189
+    .word 0x00000000
+    .word 0x000003af
+    .word 0x00000000
+    .word 0x000003ce
+    .word 0x00000000
+    .word 0x00000332
+    .word 0x00000000
+    .word 0x0000025a
+    .word 0x00000000
+    .word 0x00000155
+    .word 0x00000000
+    .word 0x00000113
+    .word 0x00000000
+    .word 0x00000126
+    .word 0x00000000
+    .word 0x00000079
+    .word 0x00000000
+    .word 0x000002c3
+    .word 0x00000000
+    .word 0x00000178
+    .word 0x00000000
+    .word 0x00000098
+    .word 0x00000000
+    .word 0x0000018f
+    .word 0x00000000
+    .word 0x000001e1
+    .word 0x00000000
+    .word 0x0000013b
+    .word 0x00000000
+    .word 0x00000195
+    .word 0x00000000
+    .word 0x000003d9
+    .word 0x00000000
+    .word 0x000003ca
+    .word 0x00000000
+    .word 0x000000a8
+    .word 0x00000000
+    .word 0x00000112
+    .word 0x00000000
+    .word 0x00000325
+    .word 0x00000000
+    .word 0x0000009c
+    .word 0x00000000
+    .word 0x00000399
+    .word 0x00000000
+    .word 0x00000287
+    .word 0x00000000
+    .word 0x000002ed
+    .word 0x00000000
+    .word 0x00000238
+    .word 0x00000000
+    .word 0x0000037f
+    .word 0x00000000
+    .word 0x000000d1
+    .word 0x00000000
+    .word 0x000003e1
+    .word 0x00000000
+    .word 0x00000103
+    .word 0x00000000
+    .word 0x00000246
+    .word 0x00000000
+    .word 0x000001c8
+    .word 0x00000000
+    .word 0x0000018e
+    .word 0x00000000
+    .word 0x000001f3
+    .word 0x00000000
+    .word 0x000002f8
+    .word 0x00000000
+    .word 0x000002fa
+    .word 0x00000000
+    .word 0x00000279
+    .word 0x00000000
+    .word 0x000001cf
+    .word 0x00000000
+    .word 0x000002af
+    .word 0x00000000
+    .word 0x00000338
+    .word 0x00000000
+    .word 0x000001dc
+    .word 0x00000000
+    .word 0x000002de
+    .word 0x00000000
+    .word 0x000003a5
+    .word 0x00000000
+    .word 0x00000076
+    .word 0x00000000
+    .word 0x0000019c
+    .word 0x00000000
+    .word 0x00000131
+    .word 0x00000000
+    .word 0x000003a5
+    .word 0x00000000
+    .word 0x00000115
+    .word 0x00000000
+    .word 0x00000171
+    .word 0x00000000
+    .word 0x000001bc
+    .word 0x00000000
+    .word 0x0000034f
+    .word 0x00000000
+    .word 0x000001a5
+    .word 0x00000000
+    .word 0x000001cf
+    .word 0x00000000
+    .word 0x00000262
+    .word 0x00000000
+    .word 0x000000ee
+    .word 0x00000000
+    .word 0x00000018
+    .word 0x00000000
+    .word 0x0000036e
+    .word 0x00000000
+    .word 0x0000010c
+    .word 0x00000000
+    .word 0x00000294
+    .word 0x00000000
+    .word 0x000003cc
+    .word 0x00000000
+    .word 0x00000238
+    .word 0x00000000
+    .word 0x00000393
+    .word 0x00000000
+    .word 0x000003a8
+    .word 0x00000000
+    .word 0x00000121
+    .word 0x00000000
+    .word 0x000003d7
+    .word 0x00000000
+    .word 0x000000c6
+    .word 0x00000000
+    .word 0x00000344
+    .word 0x00000000
+    .word 0x00000023
+    .word 0x00000000
+    .word 0x00000209
+    .word 0x00000000
+    .word 0x00000014
+    .word 0x00000000
+    .word 0x000002e3
+    .word 0x00000000
+    .word 0x00000207
+    .word 0x00000000
+    .word 0x000003c8
+    .word 0x00000000
+    .word 0x00000101
+    .word 0x00000000
+    .word 0x0000022b
+    .word 0x00000000
+    .word 0x0000019a
+    .word 0x00000000
+    .word 0x00000087
+    .word 0x00000000
+    .word 0x00000161
+    .word 0x00000000
+    .word 0x0000017f
+    .word 0x00000000
+    .word 0x00000028
+    .word 0x00000000
+    .word 0x000002cf
+    .word 0x00000000
+    .word 0x000003cc
+    .word 0x00000000
+    .word 0x000001af
+    .word 0x00000000
+    .word 0x000000ca
+    .word 0x00000000
+    .word 0x000001da
+    .word 0x00000000
+    .word 0x000002cc
+    .word 0x00000000
+    .word 0x000002fb
+    .word 0x00000000
+    .word 0x0000036e
+    .word 0x00000000
+    .word 0x00000102
+    .word 0x00000000
+    .word 0x00000387
+    .word 0x00000000
+    .word 0x00000060
+    .word 0x00000000
+    .word 0x000003b6
+    .word 0x00000000
+    .word 0x00000147
+    .word 0x00000000
+    .word 0x000000d4
+    .word 0x00000000
+    .word 0x0000031c
+    .word 0x00000000
+    .word 0x0000037f
+    .word 0x00000000
+    .word 0x000000f7
+    .word 0x00000000
+    .word 0x0000037f
+    .word 0x00000000
+    .word 0x000003d8
+    .word 0x00000000
+    .word 0x00000099
+    .word 0x00000000
+    .word 0x00000352
+    .word 0x00000000
+    .word 0x000000f8
+    .word 0x00000000
+    .word 0x0000006d
+    .word 0x00000000
+    .word 0x000000f9
+    .word 0x00000000
+    .word 0x000000da
+    .word 0x00000000
+    .word 0x000003b6
+    .word 0x00000000
+    .word 0x0000001c
+    .word 0x00000000
+    .word 0x00000357
+    .word 0x00000000
+    .word 0x00000088
+    .word 0x00000000
+    .word 0x0000037d
+    .word 0x00000000
+    .word 0x00000098
+    .word 0x00000000
+    .word 0x000003c1
+    .word 0x00000000
+    .word 0x00000171
+    .word 0x00000000
+    .word 0x00000289
+    .word 0x00000000
+    .word 0x0000022f
+    .word 0x00000000
+    .word 0x00000179
+    .word 0x00000000
+    .word 0x00000017
+    .word 0x00000000
+    .word 0x0000007d
+    .word 0x00000000
+    .word 0x00000383
+    .word 0x00000000
+    .word 0x000003d0
+    .word 0x00000000
+    .word 0x00000131
+    .word 0x00000000
+    .word 0x00000393
+    .word 0x00000000
+    .word 0x00000160
+    .word 0x00000000
+    .word 0x0000014d
+    .word 0x00000000
+    .word 0x0000013e
+    .word 0x00000000
+    .word 0x000001c0
+    .word 0x00000000
+    .word 0x00000118
+    .word 0x00000000
+    .word 0x00000075
+    .word 0x00000000
+    .word 0x00000381
+    .word 0x00000000
+    .word 0x000003cf
+    .word 0x00000000
+    .word 0x0000008a
+    .word 0x00000000
+    .word 0x000001a8
+    .word 0x00000000
+    .word 0x00000299
+    .word 0x00000000
+    .word 0x00000219
+    .word 0x00000000
+    .word 0x000001fb
+    .word 0x00000000
+    .word 0x00000376
+    .word 0x00000000
+    .word 0x00000067
+    .word 0x00000000
+    .word 0x00000397
+    .word 0x00000000
+    .word 0x00000205
+    .word 0x00000000
+    .word 0x000000c5
+    .word 0x00000000
+    .word 0x00000282
+    .word 0x00000000
+    .word 0x000002de
+    .word 0x00000000
+    .word 0x0000024c
+    .word 0x00000000
+    .word 0x0000018b
     .word 0x00000000
     .word 0x0000035b
-    .word 0x00000000
-    .word 0x0000205e
-    .word 0x00000000
-    .word 0x00001acf
-    .word 0x00000000
-    .word 0x00000d65
-    .word 0x00000000
-    .word 0x00001316
-    .word 0x00000000
-    .word 0x00001782
-    .word 0x00000000
-    .word 0x0000260f
-    .word 0x00000000
-    .word 0x000008e1
-    .word 0x00000000
-    .word 0x00000d9b
-    .word 0x00000000
-    .word 0x000016b6
-    .word 0x00000000
-    .word 0x00000e77
-    .word 0x00000000
-    .word 0x000023c7
-    .word 0x00000000
-    .word 0x00001320
-    .word 0x00000000
-    .word 0x00000aca
-    .word 0x00000000
-    .word 0x00001f08
-    .word 0x00000000
-    .word 0x000004bf
-    .word 0x00000000
-    .word 0x000021f9
-    .word 0x00000000
-    .word 0x000017e9
-    .word 0x00000000
-    .word 0x00000d74
-    .word 0x00000000
-    .word 0x00002466
-    .word 0x00000000
-    .word 0x00000d18
-    .word 0x00000000
-    .word 0x00001876
-    .word 0x00000000
-    .word 0x00000ddd
-    .word 0x00000000
-    .word 0x00001734
-    .word 0x00000000
-    .word 0x00000d73
-    .word 0x00000000
-    .word 0x00000ea8
-    .word 0x00000000
-    .word 0x000008fd
-    .word 0x00000000
-    .word 0x000005bb
-    .word 0x00000000
-    .word 0x00001398
-    .word 0x00000000
-    .word 0x00000bab
-    .word 0x00000000
-    .word 0x0000124d
-    .word 0x00000000
-    .word 0x000008c2
-    .word 0x00000000
-    .word 0x00001926
-    .word 0x00000000
-    .word 0x000019d2
-    .word 0x00000000
-    .word 0x00000f6f
-    .word 0x00000000
-    .word 0x00001101
-    .word 0x00000000
-    .word 0x00000afe
-    .word 0x00000000
-    .word 0x000016aa
-    .word 0x00000000
-    .word 0x00000f98
-    .word 0x00000000
-    .word 0x0000016f
-    .word 0x00000000
-    .word 0x000024fe
-    .word 0x00000000
-    .word 0x00000ea9
-    .word 0x00000000
-    .word 0x00001f95
-    .word 0x00000000
-    .word 0x00001849
-    .word 0x00000000
-    .word 0x00000833
-    .word 0x00000000
-    .word 0x00000529
-    .word 0x00000000
-    .word 0x000008e0
-    .word 0x00000000
-    .word 0x00002609
-    .word 0x00000000
-    .word 0x00000e71
-    .word 0x00000000
-    .word 0x0000084d
-    .word 0x00000000
-    .word 0x000000ce
-    .word 0x00000000
-    .word 0x000025c9
-    .word 0x00000000
-    .word 0x00001319
-    .word 0x00000000
-    .word 0x00001e07
-    .word 0x00000000
-    .word 0x00001f90
-    .word 0x00000000
-    .word 0x00000a49
-    .word 0x00000000
-    .word 0x00002064
-    .word 0x00000000
-    .word 0x00001829
-    .word 0x00000000
-    .word 0x00001800
-    .word 0x00000000
-    .word 0x000015ae
-    .word 0x00000000
-    .word 0x000000f5
-    .word 0x00000000
-    .word 0x0000128d
-    .word 0x00000000
-    .word 0x000001b0
-    .word 0x00000000
-    .word 0x000008df
-    .word 0x00000000
-    .word 0x00000fb5
-    .word 0x00000000
-    .word 0x000002c4
-    .word 0x00000000
-    .word 0x000007e9
-    .word 0x00000000
-    .word 0x00001c02
-    .word 0x00000000
-    .word 0x000009ce
-    .word 0x00000000
-    .word 0x000011e7
-    .word 0x00000000
-    .word 0x00002297
-    .word 0x00000000
-    .word 0x000002ac
-    .word 0x00000000
-    .word 0x00001e08
-    .word 0x00000000
-    .word 0x00001a0c
-    .word 0x00000000
-    .word 0x00000d4a
-    .word 0x00000000
-    .word 0x000009bc
-    .word 0x00000000
-    .word 0x0000189a
-    .word 0x00000000
-    .word 0x00001c19
-    .word 0x00000000
-    .word 0x00000edc
-    .word 0x00000000
-    .word 0x0000243a
-    .word 0x00000000
-    .word 0x0000166f
-    .word 0x00000000
-    .word 0x00001b84
-    .word 0x00000000
-    .word 0x0000112e
-    .word 0x00000000
-    .word 0x000001ef
     .word 0x00000000
 .global k
 .balign NR_LANES*4
 k:
-    .word 0x00001efa
+    .word 0x00000024
     .word 0x00000000
-    .word 0x00000af9
+    .word 0x00000333
     .word 0x00000000
-    .word 0x00000870
+    .word 0x00000147
     .word 0x00000000
-    .word 0x00000e29
+    .word 0x000002e3
     .word 0x00000000
-    .word 0x0000198a
+    .word 0x0000008d
     .word 0x00000000
-    .word 0x00001093
+    .word 0x00000349
     .word 0x00000000
-    .word 0x00001926
+    .word 0x00000294
     .word 0x00000000
-    .word 0x00000944
+    .word 0x000003d7
     .word 0x00000000
-    .word 0x000000ce
+    .word 0x000003d8
     .word 0x00000000
 .global c
 .balign NR_LANES*4

@@ -5,9 +5,9 @@
 
 
 Matrix k:
-0 0 0 
-0 0 0 
-0 0 0 
+36 819 327 
+739 141 841 
+660 983 984 
 Matrix c:
 0 
 0 
@@ -110,105 +110,13 @@ Matrix c:
 0 
 0 
 Calculating kmeans...
-Matrix c:
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-2 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-2 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-Variance of cluster 0 is : 0, of cluster 1 is : 0 , of cluster 2 is : 0 
+AssignPoints to Clusters:center0= 36 
+test  819
+center1= 327 
+end loopcenter0= 739 
+test  141
+center1= 841 
+end loopcenter0= 660 
+test  983
+center1= 984 
+end loopVariance of cluster 0 is : 0, of cluster 1 is : 0 , of cluster 2 is : 0 
