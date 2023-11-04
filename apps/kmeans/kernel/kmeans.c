@@ -70,13 +70,22 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         asm volatile("vmerge.vim v16,v16,2,v0");//set cluster number to 1 if mask is set
         //store resuls back
         asm volatile("vse64.v   v16, (%0)"::"r"(clusters_));  
+        
 
         }
         //fetch next group
         points_+=vl;
         clusters_+=vl;
+
+        printf("Matrix c:\n");
+        for (uint64_t i = 0; i < M; ++i) {
+            
+            printf("%lld ", c[i]);
+            printf("\n");
+        }
+
     
-    }
+}
 
 
 
