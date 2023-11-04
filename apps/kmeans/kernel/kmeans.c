@@ -43,14 +43,14 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
            //we dont know what the size datapoint is so we load it repeatedly but if knows this could be done in advance before the stripming
 
-            points_ = points_ +i*NUM_POINTS*8;// for each coordinate go to the next row which is number of datapoint times bytes per point
+            points_ = points_ +i*NUM_POINTS;// for each coordinate go to the next row which is number of datapoint times bytes per point
             int64_t centers0_ = *((int64_t *)centers +i*NUM_CLUSTERS);
             int64_t centers1_ = *((int64_t *)centers +i*NUM_CLUSTERS+1);
             int64_t centers2_ = *((int64_t *)centers +i*NUM_CLUSTERS+2);
 
             printf("center0= %ld \n", centers0_);
-            printf("test  %ld\n",centers1_);
-            printf("center1= %ld \n", centers2_);
+            printf("center1  %ld\n",centers1_);
+            printf("center2= %ld \n", centers2_);
            
             printf("end loop");
             //printf("center2=  %ld \n", centers2_);
@@ -119,7 +119,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
     //Loop over all elements feature per feature
     for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
-        points_ = points_ +i*NUM_POINTS*8;
+        points_ = points_ +i*NUM_POINTS;
         int64_t vectorCount=0, vectorCount0=0, vectorCount1=0, vectorCount2=0;
 
         asm volatile("vmv.v.i v12, 0"); // Initialize group2 to zero
