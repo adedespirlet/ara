@@ -52,7 +52,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             printf("center1  %ld\n",centers1_);
             printf("center2= %ld \n", centers2_);
            
-            printf("end loop");
+            printf("end loop\n");
             //printf("center2=  %ld \n", centers2_);
 
             //LOAD first coordinate
@@ -77,7 +77,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         int64_t acc_vctor[vl];
         asm volatile("vfsqrt.v v4, v4");
         asm volatile("vse64.v   v4, (%0)"::"r"(acc_vctor));  
-        printf("distance value %ld", acc_vctor[0]);
+        printf("distance value %ld \n", acc_vctor[0]);
         
         asm volatile ("vfsqrt.v v8, v8");
         asm volatile ("vfsqrt.v v12, v12");
