@@ -18,11 +18,12 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
     int64_t *clusters_ = (int64_t *)clusters;
 
     printf("Matrix A:\n");
-    for (uint64_t j = 0; j < NUM_POINTS; ++j) {
-        for (uint64_t i = 0; i < SIZE_DATAPOINT; ++i) {
-            printf("%lld ", points[i * SIZE_DATAPOINT + j]);
+    
+    for (uint64_t i = 0; i < SIZE_DATAPOINT; ++i) {
+        for (uint64_t j = 0; j < NUM_POINTS; ++j) {
+            printf("%ld ", points[i * NUM_POINTS + j]);
         }
-        printf("\n");
+    printf("\n");
     }
 
 
