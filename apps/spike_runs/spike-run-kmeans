@@ -5,9 +5,9 @@
 
 
 Matrix k:
-36 819 327 
-739 141 841 
-660 983 984 
+28 83 22 
+4 29 76 
+36 2 1 
 Matrix c:
 0 
 0 
@@ -110,13 +110,118 @@ Matrix c:
 0 
 0 
 Calculating kmeans...
-AssignPoints to Clusters:center0= 36 
-test  819
-center1= 327 
-end loopcenter0= 739 
-test  141
-center1= 841 
-end loopcenter0= 660 
-test  983
-center1= 984 
-end loopVariance of cluster 0 is : 0, of cluster 1 is : 0 , of cluster 2 is : 0 
+AssignPoints to Clusters:center0= 28 
+center1  83
+center2= 22 
+end loop
+center0= 4 
+center1  29
+center2= 76 
+end loop
+center0= 36 
+center1  2
+center2= 1 
+end loop
+distance value 2217581811133781509 
+Matrix c:
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+Variance of cluster 0 is : 0, of cluster 1 is : 0 , of cluster 2 is : 0 
