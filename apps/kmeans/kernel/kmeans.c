@@ -17,13 +17,13 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
     int64_t *points_ = (int64_t *)points ;
     int64_t *clusters_ = (int64_t *)clusters;
 
-    // printf("Matrix A:\n");
-    // for (uint64_t i = 0; i < NUM_POINTS; ++i) {
-    //     for (uint64_t j = 0; j < SIZE_DATAPOINT; ++j) {
-    //         printf("%lld ", points[i * SIZE_DATAPOINT + j]);
-    //     }
-    //     printf("\n");
-    // }
+    printf("Matrix A:\n");
+    for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+        for (uint64_t j = 0; j < SIZE_DATAPOINT; ++j) {
+            printf("%lld ", points[i * SIZE_DATAPOINT + j]);
+        }
+        printf("\n");
+    }
     printf("AssignPoints to Clusters:");
 
     ///// MAKING THREE CLUSTERS
@@ -38,7 +38,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         asm volatile("vmv.v.i v16, 0");
         
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
-        
+        int64_t acc_vctor[10]={0};
             //////////////// REPEATING THIS FOR EACH CLUSTER CENTER POINT //////////////// n*0
         for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
            //we dont know what the size datapoint is so we load it repeatedly but if knows this could be done in advance before the stripming
@@ -61,7 +61,12 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             //Subtract the scalar value from all elements of the vector
             asm volatile("vsub.vx v20, v20, %0":: "r"(centers0_));
             asm volatile("vmul.vv v20, v20, v20");
+
             asm volatile("vadd.vv v4 , v4, v20");  //accumulate v4 with first coordinate 
+            asm volatile("vse64.v   v4, (%0)"::"r"(acc_vctor));  
+            printf("distance value %ld \n", acc_vctor[0]);
+            printf("distance value %ld \n", acc_vctor[1]);
+
 
              //Subtract the scalar value from all elements of the vector
             asm volatile("vsub.vx v20, v20, %0":: "r"(centers1_));
@@ -74,11 +79,10 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             asm volatile("vadd.vv v12 , v12, v20");  //accumulate v0 with first coordinate   
         }
         //take the sqrt of the accumulation vector 
-        int64_t acc_vctor[10]={0};
+        
         asm volatile("vfsqrt.v v4, v4");
         asm volatile("vse64.v   v4, (%0)"::"r"(acc_vctor));  
-        printf("distance value %ld \n", acc_vctor[0]);
-        printf("distance value %ld \n", acc_vctor[1]);
+        
         
         asm volatile ("vfsqrt.v v8, v8");
         asm volatile ("vfsqrt.v v12, v12");
