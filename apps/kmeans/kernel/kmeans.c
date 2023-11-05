@@ -123,6 +123,12 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     int64_t *centers_ = (int64_t *)centers;
     int64_t mask[100]={0};
 
+    printf("print matrix clusters:\n")
+    for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+            printf("%ld ", clusters_[i]);
+            printf("\n");
+    }
+
     //Loop over all elements feature per feature
     for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
         size_t avl=NUM_POINTS;
@@ -142,7 +148,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             asm volatile("vle64.v v4, (%0)" ::"r"(clusters_)); // Load clusters 
 
             //Find elements assigned to CLUSTER 0 and add their coordinates
-            asm volatile("vmseq.vi v0, v4,0");  //set mask if elements in v4 (cluster) is equal to 0
+            asm volatile("vmseq.vi v0, v4,1");  //set mask if elements in v4 (cluster) is equal to 0
             asm volatile("vse64.v   v0, (%0)"::"r"(mask));  
             for (uint64_t i = 0; i < NUM_POINTS; ++i) {
             
