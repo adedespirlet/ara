@@ -163,13 +163,13 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         }
         int64_t acc[100]={0};
         asm volatile("vse64.v   v20, (%0)"::"r"(acc));  
-        printf("vector count= %ld", vectorCount0);
-        printf("accumulation %ld", acc[0]);
+        printf("vector count= %ld \n", vectorCount0);
+        printf("accumulation %ld\n", acc[0]);
 
         //divide total sum by number of elements for each cluster
         asm volatile("vdivu.vx v20, v20, %0"::"r"(vectorCount0)); 
-        asm volatile("vse64.v   v20, (%0)"::"r"(acc));
-        printf("division result %ld", acc[0]);
+        //asm volatile("vse64.v   v20, (%0)"::"r"(acc));
+        //printf("division result %ld", acc[0]);
 
         asm volatile("vdivu.vx v16, v16, %0":: "r"(vectorCount1)); 
         asm volatile("vdivu.vx v12, v12, %0":: "r"(vectorCount1)); 
