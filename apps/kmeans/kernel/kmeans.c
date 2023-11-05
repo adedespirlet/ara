@@ -115,7 +115,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 
 
 void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters){
-    printf("update clusters centers");
+    printf("update clusters centers\n");
     
     size_t vl;
     int64_t *points_ = (int64_t *)points;
@@ -128,6 +128,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             printf("%ld ", clusters_[i]);
             printf("\n");
     }
+    printf("finished cluster\n")
 
     //Loop over all elements feature per feature
     for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
@@ -148,13 +149,15 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             asm volatile("vle64.v v4, (%0)" ::"r"(clusters_)); // Load clusters 
 
             //Find elements assigned to CLUSTER 0 and add their coordinates
-            asm volatile("vmseq.vi v0, v4,1");  //set mask if elements in v4 (cluster) is equal to 0
+            asm volatile("vmseq.vi v0, v4,0");  //set mask if elements in v4 (cluster) is equal to 0
+            
             asm volatile("vse64.v   v0, (%0)"::"r"(mask));  
             for (uint64_t i = 0; i < NUM_POINTS; ++i) {
             
                 printf("%ld ", mask[i]);
                 printf("\n");
             }
+            printf("finished mask loop\n")
 
             asm volatile("vmv1r.v v24, v0");
             asm volatile ("vcpop.m %0, v24"::"r"(vectorCount));
