@@ -10,7 +10,7 @@
 
 
 void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64_t *clusters){
-
+    printf("AssignPoints to Clusters:");
     size_t avl=NUM_POINTS;
     size_t vl;
     //stripmine
@@ -20,16 +20,12 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
     int64_t *clusters_ = (int64_t *)clusters;
 
     printf("Matrix A:\n");
-    
     for (uint64_t i = 0; i < SIZE_DATAPOINT; ++i) {
         for (uint64_t j = 0; j < NUM_POINTS; ++j) {
             printf("%ld ", points[i * NUM_POINTS + j]);
         }
     printf("\n");
     }
-
-
-    printf("AssignPoints to Clusters:");
 
     ///// MAKING THREE CLUSTERS
     for (; avl > 0; avl -= vl) {
@@ -48,7 +44,6 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             //////////////// REPEATING THIS FOR EACH CLUSTER CENTER POINT //////////////// n*0
         for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
            //we dont know what the size datapoint is so we load it repeatedly but if knows this could be done in advance before the stripming
-
             int64_t centers0_ = *((int64_t *)centers +i*NUM_CLUSTERS);
             int64_t centers1_ = *((int64_t *)centers +i*NUM_CLUSTERS+1);
             int64_t centers2_ = *((int64_t *)centers +i*NUM_CLUSTERS+2);
@@ -56,8 +51,6 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             printf("center0= %ld \n", centers0_);
             printf("center1  %ld\n",centers1_);
             printf("center2= %ld \n", centers2_);
-
-            //printf("center2=  %ld \n", centers2_);
 
             //LOAD first coordinate
             asm volatile("vle64.v v20,  (%0)" ::"r"(points_ )); //load datapoints to v20
@@ -108,7 +101,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         printf("Matrix c:\n");
         for (uint64_t i = 0; i < NUM_POINTS; ++i) {
             
-            printf("%ld ", clusters[i]);
+            printf("%ld ", clusters_[i]);
             printf("\n");
         }
         //fetch next group
@@ -119,7 +112,6 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 
 
 }
-
 
 
 void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters){
@@ -136,7 +128,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
     //Loop over all elements feature per feature
     for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
-        points_ = points_ +i*NUM_POINTS;
+        
         int64_t vectorCount=0, vectorCount0=0, vectorCount1=0, vectorCount2=0;
 
         asm volatile("vmv.v.i v12, 0"); // Initialize group2 to zero
@@ -184,7 +176,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vse64.v   v12, (%0)" :: "r"(centers2_));
 
         centers_= centers_+i*NUM_CLUSTERS;  //I always did times 8 cause very element is 8 bytes but maybe its taken into account autmatically?
-
+        points_+=NUM_POINTS;
     }
 }
 
