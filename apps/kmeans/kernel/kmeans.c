@@ -61,27 +61,28 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 
             //LOAD first coordinate
             asm volatile("vle64.v v20,  (%0)" ::"r"(points_ )); //load datapoints to v20
+            asm volatile("vmv1r.v v24, v20");
+            asm volatile("vmv1r.v v28, v20");
           
             //Subtract the scalar value from all elements of the vector
             asm volatile("vsub.vx v20, v20, %0":: "r"(centers0_));
             asm volatile("vmul.vv v20, v20, v20");
-
             asm volatile("vadd.vv v4 , v4, v20");  //accumulate v4 with first coordinate 
+            
             asm volatile("vse64.v   v4, (%0)"::"r"(acc_vctor));  
             asm volatile("vse64.v   v20, (%0)"::"r"(load_vctor));  
             printf("acc %ld \n", acc_vctor[0]);
             printf("distance value %ld \n", load_vctor[0]);
 
-
              //Subtract the scalar value from all elements of the vector
-            asm volatile("vsub.vx v20, v20, %0":: "r"(centers1_));
-            asm volatile("vmul.vv v20, v20, v20");
-            asm volatile("vadd.vv v8 , v8, v20");  //accumulate v0 with first coordinate   
+            asm volatile("vsub.vx v24, v24, %0":: "r"(centers1_));
+            asm volatile("vmul.vv v24, v24, v24");
+            asm volatile("vadd.vv v8 , v8, v24");  //accumulate v0 with first coordinate   
 
             //Subtract the scalar value from all elements of the vector
-            asm volatile("vsub.vx v20, v20, %0":: "r"(centers2_));
-            asm volatile("vmul.vv v20, v20, v20");
-            asm volatile("vadd.vv v12 , v12, v20");  //accumulate v0 with first coordinate   
+            asm volatile("vsub.vx v28, v28, %0":: "r"(centers2_));
+            asm volatile("vmul.vv v28, v28, v28");
+            asm volatile("vadd.vv v12 , v12, v28");  //accumulate v0 with first coordinate   
         }
         //take the sqrt of the accumulation vector 
         
