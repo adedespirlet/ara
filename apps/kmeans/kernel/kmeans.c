@@ -141,6 +141,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vmv.v.i v12, 0"); // Initialize group2 to zero
         asm volatile("vmv.v.i v16, 0"); // Initialize group15 to zero
         asm volatile("vmv.v.i v20, 0"); // Initialize group0 to zero
+        asm volatile("vmv.v.i v24, 0"); // Initialize group0 to zero
 
         for (; avl > 0; avl -= vl) {
             asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
