@@ -156,7 +156,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             for (uint64_t i = 0; i < NUM_POINTS; ++i) {
             
                 printf("%ld ", mask[i]);
-                printf("\t");
+                printf("\n");
             }
             printf("finished mask loop\n");
 
