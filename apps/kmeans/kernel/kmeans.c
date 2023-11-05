@@ -142,6 +142,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vmv.v.i v16, 0"); // Initialize group15 to zero
         asm volatile("vmv.v.i v20, 0"); // Initialize group0 to zero
         asm volatile("vmv.v.i v24, 0"); // Initialize group0 to zero
+        asm volatile("vmv.v.i v0, 0"); // Initialize group0 to zero
 
         for (; avl > 0; avl -= vl) {
             asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
@@ -150,8 +151,8 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             asm volatile("vle64.v v4, (%0)" ::"r"(clusters_)); // Load clusters 
 
             //Find elements assigned to CLUSTER 0 and add their coordinates
-            asm volatile("vmseq.vi v24, v4, 0");  //set mask if elements in v4 (cluster) is equal to 0
-            asm volatile("vmv1r.v v0, v24");
+            asm volatile("vmseq.vi v0, v4, 0");  //set mask if elements in v4 (cluster) is equal to 0
+            //asm volatile("vmv1r.v v0, v24");
             // asm volatile("vse64.v   v24, (%0)"::"r"(mask));  
             // for (uint64_t i = 0; i < NUM_POINTS; ++i) {
             
