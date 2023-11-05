@@ -115,19 +115,20 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 
 
 void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters){
-
-    size_t avl=NUM_POINTS;
-    size_t vl;
+    printf("update clusters centers");
     
+    size_t vl;
     int64_t *points_ = (int64_t *)points;
     int64_t *clusters_ = (int64_t *)clusters;
     int64_t *centers_ = (int64_t *)centers;
 
-    //stripmine
-    asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
+    /
 
     //Loop over all elements feature per feature
     for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
+        size_t avl=NUM_POINTS;
+        /stripmine
+        asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
         
         int64_t vectorCount=0, vectorCount0=0, vectorCount1=0, vectorCount2=0;
 
@@ -161,9 +162,16 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             points_+=vl;
             clusters_+=vl;
         }
+        int64_t acc[100]={0};
+        asm volatile("vse64.v   v20, (%0)"::"r"(acc));  
+        printf("vector count= %ld", vectorCount0);
+        printf("accumulation %ld", acc[0]);
 
         //divide total sum by number of elements for each cluster
         asm volatile("vdivu.vx v20, v20, %0"::"r"(vectorCount0)); 
+        asm volatile("vse64.v   v20, (%0)"::"r"(acc));
+        printf("division result %ld", acc[0]);
+
         asm volatile("vdivu.vx v16, v16, %0":: "r"(vectorCount1)); 
         asm volatile("vdivu.vx v12, v12, %0":: "r"(vectorCount1)); 
        
@@ -175,7 +183,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vse64.v   v16, (%0)" :: "r"(centers1_));  
         asm volatile("vse64.v   v12, (%0)" :: "r"(centers2_));
 
-        centers_= centers_+i*NUM_CLUSTERS;  //I always did times 8 cause very element is 8 bytes but maybe its taken into account autmatically?
+        centers_+=NUM_CLUSTERS;  //I always did times 8 cause very element is 8 bytes but maybe its taken into account autmatically?
         points_+=NUM_POINTS;
     }
 }
