@@ -47,7 +47,6 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
            //we dont know what the size datapoint is so we load it repeatedly but if knows this could be done in advance before the stripming
 
-            points_ = points_ +i*NUM_POINTS;// for each coordinate go to the next row which is number of datapoint times bytes per point
             int64_t centers0_ = *((int64_t *)centers +i*NUM_CLUSTERS);
             int64_t centers1_ = *((int64_t *)centers +i*NUM_CLUSTERS+1);
             int64_t centers2_ = *((int64_t *)centers +i*NUM_CLUSTERS+2);
@@ -55,8 +54,8 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             printf("center0= %ld \n", centers0_);
             printf("center1  %ld\n",centers1_);
             printf("center2= %ld \n", centers2_);
-           
-           
+
+
             //printf("center2=  %ld \n", centers2_);
 
             //LOAD first coordinate
@@ -91,6 +90,8 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             asm volatile("vsub.vx v28, v28, %0":: "r"(centers2_));
             asm volatile("vmul.vv v28, v28, v28");
             asm volatile("vadd.vv v12 , v12, v28");  //accumulate v0 with first coordinate   
+
+            points_+=NUM_POINTS;
         }
         //take the sqrt of the accumulation vector 
         
