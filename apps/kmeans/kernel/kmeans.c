@@ -128,7 +128,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             printf("%ld ", clusters_[i]);
             printf("\n");
     }
-    printf("finished cluster\n")
+    printf("finished cluster\n");
 
     //Loop over all elements feature per feature
     for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
@@ -157,7 +157,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
                 printf("%ld ", mask[i]);
                 printf("\n");
             }
-            printf("finished mask loop\n")
+            printf("finished mask loop\n");
 
             asm volatile("vmv1r.v v24, v0");
             asm volatile ("vcpop.m %0, v24"::"r"(vectorCount));
