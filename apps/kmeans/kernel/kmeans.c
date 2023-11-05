@@ -5,6 +5,8 @@
 #include <time.h>
 #include "kmeans.h"
 #include <string.h>
+#include "float_macros.h"
+#include "vector_macros.h"
 
 
 void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64_t *clusters){
@@ -77,6 +79,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             printf("acc second datapoint%ld \n", acc_vctor[1]);
             
             asm volatile("vfsqrt.v v4, v4");
+             
             asm volatile("vse64.v   v4, (%0)"::"r"(acc_vctor));  
             printf("sqrt value second datapoint%ld \n", acc_vctor[1]);
 
