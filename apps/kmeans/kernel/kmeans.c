@@ -56,7 +56,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             printf("center1  %ld\n",centers1_);
             printf("center2= %ld \n", centers2_);
            
-            printf("end loop\n");
+           
             //printf("center2=  %ld \n", centers2_);
 
             //LOAD first coordinate
@@ -68,11 +68,16 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             asm volatile("vsub.vx v20, v20, %0":: "r"(centers0_));
             asm volatile("vmul.vv v20, v20, v20");
             asm volatile("vadd.vv v4 , v4, v20");  //accumulate v4 with first coordinate 
-            
+
             asm volatile("vse64.v   v4, (%0)"::"r"(acc_vctor));  
             asm volatile("vse64.v   v20, (%0)"::"r"(load_vctor));  
-            printf("acc %ld \n", acc_vctor[0]);
-            printf("distance value %ld \n", load_vctor[0]);
+            
+            printf("distance value second datapoint%ld \n", load_vctor[1]);
+            printf("acc second datapoint%ld \n", acc_vctor[1]);
+            printf("distance value third datapoint%ld \n", load_vctor[2]);
+            printf("acc third datapoint %ld \n", acc_vctor[2]);
+            printf("distance value last datapoint%ld \n", load_vctor[99]);
+            printf("acc lastdatapoint %ld \n", acc_vctor[99]);
 
              //Subtract the scalar value from all elements of the vector
             asm volatile("vsub.vx v24, v24, %0":: "r"(centers1_));
