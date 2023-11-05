@@ -123,7 +123,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     int64_t *centers_ = (int64_t *)centers;
     int64_t mask[100]={0};
 
-    printf("print matrix clusters:\n")
+    printf("print matrix clusters:\n");
     for (uint64_t i = 0; i < NUM_POINTS; ++i) {
             printf("%ld ", clusters_[i]);
             printf("\n");
