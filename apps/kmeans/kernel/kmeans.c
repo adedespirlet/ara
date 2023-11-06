@@ -169,7 +169,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             asm volatile ("vcpop.m %0, v0"::"r"(vectorCount));
             vectorCount1+=vectorCount;
             asm volatile("vredsum.vs v16, v8, v16, v0.t"); //accumulate in v16
-            asm volatile("vse64.v  0, (%0)"::"r"(mask1));  
+            asm volatile("vse64.v  v0, (%0)"::"r"(mask1));  
             printf("cluster 1 mask %lx,%lx\n", mask1[0],mask1[1]);
 
             //group2
