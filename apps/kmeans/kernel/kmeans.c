@@ -153,13 +153,11 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             //Find elements assigned to CLUSTER 0 and add their coordinates
             asm volatile("vmseq.vi v0, v4, 0");  //set mask if elements in v4 (cluster) is equal to 0
             //asm volatile("vmv1r.v v0, v24");
-            // asm volatile("vse64.v   v24, (%0)"::"r"(mask));  
-            // for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+            asm volatile("vse64.v   v0, (%0)"::"r"(mask));  
+           
+            printf("%x ", mask[i]);
+            printf("\n");
             
-            //     printf("%ld ", mask[i]);
-            //     printf("\n");
-            // }
-            // printf("finished mask loop\n");
 
             asm volatile ("vcpop.m %0, v0"::"r"(vectorCount));
             printf("vectorcount vpop %ld \n", vectorCount);
