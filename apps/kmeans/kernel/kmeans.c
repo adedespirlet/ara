@@ -173,7 +173,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             asm volatile("vmseq.vi v0,v4,2");  //vmseq(vd vs imm vm)
             asm volatile ("vcpop.m %0, v0"::"r"(vectorCount));
             asm volatile("vredsum.vs v12, v8, v12, v0.t"); //accumulate in v12
-            
+
             vectorCount2+=vectorCount;
 
             points_+=vl;
@@ -187,8 +187,8 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         int64_t acc2[100]={0};
 
         asm volatile("vse64.v   v20, (%0)"::"r"(acc));  
-        asm volatile("vse64.v   v16, (%0)"::"r"(acc));  
-        asm volatile("vse64.v   v12, (%0)"::"r"(acc));  
+        asm volatile("vse64.v   v16, (%0)"::"r"(acc1));  
+        asm volatile("vse64.v   v12, (%0)"::"r"(acc2));  
         printf("accumulation cluster0 %ld\n", acc[0]);
         printf("accumulation cluster1 %ld\n", acc1[0]);
         printf("accumulation cluster2 %ld\n", acc2[0]);
