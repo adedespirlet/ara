@@ -126,7 +126,6 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     printf("finished cluster\n");
 
     
-
     //Loop over all elements feature per feature
     for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
         size_t avl=NUM_POINTS;
@@ -141,6 +140,8 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vmv.v.i v20, 0"); // Initialize group0 to zero
         asm volatile("vmv.v.i v24, 0"); // Initialize group0 to zero
         asm volatile("vmv.v.i v0, 0"); // Initialize group0 to zero
+        asm volatile("vmv.v.i v4, 0"); // Initialize group0 to zero
+        asm volatile("vmv.v.i v8, 0"); // Initialize group0 to zero
         
 
         for (; avl > 0; avl -= vl) {
@@ -156,6 +157,8 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             asm volatile("vredsum.vs v20, v8, v20, v0.t"); //accumulate in v20
             printf("vectorcount vpop %ld \n", vectorCount);
             vectorCount0+=vectorCount;
+            asm volatile("vse64.v   v0, (%0)"::"r"(mask));  
+            printf("cluster 1 mask %lx,%lx\n", mask[0],mask[1]);
            
             
             //Find elements assigned to CLUSTER 1 and add their coordinates
