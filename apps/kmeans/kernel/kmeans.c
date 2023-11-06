@@ -115,7 +115,6 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     size_t vl;
     int64_t *points_ = (int64_t *)points;
     int64_t *clusters_ = (int64_t *)clusters;
-    int64_t *centers_ = (int64_t *)centers;
     int64_t mask[100]={0};
 
     printf("print matrix clusters:\n");
@@ -131,16 +130,16 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
         size_t avl=NUM_POINTS;
         points_= points+ i*NUM_POINTS; 
+        int64_t *clusters_ = (int64_t *)clusters;
         
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
-        
         int64_t vectorCount=0, vectorCount0=0, vectorCount1=0, vectorCount2=0;
-
         asm volatile("vmv.v.i v12, 0"); // Initialize group2 to zero
         asm volatile("vmv.v.i v16, 0"); // Initialize group15 to zero
         asm volatile("vmv.v.i v20, 0"); // Initialize group0 to zero
         asm volatile("vmv.v.i v24, 0"); // Initialize group0 to zero
         asm volatile("vmv.v.i v0, 0"); // Initialize group0 to zero
+        
 
         for (; avl > 0; avl -= vl) {
             printf("Vl value is: %ld and avl value is: %ld \n", vl,avl);
@@ -175,7 +174,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             vectorCount2+=vectorCount;
 
             points_+=vl;
-            //clusters_+=vl;
+            clusters_+=vl;
         }
         vectorCount0=10;
         vectorCount1=10;
