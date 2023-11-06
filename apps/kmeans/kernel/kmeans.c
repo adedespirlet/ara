@@ -29,6 +29,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 
     ///// MAKING THREE CLUSTERS
     for (; avl > 0; avl -= vl) {
+        printf("Vl value is: %ld and avl value is: %ld \n", vl,avl);
         
         double minDist = DBL_MAX;
         //set distance vector to each cluster to 0
@@ -81,13 +82,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 
             points_+=NUM_POINTS;
         }
-        //take the sqrt of the accumulation vector 
         
-       // asm volatile("vfsqrt.v v4, v4");
-       // asm volatile ("vfsqrt.v v8, v8");
-        //asm volatile ("vfsqrt.v v12, v12");
-
-        //asm volatile("vse64.v   v4, (%0)"::"r"(acc_vctor));  
     
         //check to which cluster the data points is closest and assign cluster number accordingly
         asm volatile("vmslt.vv v0, v8, v4");    //mask vector set if elements in v8 are smaller than v4
@@ -145,6 +140,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vmv.v.i v0, 0"); // Initialize group0 to zero
 
         for (; avl > 0; avl -= vl) {
+            printf("Vl value is: %ld and avl value is: %ld \n", vl,avl);
             asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
             
             asm volatile("vle64.v v8, (%0)" ::"r"(points_)); // Load vector cooridnate x
@@ -157,7 +153,6 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
            
             printf("%x ", mask[i]);
             printf("\n");
-            
 
             asm volatile ("vcpop.m %0, v0"::"r"(vectorCount));
             printf("vectorcount vpop %ld \n", vectorCount);
