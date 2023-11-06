@@ -151,7 +151,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             //asm volatile("vmv1r.v v0, v24");
             asm volatile("vse64.v   v0, (%0)"::"r"(mask));  
            
-            printf("%x ", mask[i]);
+            printf("%lx , %lx", mask[0],mask[1]);
             printf("\n");
 
             asm volatile ("vcpop.m %0, v0"::"r"(vectorCount));
