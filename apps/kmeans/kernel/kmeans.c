@@ -158,22 +158,22 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             printf("vectorcount vpop %ld \n", vectorCount);
             vectorCount0+=vectorCount;
             asm volatile("vse64.v   v0, (%0)"::"r"(mask));  
-            printf("cluster 1 mask %lx,%lx\n", mask[0],mask[1]);
+            printf("cluster 0 mask %lx,%lx\n", mask[0],mask[1]);
            
             
             //Find elements assigned to CLUSTER 1 and add their coordinates
-            asm volatile("vmseq.vi v0,v4,1");  //vmseq(vd vs imm vm)
+            asm volatile("vmseq.vi v24,v4,1");  //vmseq(vd vs imm vm)
             asm volatile ("vcpop.m %0, v0"::"r"(vectorCount));
             vectorCount1+=vectorCount;
             asm volatile("vredsum.vs v16, v8, v16, v0.t"); //accumulate in v16
-            asm volatile("vse64.v   v0, (%0)"::"r"(mask));  
+            asm volatile("vse64.v   v24, (%0)"::"r"(mask));  
             printf("cluster 1 mask %lx,%lx\n", mask[0],mask[1]);
 
             //group2
-            asm volatile("vmseq.vi v0,v4,2");  //vmseq(vd vs imm vm)
+            asm volatile("vmseq.vi v28,v4,2");  //vmseq(vd vs imm vm)
             asm volatile ("vcpop.m %0, v0"::"r"(vectorCount));
             asm volatile("vredsum.vs v12, v8, v12, v0.t"); //accumulate in v12
-            asm volatile("vse64.v   v0, (%0)"::"r"(mask));  
+            asm volatile("vse64.v   v28, (%0)"::"r"(mask));  
             printf("cluster 2 mask %lx,%lx\n", mask[0],mask[1]);
 
             vectorCount2+=vectorCount;
