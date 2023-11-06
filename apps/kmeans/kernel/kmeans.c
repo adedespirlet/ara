@@ -137,8 +137,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vmv.v.i v8, 0"); // Initialize group0 to zero
 
         
-        
-
+    
         for (; avl > 0; avl -= vl) {
             printf("Vl value is: %ld and avl value is: %ld \n", vl,avl);
             asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
@@ -148,7 +147,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
             //Find elements assigned to CLUSTER 0 and add their coordinates
             asm volatile("vmseq.vi v0, v4, 0");  //set mask if elements in v4 (cluster) is equal to 0
-            asm volatile ("vcpop.m %0, v0"::"r"(vectorCount));
+            asm volatile ("vcpop.m %0, v0" :"=r"(vectorCount));
             asm volatile("vredsum.vs v20, v8, v20, v0.t"); //accumulate in v20
             printf("vectorcount vpop %ld \n", vectorCount);
             vectorCount0+=vectorCount;
@@ -158,7 +157,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             
             //Find elements assigned to CLUSTER 1 and add their coordinates
             asm volatile("vmseq.vi v0,v4,1");  //vmseq(vd vs imm vm)
-            asm volatile ("vcpop.m %0, v0"::"r"(vectorCount));
+            asm volatile ("vcpop.m %0, v0" :"=r"(vectorCount));
             vectorCount1+=vectorCount;
             asm volatile("vredsum.vs v16, v8, v16, v0.t"); //accumulate in v16
             asm volatile("vse64.v  v0, (%0)"::"r"(mask1));  
@@ -166,7 +165,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
             //group2
             asm volatile("vmseq.vi v0,v4,2");  //vmseq(vd vs imm vm)
-            asm volatile ("vcpop.m %0, v0"::"r"(vectorCount));
+            asm volatile ("vcpop.m %0, v0" :"=r"(vectorCount));
             asm volatile("vredsum.vs v12, v8, v12, v0.t"); //accumulate in v12
             asm volatile("vse64.v   v0, (%0)"::"r"(mask2));  
             printf("cluster 2 mask %lx,%lx\n", mask2[0],mask2[1]);
@@ -174,7 +173,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             vectorCount2+=vectorCount;
 
             points_+=vl;
-            asm volatile("vse64.v v4, (%0)" ::"r"(clusters_)); // Load clusters 
+           
             printf("print matrix clusters:\n");
             for (uint64_t i = 0; i < NUM_POINTS; ++i) {
                     printf("%ld ", clusters_[i]);
@@ -209,6 +208,8 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
        
         int64_t *centers1_= centers_+1; //pointer to second element of array (coordinate of second cluster)
         int64_t *centers2_=centers_+2; // pointer to third element of array (coordinate of third cluster)
+
+        asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(1));
 
         // Store back each new computed cluster center
         asm volatile("vse64.v   v20, (%0)" :: "r"(centers_));  

@@ -5,9 +5,9 @@
 
 
 Matrix k:
-35 14 91 
-70 19 82 
-96 99 27 
+7 10 23 
+79 56 82 
+93 75 42 
 Matrix c:
 0 
 0 
@@ -110,23 +110,85 @@ Matrix c:
 0 
 0 
 Calculating kmeans...
-AssignPoints to Clusters:center0= 35 
-center1  14
-center2= 91 
-end loop
-center0= 70 
-center1  19
+AssignPoints to Clusters:Matrix A:
+17 17 51 95 16 98 99 67 35 43 83 10 19 8 7 26 20 38 83 80 11 39 89 96 11 81 86 73 96 30 54 63 82 41 88 61 31 10 69 94 43 11 11 86 92 7 13 10 19 88 27 47 10 69 70 40 40 51 95 95 40 45 50 70 72 86 72 88 64 6 71 1 70 5 44 93 31 5 54 85 23 10 92 7 20 14 84 6 85 39 59 16 97 39 61 46 55 70 99 41 
+76 52 42 4 96 16 39 86 26 38 7 76 55 25 79 84 97 91 41 71 49 40 47 21 22 82 59 34 35 55 10 79 70 32 25 48 91 20 63 88 49 39 34 34 82 92 92 18 7 9 51 16 56 70 19 88 65 13 47 1 29 99 83 73 33 69 20 11 52 42 39 64 21 65 53 30 63 28 25 46 82 68 41 57 45 1 34 31 55 77 6 61 75 93 83 94 64 48 93 99 
+42 6 4 41 57 3 28 80 55 71 24 59 50 45 93 12 84 32 70 4 87 10 6 3 83 73 48 3 17 53 67 64 21 73 48 26 31 47 61 47 32 45 84 66 32 19 13 39 12 89 19 9 75 57 75 39 76 45 17 97 17 28 73 74 91 42 93 21 6 2 44 65 26 71 8 37 73 47 87 51 42 48 22 83 19 99 19 73 3 33 96 2 68 52 33 47 87 6 31 72 
+Vl value is: 100 and avl value is: 100 
+center0= 7 
+center1  10
+center2= 23 
+center0= 79 
+center1  56
 center2= 82 
-end loop
-center0= 96 
-center1  99
-center2= 27 
-end loop
-distance value 2217483411288120600 
-distance value 2217532211609009486 
+center0= 93 
+center1  75
+center2= 42 
 Matrix c:
+2 
+2 
+2 
+2 
+2 
+2 
+2 
+2 
+2 
+2 
+2 
+2 
+2 
+2 
 0 
+2 
 0 
+2 
+2 
+2 
+1 
+2 
+2 
+2 
+1 
+2 
+2 
+2 
+2 
+2 
+2 
+2 
+2 
+1 
+2 
+2 
+2 
+2 
+2 
+2 
+2 
+2 
+1 
+2 
+2 
+2 
+2 
+2 
+2 
+1 
+2 
+2 
+1 
+2 
+2 
+2 
+1 
+2 
+2 
+1 
+2 
+2 
+2 
+2 
 0 
 0 
 0 
@@ -163,65 +225,41 @@ Matrix c:
 0 
 0 
 0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
-0 
+update clusters centers
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop 38 
+cluster 0 mask 14000,fffffffff
+cluster 1 mask 912040201100000,0
+cluster 2 mask f6edfbfdfeeebfff,0
+print matrix clusters:
+2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	0 	2 	0 	2 	2 	2 	1 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	1 	2 	2 	1 	2 	2 	2 	1 	2 	2 	1 	2 	2 	2 	2 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	finished cluster
+accumulation cluster0 1837
+accumulation cluster1 307
+accumulation cluster2 2912
+division183
+center0 : 183, center1: 30, center2 : 291 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop 38 
+cluster 0 mask 14000,fffffffff
+cluster 1 mask 912040201100000,0
+cluster 2 mask f6edfbfdfeeebfff,0
+print matrix clusters:
+2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	0 	2 	0 	2 	2 	2 	1 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	1 	2 	2 	1 	2 	2 	2 	1 	2 	2 	1 	2 	2 	2 	2 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	finished cluster
+accumulation cluster0 2044
+accumulation cluster1 268
+accumulation cluster2 2793
+division204
+center0 : 204, center1: 26, center2 : 279 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop 38 
+cluster 0 mask 14000,fffffffff
+cluster 1 mask 912040201100000,0
+cluster 2 mask f6edfbfdfeeebfff,0
+print matrix clusters:
+2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	0 	2 	0 	2 	2 	2 	1 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	1 	2 	2 	1 	2 	2 	2 	1 	2 	2 	1 	2 	2 	2 	2 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	finished cluster
+accumulation cluster0 1876
+accumulation cluster1 664
+accumulation cluster2 2019
+division187
+center0 : 187, center1: 66, center2 : 201 
+Variance of cluster 0 is : 0, of cluster 1 is : 0 , of cluster 2 is : 3083392 
