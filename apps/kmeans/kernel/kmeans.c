@@ -176,23 +176,22 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             points_+=vl;
             clusters_+=vl;
         }
-        int64_t acc[100]={0};
-        asm volatile("vse64.v   v20, (%0)"::"r"(acc));  
-        printf("vector count= %ld \n", vectorCount0);
-        printf("accumulation %ld\n", acc[0]);
         vectorCount0=10;
         vectorCount1=10;
         vectorCount2=10;
+        int64_t acc[100]={0};
+
+        asm volatile("vse64.v   v20, (%0)"::"r"(acc));  
+        printf("accumulation %ld\n", acc[0]);
+       
         //divide total sum by number of elements for each cluster
         asm volatile("vdivu.vx v20, v20, %0"::"r"(vectorCount0)); 
         asm volatile("vse64.v   v20, (%0)"::"r"(acc)); 
-        printf("accumulation %ld\n", acc[0]);
+        printf("division%ld\n", acc[0]);
 
-        //asm volatile("vse64.v   v20, (%0)"::"r"(acc));
-        //printf("division result %ld", acc[0]);
 
         asm volatile("vdivu.vx v16, v16, %0":: "r"(vectorCount1)); 
-        asm volatile("vdivu.vx v12, v12, %0":: "r"(vectorCount1)); 
+        asm volatile("vdivu.vx v12, v12, %0":: "r"(vectorCount2)); 
        
         int64_t *centers1_= centers_+1; //pointer to second element of array (coordinate of second cluster)
         int64_t *centers2_=centers_+2; // pointer to third element of array (coordinate of third cluster)
@@ -201,7 +200,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vse64.v   v20, (%0)" :: "r"(centers_));  
         asm volatile("vse64.v   v16, (%0)" :: "r"(centers1_));  
         asm volatile("vse64.v   v12, (%0)" :: "r"(centers2_));
-        printf("center0 : %ld, center1: %ld, center2 : %ld", centers_,centers1_,centers2_);
+        printf("center0 : %ld, center1: %ld, center2 : %ld", centers_[0],centers1_[0],centers2_[0]);
 
         centers_+=NUM_CLUSTERS; 
         points_+=NUM_POINTS;
