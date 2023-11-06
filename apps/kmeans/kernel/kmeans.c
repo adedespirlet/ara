@@ -201,8 +201,9 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vse64.v   v20, (%0)" :: "r"(centers_));  
         asm volatile("vse64.v   v16, (%0)" :: "r"(centers1_));  
         asm volatile("vse64.v   v12, (%0)" :: "r"(centers2_));
+        printf("center0 : %ld, center1: %ld, center2 : %ld", centers_,centers1_,centers2_);
 
-        centers_+=NUM_CLUSTERS;  //I always did times 8 cause very element is 8 bytes but maybe its taken into account autmatically?
+        centers_+=NUM_CLUSTERS; 
         points_+=NUM_POINTS;
     }
 }
