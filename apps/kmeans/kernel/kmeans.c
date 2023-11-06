@@ -136,7 +136,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vmv.v.i v20, 0"); // Initialize group0 to zero
         asm volatile("vmv.v.i v24, 0"); // Initialize group0 to zero
         asm volatile("vmv.v.i v0, 0"); // Initialize group0 to zero
-        asm volatile("vmv.v.i v4, 0"); // Initialize group0 to zero
+        //asm volatile("vmv.v.i v4, 0"); // Initialize group0 to zero
         asm volatile("vmv.v.i v8, 0"); // Initialize group0 to zero
         clusters_=clusters;
 
@@ -183,7 +183,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             vectorCount2+=vectorCount;
 
             points_+=vl;
-            //clusters_+=vl;
+    
         }
         vectorCount0=10;
         vectorCount1=10;
