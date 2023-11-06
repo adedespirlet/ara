@@ -125,9 +125,12 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     }
     printf("finished cluster\n");
 
+    
+
     //Loop over all elements feature per feature
     for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
         size_t avl=NUM_POINTS;
+        points_= points+ i*NUM_POINTS; 
         
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
         
@@ -162,17 +165,16 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
             //Find elements assigned to CLUSTER 1 and add their coordinates
             asm volatile("vmseq.vi v0,v4,1");  //vmseq(vd vs imm vm)
-            asm volatile("vmv1r.v v24, v0");
-            asm volatile ("vcpop.m %0, v24"::"r"(vectorCount));
+            asm volatile ("vcpop.m %0, v0"::"r"(vectorCount));
             vectorCount1+=vectorCount;
             asm volatile("vredsum.vs v16, v8, v16, v0.t"); //accumulate in v16
 
             //group2
             asm volatile("vmseq.vi v0,v4,2");  //vmseq(vd vs imm vm)
-            asm volatile("vmv1r.v v24, v0");
-            asm volatile ("vcpop.m %0, v24"::"r"(vectorCount));
+            asm volatile ("vcpop.m %0, v0"::"r"(vectorCount));
             asm volatile("vredsum.vs v12, v8, v12,v0.t"); //accumulate in v12
             vectorCount2+=vectorCount;
+
             points_+=vl;
             clusters_+=vl;
         }
@@ -183,7 +185,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
         asm volatile("vse64.v   v20, (%0)"::"r"(acc));  
         printf("accumulation %ld\n", acc[0]);
-       
+
         //divide total sum by number of elements for each cluster
         asm volatile("vdivu.vx v20, v20, %0"::"r"(vectorCount0)); 
         asm volatile("vse64.v   v20, (%0)"::"r"(acc)); 
@@ -200,10 +202,9 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vse64.v   v20, (%0)" :: "r"(centers_));  
         asm volatile("vse64.v   v16, (%0)" :: "r"(centers1_));  
         asm volatile("vse64.v   v12, (%0)" :: "r"(centers2_));
-        printf("center0 : %ld, center1: %ld, center2 : %ld", centers_[0],centers1_[0],centers2_[0]);
+        printf("center0 : %ld, center1: %ld, center2 : %ld \n", centers_[0],centers1_[0],centers2_[0]);
 
         centers_+=NUM_CLUSTERS; 
-        points_+=NUM_POINTS;
     }
 }
 
