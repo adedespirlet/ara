@@ -183,6 +183,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             vectorCount2+=vectorCount;
 
             points_+=vl;
+            asm volatile("vse64.v v4, (%0)" ::"r"(clusters_)); // Load clusters 
     
         }
         vectorCount0=10;
