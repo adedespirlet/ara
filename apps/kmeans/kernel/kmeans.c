@@ -116,23 +116,19 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     int64_t *points_ = (int64_t *)points;
     int64_t *clusters_ = (int64_t *)clusters;
     int64_t *centers_ = (int64_t *)centers;
-    int64_t mask[100]={0};
-
-    printf("print matrix clusters:\n");
-    for (uint64_t i = 0; i < NUM_POINTS; ++i) {
-            printf("%ld ", clusters_[i]);
-            printf("\t");
-    }
-    printf("finished cluster\n");
+    
 
     
+
     //Loop over all elements feature per feature
     for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
         size_t avl=NUM_POINTS;
         points_= points+ i*NUM_POINTS; 
         //clusters_=clusters;
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
-        
+        int64_t mask[100]={0};
+        int64_t mask1[100]={0};
+        int64_t mask2[100]={0};
         int64_t vectorCount=0, vectorCount0=0, vectorCount1=0, vectorCount2=0;
 
         asm volatile("vmv.v.i v12, 0"); // Initialize group2 to zero
@@ -142,6 +138,13 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vmv.v.i v0, 0"); // Initialize group0 to zero
         asm volatile("vmv.v.i v4, 0"); // Initialize group0 to zero
         asm volatile("vmv.v.i v8, 0"); // Initialize group0 to zero
+
+        printf("print matrix clusters:\n");
+        for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+                printf("%ld ", clusters_[i]);
+                printf("\t");
+        }
+        printf("finished cluster\n");
         
 
         for (; avl > 0; avl -= vl) {
@@ -162,19 +165,19 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
            
             
             //Find elements assigned to CLUSTER 1 and add their coordinates
-            asm volatile("vmseq.vi v24,v4,1");  //vmseq(vd vs imm vm)
+            asm volatile("vmseq.vi v0,v4,1");  //vmseq(vd vs imm vm)
             asm volatile ("vcpop.m %0, v0"::"r"(vectorCount));
             vectorCount1+=vectorCount;
             asm volatile("vredsum.vs v16, v8, v16, v0.t"); //accumulate in v16
-            asm volatile("vse64.v   v24, (%0)"::"r"(mask));  
-            printf("cluster 1 mask %lx,%lx\n", mask[0],mask[1]);
+            asm volatile("vse64.v  0, (%0)"::"r"(mask1));  
+            printf("cluster 1 mask %lx,%lx\n", mask1[0],mask1[1]);
 
             //group2
-            asm volatile("vmseq.vi v28,v4,2");  //vmseq(vd vs imm vm)
+            asm volatile("vmseq.vi v0,v4,2");  //vmseq(vd vs imm vm)
             asm volatile ("vcpop.m %0, v0"::"r"(vectorCount));
             asm volatile("vredsum.vs v12, v8, v12, v0.t"); //accumulate in v12
-            asm volatile("vse64.v   v28, (%0)"::"r"(mask));  
-            printf("cluster 2 mask %lx,%lx\n", mask[0],mask[1]);
+            asm volatile("vse64.v   v0, (%0)"::"r"(mask2));  
+            printf("cluster 2 mask %lx,%lx\n", mask2[0],mask2[1]);
 
             vectorCount2+=vectorCount;
 
