@@ -114,7 +114,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     
     size_t vl;
     int64_t *points_ = (int64_t *)points;
-    
+    int64_t *clusters_ = (int64_t *)clusters;
     int64_t *centers_ = (int64_t *)centers;
     int64_t mask[100]={0};
 
@@ -131,8 +131,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
         size_t avl=NUM_POINTS;
         points_= points+ i*NUM_POINTS; 
-        int64_t *clusters_ = (int64_t *)clusters;
-        
+        clusters_=clusters;
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
         
         int64_t vectorCount=0, vectorCount0=0, vectorCount1=0, vectorCount2=0;
