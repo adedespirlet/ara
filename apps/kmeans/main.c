@@ -68,7 +68,7 @@ int main() {
     printf("Matrix k:\n");
     for (uint64_t i = 0; i < 3; ++i) {
         for (uint64_t j = 0; j < N; ++j) {
-            printf("%lld ", k[i * N + j]);
+            printf("%ld ", k[i * N + j]);
         }
         printf("\n");
     }
@@ -76,7 +76,7 @@ int main() {
     printf("Matrix c:\n");
     for (uint64_t i = 0; i < M; ++i) {
         
-        printf("%lld ", c[i]);
+        printf("%ld ", c[i]);
         printf("\n");
     }
 
