@@ -10,7 +10,7 @@
 
 #define NUM_POINTS 100
 #define NUM_CLUSTERS 3
-#define MAX_ITERATIONS 2   // How many times is the cluster updated
+#define MAX_ITERATIONS 70   // How many times is the cluster updated
 #define NUM_RANDOMPOINTS 3  // Picking different initialization values 
 #define SIZE_DATAPOINT 3
 
