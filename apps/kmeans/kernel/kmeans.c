@@ -134,7 +134,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vmv.v.i v24, 0"); // Initialize group0 to zero
         asm volatile("vmv.v.i v0, 0"); // Initialize group0 to zero
    
-        asm volatile("vmv.v.i v8, 0"); // Initialize group0 to zero
+        //asm volatile("vmv.v.i v8, 0"); // Initialize group0 to zero
 
         
     
@@ -182,9 +182,9 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             printf("finished cluster\n");
     
         }
-        vectorCount0=10;
-        vectorCount1=10;
-        vectorCount2=10;
+        // vectorCount0=10;
+        // vectorCount1=10;
+        // vectorCount2=10;
         int64_t acc[100]={0};
         int64_t acc1[100]={0};
         int64_t acc2[100]={0};
@@ -237,7 +237,7 @@ void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clus
     
     for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
         int64_t *points_ = (int64_t *)points;
-        points_ = points_ +i*NUM_POINTS; //times 8 or not is an element automatically assumed as 8bytes long?
+        points_ = points +i*NUM_POINTS; //times 8 or not is an element automatically assumed as 8bytes long?
         int64_t *clusters_ = (int64_t *)clusters;
 
         center0=*centers_;
@@ -274,6 +274,8 @@ void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clus
         centers_= centers_+i*NUM_CLUSTERS;
     }
     int64_t variance0, variance1, variance2;
+
+    asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(1));
     
     asm volatile("vse64.v v4, (%0)" :: "r"(&variance0)); // Store v8 to scalar_value
     asm volatile("vse64.v v8, (%0)" :: "r"(&variance1)); // Store v8 to scalar_value
