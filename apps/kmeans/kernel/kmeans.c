@@ -292,7 +292,7 @@ bool custom_memcmp(const int64_t *array1, const int64_t *array2, size_t size){
 
 kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *clusters,int64_t *clusters_last){
 	int iterations = 0;
-    int max_iteration=70;
+    int max_iteration=10;
     
     size_t clusters_sz = NUM_POINTS * sizeof(int);
 	
