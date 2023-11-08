@@ -210,7 +210,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
 void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clusters)
 {
-    printf("Assess Quality Cluster")
+    printf("Assess Quality Cluster");
     size_t avl=NUM_POINTS;
     size_t vl;
    
