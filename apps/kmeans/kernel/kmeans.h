@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include <stdbool.h>
 
-#define NUM_POINTS 100
+#define NUM_POINTS 20
 #define NUM_CLUSTERS 3
 #define MAX_ITERATIONS 4   // How many times is the cluster updated
 #define NUM_RANDOMPOINTS 3  // Picking different initialization values 

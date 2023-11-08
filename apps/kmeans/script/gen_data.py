@@ -40,7 +40,7 @@ def emit(name, array, alignment='8'):
 ############
 
 
-M = 100
+M = 20
 N = 3
 P = 3
 
