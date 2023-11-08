@@ -10,7 +10,7 @@
 
 
 void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64_t *clusters){
-    printf("AssignPoints to Clusters:");
+    printf("AssignPoints to Clusters:\n");
     size_t avl=NUM_POINTS;
     size_t vl;
     //stripmine
@@ -92,12 +92,12 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         //store resuls back
         asm volatile("vse64.v   v16, (%0)"::"r"(clusters_));  
 
-       // printf("Matrix c:\n");
-       // for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+       printf("Assigned clusters are:\n");
+       for (uint64_t i = 0; i < NUM_POINTS; ++i) {
             
-         //   printf("%ld ", clusters_[i]);
-           // printf("\n");
-       // }
+           printf("%ld ", clusters_[i]);
+           printf("\t\n");
+       }
         //fetch next group
         points_+=vl;
         clusters_+=vl;
@@ -201,7 +201,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vse64.v   v20, (%0)" :: "r"(centers_));  
         asm volatile("vse64.v   v16, (%0)" :: "r"(centers1_));  
         asm volatile("vse64.v   v12, (%0)" :: "r"(centers2_));
-        printf("center0 : %ld, center1: %ld, center2 : %ld \n", centers_[0],centers1_[0],centers2_[0]);
+        printf("new computed center value center0 : %ld, center1: %ld, center2 : %ld \n", centers_[0],centers1_[0],centers2_[0]);
 
         centers_+=NUM_CLUSTERS; 
 
@@ -210,6 +210,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
 void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clusters)
 {
+    printf("Assess Quality Cluster")
     size_t avl=NUM_POINTS;
     size_t vl;
    
@@ -267,7 +268,6 @@ void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clus
     asm volatile("vse64.v v4, (%0)" :: "r"(&variance0)); // Store v8 to scalar_value
     asm volatile("vse64.v v8, (%0)" :: "r"(&variance1)); // Store v8 to scalar_value
     asm volatile("vse64.v v12, (%0)" :: "r"(&variance2)); // Store v8 to scalar_value
-
     printf("Variance of cluster 0 is : %ld, of cluster 1 is : %ld , of cluster 2 is : %ld \n", variance0, variance1, variance2 );
     
 }
