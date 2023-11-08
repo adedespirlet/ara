@@ -150,8 +150,8 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             asm volatile("vredsum.vs v20, v8, v20, v0.t"); //accumulate in v20
             printf("vectorcount vpop0 %ld \n", vectorCount);
             vectorCount0+=vectorCount;
-            asm volatile("vse64.v   v0, (%0)"::"r"(mask));  
-            printf("cluster 0 mask %lx,%lx\n", mask[0],mask[1]);
+           // asm volatile("vse64.v   v0, (%0)"::"r"(mask));  
+           // printf("cluster 0 mask %lx,%lx\n", mask[0],mask[1]);
            
             
             //Find elements assigned to CLUSTER 1 and add their coordinates
