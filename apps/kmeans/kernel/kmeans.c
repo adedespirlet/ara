@@ -326,6 +326,7 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 		
 			//kmeans_free(clusters_last);
 			//total_iterations = iterations;
+            printf("KMEANS succeeded");
 			return KMEANS_OK;
 		}
 
@@ -333,12 +334,15 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 		{
 			//kmeans_free(clusters_last);
 			//total_iterations = iterations;
+            printf("Exceeded Max Iterations");
 			return KMEANS_EXCEEDED_MAX_ITERATIONS;
+            
 		}
 	}
 
 	//kmeans_free(clusters_last);
 	//total_iterations = iterations;
+    printf("ERROR");
 	return KMEANS_ERROR;
 }
 

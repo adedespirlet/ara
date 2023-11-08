@@ -91,7 +91,7 @@ int main() {
     start_timer();
     //imatmul(c, a, b, s, s, s);
     result= kmeans(a, k, c,b) ;
-    printf("K-Means result: %s\n", result);
+    printf("K-Means result: %d\n", result);
     stop_timer();
 
   //   // Metrics
