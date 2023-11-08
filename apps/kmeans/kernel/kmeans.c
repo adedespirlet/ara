@@ -95,8 +95,8 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
        printf("Assigned clusters are:\n");
        for (uint64_t i = 0; i < NUM_POINTS; ++i) {
             
-           printf("%ld ", clusters_[i]);
-           printf("\t\n");
+           printf("%ld \t", clusters_[i]);
+           printf("\n");
        }
         //fetch next group
         points_+=vl;
