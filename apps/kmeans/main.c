@@ -88,7 +88,7 @@ int main() {
 
     // Matrices are initialized --> Start calculating
     printf("Calculating kmeans...\n");
-    printf("does it work?")
+    printf("does it work?");
     start_timer();
     //imatmul(c, a, b, s, s, s);
     result= kmeans(a, k, c,b) ;
