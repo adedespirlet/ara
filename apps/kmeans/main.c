@@ -57,30 +57,30 @@ int main() {
     // printf("------------------------------------------------------------\n");
     // printf("\n");
 
-    printf("Matrix A:\n");
-    for (uint64_t i = 0; i < M; ++i) {
-        for (uint64_t j = 0; j < N; ++j) {
-            printf("%ld ", a[i * N + j]);
-        }
-        printf("\n");
-    }
+//     printf("Matrix A:\n");
+//     for (uint64_t i = 0; i < M; ++i) {
+//         for (uint64_t j = 0; j < N; ++j) {
+//             printf("%ld ", a[i * N + j]);
+//         }
+//         printf("\n");
+//     }
 
-    printf("Matrix K:\n");
-    for (uint64_t i = 0; i < N; ++i) {
-        for (uint64_t j = 0; j < P; ++j) {
-           printf("%lld ", k[i * P + j]);
-    }
-    	printf("\n");
-}    
+//     printf("Matrix K:\n");
+//     for (uint64_t i = 0; i < N; ++i) {
+//         for (uint64_t j = 0; j < P; ++j) {
+//            printf("%ld ", k[i * P + j]);
+//     }
+//     	printf("\n");
+// }    
     kmeans_result result;
 
     // Matrices are initialized --> Start calculating
     printf("Calculating kmeans...\n");
-    start_timer();
+    //start_timer();
     //imatmul(c, a, b, s, s, s);
     result= kmeans(a, c, k,b) ;
     printf("K-Means result: %d\n", result);
-    stop_timer();
+    //stop_timer();
 
   //   // Metrics
   //   int64_t runtime = get_timer();
