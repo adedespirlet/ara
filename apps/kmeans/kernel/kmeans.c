@@ -302,7 +302,7 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 	{
 
 
-        printf("Max iterations %d", MAX_ITERATIONS);
+        printf("Max iterations %d", max_iteration);
         printf("iteration number %d",iterations);
 		/* Store the previous state of the clustering */
         custom_memcpy(clusters_last, clusters, clusters_sz);
