@@ -329,6 +329,9 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 		updateClusterCenters(points, centers,clusters);
         assessQualityCluster(points,centers,clusters);
 
+        char filename[256];
+        snprintf(filename, sizeof(filename), "cluster_data_iteration_%d.csv", iterations);
+
         FILE *fptr = fopen("cluster_data.csv", "w");
         if (fptr == NULL) {
             printf("Error opening file\n");
