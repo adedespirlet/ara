@@ -110,8 +110,8 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         asm volatile("vse64.v   v16, (%0)"::"r"(clusters_));
 
         //fetch next group
-        points_+=vl;
-        clusters_+=vl;  
+        //points_+=vl;
+        //clusters_+=vl;  
     }
 
 
