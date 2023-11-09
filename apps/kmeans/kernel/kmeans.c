@@ -11,15 +11,15 @@
 
 void assignPointsToClusters(const int64_t *points,  const int64_t *centers, int64_t *clusters) {
     for (int i = 0; i < NUM_POINTS; i++) {
-        double minDist = DBL_MAX;
+        int64_t minDist = DBL_MAX;
         for (int c = 0; c < NUM_CLUSTERS; c++) {
-            double sum = 0;
+            int64_t sum = 0;
             for (int j = 0; j < SIZE_DATAPOINT; j++) {
                 // Access the j-th coordinate of the i-th point
-                double diff = (double)points[j * NUM_POINTS + i] - (double)centers[ j * NUM_CLUSTERS + c];
+                int64_t diff = points[j * NUM_POINTS + i] - centers[ j * NUM_CLUSTERS + c];
                 sum += diff * diff;
             }
-            double dist = sum;
+            int64_t dist = sum;
             if (dist < minDist) {
                 minDist = dist;
                 clusters[i] = c;
@@ -30,7 +30,7 @@ void assignPointsToClusters(const int64_t *points,  const int64_t *centers, int6
 
 
 void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters) {
-    double sum[NUM_CLUSTERS][SIZE_DATAPOINT] = {0};
+    int64_t sum[NUM_CLUSTERS][SIZE_DATAPOINT] = {0};
     int numbersInCluster[NUM_CLUSTERS] = {0};
 
     // Reset sums and counters
@@ -47,7 +47,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         if (cluster >= 0 && cluster < NUM_CLUSTERS) {
             for (int d = 0; d < SIZE_DATAPOINT; d++) {
                 // Corrected indexing for accessing j-th point's d-th dimension
-                sum[cluster][d] += (double)points[d * NUM_POINTS + j];
+                sum[cluster][d] += points[d * NUM_POINTS + j];
             }
             numbersInCluster[cluster]++;
         }
@@ -105,8 +105,8 @@ void assessQualityCluster(const int64_t *points,  int64_t *centers, int64_t *clu
 
 
 void custom_memcpy(int64_t*dest, int64_t *src, size_t size) {
-    char *d = (char *)dest;
-    const char *s = (const char *)src;
+    int64_t *d = (int64_t *)dest;
+    const int64_t *s = (const int64_t *)src;
     for (size_t i = 0; i < size; i++) {
         d[i] = s[i];
     }
@@ -125,8 +125,7 @@ bool custom_memcmp(const int64_t *array1, const int64_t *array2, size_t size) {
 kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *clusters,int64_t *clusters_last){
 	int iterations = 0;
 	
-    size_t clusters_sz = NUM_POINTS * sizeof(int);
-
+    size_t clusters_sz = NUM_POINTS * sizeof(int64_t);
 
 	
 	while (1)
