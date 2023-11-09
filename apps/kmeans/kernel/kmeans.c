@@ -332,7 +332,7 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
         printf("current clusters:\n");
         for (uint64_t i = 0; i < NUM_POINTS; ++i) {
             
-           printf("%ld \t", clusters_[i]);
+           printf("%ld \t", clusters[i]);
            
        }
         printf("copied clusters:\n");
