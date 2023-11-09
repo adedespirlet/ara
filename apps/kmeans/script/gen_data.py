@@ -47,7 +47,7 @@ P = 3
 
 dtype = np.int64
 
-UPPER_LIMIT = 1000
+UPPER_LIMIT = 100
 LOWER_LIMIT = 0
 
 # Matrices and results

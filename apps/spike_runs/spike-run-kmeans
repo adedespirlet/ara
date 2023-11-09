@@ -5,9 +5,9 @@
 
 
 Matrix k:
-752 667 720 
-424 458 200 
-365 64 688 
+20 51 16 
+82 63 81 
+70 50 72 
 Matrix c:
 0 
 0 
@@ -109,203 +109,1374 @@ Matrix c:
 0 
 0 
 0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
+0 
 Calculating kmeans...
-AssignPoints to Clusters:
+MAIN
+Max iterations 20iteration number 0AssignPoints to Clusters:
 Matrix A:
-86 58 117 419 949 593 789 523 656 123 640 309 450 305 973 640 280 783 729 450 150 963 752 972 912 543 416 22 544 848 324 108 881 209 895 26 235 712 470 781 0 904 685 965 694 985 722 145 39 839 489 314 47 106 828 728 159 958 245 720 64 318 674 630 364 562 320 667 92 536 580 901 0 83 547 867 429 257 638 981 469 33 463 298 172 586 876 496 980 906 322 887 983 866 843 721 416 541 129 118 
-157 133 743 233 862 55 89 410 630 985 395 770 832 723 117 960 515 430 206 631 410 991 424 833 5 930 985 693 131 767 154 506 343 434 504 909 564 891 576 793 355 698 164 558 477 661 44 819 962 857 271 477 16 171 537 651 441 89 456 200 84 870 709 204 539 526 878 458 197 827 265 845 160 15 789 149 425 553 601 554 939 338 737 732 226 140 620 21 96 199 243 918 638 661 949 246 95 234 383 725 
-496 453 866 822 395 123 540 655 288 433 835 421 334 427 66 990 817 854 151 299 421 312 365 25 762 453 781 554 515 112 883 447 460 826 798 799 49 889 968 994 581 353 760 422 185 414 434 527 37 737 944 693 362 551 669 276 613 426 617 688 469 383 514 610 422 704 574 64 9 65 115 380 878 743 692 131 594 368 421 601 368 303 484 813 376 693 751 227 339 319 145 184 835 711 34 590 853 41 967 170 
+99 64 40 12 47 41 19 48 15 75 8 0 42 36 66 42 45 66 58 12 99 96 41 97 35 67 89 66 37 49 72 35 97 75 93 51 93 1 21 15 88 62 15 49 93 35 48 33 40 49 89 70 78 6 55 90 5 55 59 58 52 27 36 98 81 45 63 19 66 83 94 43 96 56 44 73 99 75 91 56 6 26 35 17 59 93 48 63 45 53 60 76 78 1 8 86 26 90 2 44 
+54 39 55 40 73 72 61 37 58 83 83 6 56 66 13 7 81 47 22 82 91 87 49 78 35 15 92 43 85 11 29 31 81 71 84 55 44 1 92 66 15 41 99 37 23 50 56 50 69 10 77 31 24 55 93 9 38 32 71 30 67 56 11 16 83 45 58 18 56 4 91 54 87 24 75 98 25 81 76 10 56 29 25 4 43 74 43 59 69 92 83 89 82 38 59 83 4 40 62 65 
+26 50 98 63 16 89 80 99 29 14 90 72 30 29 75 67 86 7 50 10 40 40 69 90 0 62 58 70 5 55 30 0 59 6 76 5 50 37 78 17 4 72 16 84 26 91 24 46 13 96 2 71 42 62 51 50 89 95 80 1 4 16 15 36 47 20 2 49 74 2 51 95 7 34 11 2 78 69 52 92 11 0 55 41 10 87 9 7 62 96 9 10 15 46 29 26 51 40 65 24 
 Vl value is: 100 and avl value is: 100 
-center0= 752 
-center1  667
-center2= 720 
-center0= 424 
-center1  458
-center2= 200 
-center0= 365 
-center1  64
-center2= 688 
+center0= 20 
+center1  51
+center2= 16 
+center0= 82 
+center1  63
+center2= 81 
+center0= 70 
+center1  50
+center2= 72 
+acc fourth datapoint 1877 
+acc fourth datapoint 2219 
+acc fourth datapoint 1778 
+acc last datapoint 2981 
+acc last datapoint 729 
+acc last datapoint 3344 
 Assigned clusters are:
-2 	2 	2 	2 	0 	1 	2 	2 	0 	1 	2 	0 	0 	0 	1 	2 	2 	2 	1 	1 	0 	0 	0 	1 	2 	0 	2 	0 	2 	1 	2 	0 	2 	2 	2 	2 	1 	2 	2 	2 	2 	0 	2 	0 	1 	0 	2 	0 	1 	2 	2 	2 	2 	2 	2 	0 	2 	2 	2 	2 	2 	0 	0 	2 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	update clusters centers
-Vl value is: 100 and avl value is: 100 
-vectorcount vpop0 18 
-vectorcount vpop1 46 
-vectorcount vpop1 36 
-new computed center value center0 : 551, center1: 534, center2 : 480 
-Vl value is: 100 and avl value is: 100 
-vectorcount vpop0 18 
-vectorcount vpop1 46 
-vectorcount vpop1 36 
-new computed center value center0 : 707, center1: 489, center2 : 393 
-Vl value is: 100 and avl value is: 100 
-vectorcount vpop0 18 
-vectorcount vpop1 46 
-vectorcount vpop1 36 
-new computed center value center0 : 405, center1: 379, center2 : 698 
-Assess Quality ClusterVariance of cluster 0 is : 1895840, of cluster 1 is : 4252307 , of cluster 2 is : 3301291 
-AssignPoints to Clusters:
-Matrix A:
-86 58 117 419 949 593 789 523 656 123 640 309 450 305 973 640 280 783 729 450 150 963 752 972 912 543 416 22 544 848 324 108 881 209 895 26 235 712 470 781 0 904 685 965 694 985 722 145 39 839 489 314 47 106 828 728 159 958 245 720 64 318 674 630 364 562 320 667 92 536 580 901 0 83 547 867 429 257 638 981 469 33 463 298 172 586 876 496 980 906 322 887 983 866 843 721 416 541 129 118 
-157 133 743 233 862 55 89 410 630 985 395 770 832 723 117 960 515 430 206 631 410 991 424 833 5 930 985 693 131 767 154 506 343 434 504 909 564 891 576 793 355 698 164 558 477 661 44 819 962 857 271 477 16 171 537 651 441 89 456 200 84 870 709 204 539 526 878 458 197 827 265 845 160 15 789 149 425 553 601 554 939 338 737 732 226 140 620 21 96 199 243 918 638 661 949 246 95 234 383 725 
-496 453 866 822 395 123 540 655 288 433 835 421 334 427 66 990 817 854 151 299 421 312 365 25 762 453 781 554 515 112 883 447 460 826 798 799 49 889 968 994 581 353 760 422 185 414 434 527 37 737 944 693 362 551 669 276 613 426 617 688 469 383 514 610 422 704 574 64 9 65 115 380 878 743 692 131 594 368 421 601 368 303 484 813 376 693 751 227 339 319 145 184 835 711 34 590 853 41 967 170 
-Vl value is: 100 and avl value is: 100 
-center0= 551 
-center1  534
-center2= 480 
-center0= 707 
-center1  489
-center2= 393 
-center0= 405 
-center1  379
-center2= 698 
-Assigned clusters are:
-2 	2 	2 	2 	0 	2 	2 	2 	0 	1 	2 	0 	0 	0 	1 	2 	2 	2 	1 	1 	2 	0 	1 	1 	2 	0 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	1 	2 	2 	2 	2 	0 	2 	1 	1 	0 	2 	0 	1 	2 	2 	2 	2 	2 	2 	0 	2 	2 	2 	2 	2 	0 	0 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	update clusters centers
-Vl value is: 100 and avl value is: 100 
-vectorcount vpop0 13 
-vectorcount vpop1 11 
-vectorcount vpop1 76 
-new computed center value center0 : 609, center1: 616, center2 : 488 
-Vl value is: 100 and avl value is: 100 
-vectorcount vpop0 13 
-vectorcount vpop1 11 
-vectorcount vpop1 76 
-new computed center value center0 : 780, center1: 593, center2 : 430 
-Vl value is: 100 and avl value is: 100 
-vectorcount vpop0 13 
-vectorcount vpop1 11 
-vectorcount vpop1 76 
-new computed center value center0 : 392, center1: 194, center2 : 561 
-Assess Quality ClusterVariance of cluster 0 is : 1002028, of cluster 1 is : 1215854 , of cluster 2 is : 7030597 
-AssignPoints to Clusters:
-Matrix A:
-86 58 117 419 949 593 789 523 656 123 640 309 450 305 973 640 280 783 729 450 150 963 752 972 912 543 416 22 544 848 324 108 881 209 895 26 235 712 470 781 0 904 685 965 694 985 722 145 39 839 489 314 47 106 828 728 159 958 245 720 64 318 674 630 364 562 320 667 92 536 580 901 0 83 547 867 429 257 638 981 469 33 463 298 172 586 876 496 980 906 322 887 983 866 843 721 416 541 129 118 
-157 133 743 233 862 55 89 410 630 985 395 770 832 723 117 960 515 430 206 631 410 991 424 833 5 930 985 693 131 767 154 506 343 434 504 909 564 891 576 793 355 698 164 558 477 661 44 819 962 857 271 477 16 171 537 651 441 89 456 200 84 870 709 204 539 526 878 458 197 827 265 845 160 15 789 149 425 553 601 554 939 338 737 732 226 140 620 21 96 199 243 918 638 661 949 246 95 234 383 725 
-496 453 866 822 395 123 540 655 288 433 835 421 334 427 66 990 817 854 151 299 421 312 365 25 762 453 781 554 515 112 883 447 460 826 798 799 49 889 968 994 581 353 760 422 185 414 434 527 37 737 944 693 362 551 669 276 613 426 617 688 469 383 514 610 422 704 574 64 9 65 115 380 878 743 692 131 594 368 421 601 368 303 484 813 376 693 751 227 339 319 145 184 835 711 34 590 853 41 967 170 
-Vl value is: 100 and avl value is: 100 
-center0= 609 
-center1  616
-center2= 488 
-center0= 780 
-center1  593
-center2= 430 
-center0= 392 
-center1  194
-center2= 561 
-Assigned clusters are:
-2 	2 	2 	2 	0 	2 	2 	2 	1 	1 	2 	2 	0 	2 	2 	2 	2 	2 	2 	1 	2 	0 	2 	1 	2 	0 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	1 	2 	2 	2 	2 	0 	2 	1 	1 	0 	2 	2 	1 	2 	2 	2 	2 	2 	2 	1 	2 	2 	2 	2 	2 	0 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	update clusters centers
+1 	1 	0 	2 	1 	0 	2 	1 	1 	1 	2 	2 	1 	1 	1 	1 	0 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	0 	1 	1 	1 	0 	1 	1 	2 	1 	1 	1 	1 	1 	1 	1 	2 	1 	1 	2 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	0 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	0 	1 	1 	1 	2 	1 	1 	1 	1 	2 	1 	update clusters centers
 Vl value is: 100 and avl value is: 100 
 vectorcount vpop0 7 
-vectorcount vpop1 10 
-vectorcount vpop1 83 
-new computed center value center0 : 730, center1: 571, center2 : 493 
+vectorcount vpop1 84 
+vectorcount vpop1 9 
+new computed center value center0 : 36, center1: 59, center2 : 9 
 Vl value is: 100 and avl value is: 100 
 vectorcount vpop0 7 
-vectorcount vpop1 10 
-vectorcount vpop1 83 
-new computed center value center0 : 834, center1: 705, center2 : 439 
+vectorcount vpop1 84 
+vectorcount vpop1 9 
+new computed center value center0 : 77, center1: 50, center2 : 48 
 Vl value is: 100 and avl value is: 100 
 vectorcount vpop0 7 
-vectorcount vpop1 10 
-vectorcount vpop1 83 
-new computed center value center0 : 377, center1: 212, center2 : 543 
-Assess Quality ClusterVariance of cluster 0 is : 480750, of cluster 1 is : 1051034 , of cluster 2 is : 7608489 
-AssignPoints to Clusters:
+vectorcount vpop1 84 
+vectorcount vpop1 9 
+new computed center value center0 : 79, center1: 37, center2 : 73 
+Assess Quality ClusterVariance of cluster 0 is : 1225, of cluster 1 is : 56208 , of cluster 2 is : 1005 
+Max iterations 20iteration number 1AssignPoints to Clusters:
 Matrix A:
-86 58 117 419 949 593 789 523 656 123 640 309 450 305 973 640 280 783 729 450 150 963 752 972 912 543 416 22 544 848 324 108 881 209 895 26 235 712 470 781 0 904 685 965 694 985 722 145 39 839 489 314 47 106 828 728 159 958 245 720 64 318 674 630 364 562 320 667 92 536 580 901 0 83 547 867 429 257 638 981 469 33 463 298 172 586 876 496 980 906 322 887 983 866 843 721 416 541 129 118 
-157 133 743 233 862 55 89 410 630 985 395 770 832 723 117 960 515 430 206 631 410 991 424 833 5 930 985 693 131 767 154 506 343 434 504 909 564 891 576 793 355 698 164 558 477 661 44 819 962 857 271 477 16 171 537 651 441 89 456 200 84 870 709 204 539 526 878 458 197 827 265 845 160 15 789 149 425 553 601 554 939 338 737 732 226 140 620 21 96 199 243 918 638 661 949 246 95 234 383 725 
-496 453 866 822 395 123 540 655 288 433 835 421 334 427 66 990 817 854 151 299 421 312 365 25 762 453 781 554 515 112 883 447 460 826 798 799 49 889 968 994 581 353 760 422 185 414 434 527 37 737 944 693 362 551 669 276 613 426 617 688 469 383 514 610 422 704 574 64 9 65 115 380 878 743 692 131 594 368 421 601 368 303 484 813 376 693 751 227 339 319 145 184 835 711 34 590 853 41 967 170 
+99 64 40 12 47 41 19 48 15 75 8 0 42 36 66 42 45 66 58 12 99 96 41 97 35 67 89 66 37 49 72 35 97 75 93 51 93 1 21 15 88 62 15 49 93 35 48 33 40 49 89 70 78 6 55 90 5 55 59 58 52 27 36 98 81 45 63 19 66 83 94 43 96 56 44 73 99 75 91 56 6 26 35 17 59 93 48 63 45 53 60 76 78 1 8 86 26 90 2 44 
+54 39 55 40 73 72 61 37 58 83 83 6 56 66 13 7 81 47 22 82 91 87 49 78 35 15 92 43 85 11 29 31 81 71 84 55 44 1 92 66 15 41 99 37 23 50 56 50 69 10 77 31 24 55 93 9 38 32 71 30 67 56 11 16 83 45 58 18 56 4 91 54 87 24 75 98 25 81 76 10 56 29 25 4 43 74 43 59 69 92 83 89 82 38 59 83 4 40 62 65 
+26 50 98 63 16 89 80 99 29 14 90 72 30 29 75 67 86 7 50 10 40 40 69 90 0 62 58 70 5 55 30 0 59 6 76 5 50 37 78 17 4 72 16 84 26 91 24 46 13 96 2 71 42 62 51 50 89 95 80 1 4 16 15 36 47 20 2 49 74 2 51 95 7 34 11 2 78 69 52 92 11 0 55 41 10 87 9 7 62 96 9 10 15 46 29 26 51 40 65 24 
 Vl value is: 100 and avl value is: 100 
-center0= 730 
-center1  571
-center2= 493 
-center0= 834 
-center1  705
-center2= 439 
-center0= 377 
-center1  212
-center2= 543 
+center0= 36 
+center1  59
+center2= 9 
+center0= 77 
+center1  50
+center2= 48 
+center0= 79 
+center1  37
+center2= 73 
+acc fourth datapoint 2201 
+acc fourth datapoint 2985 
+acc fourth datapoint 173 
+acc last datapoint 3233 
+acc last datapoint 619 
+acc last datapoint 3915 
 Assigned clusters are:
-2 	2 	2 	2 	0 	2 	2 	2 	1 	1 	2 	2 	1 	2 	2 	2 	2 	2 	2 	2 	2 	0 	2 	1 	2 	0 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	0 	2 	1 	1 	0 	2 	2 	1 	2 	2 	2 	2 	2 	2 	1 	2 	2 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	update clusters centers
+1 	1 	0 	2 	1 	0 	2 	0 	1 	1 	0 	2 	1 	1 	1 	2 	0 	1 	1 	1 	1 	1 	0 	0 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	0 	1 	1 	2 	0 	1 	1 	1 	1 	0 	1 	0 	1 	1 	1 	2 	1 	1 	1 	2 	0 	1 	2 	0 	0 	1 	1 	1 	1 	1 	1 	1 	1 	2 	0 	1 	1 	0 	1 	1 	1 	1 	1 	0 	1 	2 	1 	1 	1 	2 	1 	0 	1 	1 	0 	0 	1 	1 	1 	2 	2 	1 	2 	1 	2 	1 	update clusters centers
 Vl value is: 100 and avl value is: 100 
-vectorcount vpop0 5 
-vectorcount vpop1 10 
-vectorcount vpop1 85 
-new computed center value center0 : 868, center1: 579, center2 : 490 
+vectorcount vpop0 20 
+vectorcount vpop1 65 
+vectorcount vpop1 15 
+new computed center value center0 : 53, center1: 61, center2 : 17 
 Vl value is: 100 and avl value is: 100 
-vectorcount vpop0 5 
-vectorcount vpop1 10 
-vectorcount vpop1 85 
-new computed center value center0 : 828, center1: 756, center2 : 443 
+vectorcount vpop0 20 
+vectorcount vpop1 65 
+vectorcount vpop1 15 
+new computed center value center0 : 67, center1: 53, center2 : 27 
 Vl value is: 100 and avl value is: 100 
-vectorcount vpop0 5 
-vectorcount vpop1 10 
-vectorcount vpop1 85 
-new computed center value center0 : 385, center1: 249, center2 : 535 
-Assess Quality ClusterVariance of cluster 0 is : 136282, of cluster 1 is : 1001459 , of cluster 2 is : 7676347 
-AssignPoints to Clusters:
+vectorcount vpop0 20 
+vectorcount vpop1 65 
+vectorcount vpop1 15 
+new computed center value center0 : 82, center1: 27, center2 : 62 
+Assess Quality ClusterVariance of cluster 0 is : 10031, of cluster 1 is : 41978 , of cluster 2 is : 4656 
+Max iterations 20iteration number 2AssignPoints to Clusters:
 Matrix A:
-86 58 117 419 949 593 789 523 656 123 640 309 450 305 973 640 280 783 729 450 150 963 752 972 912 543 416 22 544 848 324 108 881 209 895 26 235 712 470 781 0 904 685 965 694 985 722 145 39 839 489 314 47 106 828 728 159 958 245 720 64 318 674 630 364 562 320 667 92 536 580 901 0 83 547 867 429 257 638 981 469 33 463 298 172 586 876 496 980 906 322 887 983 866 843 721 416 541 129 118 
-157 133 743 233 862 55 89 410 630 985 395 770 832 723 117 960 515 430 206 631 410 991 424 833 5 930 985 693 131 767 154 506 343 434 504 909 564 891 576 793 355 698 164 558 477 661 44 819 962 857 271 477 16 171 537 651 441 89 456 200 84 870 709 204 539 526 878 458 197 827 265 845 160 15 789 149 425 553 601 554 939 338 737 732 226 140 620 21 96 199 243 918 638 661 949 246 95 234 383 725 
-496 453 866 822 395 123 540 655 288 433 835 421 334 427 66 990 817 854 151 299 421 312 365 25 762 453 781 554 515 112 883 447 460 826 798 799 49 889 968 994 581 353 760 422 185 414 434 527 37 737 944 693 362 551 669 276 613 426 617 688 469 383 514 610 422 704 574 64 9 65 115 380 878 743 692 131 594 368 421 601 368 303 484 813 376 693 751 227 339 319 145 184 835 711 34 590 853 41 967 170 
+99 64 40 12 47 41 19 48 15 75 8 0 42 36 66 42 45 66 58 12 99 96 41 97 35 67 89 66 37 49 72 35 97 75 93 51 93 1 21 15 88 62 15 49 93 35 48 33 40 49 89 70 78 6 55 90 5 55 59 58 52 27 36 98 81 45 63 19 66 83 94 43 96 56 44 73 99 75 91 56 6 26 35 17 59 93 48 63 45 53 60 76 78 1 8 86 26 90 2 44 
+54 39 55 40 73 72 61 37 58 83 83 6 56 66 13 7 81 47 22 82 91 87 49 78 35 15 92 43 85 11 29 31 81 71 84 55 44 1 92 66 15 41 99 37 23 50 56 50 69 10 77 31 24 55 93 9 38 32 71 30 67 56 11 16 83 45 58 18 56 4 91 54 87 24 75 98 25 81 76 10 56 29 25 4 43 74 43 59 69 92 83 89 82 38 59 83 4 40 62 65 
+26 50 98 63 16 89 80 99 29 14 90 72 30 29 75 67 86 7 50 10 40 40 69 90 0 62 58 70 5 55 30 0 59 6 76 5 50 37 78 17 4 72 16 84 26 91 24 46 13 96 2 71 42 62 51 50 89 95 80 1 4 16 15 36 47 20 2 49 74 2 51 95 7 34 11 2 78 69 52 92 11 0 55 41 10 87 9 7 62 96 9 10 15 46 29 26 51 40 65 24 
 Vl value is: 100 and avl value is: 100 
-center0= 868 
-center1  579
-center2= 490 
-center0= 828 
-center1  756
-center2= 443 
-center0= 385 
-center1  249
-center2= 535 
+center0= 53 
+center1  61
+center2= 17 
+center0= 67 
+center1  53
+center2= 27 
+center0= 82 
+center1  27
+center2= 62 
+acc fourth datapoint 2771 
+acc fourth datapoint 3866 
+acc fourth datapoint 195 
+acc last datapoint 3449 
+acc last datapoint 442 
+acc last datapoint 3617 
 Assigned clusters are:
-2 	2 	2 	2 	0 	2 	2 	2 	1 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	2 	2 	0 	2 	1 	2 	1 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	0 	2 	1 	2 	0 	2 	2 	2 	2 	2 	2 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	update clusters centers
+1 	1 	0 	2 	1 	0 	0 	0 	2 	1 	0 	2 	1 	1 	2 	2 	0 	1 	1 	1 	1 	1 	0 	0 	1 	2 	0 	0 	1 	2 	1 	1 	0 	1 	0 	1 	1 	2 	0 	1 	1 	0 	1 	0 	1 	0 	1 	2 	1 	2 	1 	0 	1 	2 	0 	1 	2 	0 	0 	1 	1 	1 	1 	1 	1 	1 	1 	2 	0 	1 	1 	0 	1 	1 	1 	1 	0 	0 	1 	2 	1 	1 	2 	2 	1 	0 	1 	1 	0 	0 	1 	1 	1 	2 	2 	1 	2 	1 	2 	1 	update clusters centers
 Vl value is: 100 and avl value is: 100 
-vectorcount vpop0 4 
-vectorcount vpop1 7 
-vectorcount vpop1 89 
-new computed center value center0 : 950, center1: 737, center2 : 481 
+vectorcount vpop0 27 
+vectorcount vpop1 53 
+vectorcount vpop1 20 
+new computed center value center0 : 57, center1: 61, center2 : 25 
 Vl value is: 100 and avl value is: 100 
-vectorcount vpop0 4 
-vectorcount vpop1 7 
-vectorcount vpop1 89 
-new computed center value center0 : 803, center1: 743, center2 : 460 
+vectorcount vpop0 27 
+vectorcount vpop1 53 
+vectorcount vpop1 20 
+new computed center value center0 : 63, center1: 56, center2 : 26 
 Vl value is: 100 and avl value is: 100 
-vectorcount vpop0 4 
-vectorcount vpop1 7 
-vectorcount vpop1 89 
-new computed center value center0 : 368, center1: 272, center2 : 522 
-Assess Quality ClusterVariance of cluster 0 is : 3597, of cluster 1 is : 246177 , of cluster 2 is : 8079328 
-AssignPoints to Clusters:
+vectorcount vpop0 27 
+vectorcount vpop1 53 
+vectorcount vpop1 20 
+new computed center value center0 : 79, center1: 20, center2 : 59 
+Assess Quality ClusterVariance of cluster 0 is : 16442, of cluster 1 is : 34566 , of cluster 2 is : 9737 
+Max iterations 20iteration number 3AssignPoints to Clusters:
 Matrix A:
-86 58 117 419 949 593 789 523 656 123 640 309 450 305 973 640 280 783 729 450 150 963 752 972 912 543 416 22 544 848 324 108 881 209 895 26 235 712 470 781 0 904 685 965 694 985 722 145 39 839 489 314 47 106 828 728 159 958 245 720 64 318 674 630 364 562 320 667 92 536 580 901 0 83 547 867 429 257 638 981 469 33 463 298 172 586 876 496 980 906 322 887 983 866 843 721 416 541 129 118 
-157 133 743 233 862 55 89 410 630 985 395 770 832 723 117 960 515 430 206 631 410 991 424 833 5 930 985 693 131 767 154 506 343 434 504 909 564 891 576 793 355 698 164 558 477 661 44 819 962 857 271 477 16 171 537 651 441 89 456 200 84 870 709 204 539 526 878 458 197 827 265 845 160 15 789 149 425 553 601 554 939 338 737 732 226 140 620 21 96 199 243 918 638 661 949 246 95 234 383 725 
-496 453 866 822 395 123 540 655 288 433 835 421 334 427 66 990 817 854 151 299 421 312 365 25 762 453 781 554 515 112 883 447 460 826 798 799 49 889 968 994 581 353 760 422 185 414 434 527 37 737 944 693 362 551 669 276 613 426 617 688 469 383 514 610 422 704 574 64 9 65 115 380 878 743 692 131 594 368 421 601 368 303 484 813 376 693 751 227 339 319 145 184 835 711 34 590 853 41 967 170 
+99 64 40 12 47 41 19 48 15 75 8 0 42 36 66 42 45 66 58 12 99 96 41 97 35 67 89 66 37 49 72 35 97 75 93 51 93 1 21 15 88 62 15 49 93 35 48 33 40 49 89 70 78 6 55 90 5 55 59 58 52 27 36 98 81 45 63 19 66 83 94 43 96 56 44 73 99 75 91 56 6 26 35 17 59 93 48 63 45 53 60 76 78 1 8 86 26 90 2 44 
+54 39 55 40 73 72 61 37 58 83 83 6 56 66 13 7 81 47 22 82 91 87 49 78 35 15 92 43 85 11 29 31 81 71 84 55 44 1 92 66 15 41 99 37 23 50 56 50 69 10 77 31 24 55 93 9 38 32 71 30 67 56 11 16 83 45 58 18 56 4 91 54 87 24 75 98 25 81 76 10 56 29 25 4 43 74 43 59 69 92 83 89 82 38 59 83 4 40 62 65 
+26 50 98 63 16 89 80 99 29 14 90 72 30 29 75 67 86 7 50 10 40 40 69 90 0 62 58 70 5 55 30 0 59 6 76 5 50 37 78 17 4 72 16 84 26 91 24 46 13 96 2 71 42 62 51 50 89 95 80 1 4 16 15 36 47 20 2 49 74 2 51 95 7 34 11 2 78 69 52 92 11 0 55 41 10 87 9 7 62 96 9 10 15 46 29 26 51 40 65 24 
 Vl value is: 100 and avl value is: 100 
-center0= 950 
-center1  737
-center2= 481 
-center0= 803 
-center1  743
-center2= 460 
-center0= 368 
-center1  272
-center2= 522 
+center0= 57 
+center1  61
+center2= 25 
+center0= 63 
+center1  56
+center2= 26 
+center0= 79 
+center1  20
+center2= 59 
+acc fourth datapoint 2810 
+acc fourth datapoint 4506 
+acc fourth datapoint 381 
+acc last datapoint 3198 
+acc last datapoint 386 
+acc last datapoint 3107 
 Assigned clusters are:
-2 	2 	2 	2 	0 	2 	2 	2 	2 	2 	2 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	0 	2 	1 	2 	1 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	2 	0 	2 	1 	2 	0 	2 	2 	2 	2 	2 	2 	2 	2 	2 	1 	2 	2 	2 	2 	2 	2 	2 	2 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	1 	update clusters centers
+1 	1 	0 	2 	1 	0 	0 	0 	2 	1 	0 	2 	1 	1 	2 	2 	0 	1 	2 	1 	1 	1 	0 	0 	1 	2 	0 	0 	1 	2 	1 	1 	0 	1 	0 	1 	1 	2 	0 	1 	1 	0 	1 	0 	1 	0 	1 	2 	1 	2 	1 	0 	1 	2 	0 	1 	2 	0 	0 	1 	1 	1 	2 	1 	1 	1 	1 	2 	0 	1 	0 	0 	1 	1 	1 	1 	0 	0 	0 	2 	1 	1 	2 	2 	1 	0 	1 	1 	0 	0 	1 	1 	1 	2 	2 	1 	2 	1 	2 	1 	update clusters centers
 Vl value is: 100 and avl value is: 100 
-vectorcount vpop0 4 
-vectorcount vpop1 42 
-vectorcount vpop1 54 
-new computed center value center0 : 950, center1: 570, center2 : 445 
+vectorcount vpop0 29 
+vectorcount vpop1 49 
+vectorcount vpop1 22 
+new computed center value center0 : 60, center1: 61, center2 : 27 
 Vl value is: 100 and avl value is: 100 
-vectorcount vpop0 4 
-vectorcount vpop1 42 
-vectorcount vpop1 54 
-new computed center value center0 : 803, center1: 494, center2 : 470 
+vectorcount vpop0 29 
+vectorcount vpop1 49 
+vectorcount vpop1 22 
+new computed center value center0 : 64, center1: 56, center2 : 25 
 Vl value is: 100 and avl value is: 100 
-vectorcount vpop0 4 
-vectorcount vpop1 42 
-vectorcount vpop1 54 
-new computed center value center0 : 368, center1: 412, center2 : 576 
-Assess Quality ClusterVariance of cluster 0 is : 3597, of cluster 1 is : 3842548 , of cluster 2 is : 4539751 
-Exceeded Max IterationsK-Means result: 1
+vectorcount vpop0 29 
+vectorcount vpop1 49 
+vectorcount vpop1 22 
+new computed center value center0 : 77, center1: 18, center2 : 56 
+Assess Quality ClusterVariance of cluster 0 is : 18652, of cluster 1 is : 31943 , of cluster 2 is : 10823 
+Max iterations 20iteration number 4AssignPoints to Clusters:
+Matrix A:
+99 64 40 12 47 41 19 48 15 75 8 0 42 36 66 42 45 66 58 12 99 96 41 97 35 67 89 66 37 49 72 35 97 75 93 51 93 1 21 15 88 62 15 49 93 35 48 33 40 49 89 70 78 6 55 90 5 55 59 58 52 27 36 98 81 45 63 19 66 83 94 43 96 56 44 73 99 75 91 56 6 26 35 17 59 93 48 63 45 53 60 76 78 1 8 86 26 90 2 44 
+54 39 55 40 73 72 61 37 58 83 83 6 56 66 13 7 81 47 22 82 91 87 49 78 35 15 92 43 85 11 29 31 81 71 84 55 44 1 92 66 15 41 99 37 23 50 56 50 69 10 77 31 24 55 93 9 38 32 71 30 67 56 11 16 83 45 58 18 56 4 91 54 87 24 75 98 25 81 76 10 56 29 25 4 43 74 43 59 69 92 83 89 82 38 59 83 4 40 62 65 
+26 50 98 63 16 89 80 99 29 14 90 72 30 29 75 67 86 7 50 10 40 40 69 90 0 62 58 70 5 55 30 0 59 6 76 5 50 37 78 17 4 72 16 84 26 91 24 46 13 96 2 71 42 62 51 50 89 95 80 1 4 16 15 36 47 20 2 49 74 2 51 95 7 34 11 2 78 69 52 92 11 0 55 41 10 87 9 7 62 96 9 10 15 46 29 26 51 40 65 24 
+Vl value is: 100 and avl value is: 100 
+center0= 60 
+center1  61
+center2= 27 
+center0= 64 
+center1  56
+center2= 25 
+center0= 77 
+center1  18
+center2= 56 
+acc fourth datapoint 3076 
+acc fourth datapoint 4682 
+acc fourth datapoint 499 
+acc last datapoint 3066 
+acc last datapoint 406 
+acc last datapoint 2913 
+Assigned clusters are:
+1 	1 	0 	2 	1 	0 	0 	0 	2 	1 	0 	2 	1 	1 	2 	2 	0 	1 	2 	1 	1 	1 	0 	0 	1 	2 	0 	0 	1 	2 	1 	1 	0 	1 	0 	1 	1 	2 	0 	1 	1 	0 	1 	0 	1 	0 	1 	2 	1 	2 	1 	0 	1 	2 	0 	1 	2 	0 	0 	1 	1 	1 	2 	1 	0 	1 	1 	2 	0 	1 	0 	0 	1 	1 	1 	1 	0 	0 	0 	2 	1 	1 	2 	2 	1 	0 	1 	1 	0 	0 	1 	1 	1 	2 	2 	1 	2 	1 	2 	1 	update clusters centers
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 30 
+vectorcount vpop1 48 
+vectorcount vpop1 22 
+new computed center value center0 : 61, center1: 60, center2 : 27 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 30 
+vectorcount vpop1 48 
+vectorcount vpop1 22 
+new computed center value center0 : 65, center1: 56, center2 : 25 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 30 
+vectorcount vpop1 48 
+vectorcount vpop1 22 
+new computed center value center0 : 76, center1: 17, center2 : 56 
+Assess Quality ClusterVariance of cluster 0 is : 19063, of cluster 1 is : 31577 , of cluster 2 is : 10823 
+Max iterations 20iteration number 5AssignPoints to Clusters:
+Matrix A:
+99 64 40 12 47 41 19 48 15 75 8 0 42 36 66 42 45 66 58 12 99 96 41 97 35 67 89 66 37 49 72 35 97 75 93 51 93 1 21 15 88 62 15 49 93 35 48 33 40 49 89 70 78 6 55 90 5 55 59 58 52 27 36 98 81 45 63 19 66 83 94 43 96 56 44 73 99 75 91 56 6 26 35 17 59 93 48 63 45 53 60 76 78 1 8 86 26 90 2 44 
+54 39 55 40 73 72 61 37 58 83 83 6 56 66 13 7 81 47 22 82 91 87 49 78 35 15 92 43 85 11 29 31 81 71 84 55 44 1 92 66 15 41 99 37 23 50 56 50 69 10 77 31 24 55 93 9 38 32 71 30 67 56 11 16 83 45 58 18 56 4 91 54 87 24 75 98 25 81 76 10 56 29 25 4 43 74 43 59 69 92 83 89 82 38 59 83 4 40 62 65 
+26 50 98 63 16 89 80 99 29 14 90 72 30 29 75 67 86 7 50 10 40 40 69 90 0 62 58 70 5 55 30 0 59 6 76 5 50 37 78 17 4 72 16 84 26 91 24 46 13 96 2 71 42 62 51 50 89 95 80 1 4 16 15 36 47 20 2 49 74 2 51 95 7 34 11 2 78 69 52 92 11 0 55 41 10 87 9 7 62 96 9 10 15 46 29 26 51 40 65 24 
+Vl value is: 100 and avl value is: 100 
+center0= 61 
+center1  60
+center2= 27 
+center0= 65 
+center1  56
+center2= 25 
+center0= 76 
+center1  17
+center2= 56 
+acc fourth datapoint 3195 
+acc fourth datapoint 4676 
+acc fourth datapoint 499 
+acc last datapoint 2993 
+acc last datapoint 386 
+acc last datapoint 2913 
+Assigned clusters are:
+1 	0 	0 	2 	1 	0 	0 	0 	2 	1 	0 	2 	1 	1 	2 	2 	0 	1 	2 	1 	1 	1 	0 	0 	1 	2 	0 	0 	1 	2 	1 	1 	0 	1 	0 	1 	0 	2 	0 	1 	1 	0 	1 	0 	1 	0 	1 	2 	1 	2 	1 	0 	1 	2 	0 	1 	2 	0 	0 	1 	1 	1 	2 	1 	0 	1 	1 	2 	0 	1 	0 	0 	1 	2 	1 	1 	0 	0 	0 	2 	1 	1 	2 	2 	1 	0 	1 	1 	0 	0 	1 	1 	1 	2 	2 	1 	2 	1 	2 	1 	update clusters centers
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 32 
+vectorcount vpop1 45 
+vectorcount vpop1 23 
+new computed center value center0 : 62, center1: 60, center2 : 28 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 32 
+vectorcount vpop1 45 
+vectorcount vpop1 23 
+new computed center value center0 : 63, center1: 57, center2 : 25 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 32 
+vectorcount vpop1 45 
+vectorcount vpop1 23 
+new computed center value center0 : 74, center1: 15, center2 : 55 
+Assess Quality ClusterVariance of cluster 0 is : 20058, of cluster 1 is : 30456 , of cluster 2 is : 11611 
+Max iterations 20iteration number 6AssignPoints to Clusters:
+Matrix A:
+99 64 40 12 47 41 19 48 15 75 8 0 42 36 66 42 45 66 58 12 99 96 41 97 35 67 89 66 37 49 72 35 97 75 93 51 93 1 21 15 88 62 15 49 93 35 48 33 40 49 89 70 78 6 55 90 5 55 59 58 52 27 36 98 81 45 63 19 66 83 94 43 96 56 44 73 99 75 91 56 6 26 35 17 59 93 48 63 45 53 60 76 78 1 8 86 26 90 2 44 
+54 39 55 40 73 72 61 37 58 83 83 6 56 66 13 7 81 47 22 82 91 87 49 78 35 15 92 43 85 11 29 31 81 71 84 55 44 1 92 66 15 41 99 37 23 50 56 50 69 10 77 31 24 55 93 9 38 32 71 30 67 56 11 16 83 45 58 18 56 4 91 54 87 24 75 98 25 81 76 10 56 29 25 4 43 74 43 59 69 92 83 89 82 38 59 83 4 40 62 65 
+26 50 98 63 16 89 80 99 29 14 90 72 30 29 75 67 86 7 50 10 40 40 69 90 0 62 58 70 5 55 30 0 59 6 76 5 50 37 78 17 4 72 16 84 26 91 24 46 13 96 2 71 42 62 51 50 89 95 80 1 4 16 15 36 47 20 2 49 74 2 51 95 7 34 11 2 78 69 52 92 11 0 55 41 10 87 9 7 62 96 9 10 15 46 29 26 51 40 65 24 
+Vl value is: 100 and avl value is: 100 
+center0= 62 
+center1  60
+center2= 28 
+center0= 63 
+center1  57
+center2= 25 
+center0= 74 
+center1  15
+center2= 55 
+acc fourth datapoint 3150 
+acc fourth datapoint 4897 
+acc fourth datapoint 545 
+acc last datapoint 2828 
+acc last datapoint 401 
+acc last datapoint 2817 
+Assigned clusters are:
+1 	0 	0 	2 	1 	0 	0 	0 	2 	1 	0 	2 	1 	1 	2 	2 	0 	1 	2 	1 	1 	1 	0 	0 	1 	2 	0 	0 	1 	2 	1 	1 	0 	1 	0 	1 	0 	2 	0 	1 	1 	0 	1 	0 	1 	0 	1 	2 	1 	2 	1 	0 	1 	2 	0 	2 	2 	0 	0 	1 	1 	1 	2 	1 	0 	1 	1 	2 	0 	1 	0 	0 	1 	2 	1 	1 	0 	0 	0 	2 	1 	1 	2 	2 	1 	0 	1 	1 	0 	0 	1 	1 	1 	2 	2 	1 	2 	1 	2 	1 	update clusters centers
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 32 
+vectorcount vpop1 44 
+vectorcount vpop1 24 
+new computed center value center0 : 62, center1: 59, center2 : 31 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 32 
+vectorcount vpop1 44 
+vectorcount vpop1 24 
+new computed center value center0 : 63, center1: 58, center2 : 24 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 32 
+vectorcount vpop1 44 
+vectorcount vpop1 24 
+new computed center value center0 : 74, center1: 15, center2 : 55 
+Assess Quality ClusterVariance of cluster 0 is : 20058, of cluster 1 is : 29556 , of cluster 2 is : 15209 
+Max iterations 20iteration number 7AssignPoints to Clusters:
+Matrix A:
+99 64 40 12 47 41 19 48 15 75 8 0 42 36 66 42 45 66 58 12 99 96 41 97 35 67 89 66 37 49 72 35 97 75 93 51 93 1 21 15 88 62 15 49 93 35 48 33 40 49 89 70 78 6 55 90 5 55 59 58 52 27 36 98 81 45 63 19 66 83 94 43 96 56 44 73 99 75 91 56 6 26 35 17 59 93 48 63 45 53 60 76 78 1 8 86 26 90 2 44 
+54 39 55 40 73 72 61 37 58 83 83 6 56 66 13 7 81 47 22 82 91 87 49 78 35 15 92 43 85 11 29 31 81 71 84 55 44 1 92 66 15 41 99 37 23 50 56 50 69 10 77 31 24 55 93 9 38 32 71 30 67 56 11 16 83 45 58 18 56 4 91 54 87 24 75 98 25 81 76 10 56 29 25 4 43 74 43 59 69 92 83 89 82 38 59 83 4 40 62 65 
+26 50 98 63 16 89 80 99 29 14 90 72 30 29 75 67 86 7 50 10 40 40 69 90 0 62 58 70 5 55 30 0 59 6 76 5 50 37 78 17 4 72 16 84 26 91 24 46 13 96 2 71 42 62 51 50 89 95 80 1 4 16 15 36 47 20 2 49 74 2 51 95 7 34 11 2 78 69 52 92 11 0 55 41 10 87 9 7 62 96 9 10 15 46 29 26 51 40 65 24 
+Vl value is: 100 and avl value is: 100 
+center0= 62 
+center1  59
+center2= 31 
+center0= 63 
+center1  58
+center2= 24 
+center0= 74 
+center1  15
+center2= 55 
+acc fourth datapoint 3150 
+acc fourth datapoint 4837 
+acc fourth datapoint 681 
+acc last datapoint 2828 
+acc last datapoint 355 
+acc last datapoint 2811 
+Assigned clusters are:
+1 	0 	0 	2 	1 	0 	0 	0 	2 	1 	0 	2 	1 	1 	2 	2 	0 	1 	2 	1 	0 	1 	0 	0 	1 	2 	0 	0 	1 	2 	1 	1 	0 	1 	0 	1 	0 	2 	0 	1 	1 	0 	1 	0 	1 	0 	1 	2 	1 	2 	1 	0 	1 	2 	0 	2 	2 	0 	0 	1 	1 	1 	2 	1 	0 	1 	1 	2 	0 	1 	0 	0 	1 	2 	1 	1 	0 	0 	0 	2 	1 	1 	2 	2 	1 	0 	1 	1 	0 	0 	1 	1 	1 	2 	2 	1 	2 	1 	2 	1 	update clusters centers
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 33 
+vectorcount vpop1 43 
+vectorcount vpop1 24 
+new computed center value center0 : 63, center1: 58, center2 : 31 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 33 
+vectorcount vpop1 43 
+vectorcount vpop1 24 
+new computed center value center0 : 64, center1: 57, center2 : 24 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 33 
+vectorcount vpop1 43 
+vectorcount vpop1 24 
+new computed center value center0 : 73, center1: 14, center2 : 55 
+Assess Quality ClusterVariance of cluster 0 is : 21380, of cluster 1 is : 27963 , of cluster 2 is : 15209 
+Max iterations 20iteration number 8AssignPoints to Clusters:
+Matrix A:
+99 64 40 12 47 41 19 48 15 75 8 0 42 36 66 42 45 66 58 12 99 96 41 97 35 67 89 66 37 49 72 35 97 75 93 51 93 1 21 15 88 62 15 49 93 35 48 33 40 49 89 70 78 6 55 90 5 55 59 58 52 27 36 98 81 45 63 19 66 83 94 43 96 56 44 73 99 75 91 56 6 26 35 17 59 93 48 63 45 53 60 76 78 1 8 86 26 90 2 44 
+54 39 55 40 73 72 61 37 58 83 83 6 56 66 13 7 81 47 22 82 91 87 49 78 35 15 92 43 85 11 29 31 81 71 84 55 44 1 92 66 15 41 99 37 23 50 56 50 69 10 77 31 24 55 93 9 38 32 71 30 67 56 11 16 83 45 58 18 56 4 91 54 87 24 75 98 25 81 76 10 56 29 25 4 43 74 43 59 69 92 83 89 82 38 59 83 4 40 62 65 
+26 50 98 63 16 89 80 99 29 14 90 72 30 29 75 67 86 7 50 10 40 40 69 90 0 62 58 70 5 55 30 0 59 6 76 5 50 37 78 17 4 72 16 84 26 91 24 46 13 96 2 71 42 62 51 50 89 95 80 1 4 16 15 36 47 20 2 49 74 2 51 95 7 34 11 2 78 69 52 92 11 0 55 41 10 87 9 7 62 96 9 10 15 46 29 26 51 40 65 24 
+Vl value is: 100 and avl value is: 100 
+center0= 63 
+center1  58
+center2= 31 
+center0= 64 
+center1  57
+center2= 24 
+center0= 73 
+center1  14
+center2= 55 
+acc fourth datapoint 3277 
+acc fourth datapoint 4806 
+acc fourth datapoint 681 
+acc last datapoint 2763 
+acc last datapoint 360 
+acc last datapoint 2811 
+Assigned clusters are:
+1 	0 	0 	2 	1 	0 	0 	0 	1 	1 	0 	2 	1 	1 	2 	2 	0 	1 	2 	1 	0 	0 	0 	0 	1 	2 	0 	0 	1 	2 	1 	1 	0 	1 	0 	1 	0 	2 	0 	1 	1 	0 	1 	0 	1 	0 	1 	2 	1 	2 	1 	0 	1 	2 	0 	2 	2 	0 	0 	1 	1 	1 	2 	1 	0 	1 	1 	2 	0 	1 	0 	0 	1 	2 	1 	1 	0 	0 	0 	2 	1 	1 	2 	2 	1 	0 	1 	1 	0 	0 	1 	1 	1 	2 	2 	1 	2 	1 	2 	1 	update clusters centers
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 34 
+vectorcount vpop1 43 
+vectorcount vpop1 23 
+new computed center value center0 : 64, center1: 56, center2 : 31 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 34 
+vectorcount vpop1 43 
+vectorcount vpop1 23 
+new computed center value center0 : 65, center1: 57, center2 : 23 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 34 
+vectorcount vpop1 43 
+vectorcount vpop1 23 
+new computed center value center0 : 72, center1: 14, center2 : 56 
+Assess Quality ClusterVariance of cluster 0 is : 22423, of cluster 1 is : 28316 , of cluster 2 is : 14953 
+Max iterations 20iteration number 9AssignPoints to Clusters:
+Matrix A:
+99 64 40 12 47 41 19 48 15 75 8 0 42 36 66 42 45 66 58 12 99 96 41 97 35 67 89 66 37 49 72 35 97 75 93 51 93 1 21 15 88 62 15 49 93 35 48 33 40 49 89 70 78 6 55 90 5 55 59 58 52 27 36 98 81 45 63 19 66 83 94 43 96 56 44 73 99 75 91 56 6 26 35 17 59 93 48 63 45 53 60 76 78 1 8 86 26 90 2 44 
+54 39 55 40 73 72 61 37 58 83 83 6 56 66 13 7 81 47 22 82 91 87 49 78 35 15 92 43 85 11 29 31 81 71 84 55 44 1 92 66 15 41 99 37 23 50 56 50 69 10 77 31 24 55 93 9 38 32 71 30 67 56 11 16 83 45 58 18 56 4 91 54 87 24 75 98 25 81 76 10 56 29 25 4 43 74 43 59 69 92 83 89 82 38 59 83 4 40 62 65 
+26 50 98 63 16 89 80 99 29 14 90 72 30 29 75 67 86 7 50 10 40 40 69 90 0 62 58 70 5 55 30 0 59 6 76 5 50 37 78 17 4 72 16 84 26 91 24 46 13 96 2 71 42 62 51 50 89 95 80 1 4 16 15 36 47 20 2 49 74 2 51 95 7 34 11 2 78 69 52 92 11 0 55 41 10 87 9 7 62 96 9 10 15 46 29 26 51 40 65 24 
+Vl value is: 100 and avl value is: 100 
+center0= 64 
+center1  56
+center2= 31 
+center0= 65 
+center1  57
+center2= 23 
+center0= 72 
+center1  14
+center2= 56 
+acc fourth datapoint 3410 
+acc fourth datapoint 4626 
+acc fourth datapoint 699 
+acc last datapoint 2704 
+acc last datapoint 308 
+acc last datapoint 2957 
+Assigned clusters are:
+1 	0 	0 	2 	1 	0 	0 	0 	1 	1 	0 	2 	1 	1 	2 	2 	0 	1 	2 	1 	0 	0 	0 	0 	1 	2 	0 	0 	1 	2 	1 	1 	0 	1 	0 	1 	0 	2 	0 	1 	1 	0 	1 	0 	1 	0 	1 	2 	1 	2 	1 	0 	1 	2 	0 	2 	2 	0 	0 	1 	1 	1 	2 	1 	0 	1 	1 	2 	0 	1 	0 	0 	1 	2 	1 	1 	0 	0 	0 	2 	1 	1 	2 	2 	1 	0 	1 	1 	0 	0 	1 	1 	1 	2 	1 	1 	2 	1 	2 	1 	update clusters centers
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 34 
+vectorcount vpop1 44 
+vectorcount vpop1 22 
+new computed center value center0 : 64, center1: 55, center2 : 33 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 34 
+vectorcount vpop1 44 
+vectorcount vpop1 22 
+new computed center value center0 : 65, center1: 57, center2 : 21 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 34 
+vectorcount vpop1 44 
+vectorcount vpop1 22 
+new computed center value center0 : 72, center1: 14, center2 : 57 
+Assess Quality ClusterVariance of cluster 0 is : 22423, of cluster 1 is : 30628 , of cluster 2 is : 14336 
+Max iterations 20iteration number 10AssignPoints to Clusters:
+Matrix A:
+99 64 40 12 47 41 19 48 15 75 8 0 42 36 66 42 45 66 58 12 99 96 41 97 35 67 89 66 37 49 72 35 97 75 93 51 93 1 21 15 88 62 15 49 93 35 48 33 40 49 89 70 78 6 55 90 5 55 59 58 52 27 36 98 81 45 63 19 66 83 94 43 96 56 44 73 99 75 91 56 6 26 35 17 59 93 48 63 45 53 60 76 78 1 8 86 26 90 2 44 
+54 39 55 40 73 72 61 37 58 83 83 6 56 66 13 7 81 47 22 82 91 87 49 78 35 15 92 43 85 11 29 31 81 71 84 55 44 1 92 66 15 41 99 37 23 50 56 50 69 10 77 31 24 55 93 9 38 32 71 30 67 56 11 16 83 45 58 18 56 4 91 54 87 24 75 98 25 81 76 10 56 29 25 4 43 74 43 59 69 92 83 89 82 38 59 83 4 40 62 65 
+26 50 98 63 16 89 80 99 29 14 90 72 30 29 75 67 86 7 50 10 40 40 69 90 0 62 58 70 5 55 30 0 59 6 76 5 50 37 78 17 4 72 16 84 26 91 24 46 13 96 2 71 42 62 51 50 89 95 80 1 4 16 15 36 47 20 2 49 74 2 51 95 7 34 11 2 78 69 52 92 11 0 55 41 10 87 9 7 62 96 9 10 15 46 29 26 51 40 65 24 
+Vl value is: 100 and avl value is: 100 
+center0= 64 
+center1  55
+center2= 33 
+center0= 65 
+center1  57
+center2= 21 
+center0= 72 
+center1  14
+center2= 57 
+acc fourth datapoint 3410 
+acc fourth datapoint 4539 
+acc fourth datapoint 838 
+acc last datapoint 2704 
+acc last datapoint 285 
+acc last datapoint 3146 
+Assigned clusters are:
+1 	0 	0 	2 	1 	0 	0 	0 	1 	1 	0 	2 	1 	1 	2 	2 	0 	1 	2 	1 	0 	0 	0 	0 	1 	2 	0 	0 	1 	2 	1 	1 	0 	1 	0 	1 	0 	2 	0 	1 	1 	0 	1 	0 	1 	0 	1 	2 	1 	2 	1 	0 	2 	2 	0 	2 	2 	0 	0 	1 	1 	1 	2 	1 	0 	1 	1 	2 	0 	1 	0 	0 	1 	2 	1 	1 	0 	0 	0 	2 	1 	1 	2 	2 	1 	0 	1 	1 	0 	0 	1 	1 	1 	2 	1 	1 	2 	1 	2 	1 	update clusters centers
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 34 
+vectorcount vpop1 43 
+vectorcount vpop1 23 
+new computed center value center0 : 64, center1: 55, center2 : 34 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 34 
+vectorcount vpop1 43 
+vectorcount vpop1 23 
+new computed center value center0 : 65, center1: 58, center2 : 21 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 34 
+vectorcount vpop1 43 
+vectorcount vpop1 23 
+new computed center value center0 : 72, center1: 13, center2 : 57 
+Assess Quality ClusterVariance of cluster 0 is : 22423, of cluster 1 is : 30099 , of cluster 2 is : 16294 
+Max iterations 20iteration number 11AssignPoints to Clusters:
+Matrix A:
+99 64 40 12 47 41 19 48 15 75 8 0 42 36 66 42 45 66 58 12 99 96 41 97 35 67 89 66 37 49 72 35 97 75 93 51 93 1 21 15 88 62 15 49 93 35 48 33 40 49 89 70 78 6 55 90 5 55 59 58 52 27 36 98 81 45 63 19 66 83 94 43 96 56 44 73 99 75 91 56 6 26 35 17 59 93 48 63 45 53 60 76 78 1 8 86 26 90 2 44 
+54 39 55 40 73 72 61 37 58 83 83 6 56 66 13 7 81 47 22 82 91 87 49 78 35 15 92 43 85 11 29 31 81 71 84 55 44 1 92 66 15 41 99 37 23 50 56 50 69 10 77 31 24 55 93 9 38 32 71 30 67 56 11 16 83 45 58 18 56 4 91 54 87 24 75 98 25 81 76 10 56 29 25 4 43 74 43 59 69 92 83 89 82 38 59 83 4 40 62 65 
+26 50 98 63 16 89 80 99 29 14 90 72 30 29 75 67 86 7 50 10 40 40 69 90 0 62 58 70 5 55 30 0 59 6 76 5 50 37 78 17 4 72 16 84 26 91 24 46 13 96 2 71 42 62 51 50 89 95 80 1 4 16 15 36 47 20 2 49 74 2 51 95 7 34 11 2 78 69 52 92 11 0 55 41 10 87 9 7 62 96 9 10 15 46 29 26 51 40 65 24 
+Vl value is: 100 and avl value is: 100 
+center0= 64 
+center1  55
+center2= 34 
+center0= 65 
+center1  58
+center2= 21 
+center0= 72 
+center1  13
+center2= 57 
+acc fourth datapoint 3410 
+acc fourth datapoint 4673 
+acc fourth datapoint 881 
+acc last datapoint 2704 
+acc last datapoint 291 
+acc last datapoint 3125 
+Assigned clusters are:
+1 	0 	0 	2 	1 	0 	0 	0 	1 	1 	0 	2 	1 	1 	2 	2 	0 	1 	2 	1 	0 	0 	0 	0 	1 	2 	0 	0 	1 	2 	1 	1 	0 	1 	0 	1 	0 	2 	0 	1 	1 	0 	1 	0 	1 	0 	1 	2 	1 	2 	1 	0 	2 	2 	0 	2 	2 	0 	0 	1 	1 	1 	2 	1 	0 	1 	1 	2 	0 	1 	0 	0 	1 	2 	1 	1 	0 	0 	0 	2 	1 	1 	2 	2 	1 	0 	1 	1 	0 	0 	1 	1 	1 	2 	1 	1 	2 	1 	2 	1 	update clusters centers
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 34 
+vectorcount vpop1 43 
+vectorcount vpop1 23 
+new computed center value center0 : 64, center1: 55, center2 : 34 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 34 
+vectorcount vpop1 43 
+vectorcount vpop1 23 
+new computed center value center0 : 65, center1: 58, center2 : 21 
+Vl value is: 100 and avl value is: 100 
+vectorcount vpop0 34 
+vectorcount vpop1 43 
+vectorcount vpop1 23 
+new computed center value center0 : 72, center1: 13, center2 : 57 
+Assess Quality ClusterVariance of cluster 0 is : 22423, of cluster 1 is : 30099 , of cluster 2 is : 16294 
+KMEANS succeededK-Means result: 0
