@@ -9,7 +9,7 @@
 
 
 
-void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64_t *clusters) {
+void assignPointsToClusters(const int64_t *points,  int64_t *centers, int64_t *clusters) {
     for (int i = 0; i < NUM_POINTS; i++) {
         double minDist = DBL_MAX;
         for (int c = 0; c < NUM_CLUSTERS; c++) {
