@@ -107,7 +107,11 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         asm volatile("vmslt.vv v0, v12, v4");    //mask vector set if elements in v12 are smaller than v4
         asm volatile("vmerge.vim v16,v16,2,v0");//set cluster number to 2 if mask is set
         //store resuls back
-        asm volatile("vse64.v   v16, (%0)"::"r"(clusters_));  
+        asm volatile("vse64.v   v16, (%0)"::"r"(clusters_));
+
+        //fetch next group
+        points_+=vl;
+        clusters_+=vl;  
     }
 
 
@@ -117,9 +121,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
            printf("%ld \t", clusters_[i]);
            
        }
-        //fetch next group
-        points_+=vl;
-        //clusters_+=vl;
+        
         
     }
 
