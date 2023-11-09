@@ -8,15 +8,18 @@
 
 
 
+
 void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64_t *clusters) {
     for (int i = 0; i < NUM_POINTS; i++) {
         double minDist = DBL_MAX;
         for (int c = 0; c < NUM_CLUSTERS; c++) {
             double sum = 0;
             for (int j = 0; j < SIZE_DATAPOINT; j++) {
-                sum += pow(points[i * SIZE_DATAPOINT + j] - centers[c * SIZE_DATAPOINT + j], 2);
+                // Access the j-th coordinate of the i-th point
+                double diff = (double)points[j * NUM_POINTS + i] - (double)centers[ j * NUM_CLUSTERS + c];
+                sum += diff * diff;
             }
-            double dist = sqrt(sum);
+            double dist = sum;
             if (dist < minDist) {
                 minDist = dist;
                 clusters[i] = c;
@@ -27,45 +30,49 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 
 
 void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters) {
-    double sum[NUM_CLUSTERS][SIZE_DATAPOINT];
-    double numbersInCluster[NUM_CLUSTERS];
+    double sum[NUM_CLUSTERS][SIZE_DATAPOINT] = {0};
+    int numbersInCluster[NUM_CLUSTERS] = {0};
 
+    // Reset sums and counters
     for (int i = 0; i < NUM_CLUSTERS; i++) {
         for (int d = 0; d < SIZE_DATAPOINT; d++) {
-            sum[i][d] = 0;
+            sum[i][d] = 0.0;
         }
         numbersInCluster[i] = 0;
     }
 
+    // Accumulate sum of points for each cluster and count numbers in each cluster
     for (int j = 0; j < NUM_POINTS; j++) {
         int cluster = clusters[j];
         if (cluster >= 0 && cluster < NUM_CLUSTERS) {
             for (int d = 0; d < SIZE_DATAPOINT; d++) {
-                // Assuming your points are represented as a 2D array,
-                // you would access elements like this:
-                sum[cluster][d] += points[j * SIZE_DATAPOINT + d];
+                // Corrected indexing for accessing j-th point's d-th dimension
+                sum[cluster][d] += (double)points[d * NUM_POINTS + j];
             }
             numbersInCluster[cluster]++;
         }
     }
 
+    // Calculate new cluster centers
     for (int i = 0; i < NUM_CLUSTERS; i++) {
         if (numbersInCluster[i] > 0) {
             for (int d = 0; d < SIZE_DATAPOINT; d++) {
-                centers[i * SIZE_DATAPOINT + d] = sum[i][d] / numbersInCluster[i];
+                // Cast to int64_t if necessary, or consider changing the type of centers to double
+                centers[ d * NUM_CLUSTERS + i] = (int64_t)(sum[i][d] / numbersInCluster[i]);
             }
         }
     }
 }
 
 
-void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clusters) {
-    int64_t totalVariation = 0.0;
-    int64_t clusterVariance=0.0;
+
+void assessQualityCluster(const int64_t *points, const int64_t *centers, int64_t *clusters) {
+    double totalVariation = 0.0;
+    double clusterVariance = 0.0;
 
     // For each cluster
     for (int clusterIndex = 0; clusterIndex < NUM_CLUSTERS; clusterIndex++) {
-        int64_t sumOfSquaredDistances = 0.0;
+        double sumOfSquaredDistances = 0.0;
         int64_t numPointsInCluster = 0;
 
         // For each data point
@@ -73,26 +80,28 @@ void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clus
             // Check if the data point belongs to the current cluster
             if (clusters[dataIndex] == clusterIndex) {
                 // Calculate the squared distance between the data point and the cluster center
-                int64_t squaredDistance = 0.0;
+                double squaredDistance = 0.0;
                 for (int dimension = 0; dimension < SIZE_DATAPOINT; dimension++) {
-                    int64_t diff = points[dataIndex * SIZE_DATAPOINT + dimension] - centers[clusterIndex * SIZE_DATAPOINT + dimension];
-                    squaredDistance += diff * diff;
+                    // Adjust indexing to match the row-wise layout of points
+                    int64_t diff = points[dimension * NUM_POINTS + dataIndex] - centers[dimension * NUM_CLUSTERS + clusterIndex];
+                    squaredDistance += (double)diff * diff;
                 }
                 sumOfSquaredDistances += squaredDistance;
                 numPointsInCluster++;
             }
         }
 
+        // Calculate the variance for the current cluster and add it to the total variation
         if (numPointsInCluster > 0) {
-            // Calculate the average squared distance (variance) within the cluster
             clusterVariance = sumOfSquaredDistances / numPointsInCluster;
             totalVariation += clusterVariance;
-            printf("Cluster %d Variance: %ld\n", clusterIndex, clusterVariance);
+            printf("Cluster %d Variance: %f\n", clusterIndex, clusterVariance);
         }
     }
 
-    printf("Total Variation: %ld\n", totalVariation);
+    printf("Total Variation: %f\n", totalVariation);
 }
+
 
 
 void custom_memcpy(int64_t*dest, int64_t *src, size_t size) {

@@ -44,23 +44,25 @@ M = 100
 N = 3
 P = 3
 
-
 dtype = np.int64
 
-UPPER_LIMIT = 200
+UPPER_LIMIT = 100
 LOWER_LIMIT = 0
 
+np.random.seed(42)
 # Matrices and results
 # Generate random data points
-A = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(M, N)).astype(dtype)
+A = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(N, M)).astype(dtype)    ##rows contain the features and each column is a datapoint
 
-# Randomly select P rows from A to initialize K
-selected_rows = np.random.choice(M, P, replace=False)
-K = A[selected_rows]
+np.random.seed(None)
+# Randomly select P columns from A to initialize K. slected_columns will contain the indices
+selected_columns = np.random.choice(M, P, replace=False)
+K = A[:, selected_columns]
 
 
-C = np.zeros([M, 1], dtype=dtype) # contains the assigned cluster to each data point
-B= np.zeros([M,1],dtype=dtype) ##set empty array to copy last clusters values
+
+C = np.zeros([1,M], dtype=dtype) # contains the assigned cluster to each data point
+B= np.zeros([1,M],dtype=dtype) ##set empty array to copy last clusters values
 # Golden result matrix
 #G = np.matmul(A, B).astype(dtype)
 
@@ -73,14 +75,3 @@ emit("a", A, 'NR_LANES*4')
 emit("k", K, 'NR_LANES*4')
 emit("c", C, 'NR_LANES*4')
 emit("b", B, 'NR_LANES*4')
-
-# # Create the file
-# print(".section .data,\"aw\",@progbits")
-# emit("M", np.array(M, dtype=np.uint64))
-# emit("N", np.array(N, dtype=np.uint64))
-# emit("P", np.array(P, dtype=np.uint64))
-# emit("a", A, 'NR_LANES*4')
-# emit("b", B, 'NR_LANES*4')
-# emit("c", C, 'NR_LANES*4')
-# emit("g", G, 'NR_LANES*4')
-
