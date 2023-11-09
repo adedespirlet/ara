@@ -86,17 +86,17 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 
             points_+=NUM_POINTS;
         }
-        // asm volatile("vse64.v   v4, (%0)"::"r"(acc_vctor0));  
-        // asm volatile("vse64.v   v8, (%0)"::"r"(acc_vctor1)); 
-        // asm volatile("vse64.v   v12, (%0)"::"r"(acc_vctor2)); 
+        asm volatile("vse64.v   v4, (%0)"::"r"(acc_vctor0));  
+        asm volatile("vse64.v   v8, (%0)"::"r"(acc_vctor1)); 
+        asm volatile("vse64.v   v12, (%0)"::"r"(acc_vctor2)); 
 
-        // printf("acc fourth datapoint %ld \n", acc_vctor0[3]);
-        // printf("acc fourth datapoint %ld \n", acc_vctor1[3]);
-        // printf("acc fourth datapoint %ld \n", acc_vctor2[3]);
+        printf("acc fourth datapoint %ld \n", acc_vctor0[3]);
+        printf("acc fourth datapoint %ld \n", acc_vctor1[3]);
+        printf("acc fourth datapoint %ld \n", acc_vctor2[3]);
 
-        // printf("acc last datapoint %ld \n", acc_vctor0[99]);
-        // printf("acc last datapoint %ld \n", acc_vctor1[99]);
-        // printf("acc last datapoint %ld \n", acc_vctor2[99]);
+        printf("acc last datapoint %ld \n", acc_vctor0[99]);
+        printf("acc last datapoint %ld \n", acc_vctor1[99]);
+        printf("acc last datapoint %ld \n", acc_vctor2[99]);
             
         
         //check to which cluster the data points is closest and assign cluster number accordingly
@@ -119,7 +119,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
        }
         //fetch next group
         points_+=vl;
-        clusters_+=vl;
+        //clusters_+=vl;
         
     }
 
