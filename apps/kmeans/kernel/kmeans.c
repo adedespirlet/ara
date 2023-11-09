@@ -311,6 +311,7 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 	int iterations = 0;
     int max_iteration=5;
     
+    printf("MAIN\n");
     size_t clusters_sz = NUM_POINTS * sizeof(int64_t);
 	
 	while (1)
@@ -323,9 +324,23 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
         custom_memcpy(clusters_last, clusters, clusters_sz);
 
 
+
 		assignPointsToClusters(points, centers,clusters);
 		updateClusterCenters(points, centers,clusters);
         assessQualityCluster(points,centers,clusters);
+
+        printf("current clusters:\n");
+        for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+            
+           printf("%ld \t", clusters_[i]);
+           
+       }
+        printf("copied clusters:\n");
+       for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+            
+           printf("%ld \t", clusters_last[i]);
+           
+       }
 
 		/*
 		 * if all the cluster numbers are unchanged since last time,
