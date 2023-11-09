@@ -329,18 +329,18 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 		updateClusterCenters(points, centers,clusters);
         assessQualityCluster(points,centers,clusters);
 
-        printf("current clusters:\n");
-        for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+    //     printf("current clusters:\n");
+    //     for (uint64_t i = 0; i < NUM_POINTS; ++i) {
             
-           printf("%ld \t", clusters[i]);
+    //        printf("%ld \t", clusters[i]);
            
-       }
-        printf("copied clusters:\n");
-       for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+    //    }
+    //     printf("copied clusters:\n");
+    //    for (uint64_t i = 0; i < NUM_POINTS; ++i) {
             
-           printf("%ld \t", clusters_last[i]);
+    //        printf("%ld \t", clusters_last[i]);
            
-       }
+    //    }
 
 		/*
 		 * if all the cluster numbers are unchanged since last time,
