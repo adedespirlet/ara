@@ -320,12 +320,6 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 
 		assignPointsToClusters(points, centers,clusters);
 
-        // printf("Assigned clusters are:\n");
-        // for (uint64_t i = 0; i < NUM_POINTS; ++i) {
-                
-        //     printf("%ld \t", clusters[i]);
-            
-        // }
 		updateClusterCenters(points, centers,clusters);
         assessQualityCluster(points,centers,clusters);
 
