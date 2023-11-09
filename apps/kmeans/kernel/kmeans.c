@@ -60,7 +60,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             //LOAD first coordinate
             asm volatile("vle64.v v20,  (%0)" ::"r"(points_ )); //load datapoints to v20
             asm volatile("vmv.v.v v24, v20");
-            asm volatile("vmvv.v.v v28, v20");
+            asm volatile("vmv.v.v v28, v20");
 
 
             //Subtract the scalar value from all elements of the vector
