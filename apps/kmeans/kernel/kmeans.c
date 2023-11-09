@@ -290,8 +290,8 @@ void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clus
 }
 
 void custom_memcpy(int64_t*dest, int64_t *src, size_t size){
-    char *d = (char *)dest;
-    const char *s = (const char *)src;
+    int64_t *d = (int64_t *)dest;
+    const int64_t *s = (const int64_t *)src;
     for (size_t i = 0; i < size; i++) {
         d[i] = s[i];
     }
