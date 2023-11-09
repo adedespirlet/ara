@@ -67,12 +67,12 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
 
 void assessQualityCluster(const int64_t *points,  int64_t *centers, int64_t *clusters) {
-    double totalVariation = 0.0;
-    double clusterVariance = 0.0;
+    int64_t totalVariation = 0;
+    int64_t clusterVariance = 0;
 
     // For each cluster
     for (int clusterIndex = 0; clusterIndex < NUM_CLUSTERS; clusterIndex++) {
-        double sumOfSquaredDistances = 0.0;
+        int64_t sumOfSquaredDistances = 0.0;
         int64_t numPointsInCluster = 0;
 
         // For each data point
@@ -80,11 +80,11 @@ void assessQualityCluster(const int64_t *points,  int64_t *centers, int64_t *clu
             // Check if the data point belongs to the current cluster
             if (clusters[dataIndex] == clusterIndex) {
                 // Calculate the squared distance between the data point and the cluster center
-                double squaredDistance = 0.0;
+                int64_t squaredDistance = 0;
                 for (int dimension = 0; dimension < SIZE_DATAPOINT; dimension++) {
                     // Adjust indexing to match the row-wise layout of points
                     int64_t diff = points[dimension * NUM_POINTS + dataIndex] - centers[dimension * NUM_CLUSTERS + clusterIndex];
-                    squaredDistance += (double)diff * diff;
+                    squaredDistance += diff * diff;
                 }
                 sumOfSquaredDistances += squaredDistance;
                 numPointsInCluster++;
@@ -95,11 +95,11 @@ void assessQualityCluster(const int64_t *points,  int64_t *centers, int64_t *clu
         if (numPointsInCluster > 0) {
             clusterVariance = sumOfSquaredDistances / numPointsInCluster;
             totalVariation += clusterVariance;
-            printf("Cluster %d Variance: %f\n", clusterIndex, clusterVariance);
+            printf("Cluster %d Variance: %lf\n", clusterIndex, clusterVariance);
         }
     }
 
-    printf("Total Variation: %f\n", totalVariation);
+    printf("Total Variation: %lf\n", totalVariation);
 }
 
 
