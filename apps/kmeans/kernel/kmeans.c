@@ -42,8 +42,10 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         //asm volatile("vmv.v.i v16, 0");
         
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
-        int64_t acc_vctor[100]={0};
-        int64_t load_vctor[100]={0};
+        int64_t acc_vctor0[100]={0};
+
+        int64_t acc_vctor1[100]={0};
+        int64_t acc_vctor2[100]={0};
             //////////////// REPEATING THIS FOR EACH CLUSTER CENTER POINT //////////////// n*0
         for (unsigned int i=0;i<SIZE_DATAPOINT; i++){
            //we dont know what the size datapoint is so we load it repeatedly but if knows this could be done in advance before the stripming
@@ -84,6 +86,13 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
 
             points_+=NUM_POINTS;
         }
+        asm volatile("vse64.v   v4, (%0)"::"r"(acc_vctor0));  
+        asm volatile("vse64.v   v8, (%0)"::"r"(acc_vctor1)); 
+        asm volatile("vse64.v   v12, (%0)"::"r"(acc_vctor2)); 
+        printf("acc last datapoint%ld \n", acc_vctor0[99]);
+        printf("acc last datapoint%ld \n", acc_vctor1[99]);
+        printf("acc last datapoint%ld \n", acc_vctor2[99]);
+            
         
         //check to which cluster the data points is closest and assign cluster number accordingly
         asm volatile("vmslt.vv v0, v8, v4");    //mask vector set if elements in v8 are smaller than v4
