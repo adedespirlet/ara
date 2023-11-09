@@ -100,13 +100,18 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             
         
         //check to which cluster the data points is closest and assign cluster number accordingly
+
         asm volatile("vmslt.vv v0, v8, v4");    //mask vector set if elements in v8 are smaller than v4
+
         asm volatile("vmerge.vim v16,v16,1,v0");//set cluster number to 1 if mask is set
-        asm volatile("vmerge.vvm v4, v8, v4, v0") ;//replace elements in v4 by v8 if mask is set
+
+        asm volatile("vmerge.vvm v4, v4, v8, v0") ;//replace elements in v4 by v8 if mask is set
         asm volatile("vmslt.vv v0, v12, v4");    //mask vector set if elements in v12 are smaller than v4
         asm volatile("vmerge.vim v16,v16,2,v0");//set cluster number to 2 if mask is set
         //store resuls back
         asm volatile("vse64.v   v16, (%0)"::"r"(clusters_));  
+    }
+
 
        printf("Assigned clusters are:\n");
        for (uint64_t i = 0; i < NUM_POINTS; ++i) {
