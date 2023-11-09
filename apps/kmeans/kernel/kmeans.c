@@ -29,7 +29,6 @@ void assignPointsToClusters(const int64_t *points,  const int64_t *centers, int6
 }
 
 
-
 void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters) {
     int64_t sum[NUM_CLUSTERS][SIZE_DATAPOINT] = {0};
     int numbersInCluster[NUM_CLUSTERS] = {0};
@@ -131,10 +130,12 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 	
 	while (1)
 	{
+        printf("Iteration number : %d",iterations);
 		/* Store the previous state of the clustering */
 	    custom_memcpy(clusters_last, clusters, clusters_sz);
 
 		assignPointsToClusters(points, centers,clusters);
+
 		printf("Matrix C:\n");
 		for (uint64_t i = 0; i < NUM_POINTS; ++i) {
         		printf("%ld ", clusters[i]);
