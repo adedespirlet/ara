@@ -53,9 +53,9 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             int64_t centers1_ = *((int64_t *)centers +i*NUM_CLUSTERS+1);
             int64_t centers2_ = *((int64_t *)centers +i*NUM_CLUSTERS+2);
 
-            printf("center0= %ld \n", centers0_);
-            printf("center1  %ld\n",centers1_);
-            printf("center2= %ld \n", centers2_);
+            // printf("center0= %ld \n", centers0_);
+            // printf("center1  %ld\n",centers1_);
+            // printf("center2= %ld \n", centers2_);
 
             //LOAD first coordinate
             asm volatile("vle64.v v20,  (%0)" ::"r"(points_ )); //load datapoints to v20
@@ -90,13 +90,13 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         asm volatile("vse64.v   v8, (%0)"::"r"(acc_vctor1)); 
         asm volatile("vse64.v   v12, (%0)"::"r"(acc_vctor2)); 
 
-        printf("acc fourth datapoint %ld \n", acc_vctor0[3]);
-        printf("acc fourth datapoint %ld \n", acc_vctor1[3]);
-        printf("acc fourth datapoint %ld \n", acc_vctor2[3]);
+        // printf("acc fourth datapoint %ld \n", acc_vctor0[3]);
+        // printf("acc fourth datapoint %ld \n", acc_vctor1[3]);
+        // printf("acc fourth datapoint %ld \n", acc_vctor2[3]);
 
-        printf("acc last datapoint %ld \n", acc_vctor0[99]);
-        printf("acc last datapoint %ld \n", acc_vctor1[99]);
-        printf("acc last datapoint %ld \n", acc_vctor2[99]);
+        // printf("acc last datapoint %ld \n", acc_vctor0[99]);
+        // printf("acc last datapoint %ld \n", acc_vctor1[99]);
+        // printf("acc last datapoint %ld \n", acc_vctor2[99]);
             
         
         //check to which cluster the data points is closest and assign cluster number accordingly
@@ -112,12 +112,9 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         //fetch next group
         points_+=vl;
         clusters_+=vl;  
-    }
-
-
+    }     
         
-        
-    }
+}
 
 
 
@@ -161,7 +158,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             asm volatile("vmseq.vi v0, v4, 0");  //set mask if elements in v4 (cluster) is equal to 0
             asm volatile ("vcpop.m %0, v0" :"=r"(vectorCount));
             asm volatile("vredsum.vs v20, v8, v20, v0.t"); //accumulate in v20
-            printf("vectorcount vpop0 %ld \n", vectorCount);
+            //printf("vectorcount vpop0 %ld \n", vectorCount);
             vectorCount0+=vectorCount;
            // asm volatile("vse64.v   v0, (%0)"::"r"(mask));  
            // printf("cluster 0 mask %lx,%lx\n", mask[0],mask[1]);
@@ -172,13 +169,13 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             asm volatile ("vcpop.m %0, v0" :"=r"(vectorCount));
             vectorCount1+=vectorCount;
             asm volatile("vredsum.vs v16, v8, v16, v0.t"); //accumulate in v16
-            printf("vectorcount vpop1 %ld \n", vectorCount);
+            //printf("vectorcount vpop1 %ld \n", vectorCount);
             
             //group2
             asm volatile("vmseq.vi v0,v4,2");  //vmseq(vd vs imm vm)
             asm volatile ("vcpop.m %0, v0" :"=r"(vectorCount));
             asm volatile("vredsum.vs v12, v8, v12, v0.t"); //accumulate in v12
-            printf("vectorcount vpop1 %ld \n", vectorCount);
+           // printf("vectorcount vpop1 %ld \n", vectorCount);
             vectorCount2+=vectorCount;
             points_+=vl;
     
@@ -323,12 +320,12 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 
 		assignPointsToClusters(points, centers,clusters);
 
-        printf("Assigned clusters are:\n");
-        for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+        // printf("Assigned clusters are:\n");
+        // for (uint64_t i = 0; i < NUM_POINTS; ++i) {
                 
-            printf("%ld \t", clusters[i]);
+        //     printf("%ld \t", clusters[i]);
             
-        }
+        // }
 		updateClusterCenters(points, centers,clusters);
         assessQualityCluster(points,centers,clusters);
 

@@ -50,10 +50,12 @@ dtype = np.int64
 UPPER_LIMIT = 100
 LOWER_LIMIT = 0
 
+np.random.seed(42)
 # Matrices and results
 # Generate random data points
 A = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(N, M)).astype(dtype)    ##rows contain the features and each column is a datapoint
 
+np.random.seed(None)
 # Randomly select P columns from A to initialize K. slected_columns will contain the indices
 selected_columns = np.random.choice(M, P, replace=False)
 K = A[:, selected_columns]
