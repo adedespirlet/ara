@@ -77,18 +77,18 @@ int main() {
     for (uint64_t i = 0; i < M; ++i) {
         
         printf("%ld ", c[i]);
-        printf("\n");
+        printf("\t");
     }
     
     kmeans_result result;
 
     // Matrices are initialized --> Start calculating
     printf("Calculating kmeans...\n");
-    start_timer();
+    //start_timer();
     //imatmul(c, a, b, s, s, s);
     result= kmeans(a, k, c,b) ;
     printf("K-Means result: %d\n", result);
-    stop_timer();
+    //stop_timer();
 
   //   // Metrics
   //   int64_t runtime = get_timer();

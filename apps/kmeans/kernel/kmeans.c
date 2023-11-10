@@ -126,6 +126,7 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 	int iterations = 0;
 	int max_iter=5;
     size_t clusters_sz = NUM_POINTS * sizeof(int64_t);
+    printf("entered kmeans function\n");
 
 	
 	while (1)
