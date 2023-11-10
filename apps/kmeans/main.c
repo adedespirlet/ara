@@ -37,13 +37,13 @@ extern int64_t b[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
 // }
 
 int main() {
-  printf("\n");
-  printf("=============\n");
-  printf("=  KMEANS  =\n");
-  printf("=============\n");
-  printf("\n");
-  printf("\n");
-
+    printf("\n");
+    printf("=============\n");
+    printf("=  KMEANS  =\n");
+    printf("=============\n");
+    printf("\n");
+    printf("\n");
+    int64_t runtime_s, runtime_v;   
 
     printf("Matrix k:\n");
     for (uint64_t i = 0; i < 3; ++i) {
@@ -71,35 +71,15 @@ int main() {
 
     // Matrices are initialized --> Start calculating
     printf("Calculating kmeans...\n");
-    //start_timer();
+    start_timer();
     //imatmul(c, a, b, s, s, s);
     result= kmeans(a, k, c,b) ;
     printf("K-Means result: %d\n", result);
-    //stop_timer();
+    stop_timer();
 
-  //   // Metrics
-  //   int64_t runtime = get_timer();
-  //   float performance = 2.0 * s * s * s / runtime;
-  //   float utilization = 100 * performance / (2.0 * NR_LANES);
-
-  //   printf("The execution took %d cycles.\n", runtime);
-  //   printf("The performance is %f OP/cycle (%f%% utilization).\n", performance,
-  //          utilization);
-
-  //   // Verify the result only for s == M (to keep it simple)
-  //   if (s == M) {
-  //     // Verify the result
-  //     printf("Verifying result...\n");
-  //     int error = verify_matrix(c, g, s, s);
-  //     if (error != 0) {
-  //       printf("Error code %d\n", error);
-  //       printf("c[%d]=%d\n", error, c[error]);
-  //       return error;
-  //     } else {
-  //       printf("Passed.\n");
-  //     }
-  //   }
-  // }
+    runtime_s = get_timer();
+    printf("Scalar runtime: %ld\n", runtime_s);
+ 
 
   return 0;
 }
