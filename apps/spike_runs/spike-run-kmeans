@@ -5,9 +5,9 @@
 
 
 Matrix k:
-20 1 52 
-40 58 50 
-1 38 92 
+32 38 15 
+22 13 0 
+18 15 16 
 Matrix c:
 0 
 0 
@@ -113,58 +113,198 @@ Calculating kmeans...
 MAIN
 Max iterations 20iteration number 0AssignPoints to Clusters:
 Matrix A:
-51 92 14 71 60 20 82 86 74 74 87 99 23 2 21 52 1 87 29 37 1 63 59 20 32 75 57 21 88 48 90 58 41 91 59 79 14 61 61 46 61 50 54 63 2 50 6 20 72 38 17 3 88 59 13 8 89 52 1 83 91 59 70 43 7 46 34 77 80 35 49 3 1 5 53 3 53 92 62 17 89 43 33 73 61 99 13 94 47 14 71 77 86 61 39 84 79 81 52 23 
-25 88 59 40 28 14 44 64 88 70 8 87 0 7 87 62 10 80 7 34 34 32 4 40 27 6 72 71 11 33 32 47 22 61 87 36 98 43 85 90 34 64 98 46 77 2 0 4 89 13 26 8 78 14 89 41 76 50 62 95 51 95 3 93 22 14 42 28 35 12 31 70 58 85 27 65 41 44 61 56 5 27 27 43 83 29 61 74 91 88 61 96 0 26 61 76 2 69 71 26 
-8 61 36 96 50 43 23 78 58 31 95 87 51 61 57 51 11 38 1 2 55 80 58 1 1 91 53 86 95 96 0 18 1 52 43 89 31 69 31 67 54 74 55 16 37 23 68 97 69 85 10 15 96 72 58 69 79 92 2 19 58 35 18 89 66 18 19 95 70 51 32 39 38 81 0 10 91 56 88 49 22 30 93 41 98 6 15 89 59 1 0 47 11 68 36 31 8 98 18 47 
+38 28 14 42 7 20 38 18 22 10 10 23 35 39 23 2 21 1 23 43 29 37 1 20 32 11 21 43 24 48 26 41 27 15 14 46 43 2 36 6 20 8 38 17 3 24 13 49 8 25 1 19 27 46 6 43 7 46 34 13 16 35 49 39 3 1 5 41 3 28 17 25 43 33 9 35 13 30 47 14 7 13 22 39 20 15 44 17 46 23 25 24 44 40 28 14 44 0 24 6 
+8 23 0 43 7 23 10 16 7 34 34 32 4 41 38 40 27 6 8 7 11 33 32 47 22 23 36 34 43 39 21 26 34 0 34 36 46 13 2 0 4 25 13 38 26 8 14 14 25 41 12 31 38 48 31 3 29 36 22 38 44 14 42 28 35 12 31 6 21 27 1 41 44 5 27 27 43 43 19 29 10 27 24 38 32 0 26 12 40 2 38 5 7 26 8 36 32 41 43 23 
+14 31 31 23 40 48 48 11 38 1 2 48 36 48 16 48 1 1 27 22 36 31 32 0 18 1 43 25 31 5 31 3 10 16 37 23 4 33 5 21 10 47 15 32 8 5 15 28 2 19 35 18 25 2 18 19 31 6 40 32 39 38 17 39 0 10 27 24 49 22 30 29 41 34 6 15 25 47 48 1 0 47 11 4 36 31 8 40 34 18 47 15 2 19 23 32 23 10 48 7 
 Vl value is: 100 and avl value is: 100 
 update clusters centers
 Vl value is: 100 and avl value is: 100 
-new computed center value center0 : 49, center1: 16, center2 : 66 
+new computed center value center0 : 25, center1: 39, center2 : 12 
 Vl value is: 100 and avl value is: 100 
-new computed center value center0 : 31, center1: 54, center2 : 53 
+new computed center value center0 : 32, center1: 8, center2 : 8 
 Vl value is: 100 and avl value is: 100 
-new computed center value center0 : 11, center1: 46, center2 : 71 
-Assess Quality ClusterVariance of cluster 0 is : 22512, of cluster 1 is : 6115 , of cluster 2 is : 18668 
+new computed center value center0 : 24, center1: 19, center2 : 21 
+Assess Quality ClusterVariance of cluster 0 is : 12723, of cluster 1 is : 370 , of cluster 2 is : 1514 
 Max iterations 20iteration number 1AssignPoints to Clusters:
 Matrix A:
-51 92 14 71 60 20 82 86 74 74 87 99 23 2 21 52 1 87 29 37 1 63 59 20 32 75 57 21 88 48 90 58 41 91 59 79 14 61 61 46 61 50 54 63 2 50 6 20 72 38 17 3 88 59 13 8 89 52 1 83 91 59 70 43 7 46 34 77 80 35 49 3 1 5 53 3 53 92 62 17 89 43 33 73 61 99 13 94 47 14 71 77 86 61 39 84 79 81 52 23 
-25 88 59 40 28 14 44 64 88 70 8 87 0 7 87 62 10 80 7 34 34 32 4 40 27 6 72 71 11 33 32 47 22 61 87 36 98 43 85 90 34 64 98 46 77 2 0 4 89 13 26 8 78 14 89 41 76 50 62 95 51 95 3 93 22 14 42 28 35 12 31 70 58 85 27 65 41 44 61 56 5 27 27 43 83 29 61 74 91 88 61 96 0 26 61 76 2 69 71 26 
-8 61 36 96 50 43 23 78 58 31 95 87 51 61 57 51 11 38 1 2 55 80 58 1 1 91 53 86 95 96 0 18 1 52 43 89 31 69 31 67 54 74 55 16 37 23 68 97 69 85 10 15 96 72 58 69 79 92 2 19 58 35 18 89 66 18 19 95 70 51 32 39 38 81 0 10 91 56 88 49 22 30 93 41 98 6 15 89 59 1 0 47 11 68 36 31 8 98 18 47 
+38 28 14 42 7 20 38 18 22 10 10 23 35 39 23 2 21 1 23 43 29 37 1 20 32 11 21 43 24 48 26 41 27 15 14 46 43 2 36 6 20 8 38 17 3 24 13 49 8 25 1 19 27 46 6 43 7 46 34 13 16 35 49 39 3 1 5 41 3 28 17 25 43 33 9 35 13 30 47 14 7 13 22 39 20 15 44 17 46 23 25 24 44 40 28 14 44 0 24 6 
+8 23 0 43 7 23 10 16 7 34 34 32 4 41 38 40 27 6 8 7 11 33 32 47 22 23 36 34 43 39 21 26 34 0 34 36 46 13 2 0 4 25 13 38 26 8 14 14 25 41 12 31 38 48 31 3 29 36 22 38 44 14 42 28 35 12 31 6 21 27 1 41 44 5 27 27 43 43 19 29 10 27 24 38 32 0 26 12 40 2 38 5 7 26 8 36 32 41 43 23 
+14 31 31 23 40 48 48 11 38 1 2 48 36 48 16 48 1 1 27 22 36 31 32 0 18 1 43 25 31 5 31 3 10 16 37 23 4 33 5 21 10 47 15 32 8 5 15 28 2 19 35 18 25 2 18 19 31 6 40 32 39 38 17 39 0 10 27 24 49 22 30 29 41 34 6 15 25 47 48 1 0 47 11 4 36 31 8 40 34 18 47 15 2 19 23 32 23 10 48 7 
 Vl value is: 100 and avl value is: 100 
 update clusters centers
 Vl value is: 100 and avl value is: 100 
-new computed center value center0 : 51, center1: 13, center2 : 69 
+new computed center value center0 : 25, center1: 38, center2 : 11 
 Vl value is: 100 and avl value is: 100 
-new computed center value center0 : 26, center1: 49, center2 : 57 
+new computed center value center0 : 34, center1: 10, center2 : 10 
 Vl value is: 100 and avl value is: 100 
-new computed center value center0 : 12, center1: 47, center2 : 68 
-Assess Quality ClusterVariance of cluster 0 is : 17643, of cluster 1 is : 2653 , of cluster 2 is : 13476 
+new computed center value center0 : 25, center1: 23, center2 : 19 
+Assess Quality ClusterVariance of cluster 0 is : 10908, of cluster 1 is : 570 , of cluster 2 is : 1598 
 Max iterations 20iteration number 2AssignPoints to Clusters:
 Matrix A:
-51 92 14 71 60 20 82 86 74 74 87 99 23 2 21 52 1 87 29 37 1 63 59 20 32 75 57 21 88 48 90 58 41 91 59 79 14 61 61 46 61 50 54 63 2 50 6 20 72 38 17 3 88 59 13 8 89 52 1 83 91 59 70 43 7 46 34 77 80 35 49 3 1 5 53 3 53 92 62 17 89 43 33 73 61 99 13 94 47 14 71 77 86 61 39 84 79 81 52 23 
-25 88 59 40 28 14 44 64 88 70 8 87 0 7 87 62 10 80 7 34 34 32 4 40 27 6 72 71 11 33 32 47 22 61 87 36 98 43 85 90 34 64 98 46 77 2 0 4 89 13 26 8 78 14 89 41 76 50 62 95 51 95 3 93 22 14 42 28 35 12 31 70 58 85 27 65 41 44 61 56 5 27 27 43 83 29 61 74 91 88 61 96 0 26 61 76 2 69 71 26 
-8 61 36 96 50 43 23 78 58 31 95 87 51 61 57 51 11 38 1 2 55 80 58 1 1 91 53 86 95 96 0 18 1 52 43 89 31 69 31 67 54 74 55 16 37 23 68 97 69 85 10 15 96 72 58 69 79 92 2 19 58 35 18 89 66 18 19 95 70 51 32 39 38 81 0 10 91 56 88 49 22 30 93 41 98 6 15 89 59 1 0 47 11 68 36 31 8 98 18 47 
+38 28 14 42 7 20 38 18 22 10 10 23 35 39 23 2 21 1 23 43 29 37 1 20 32 11 21 43 24 48 26 41 27 15 14 46 43 2 36 6 20 8 38 17 3 24 13 49 8 25 1 19 27 46 6 43 7 46 34 13 16 35 49 39 3 1 5 41 3 28 17 25 43 33 9 35 13 30 47 14 7 13 22 39 20 15 44 17 46 23 25 24 44 40 28 14 44 0 24 6 
+8 23 0 43 7 23 10 16 7 34 34 32 4 41 38 40 27 6 8 7 11 33 32 47 22 23 36 34 43 39 21 26 34 0 34 36 46 13 2 0 4 25 13 38 26 8 14 14 25 41 12 31 38 48 31 3 29 36 22 38 44 14 42 28 35 12 31 6 21 27 1 41 44 5 27 27 43 43 19 29 10 27 24 38 32 0 26 12 40 2 38 5 7 26 8 36 32 41 43 23 
+14 31 31 23 40 48 48 11 38 1 2 48 36 48 16 48 1 1 27 22 36 31 32 0 18 1 43 25 31 5 31 3 10 16 37 23 4 33 5 21 10 47 15 32 8 5 15 28 2 19 35 18 25 2 18 19 31 6 40 32 39 38 17 39 0 10 27 24 49 22 30 29 41 34 6 15 25 47 48 1 0 47 11 4 36 31 8 40 34 18 47 15 2 19 23 32 23 10 48 7 
 Vl value is: 100 and avl value is: 100 
 update clusters centers
 Vl value is: 100 and avl value is: 100 
-new computed center value center0 : 52, center1: 13, center2 : 69 
+new computed center value center0 : 25, center1: 37, center2 : 11 
 Vl value is: 100 and avl value is: 100 
-new computed center value center0 : 25, center1: 49, center2 : 58 
+new computed center value center0 : 35, center1: 12, center2 : 12 
 Vl value is: 100 and avl value is: 100 
-new computed center value center0 : 13, center1: 47, center2 : 69 
-Assess Quality ClusterVariance of cluster 0 is : 17681, of cluster 1 is : 2653 , of cluster 2 is : 13376 
+new computed center value center0 : 26, center1: 24, center2 : 17 
+Assess Quality ClusterVariance of cluster 0 is : 9948, of cluster 1 is : 887 , of cluster 2 is : 1550 
 Max iterations 20iteration number 3AssignPoints to Clusters:
 Matrix A:
-51 92 14 71 60 20 82 86 74 74 87 99 23 2 21 52 1 87 29 37 1 63 59 20 32 75 57 21 88 48 90 58 41 91 59 79 14 61 61 46 61 50 54 63 2 50 6 20 72 38 17 3 88 59 13 8 89 52 1 83 91 59 70 43 7 46 34 77 80 35 49 3 1 5 53 3 53 92 62 17 89 43 33 73 61 99 13 94 47 14 71 77 86 61 39 84 79 81 52 23 
-25 88 59 40 28 14 44 64 88 70 8 87 0 7 87 62 10 80 7 34 34 32 4 40 27 6 72 71 11 33 32 47 22 61 87 36 98 43 85 90 34 64 98 46 77 2 0 4 89 13 26 8 78 14 89 41 76 50 62 95 51 95 3 93 22 14 42 28 35 12 31 70 58 85 27 65 41 44 61 56 5 27 27 43 83 29 61 74 91 88 61 96 0 26 61 76 2 69 71 26 
-8 61 36 96 50 43 23 78 58 31 95 87 51 61 57 51 11 38 1 2 55 80 58 1 1 91 53 86 95 96 0 18 1 52 43 89 31 69 31 67 54 74 55 16 37 23 68 97 69 85 10 15 96 72 58 69 79 92 2 19 58 35 18 89 66 18 19 95 70 51 32 39 38 81 0 10 91 56 88 49 22 30 93 41 98 6 15 89 59 1 0 47 11 68 36 31 8 98 18 47 
+38 28 14 42 7 20 38 18 22 10 10 23 35 39 23 2 21 1 23 43 29 37 1 20 32 11 21 43 24 48 26 41 27 15 14 46 43 2 36 6 20 8 38 17 3 24 13 49 8 25 1 19 27 46 6 43 7 46 34 13 16 35 49 39 3 1 5 41 3 28 17 25 43 33 9 35 13 30 47 14 7 13 22 39 20 15 44 17 46 23 25 24 44 40 28 14 44 0 24 6 
+8 23 0 43 7 23 10 16 7 34 34 32 4 41 38 40 27 6 8 7 11 33 32 47 22 23 36 34 43 39 21 26 34 0 34 36 46 13 2 0 4 25 13 38 26 8 14 14 25 41 12 31 38 48 31 3 29 36 22 38 44 14 42 28 35 12 31 6 21 27 1 41 44 5 27 27 43 43 19 29 10 27 24 38 32 0 26 12 40 2 38 5 7 26 8 36 32 41 43 23 
+14 31 31 23 40 48 48 11 38 1 2 48 36 48 16 48 1 1 27 22 36 31 32 0 18 1 43 25 31 5 31 3 10 16 37 23 4 33 5 21 10 47 15 32 8 5 15 28 2 19 35 18 25 2 18 19 31 6 40 32 39 38 17 39 0 10 27 24 49 22 30 29 41 34 6 15 25 47 48 1 0 47 11 4 36 31 8 40 34 18 47 15 2 19 23 32 23 10 48 7 
 Vl value is: 100 and avl value is: 100 
 update clusters centers
 Vl value is: 100 and avl value is: 100 
-new computed center value center0 : 52, center1: 13, center2 : 69 
+new computed center value center0 : 26, center1: 36, center2 : 11 
 Vl value is: 100 and avl value is: 100 
-new computed center value center0 : 25, center1: 49, center2 : 58 
+new computed center value center0 : 36, center1: 12, center2 : 15 
 Vl value is: 100 and avl value is: 100 
-new computed center value center0 : 13, center1: 47, center2 : 69 
-Assess Quality ClusterVariance of cluster 0 is : 17681, of cluster 1 is : 2653 , of cluster 2 is : 13376 
+new computed center value center0 : 28, center1: 24, center2 : 15 
+Assess Quality ClusterVariance of cluster 0 is : 9023, of cluster 1 is : 1103 , of cluster 2 is : 1654 
+Max iterations 20iteration number 4AssignPoints to Clusters:
+Matrix A:
+38 28 14 42 7 20 38 18 22 10 10 23 35 39 23 2 21 1 23 43 29 37 1 20 32 11 21 43 24 48 26 41 27 15 14 46 43 2 36 6 20 8 38 17 3 24 13 49 8 25 1 19 27 46 6 43 7 46 34 13 16 35 49 39 3 1 5 41 3 28 17 25 43 33 9 35 13 30 47 14 7 13 22 39 20 15 44 17 46 23 25 24 44 40 28 14 44 0 24 6 
+8 23 0 43 7 23 10 16 7 34 34 32 4 41 38 40 27 6 8 7 11 33 32 47 22 23 36 34 43 39 21 26 34 0 34 36 46 13 2 0 4 25 13 38 26 8 14 14 25 41 12 31 38 48 31 3 29 36 22 38 44 14 42 28 35 12 31 6 21 27 1 41 44 5 27 27 43 43 19 29 10 27 24 38 32 0 26 12 40 2 38 5 7 26 8 36 32 41 43 23 
+14 31 31 23 40 48 48 11 38 1 2 48 36 48 16 48 1 1 27 22 36 31 32 0 18 1 43 25 31 5 31 3 10 16 37 23 4 33 5 21 10 47 15 32 8 5 15 28 2 19 35 18 25 2 18 19 31 6 40 32 39 38 17 39 0 10 27 24 49 22 30 29 41 34 6 15 25 47 48 1 0 47 11 4 36 31 8 40 34 18 47 15 2 19 23 32 23 10 48 7 
+Vl value is: 100 and avl value is: 100 
+update clusters centers
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 26, center1: 35, center2 : 10 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 36, center1: 12, center2 : 17 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 29, center1: 24, center2 : 13 
+Assess Quality ClusterVariance of cluster 0 is : 8354, of cluster 1 is : 1716 , of cluster 2 is : 1563 
+Max iterations 20iteration number 5AssignPoints to Clusters:
+Matrix A:
+38 28 14 42 7 20 38 18 22 10 10 23 35 39 23 2 21 1 23 43 29 37 1 20 32 11 21 43 24 48 26 41 27 15 14 46 43 2 36 6 20 8 38 17 3 24 13 49 8 25 1 19 27 46 6 43 7 46 34 13 16 35 49 39 3 1 5 41 3 28 17 25 43 33 9 35 13 30 47 14 7 13 22 39 20 15 44 17 46 23 25 24 44 40 28 14 44 0 24 6 
+8 23 0 43 7 23 10 16 7 34 34 32 4 41 38 40 27 6 8 7 11 33 32 47 22 23 36 34 43 39 21 26 34 0 34 36 46 13 2 0 4 25 13 38 26 8 14 14 25 41 12 31 38 48 31 3 29 36 22 38 44 14 42 28 35 12 31 6 21 27 1 41 44 5 27 27 43 43 19 29 10 27 24 38 32 0 26 12 40 2 38 5 7 26 8 36 32 41 43 23 
+14 31 31 23 40 48 48 11 38 1 2 48 36 48 16 48 1 1 27 22 36 31 32 0 18 1 43 25 31 5 31 3 10 16 37 23 4 33 5 21 10 47 15 32 8 5 15 28 2 19 35 18 25 2 18 19 31 6 40 32 39 38 17 39 0 10 27 24 49 22 30 29 41 34 6 15 25 47 48 1 0 47 11 4 36 31 8 40 34 18 47 15 2 19 23 32 23 10 48 7 
+Vl value is: 100 and avl value is: 100 
+update clusters centers
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 26, center1: 33, center2 : 9 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 36, center1: 11, center2 : 18 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 29, center1: 25, center2 : 11 
+Assess Quality ClusterVariance of cluster 0 is : 8354, of cluster 1 is : 2497 , of cluster 2 is : 1294 
+Max iterations 20iteration number 6AssignPoints to Clusters:
+Matrix A:
+38 28 14 42 7 20 38 18 22 10 10 23 35 39 23 2 21 1 23 43 29 37 1 20 32 11 21 43 24 48 26 41 27 15 14 46 43 2 36 6 20 8 38 17 3 24 13 49 8 25 1 19 27 46 6 43 7 46 34 13 16 35 49 39 3 1 5 41 3 28 17 25 43 33 9 35 13 30 47 14 7 13 22 39 20 15 44 17 46 23 25 24 44 40 28 14 44 0 24 6 
+8 23 0 43 7 23 10 16 7 34 34 32 4 41 38 40 27 6 8 7 11 33 32 47 22 23 36 34 43 39 21 26 34 0 34 36 46 13 2 0 4 25 13 38 26 8 14 14 25 41 12 31 38 48 31 3 29 36 22 38 44 14 42 28 35 12 31 6 21 27 1 41 44 5 27 27 43 43 19 29 10 27 24 38 32 0 26 12 40 2 38 5 7 26 8 36 32 41 43 23 
+14 31 31 23 40 48 48 11 38 1 2 48 36 48 16 48 1 1 27 22 36 31 32 0 18 1 43 25 31 5 31 3 10 16 37 23 4 33 5 21 10 47 15 32 8 5 15 28 2 19 35 18 25 2 18 19 31 6 40 32 39 38 17 39 0 10 27 24 49 22 30 29 41 34 6 15 25 47 48 1 0 47 11 4 36 31 8 40 34 18 47 15 2 19 23 32 23 10 48 7 
+Vl value is: 100 and avl value is: 100 
+update clusters centers
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 27, center1: 31, center2 : 9 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 36, center1: 10, center2 : 20 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 29, center1: 26, center2 : 10 
+Assess Quality ClusterVariance of cluster 0 is : 8390, of cluster 1 is : 3514 , of cluster 2 is : 1265 
+Max iterations 20iteration number 7AssignPoints to Clusters:
+Matrix A:
+38 28 14 42 7 20 38 18 22 10 10 23 35 39 23 2 21 1 23 43 29 37 1 20 32 11 21 43 24 48 26 41 27 15 14 46 43 2 36 6 20 8 38 17 3 24 13 49 8 25 1 19 27 46 6 43 7 46 34 13 16 35 49 39 3 1 5 41 3 28 17 25 43 33 9 35 13 30 47 14 7 13 22 39 20 15 44 17 46 23 25 24 44 40 28 14 44 0 24 6 
+8 23 0 43 7 23 10 16 7 34 34 32 4 41 38 40 27 6 8 7 11 33 32 47 22 23 36 34 43 39 21 26 34 0 34 36 46 13 2 0 4 25 13 38 26 8 14 14 25 41 12 31 38 48 31 3 29 36 22 38 44 14 42 28 35 12 31 6 21 27 1 41 44 5 27 27 43 43 19 29 10 27 24 38 32 0 26 12 40 2 38 5 7 26 8 36 32 41 43 23 
+14 31 31 23 40 48 48 11 38 1 2 48 36 48 16 48 1 1 27 22 36 31 32 0 18 1 43 25 31 5 31 3 10 16 37 23 4 33 5 21 10 47 15 32 8 5 15 28 2 19 35 18 25 2 18 19 31 6 40 32 39 38 17 39 0 10 27 24 49 22 30 29 41 34 6 15 25 47 48 1 0 47 11 4 36 31 8 40 34 18 47 15 2 19 23 32 23 10 48 7 
+Vl value is: 100 and avl value is: 100 
+update clusters centers
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 28, center1: 31, center2 : 9 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 35, center1: 9, center2 : 22 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 29, center1: 25, center2 : 10 
+Assess Quality ClusterVariance of cluster 0 is : 7786, of cluster 1 is : 3689 , of cluster 2 is : 1414 
+Max iterations 20iteration number 8AssignPoints to Clusters:
+Matrix A:
+38 28 14 42 7 20 38 18 22 10 10 23 35 39 23 2 21 1 23 43 29 37 1 20 32 11 21 43 24 48 26 41 27 15 14 46 43 2 36 6 20 8 38 17 3 24 13 49 8 25 1 19 27 46 6 43 7 46 34 13 16 35 49 39 3 1 5 41 3 28 17 25 43 33 9 35 13 30 47 14 7 13 22 39 20 15 44 17 46 23 25 24 44 40 28 14 44 0 24 6 
+8 23 0 43 7 23 10 16 7 34 34 32 4 41 38 40 27 6 8 7 11 33 32 47 22 23 36 34 43 39 21 26 34 0 34 36 46 13 2 0 4 25 13 38 26 8 14 14 25 41 12 31 38 48 31 3 29 36 22 38 44 14 42 28 35 12 31 6 21 27 1 41 44 5 27 27 43 43 19 29 10 27 24 38 32 0 26 12 40 2 38 5 7 26 8 36 32 41 43 23 
+14 31 31 23 40 48 48 11 38 1 2 48 36 48 16 48 1 1 27 22 36 31 32 0 18 1 43 25 31 5 31 3 10 16 37 23 4 33 5 21 10 47 15 32 8 5 15 28 2 19 35 18 25 2 18 19 31 6 40 32 39 38 17 39 0 10 27 24 49 22 30 29 41 34 6 15 25 47 48 1 0 47 11 4 36 31 8 40 34 18 47 15 2 19 23 32 23 10 48 7 
+Vl value is: 100 and avl value is: 100 
+update clusters centers
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 28, center1: 30, center2 : 8 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 35, center1: 8, center2 : 23 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 29, center1: 24, center2 : 10 
+Assess Quality ClusterVariance of cluster 0 is : 7826, of cluster 1 is : 3789 , of cluster 2 is : 1312 
+Max iterations 20iteration number 9AssignPoints to Clusters:
+Matrix A:
+38 28 14 42 7 20 38 18 22 10 10 23 35 39 23 2 21 1 23 43 29 37 1 20 32 11 21 43 24 48 26 41 27 15 14 46 43 2 36 6 20 8 38 17 3 24 13 49 8 25 1 19 27 46 6 43 7 46 34 13 16 35 49 39 3 1 5 41 3 28 17 25 43 33 9 35 13 30 47 14 7 13 22 39 20 15 44 17 46 23 25 24 44 40 28 14 44 0 24 6 
+8 23 0 43 7 23 10 16 7 34 34 32 4 41 38 40 27 6 8 7 11 33 32 47 22 23 36 34 43 39 21 26 34 0 34 36 46 13 2 0 4 25 13 38 26 8 14 14 25 41 12 31 38 48 31 3 29 36 22 38 44 14 42 28 35 12 31 6 21 27 1 41 44 5 27 27 43 43 19 29 10 27 24 38 32 0 26 12 40 2 38 5 7 26 8 36 32 41 43 23 
+14 31 31 23 40 48 48 11 38 1 2 48 36 48 16 48 1 1 27 22 36 31 32 0 18 1 43 25 31 5 31 3 10 16 37 23 4 33 5 21 10 47 15 32 8 5 15 28 2 19 35 18 25 2 18 19 31 6 40 32 39 38 17 39 0 10 27 24 49 22 30 29 41 34 6 15 25 47 48 1 0 47 11 4 36 31 8 40 34 18 47 15 2 19 23 32 23 10 48 7 
+Vl value is: 100 and avl value is: 100 
+update clusters centers
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 29, center1: 29, center2 : 8 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 34, center1: 8, center2 : 25 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 30, center1: 23, center2 : 10 
+Assess Quality ClusterVariance of cluster 0 is : 7700, of cluster 1 is : 4090 , of cluster 2 is : 1053 
+Max iterations 20iteration number 10AssignPoints to Clusters:
+Matrix A:
+38 28 14 42 7 20 38 18 22 10 10 23 35 39 23 2 21 1 23 43 29 37 1 20 32 11 21 43 24 48 26 41 27 15 14 46 43 2 36 6 20 8 38 17 3 24 13 49 8 25 1 19 27 46 6 43 7 46 34 13 16 35 49 39 3 1 5 41 3 28 17 25 43 33 9 35 13 30 47 14 7 13 22 39 20 15 44 17 46 23 25 24 44 40 28 14 44 0 24 6 
+8 23 0 43 7 23 10 16 7 34 34 32 4 41 38 40 27 6 8 7 11 33 32 47 22 23 36 34 43 39 21 26 34 0 34 36 46 13 2 0 4 25 13 38 26 8 14 14 25 41 12 31 38 48 31 3 29 36 22 38 44 14 42 28 35 12 31 6 21 27 1 41 44 5 27 27 43 43 19 29 10 27 24 38 32 0 26 12 40 2 38 5 7 26 8 36 32 41 43 23 
+14 31 31 23 40 48 48 11 38 1 2 48 36 48 16 48 1 1 27 22 36 31 32 0 18 1 43 25 31 5 31 3 10 16 37 23 4 33 5 21 10 47 15 32 8 5 15 28 2 19 35 18 25 2 18 19 31 6 40 32 39 38 17 39 0 10 27 24 49 22 30 29 41 34 6 15 25 47 48 1 0 47 11 4 36 31 8 40 34 18 47 15 2 19 23 32 23 10 48 7 
+Vl value is: 100 and avl value is: 100 
+update clusters centers
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 29, center1: 28, center2 : 8 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 34, center1: 7, center2 : 25 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 29, center1: 23, center2 : 11 
+Assess Quality ClusterVariance of cluster 0 is : 7825, of cluster 1 is : 3872 , of cluster 2 is : 1174 
+Max iterations 20iteration number 11AssignPoints to Clusters:
+Matrix A:
+38 28 14 42 7 20 38 18 22 10 10 23 35 39 23 2 21 1 23 43 29 37 1 20 32 11 21 43 24 48 26 41 27 15 14 46 43 2 36 6 20 8 38 17 3 24 13 49 8 25 1 19 27 46 6 43 7 46 34 13 16 35 49 39 3 1 5 41 3 28 17 25 43 33 9 35 13 30 47 14 7 13 22 39 20 15 44 17 46 23 25 24 44 40 28 14 44 0 24 6 
+8 23 0 43 7 23 10 16 7 34 34 32 4 41 38 40 27 6 8 7 11 33 32 47 22 23 36 34 43 39 21 26 34 0 34 36 46 13 2 0 4 25 13 38 26 8 14 14 25 41 12 31 38 48 31 3 29 36 22 38 44 14 42 28 35 12 31 6 21 27 1 41 44 5 27 27 43 43 19 29 10 27 24 38 32 0 26 12 40 2 38 5 7 26 8 36 32 41 43 23 
+14 31 31 23 40 48 48 11 38 1 2 48 36 48 16 48 1 1 27 22 36 31 32 0 18 1 43 25 31 5 31 3 10 16 37 23 4 33 5 21 10 47 15 32 8 5 15 28 2 19 35 18 25 2 18 19 31 6 40 32 39 38 17 39 0 10 27 24 49 22 30 29 41 34 6 15 25 47 48 1 0 47 11 4 36 31 8 40 34 18 47 15 2 19 23 32 23 10 48 7 
+Vl value is: 100 and avl value is: 100 
+update clusters centers
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 29, center1: 28, center2 : 8 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 34, center1: 6, center2 : 25 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 29, center1: 24, center2 : 11 
+Assess Quality ClusterVariance of cluster 0 is : 7969, of cluster 1 is : 3703 , of cluster 2 is : 1174 
+Max iterations 20iteration number 12AssignPoints to Clusters:
+Matrix A:
+38 28 14 42 7 20 38 18 22 10 10 23 35 39 23 2 21 1 23 43 29 37 1 20 32 11 21 43 24 48 26 41 27 15 14 46 43 2 36 6 20 8 38 17 3 24 13 49 8 25 1 19 27 46 6 43 7 46 34 13 16 35 49 39 3 1 5 41 3 28 17 25 43 33 9 35 13 30 47 14 7 13 22 39 20 15 44 17 46 23 25 24 44 40 28 14 44 0 24 6 
+8 23 0 43 7 23 10 16 7 34 34 32 4 41 38 40 27 6 8 7 11 33 32 47 22 23 36 34 43 39 21 26 34 0 34 36 46 13 2 0 4 25 13 38 26 8 14 14 25 41 12 31 38 48 31 3 29 36 22 38 44 14 42 28 35 12 31 6 21 27 1 41 44 5 27 27 43 43 19 29 10 27 24 38 32 0 26 12 40 2 38 5 7 26 8 36 32 41 43 23 
+14 31 31 23 40 48 48 11 38 1 2 48 36 48 16 48 1 1 27 22 36 31 32 0 18 1 43 25 31 5 31 3 10 16 37 23 4 33 5 21 10 47 15 32 8 5 15 28 2 19 35 18 25 2 18 19 31 6 40 32 39 38 17 39 0 10 27 24 49 22 30 29 41 34 6 15 25 47 48 1 0 47 11 4 36 31 8 40 34 18 47 15 2 19 23 32 23 10 48 7 
+Vl value is: 100 and avl value is: 100 
+update clusters centers
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 29, center1: 28, center2 : 8 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 34, center1: 6, center2 : 25 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 29, center1: 24, center2 : 11 
+Assess Quality ClusterVariance of cluster 0 is : 7978, of cluster 1 is : 3687 , of cluster 2 is : 1174 
+Max iterations 20iteration number 13AssignPoints to Clusters:
+Matrix A:
+38 28 14 42 7 20 38 18 22 10 10 23 35 39 23 2 21 1 23 43 29 37 1 20 32 11 21 43 24 48 26 41 27 15 14 46 43 2 36 6 20 8 38 17 3 24 13 49 8 25 1 19 27 46 6 43 7 46 34 13 16 35 49 39 3 1 5 41 3 28 17 25 43 33 9 35 13 30 47 14 7 13 22 39 20 15 44 17 46 23 25 24 44 40 28 14 44 0 24 6 
+8 23 0 43 7 23 10 16 7 34 34 32 4 41 38 40 27 6 8 7 11 33 32 47 22 23 36 34 43 39 21 26 34 0 34 36 46 13 2 0 4 25 13 38 26 8 14 14 25 41 12 31 38 48 31 3 29 36 22 38 44 14 42 28 35 12 31 6 21 27 1 41 44 5 27 27 43 43 19 29 10 27 24 38 32 0 26 12 40 2 38 5 7 26 8 36 32 41 43 23 
+14 31 31 23 40 48 48 11 38 1 2 48 36 48 16 48 1 1 27 22 36 31 32 0 18 1 43 25 31 5 31 3 10 16 37 23 4 33 5 21 10 47 15 32 8 5 15 28 2 19 35 18 25 2 18 19 31 6 40 32 39 38 17 39 0 10 27 24 49 22 30 29 41 34 6 15 25 47 48 1 0 47 11 4 36 31 8 40 34 18 47 15 2 19 23 32 23 10 48 7 
+Vl value is: 100 and avl value is: 100 
+update clusters centers
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 29, center1: 28, center2 : 8 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 34, center1: 6, center2 : 25 
+Vl value is: 100 and avl value is: 100 
+new computed center value center0 : 29, center1: 24, center2 : 11 
+Assess Quality ClusterVariance of cluster 0 is : 7978, of cluster 1 is : 3687 , of cluster 2 is : 1174 
 KMEANS succeededK-Means result: 0

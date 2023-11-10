@@ -47,19 +47,24 @@ P = 3
 
 dtype = np.int64
 
-UPPER_LIMIT = 100
+UPPER_LIMIT = 50
 LOWER_LIMIT = 0
-
 np.random.seed(42)
+
 # Matrices and results
 # Generate random data points
-A = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(N, M)).astype(dtype)    ##rows contain the features and each column is a datapoint
+A = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(N, M)).astype(dtype)    ## rows contain the features and each column is a datapoint
 
-np.random.seed(None)
-# Randomly select P columns from A to initialize K. slected_columns will contain the indices
-selected_columns = np.random.choice(M, P, replace=False)
+np.random.seed(None)  # Resetting/setting the seed for reproducibility
+
+# Create an array of column indices
+column_indices = np.arange(A.shape[1])  # This creates an array [0, 1, 2, ..., M-1]
+
+# Randomly select P columns from A to initialize K. selected_columns will contain the indices
+selected_columns = np.random.choice(column_indices, P, replace=False)
+
+# Use the selected indices to get columns from A
 K = A[:, selected_columns]
-
 
 
 C = np.zeros([1,M], dtype=dtype) # contains the assigned cluster to each data point
