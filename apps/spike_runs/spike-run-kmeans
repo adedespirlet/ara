@@ -5,9 +5,9 @@
 
 
 Matrix k:
-20 35 25 
-47 4 41 
-0 36 19 
+47 37 24 
+19 33 43 
+48 31 31 
 Matrix A:
 38 28 14 42 7 20 38 18 22 10 10 23 35 39 23 2 21 1 23 43 29 37 1 20 32 11 21 43 24 48 26 41 27 15 14 46 43 2 36 6 20 8 38 17 3 24 13 49 8 25 1 19 27 46 6 43 7 46 34 13 16 35 49 39 3 1 5 41 3 28 17 25 43 33 9 35 13 30 47 14 7 13 22 39 20 15 44 17 46 23 25 24 44 40 28 14 44 0 24 6 
 42 7 20 38 18 22 10 10 23 35 39 23 2 21 1 23 43 29 37 1 20 32 11 21 43 24 48 26 41 27 15 14 46 43 2 36 6 20 8 38 17 3 24 13 49 8 25 1 19 27 46 6 43 7 46 34 13 16 35 49 39 3 1 5 41 3 28 17 25 43 33 9 35 13 30 47 14 7 13 22 39 20 15 44 17 46 23 25 24 44 40 28 14 44 0 24 6 8 23 0 
@@ -19,106 +19,91 @@ iteration number: 0
 custom memcpy
 Assign Points to Clusters
 Matrix clusters:
-1 	2 	1 	2 	1 	2 	1 	1 	1 	0 	0 	2 	1 	2 	2 	0 	2 	1 	1 	1 	1 	2 	0 	0 	1 	2 	2 	2 	2 	2 	1 	2 	2 	1 	2 	2 	2 	1 	1 	1 	1 	2 	1 	2 	2 	1 	1 	1 	2 	2 	1 	2 	2 	2 	0 	1 	2 	2 	1 	0 	0 	1 	2 	2 	0 	1 	0 	1 	2 	2 	1 	2 	2 	1 	2 	2 	0 	2 	1 	2 	1 	2 	2 	2 	2 	1 	1 	1 	2 	1 	2 	1 	1 	2 	1 	2 	2 	0 	2 	2 	
+0 	1 	0 	1 	1 	1 	0 	1 	0 	2 	2 	2 	0 	1 	2 	2 	2 	2 	0 	0 	0 	1 	2 	2 	1 	2 	2 	1 	2 	1 	1 	1 	2 	0 	2 	1 	1 	2 	0 	0 	0 	2 	0 	2 	2 	0 	1 	0 	2 	2 	2 	2 	2 	1 	2 	0 	2 	1 	1 	2 	2 	0 	1 	1 	2 	2 	2 	0 	2 	1 	0 	2 	1 	0 	2 	1 	2 	2 	0 	2 	2 	2 	1 	1 	2 	0 	0 	1 	1 	0 	2 	0 	0 	1 	0 	2 	1 	2 	2 	2 	
 Matrix clusters copied version:
 0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
 Cluster Centers:
-Cluster 0: (8, 37)
-Cluster 1: (25, 9)
-Cluster 2: (27, 33)
-Cluster 0 Variance: 65
-Cluster 1 Variance: 240
-Cluster 2 Variance: 237
-Total Variation: 542
+Cluster 0: (30, 7)
+Cluster 1: (34, 30)
+Cluster 2: (13, 31)
+Cluster 0 Variance: 4571
+Cluster 1 Variance: 7027
+Cluster 2 Variance: 7679
+Total Variation: 19277
 iteration number: 1 
 custom memcpy
 Assign Points to Clusters
 Matrix clusters:
-1 	2 	1 	2 	1 	2 	1 	1 	1 	0 	0 	2 	1 	2 	2 	0 	2 	1 	1 	1 	1 	2 	0 	0 	2 	0 	2 	2 	2 	2 	1 	2 	2 	1 	0 	2 	2 	1 	1 	1 	1 	0 	1 	0 	0 	1 	1 	1 	0 	2 	1 	2 	2 	2 	0 	1 	0 	2 	2 	0 	0 	1 	2 	2 	0 	1 	0 	1 	0 	2 	1 	2 	2 	1 	0 	2 	0 	2 	1 	0 	1 	0 	2 	2 	2 	1 	2 	1 	2 	1 	2 	1 	1 	2 	1 	0 	2 	0 	2 	0 	
+0 	1 	0 	1 	0 	2 	0 	0 	0 	2 	2 	2 	0 	1 	2 	2 	2 	2 	0 	0 	0 	1 	2 	2 	1 	2 	2 	1 	2 	1 	1 	1 	1 	0 	2 	1 	1 	2 	0 	0 	0 	2 	0 	2 	2 	0 	2 	0 	2 	1 	2 	2 	1 	1 	2 	0 	2 	1 	1 	2 	2 	0 	1 	1 	2 	2 	2 	0 	2 	1 	0 	1 	1 	0 	2 	1 	2 	1 	1 	2 	2 	2 	2 	1 	2 	0 	1 	0 	1 	0 	1 	0 	0 	1 	0 	2 	1 	2 	2 	2 	
 Matrix clusters copied version:
-1 	2 	1 	2 	1 	2 	1 	1 	1 	0 	0 	2 	1 	2 	2 	0 	2 	1 	1 	1 	1 	2 	0 	0 	1 	2 	2 	2 	2 	2 	1 	2 	2 	1 	2 	2 	2 	1 	1 	1 	1 	2 	1 	2 	2 	1 	1 	1 	2 	2 	1 	2 	2 	2 	0 	1 	2 	2 	1 	0 	0 	1 	2 	2 	0 	1 	0 	1 	2 	2 	1 	2 	2 	1 	2 	2 	0 	2 	1 	2 	1 	2 	2 	2 	2 	1 	1 	1 	2 	1 	2 	1 	1 	2 	1 	2 	2 	0 	2 	2 	
+0 	1 	0 	1 	1 	1 	0 	1 	0 	2 	2 	2 	0 	1 	2 	2 	2 	2 	0 	0 	0 	1 	2 	2 	1 	2 	2 	1 	2 	1 	1 	1 	2 	0 	2 	1 	1 	2 	0 	0 	0 	2 	0 	2 	2 	0 	1 	0 	2 	2 	2 	2 	2 	1 	2 	0 	2 	1 	1 	2 	2 	0 	1 	1 	2 	2 	2 	0 	2 	1 	0 	2 	1 	0 	2 	1 	2 	2 	0 	2 	2 	2 	1 	1 	2 	0 	0 	1 	1 	0 	2 	0 	0 	1 	0 	2 	1 	2 	2 	2 	
 Cluster Centers:
-Cluster 0: (9, 32)
-Cluster 1: (24, 8)
-Cluster 2: (33, 34)
-Cluster 0 Variance: 77
-Cluster 1 Variance: 228
-Cluster 2 Variance: 148
-Total Variation: 453
+Cluster 0: (27, 6)
+Cluster 1: (37, 34)
+Cluster 2: (11, 29)
+Cluster 0 Variance: 4391
+Cluster 1 Variance: 4023
+Cluster 2 Variance: 6467
+Total Variation: 14881
 iteration number: 2 
 custom memcpy
 Assign Points to Clusters
 Matrix clusters:
-1 	2 	1 	2 	1 	0 	1 	1 	1 	0 	0 	2 	1 	2 	2 	0 	0 	1 	1 	1 	1 	2 	0 	2 	2 	0 	2 	2 	2 	2 	1 	2 	2 	1 	0 	2 	2 	0 	1 	1 	1 	0 	1 	0 	0 	1 	1 	2 	0 	2 	0 	0 	2 	2 	0 	1 	0 	2 	2 	0 	0 	1 	2 	2 	0 	0 	0 	1 	0 	2 	1 	2 	2 	1 	0 	2 	0 	2 	2 	0 	1 	0 	2 	2 	0 	1 	2 	1 	2 	1 	2 	1 	1 	2 	1 	0 	2 	0 	2 	0 	
+0 	1 	0 	1 	0 	2 	0 	0 	0 	2 	2 	2 	0 	1 	1 	2 	2 	2 	0 	0 	0 	1 	2 	2 	1 	2 	2 	1 	1 	1 	0 	1 	1 	0 	2 	1 	1 	2 	0 	0 	0 	2 	0 	2 	2 	0 	2 	1 	2 	1 	2 	2 	1 	1 	2 	0 	2 	1 	1 	2 	2 	0 	1 	1 	2 	2 	2 	0 	2 	1 	0 	1 	1 	0 	2 	1 	2 	1 	1 	2 	2 	2 	2 	1 	2 	0 	1 	0 	1 	0 	1 	0 	0 	1 	0 	2 	1 	2 	1 	2 	
 Matrix clusters copied version:
-1 	2 	1 	2 	1 	2 	1 	1 	1 	0 	0 	2 	1 	2 	2 	0 	2 	1 	1 	1 	1 	2 	0 	0 	2 	0 	2 	2 	2 	2 	1 	2 	2 	1 	0 	2 	2 	1 	1 	1 	1 	0 	1 	0 	0 	1 	1 	1 	0 	2 	1 	2 	2 	2 	0 	1 	0 	2 	2 	0 	0 	1 	2 	2 	0 	1 	0 	1 	0 	2 	1 	2 	2 	1 	0 	2 	0 	2 	1 	0 	1 	0 	2 	2 	2 	1 	2 	1 	2 	1 	2 	1 	1 	2 	1 	0 	2 	0 	2 	0 	
+0 	1 	0 	1 	0 	2 	0 	0 	0 	2 	2 	2 	0 	1 	2 	2 	2 	2 	0 	0 	0 	1 	2 	2 	1 	2 	2 	1 	2 	1 	1 	1 	1 	0 	2 	1 	1 	2 	0 	0 	0 	2 	0 	2 	2 	0 	2 	0 	2 	1 	2 	2 	1 	1 	2 	0 	2 	1 	1 	2 	2 	0 	1 	1 	2 	2 	2 	0 	2 	1 	0 	1 	1 	0 	2 	1 	2 	1 	1 	2 	2 	2 	2 	1 	2 	0 	1 	0 	1 	0 	1 	0 	0 	1 	0 	2 	1 	2 	2 	2 	
 Cluster Centers:
-Cluster 0: (9, 29)
-Cluster 1: (24, 7)
-Cluster 2: (35, 34)
-Cluster 0 Variance: 107
-Cluster 1 Variance: 170
-Cluster 2 Variance: 161
-Total Variation: 438
+Cluster 0: (26, 6)
+Cluster 1: (37, 34)
+Cluster 2: (10, 28)
+Cluster 0 Variance: 4089
+Cluster 1 Variance: 4989
+Cluster 2 Variance: 5512
+Total Variation: 14590
 iteration number: 3 
 custom memcpy
 Assign Points to Clusters
 Matrix clusters:
-1 	2 	1 	2 	1 	0 	1 	1 	1 	0 	0 	2 	1 	2 	2 	0 	0 	1 	1 	1 	1 	2 	0 	2 	2 	0 	0 	2 	2 	2 	1 	2 	2 	1 	0 	2 	2 	0 	1 	1 	1 	0 	1 	0 	0 	1 	1 	2 	0 	2 	0 	0 	2 	2 	0 	1 	0 	2 	2 	0 	0 	1 	2 	2 	0 	0 	0 	1 	0 	2 	1 	2 	2 	1 	0 	2 	0 	2 	2 	0 	1 	0 	0 	2 	0 	1 	2 	1 	2 	1 	2 	1 	1 	2 	1 	0 	2 	0 	2 	0 	
+0 	1 	0 	1 	0 	2 	0 	0 	0 	2 	2 	2 	0 	1 	1 	2 	2 	2 	0 	0 	0 	1 	2 	1 	1 	2 	2 	1 	1 	1 	0 	1 	1 	0 	2 	1 	1 	2 	0 	0 	0 	2 	0 	2 	2 	0 	2 	1 	2 	1 	2 	2 	1 	1 	2 	0 	2 	1 	1 	2 	2 	0 	1 	1 	2 	2 	2 	0 	2 	1 	0 	1 	1 	0 	2 	1 	2 	1 	1 	2 	2 	2 	2 	1 	2 	0 	1 	0 	1 	0 	1 	0 	0 	1 	0 	2 	1 	2 	1 	2 	
 Matrix clusters copied version:
-1 	2 	1 	2 	1 	0 	1 	1 	1 	0 	0 	2 	1 	2 	2 	0 	0 	1 	1 	1 	1 	2 	0 	2 	2 	0 	2 	2 	2 	2 	1 	2 	2 	1 	0 	2 	2 	0 	1 	1 	1 	0 	1 	0 	0 	1 	1 	2 	0 	2 	0 	0 	2 	2 	0 	1 	0 	2 	2 	0 	0 	1 	2 	2 	0 	0 	0 	1 	0 	2 	1 	2 	2 	1 	0 	2 	0 	2 	2 	0 	1 	0 	2 	2 	0 	1 	2 	1 	2 	1 	2 	1 	1 	2 	1 	0 	2 	0 	2 	0 	
+0 	1 	0 	1 	0 	2 	0 	0 	0 	2 	2 	2 	0 	1 	1 	2 	2 	2 	0 	0 	0 	1 	2 	2 	1 	2 	2 	1 	1 	1 	0 	1 	1 	0 	2 	1 	1 	2 	0 	0 	0 	2 	0 	2 	2 	0 	2 	1 	2 	1 	2 	2 	1 	1 	2 	0 	2 	1 	1 	2 	2 	0 	1 	1 	2 	2 	2 	0 	2 	1 	0 	1 	1 	0 	2 	1 	2 	1 	1 	2 	2 	2 	2 	1 	2 	0 	1 	0 	1 	0 	1 	0 	0 	1 	0 	2 	1 	2 	1 	2 	
 Cluster Centers:
-Cluster 0: (10, 29)
-Cluster 1: (24, 7)
-Cluster 2: (36, 34)
-Cluster 0 Variance: 111
-Cluster 1 Variance: 170
-Cluster 2 Variance: 156
-Total Variation: 437
+Cluster 0: (26, 6)
+Cluster 1: (36, 34)
+Cluster 2: (10, 28)
+Cluster 0 Variance: 4089
+Cluster 1 Variance: 5448
+Cluster 2 Variance: 5051
+Total Variation: 14588
 iteration number: 4 
 custom memcpy
 Assign Points to Clusters
 Matrix clusters:
-1 	2 	1 	2 	1 	0 	1 	1 	1 	0 	0 	2 	1 	2 	2 	0 	0 	1 	1 	1 	1 	2 	0 	0 	2 	0 	0 	2 	2 	2 	1 	2 	2 	1 	0 	2 	2 	0 	1 	1 	1 	0 	1 	0 	0 	1 	1 	2 	0 	2 	0 	0 	2 	2 	0 	1 	0 	2 	2 	0 	0 	1 	2 	2 	0 	0 	0 	1 	0 	2 	1 	2 	2 	1 	0 	2 	0 	2 	2 	0 	1 	0 	0 	2 	0 	1 	2 	1 	2 	1 	2 	1 	1 	2 	1 	0 	2 	0 	2 	0 	
+0 	1 	0 	1 	0 	2 	0 	0 	0 	2 	2 	1 	0 	1 	1 	2 	2 	2 	0 	0 	0 	1 	2 	1 	1 	2 	2 	1 	1 	1 	0 	1 	1 	0 	2 	1 	1 	2 	0 	0 	0 	2 	0 	2 	2 	0 	2 	1 	2 	1 	2 	2 	1 	1 	2 	0 	2 	1 	1 	2 	2 	0 	1 	1 	2 	2 	2 	0 	2 	1 	0 	1 	1 	0 	2 	1 	2 	1 	1 	2 	2 	2 	2 	1 	2 	0 	1 	0 	1 	0 	1 	0 	0 	1 	0 	2 	1 	2 	1 	2 	
 Matrix clusters copied version:
-1 	2 	1 	2 	1 	0 	1 	1 	1 	0 	0 	2 	1 	2 	2 	0 	0 	1 	1 	1 	1 	2 	0 	2 	2 	0 	0 	2 	2 	2 	1 	2 	2 	1 	0 	2 	2 	0 	1 	1 	1 	0 	1 	0 	0 	1 	1 	2 	0 	2 	0 	0 	2 	2 	0 	1 	0 	2 	2 	0 	0 	1 	2 	2 	0 	0 	0 	1 	0 	2 	1 	2 	2 	1 	0 	2 	0 	2 	2 	0 	1 	0 	0 	2 	0 	1 	2 	1 	2 	1 	2 	1 	1 	2 	1 	0 	2 	0 	2 	0 	
+0 	1 	0 	1 	0 	2 	0 	0 	0 	2 	2 	2 	0 	1 	1 	2 	2 	2 	0 	0 	0 	1 	2 	1 	1 	2 	2 	1 	1 	1 	0 	1 	1 	0 	2 	1 	1 	2 	0 	0 	0 	2 	0 	2 	2 	0 	2 	1 	2 	1 	2 	2 	1 	1 	2 	0 	2 	1 	1 	2 	2 	0 	1 	1 	2 	2 	2 	0 	2 	1 	0 	1 	1 	0 	2 	1 	2 	1 	1 	2 	2 	2 	2 	1 	2 	0 	1 	0 	1 	0 	1 	0 	0 	1 	0 	2 	1 	2 	1 	2 	
 Cluster Centers:
-Cluster 0: (10, 30)
-Cluster 1: (24, 7)
-Cluster 2: (36, 34)
-Cluster 0 Variance: 119
-Cluster 1 Variance: 170
-Cluster 2 Variance: 148
-Total Variation: 437
+Cluster 0: (26, 6)
+Cluster 1: (36, 34)
+Cluster 2: (9, 27)
+Cluster 0 Variance: 4089
+Cluster 1 Variance: 5621
+Cluster 2 Variance: 4922
+Total Variation: 14632
 iteration number: 5 
 custom memcpy
 Assign Points to Clusters
 Matrix clusters:
-1 	2 	1 	2 	1 	0 	1 	1 	1 	0 	0 	0 	1 	2 	2 	0 	0 	1 	1 	1 	1 	2 	0 	0 	2 	0 	0 	2 	2 	2 	1 	2 	2 	1 	0 	2 	2 	0 	1 	1 	1 	0 	1 	0 	0 	1 	1 	2 	0 	2 	0 	0 	2 	2 	0 	1 	0 	2 	2 	0 	0 	1 	2 	2 	0 	0 	0 	1 	0 	2 	1 	2 	2 	1 	0 	2 	0 	2 	2 	0 	1 	0 	0 	2 	0 	1 	2 	1 	2 	1 	2 	1 	1 	2 	1 	0 	2 	0 	2 	0 	
+0 	1 	0 	1 	0 	2 	0 	0 	0 	2 	2 	1 	0 	1 	1 	2 	2 	2 	0 	0 	0 	1 	2 	1 	1 	2 	2 	1 	1 	1 	0 	1 	1 	0 	2 	1 	1 	2 	0 	0 	0 	2 	0 	2 	2 	0 	2 	1 	2 	1 	2 	2 	1 	1 	2 	0 	2 	1 	1 	2 	2 	0 	1 	1 	2 	2 	2 	0 	2 	1 	0 	1 	1 	0 	2 	1 	2 	1 	1 	2 	2 	2 	2 	1 	2 	0 	1 	0 	1 	0 	1 	0 	0 	1 	0 	2 	1 	2 	1 	2 	
 Matrix clusters copied version:
-1 	2 	1 	2 	1 	0 	1 	1 	1 	0 	0 	2 	1 	2 	2 	0 	0 	1 	1 	1 	1 	2 	0 	0 	2 	0 	0 	2 	2 	2 	1 	2 	2 	1 	0 	2 	2 	0 	1 	1 	1 	0 	1 	0 	0 	1 	1 	2 	0 	2 	0 	0 	2 	2 	0 	1 	0 	2 	2 	0 	0 	1 	2 	2 	0 	0 	0 	1 	0 	2 	1 	2 	2 	1 	0 	2 	0 	2 	2 	0 	1 	0 	0 	2 	0 	1 	2 	1 	2 	1 	2 	1 	1 	2 	1 	0 	2 	0 	2 	0 	
+0 	1 	0 	1 	0 	2 	0 	0 	0 	2 	2 	1 	0 	1 	1 	2 	2 	2 	0 	0 	0 	1 	2 	1 	1 	2 	2 	1 	1 	1 	0 	1 	1 	0 	2 	1 	1 	2 	0 	0 	0 	2 	0 	2 	2 	0 	2 	1 	2 	1 	2 	2 	1 	1 	2 	0 	2 	1 	1 	2 	2 	0 	1 	1 	2 	2 	2 	0 	2 	1 	0 	1 	1 	0 	2 	1 	2 	1 	1 	2 	2 	2 	2 	1 	2 	0 	1 	0 	1 	0 	1 	0 	0 	1 	0 	2 	1 	2 	1 	2 	
 Cluster Centers:
-Cluster 0: (10, 30)
-Cluster 1: (24, 7)
-Cluster 2: (37, 34)
-Cluster 0 Variance: 121
-Cluster 1 Variance: 170
-Cluster 2 Variance: 146
-Total Variation: 437
-iteration number: 6 
-custom memcpy
-Assign Points to Clusters
-Matrix clusters:
-1 	2 	1 	2 	1 	0 	1 	1 	1 	0 	0 	0 	1 	2 	2 	0 	0 	1 	1 	1 	1 	2 	0 	0 	2 	0 	0 	2 	2 	2 	1 	2 	2 	1 	0 	2 	2 	0 	1 	1 	1 	0 	1 	0 	0 	1 	1 	2 	0 	2 	0 	0 	2 	2 	0 	1 	0 	2 	2 	0 	0 	1 	2 	2 	0 	0 	0 	1 	0 	2 	1 	2 	2 	1 	0 	2 	0 	2 	2 	0 	1 	0 	0 	2 	0 	1 	2 	1 	2 	1 	2 	1 	1 	2 	1 	0 	2 	0 	2 	0 	
-Matrix clusters copied version:
-1 	2 	1 	2 	1 	0 	1 	1 	1 	0 	0 	0 	1 	2 	2 	0 	0 	1 	1 	1 	1 	2 	0 	0 	2 	0 	0 	2 	2 	2 	1 	2 	2 	1 	0 	2 	2 	0 	1 	1 	1 	0 	1 	0 	0 	1 	1 	2 	0 	2 	0 	0 	2 	2 	0 	1 	0 	2 	2 	0 	0 	1 	2 	2 	0 	0 	0 	1 	0 	2 	1 	2 	2 	1 	0 	2 	0 	2 	2 	0 	1 	0 	0 	2 	0 	1 	2 	1 	2 	1 	2 	1 	1 	2 	1 	0 	2 	0 	2 	0 	
-Cluster Centers:
-Cluster 0: (10, 30)
-Cluster 1: (24, 7)
-Cluster 2: (37, 34)
-Cluster 0 Variance: 121
-Cluster 1 Variance: 170
-Cluster 2 Variance: 146
-Total Variation: 437
+Cluster 0: (26, 6)
+Cluster 1: (36, 34)
+Cluster 2: (9, 27)
+Cluster 0 Variance: 4089
+Cluster 1 Variance: 5621
+Cluster 2 Variance: 4922
+Total Variation: 14632
 KMEANS succeededK-Means result: 0
 Scalar runtime: 0
