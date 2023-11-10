@@ -17,29 +17,33 @@ P:
 .global a
 .balign NR_LANES*4
 a:
-    .word 0x00000033
+    .word 0x00000026
     .word 0x00000000
-    .word 0x0000005c
+    .word 0x0000001c
     .word 0x00000000
     .word 0x0000000e
     .word 0x00000000
-    .word 0x00000047
+    .word 0x0000002a
     .word 0x00000000
-    .word 0x0000003c
+    .word 0x00000007
     .word 0x00000000
     .word 0x00000014
     .word 0x00000000
-    .word 0x00000052
+    .word 0x00000026
     .word 0x00000000
-    .word 0x00000056
+    .word 0x00000012
     .word 0x00000000
-    .word 0x0000004a
+    .word 0x00000016
     .word 0x00000000
-    .word 0x0000004a
+    .word 0x0000000a
     .word 0x00000000
-    .word 0x00000057
+    .word 0x0000000a
     .word 0x00000000
-    .word 0x00000063
+    .word 0x00000017
+    .word 0x00000000
+    .word 0x00000023
+    .word 0x00000000
+    .word 0x00000027
     .word 0x00000000
     .word 0x00000017
     .word 0x00000000
@@ -47,11 +51,11 @@ a:
     .word 0x00000000
     .word 0x00000015
     .word 0x00000000
-    .word 0x00000034
-    .word 0x00000000
     .word 0x00000001
     .word 0x00000000
-    .word 0x00000057
+    .word 0x00000017
+    .word 0x00000000
+    .word 0x0000002b
     .word 0x00000000
     .word 0x0000001d
     .word 0x00000000
@@ -59,61 +63,43 @@ a:
     .word 0x00000000
     .word 0x00000001
     .word 0x00000000
-    .word 0x0000003f
-    .word 0x00000000
-    .word 0x0000003b
-    .word 0x00000000
     .word 0x00000014
     .word 0x00000000
     .word 0x00000020
     .word 0x00000000
-    .word 0x0000004b
-    .word 0x00000000
-    .word 0x00000039
+    .word 0x0000000b
     .word 0x00000000
     .word 0x00000015
     .word 0x00000000
-    .word 0x00000058
+    .word 0x0000002b
+    .word 0x00000000
+    .word 0x00000018
     .word 0x00000000
     .word 0x00000030
     .word 0x00000000
-    .word 0x0000005a
-    .word 0x00000000
-    .word 0x0000003a
+    .word 0x0000001a
     .word 0x00000000
     .word 0x00000029
     .word 0x00000000
-    .word 0x0000005b
+    .word 0x0000001b
     .word 0x00000000
-    .word 0x0000003b
-    .word 0x00000000
-    .word 0x0000004f
+    .word 0x0000000f
     .word 0x00000000
     .word 0x0000000e
     .word 0x00000000
-    .word 0x0000003d
-    .word 0x00000000
-    .word 0x0000003d
-    .word 0x00000000
     .word 0x0000002e
     .word 0x00000000
-    .word 0x0000003d
-    .word 0x00000000
-    .word 0x00000032
-    .word 0x00000000
-    .word 0x00000036
-    .word 0x00000000
-    .word 0x0000003f
+    .word 0x0000002b
     .word 0x00000000
     .word 0x00000002
     .word 0x00000000
-    .word 0x00000032
+    .word 0x00000024
     .word 0x00000000
     .word 0x00000006
     .word 0x00000000
     .word 0x00000014
     .word 0x00000000
-    .word 0x00000048
+    .word 0x00000008
     .word 0x00000000
     .word 0x00000026
     .word 0x00000000
@@ -121,27 +107,25 @@ a:
     .word 0x00000000
     .word 0x00000003
     .word 0x00000000
-    .word 0x00000058
-    .word 0x00000000
-    .word 0x0000003b
+    .word 0x00000018
     .word 0x00000000
     .word 0x0000000d
     .word 0x00000000
+    .word 0x00000031
+    .word 0x00000000
     .word 0x00000008
     .word 0x00000000
-    .word 0x00000059
-    .word 0x00000000
-    .word 0x00000034
+    .word 0x00000019
     .word 0x00000000
     .word 0x00000001
     .word 0x00000000
-    .word 0x00000053
+    .word 0x00000013
     .word 0x00000000
-    .word 0x0000005b
+    .word 0x0000001b
     .word 0x00000000
-    .word 0x0000003b
+    .word 0x0000002e
     .word 0x00000000
-    .word 0x00000046
+    .word 0x00000006
     .word 0x00000000
     .word 0x0000002b
     .word 0x00000000
@@ -151,13 +135,15 @@ a:
     .word 0x00000000
     .word 0x00000022
     .word 0x00000000
-    .word 0x0000004d
+    .word 0x0000000d
     .word 0x00000000
-    .word 0x00000050
+    .word 0x00000010
     .word 0x00000000
     .word 0x00000023
     .word 0x00000000
     .word 0x00000031
+    .word 0x00000000
+    .word 0x00000027
     .word 0x00000000
     .word 0x00000003
     .word 0x00000000
@@ -165,63 +151,57 @@ a:
     .word 0x00000000
     .word 0x00000005
     .word 0x00000000
-    .word 0x00000035
+    .word 0x00000029
     .word 0x00000000
     .word 0x00000003
     .word 0x00000000
-    .word 0x00000035
-    .word 0x00000000
-    .word 0x0000005c
-    .word 0x00000000
-    .word 0x0000003e
+    .word 0x0000001c
     .word 0x00000000
     .word 0x00000011
     .word 0x00000000
-    .word 0x00000059
+    .word 0x00000019
     .word 0x00000000
     .word 0x0000002b
     .word 0x00000000
     .word 0x00000021
     .word 0x00000000
-    .word 0x00000049
+    .word 0x00000009
     .word 0x00000000
-    .word 0x0000003d
-    .word 0x00000000
-    .word 0x00000063
+    .word 0x00000023
     .word 0x00000000
     .word 0x0000000d
     .word 0x00000000
-    .word 0x0000005e
+    .word 0x0000001e
     .word 0x00000000
     .word 0x0000002f
     .word 0x00000000
     .word 0x0000000e
     .word 0x00000000
-    .word 0x00000047
+    .word 0x00000007
     .word 0x00000000
-    .word 0x0000004d
+    .word 0x0000000d
     .word 0x00000000
-    .word 0x00000056
-    .word 0x00000000
-    .word 0x0000003d
+    .word 0x00000016
     .word 0x00000000
     .word 0x00000027
     .word 0x00000000
-    .word 0x00000054
+    .word 0x00000014
     .word 0x00000000
-    .word 0x0000004f
+    .word 0x0000000f
     .word 0x00000000
-    .word 0x00000051
+    .word 0x0000002c
     .word 0x00000000
-    .word 0x00000034
+    .word 0x00000011
+    .word 0x00000000
+    .word 0x0000002e
     .word 0x00000000
     .word 0x00000017
     .word 0x00000000
     .word 0x00000019
     .word 0x00000000
-    .word 0x00000058
+    .word 0x00000018
     .word 0x00000000
-    .word 0x0000003b
+    .word 0x0000002c
     .word 0x00000000
     .word 0x00000028
     .word 0x00000000
@@ -231,27 +211,27 @@ a:
     .word 0x00000000
     .word 0x0000002c
     .word 0x00000000
-    .word 0x00000040
     .word 0x00000000
-    .word 0x00000058
     .word 0x00000000
-    .word 0x00000046
+    .word 0x00000018
+    .word 0x00000000
+    .word 0x00000006
     .word 0x00000000
     .word 0x00000008
     .word 0x00000000
-    .word 0x00000057
+    .word 0x00000017
     .word 0x00000000
     .word 0x00000000
+    .word 0x00000000
+    .word 0x0000002b
     .word 0x00000000
     .word 0x00000007
     .word 0x00000000
-    .word 0x00000057
-    .word 0x00000000
-    .word 0x0000003e
+    .word 0x00000017
     .word 0x00000000
     .word 0x0000000a
     .word 0x00000000
-    .word 0x00000050
+    .word 0x00000010
     .word 0x00000000
     .word 0x00000007
     .word 0x00000000
@@ -263,15 +243,19 @@ a:
     .word 0x00000000
     .word 0x00000004
     .word 0x00000000
+    .word 0x00000029
+    .word 0x00000000
+    .word 0x00000026
+    .word 0x00000000
     .word 0x00000028
     .word 0x00000000
     .word 0x0000001b
     .word 0x00000000
     .word 0x00000006
     .word 0x00000000
-    .word 0x00000048
+    .word 0x00000008
     .word 0x00000000
-    .word 0x00000047
+    .word 0x00000007
     .word 0x00000000
     .word 0x0000000b
     .word 0x00000000
@@ -283,29 +267,31 @@ a:
     .word 0x00000000
     .word 0x00000016
     .word 0x00000000
-    .word 0x0000003d
-    .word 0x00000000
-    .word 0x00000057
+    .word 0x00000017
     .word 0x00000000
     .word 0x00000024
     .word 0x00000000
-    .word 0x00000062
+    .word 0x00000022
     .word 0x00000000
     .word 0x0000002b
     .word 0x00000000
-    .word 0x00000055
+    .word 0x00000027
     .word 0x00000000
-    .word 0x0000005a
+    .word 0x00000015
+    .word 0x00000000
+    .word 0x0000001a
     .word 0x00000000
     .word 0x00000022
     .word 0x00000000
-    .word 0x00000040
     .word 0x00000000
-    .word 0x00000062
+    .word 0x00000000
+    .word 0x00000022
+    .word 0x00000000
+    .word 0x00000024
     .word 0x00000000
     .word 0x0000002e
     .word 0x00000000
-    .word 0x0000004d
+    .word 0x0000000d
     .word 0x00000000
     .word 0x00000002
     .word 0x00000000
@@ -313,39 +299,45 @@ a:
     .word 0x00000000
     .word 0x00000004
     .word 0x00000000
-    .word 0x00000059
+    .word 0x00000019
     .word 0x00000000
     .word 0x0000000d
+    .word 0x00000000
+    .word 0x00000026
     .word 0x00000000
     .word 0x0000001a
     .word 0x00000000
     .word 0x00000008
     .word 0x00000000
-    .word 0x0000004e
+    .word 0x0000000e
     .word 0x00000000
     .word 0x0000000e
     .word 0x00000000
-    .word 0x00000059
+    .word 0x00000019
     .word 0x00000000
     .word 0x00000029
     .word 0x00000000
-    .word 0x0000004c
+    .word 0x0000000c
     .word 0x00000000
-    .word 0x00000032
+    .word 0x0000001f
     .word 0x00000000
-    .word 0x0000003e
+    .word 0x00000026
     .word 0x00000000
-    .word 0x0000005f
+    .word 0x00000030
     .word 0x00000000
-    .word 0x00000033
-    .word 0x00000000
-    .word 0x0000005f
+    .word 0x0000001f
     .word 0x00000000
     .word 0x00000003
     .word 0x00000000
-    .word 0x0000005d
+    .word 0x0000001d
+    .word 0x00000000
+    .word 0x00000024
     .word 0x00000000
     .word 0x00000016
+    .word 0x00000000
+    .word 0x00000026
+    .word 0x00000000
+    .word 0x0000002c
     .word 0x00000000
     .word 0x0000000e
     .word 0x00000000
@@ -359,23 +351,17 @@ a:
     .word 0x00000000
     .word 0x0000001f
     .word 0x00000000
-    .word 0x00000046
+    .word 0x00000006
     .word 0x00000000
-    .word 0x0000003a
-    .word 0x00000000
-    .word 0x00000055
+    .word 0x00000015
     .word 0x00000000
     .word 0x0000001b
     .word 0x00000000
-    .word 0x00000041
+    .word 0x00000001
     .word 0x00000000
     .word 0x00000029
     .word 0x00000000
     .word 0x0000002c
-    .word 0x00000000
-    .word 0x0000003d
-    .word 0x00000000
-    .word 0x00000038
     .word 0x00000000
     .word 0x00000005
     .word 0x00000000
@@ -385,69 +371,65 @@ a:
     .word 0x00000000
     .word 0x0000002b
     .word 0x00000000
-    .word 0x00000053
+    .word 0x0000002b
+    .word 0x00000000
+    .word 0x00000013
     .word 0x00000000
     .word 0x0000001d
     .word 0x00000000
-    .word 0x0000003d
+    .word 0x0000000a
     .word 0x00000000
-    .word 0x0000004a
+    .word 0x0000001b
     .word 0x00000000
-    .word 0x0000005b
+    .word 0x00000018
     .word 0x00000000
-    .word 0x00000058
+    .word 0x00000026
     .word 0x00000000
-    .word 0x0000003d
-    .word 0x00000000
-    .word 0x00000060
+    .word 0x00000020
     .word 0x00000000
     .word 0x00000000
     .word 0x00000000
     .word 0x0000001a
     .word 0x00000000
-    .word 0x0000003d
+    .word 0x0000000c
     .word 0x00000000
-    .word 0x0000004c
+    .word 0x00000028
     .word 0x00000000
     .word 0x00000002
     .word 0x00000000
-    .word 0x00000045
+    .word 0x00000026
     .word 0x00000000
-    .word 0x00000047
+    .word 0x00000005
+    .word 0x00000000
+    .word 0x00000007
     .word 0x00000000
     .word 0x0000001a
     .word 0x00000000
     .word 0x00000008
     .word 0x00000000
-    .word 0x0000003d
-    .word 0x00000000
     .word 0x00000024
     .word 0x00000000
-    .word 0x00000060
+    .word 0x00000020
     .word 0x00000000
-    .word 0x00000032
+    .word 0x00000029
     .word 0x00000000
     .word 0x0000002b
     .word 0x00000000
     .word 0x00000017
     .word 0x00000000
-    .word 0x0000004e
-    .word 0x00000000
-    .word 0x0000003a
+    .word 0x0000000e
     .word 0x00000000
     .word 0x0000001f
     .word 0x00000000
-    .word 0x0000005f
+    .word 0x0000001f
     .word 0x00000000
-    .word 0x00000057
+    .word 0x00000017
     .word 0x00000000
-    .word 0x00000033
+    .word 0x00000028
     .word 0x00000000
-    .word 0x0000003d
+    .word 0x00000030
     .word 0x00000000
-    .word 0x00000039
-    .word 0x00000000
-    .word 0x00000033
+    .word 0x00000030
     .word 0x00000000
     .word 0x0000000b
     .word 0x00000000
@@ -457,25 +439,29 @@ a:
     .word 0x00000000
     .word 0x00000002
     .word 0x00000000
-    .word 0x00000037
+    .word 0x00000030
     .word 0x00000000
-    .word 0x00000050
+    .word 0x00000024
     .word 0x00000000
-    .word 0x0000003a
+    .word 0x00000030
+    .word 0x00000000
+    .word 0x00000010
+    .word 0x00000000
+    .word 0x00000030
     .word 0x00000000
     .word 0x00000001
     .word 0x00000000
     .word 0x00000001
     .word 0x00000000
-    .word 0x0000005b
+    .word 0x0000001b
     .word 0x00000000
-    .word 0x00000035
+    .word 0x00000016
     .word 0x00000000
-    .word 0x00000056
+    .word 0x00000024
     .word 0x00000000
-    .word 0x0000005f
+    .word 0x0000001f
     .word 0x00000000
-    .word 0x00000060
+    .word 0x00000020
     .word 0x00000000
     .word 0x00000000
     .word 0x00000000
@@ -483,25 +469,19 @@ a:
     .word 0x00000000
     .word 0x00000001
     .word 0x00000000
-    .word 0x00000034
-    .word 0x00000000
     .word 0x0000002b
     .word 0x00000000
-    .word 0x00000059
+    .word 0x00000019
     .word 0x00000000
     .word 0x0000001f
     .word 0x00000000
-    .word 0x00000045
+    .word 0x00000005
     .word 0x00000000
     .word 0x0000001f
     .word 0x00000000
-    .word 0x00000043
+    .word 0x00000003
     .word 0x00000000
-    .word 0x00000036
-    .word 0x00000000
-    .word 0x0000004a
-    .word 0x00000000
-    .word 0x00000037
+    .word 0x0000000a
     .word 0x00000000
     .word 0x00000010
     .word 0x00000000
@@ -509,53 +489,51 @@ a:
     .word 0x00000000
     .word 0x00000017
     .word 0x00000000
-    .word 0x00000044
+    .word 0x00000004
     .word 0x00000000
-    .word 0x00000061
+    .word 0x00000021
     .word 0x00000000
-    .word 0x00000045
+    .word 0x00000005
     .word 0x00000000
-    .word 0x00000055
+    .word 0x00000015
     .word 0x00000000
     .word 0x0000000a
     .word 0x00000000
+    .word 0x0000002f
+    .word 0x00000000
     .word 0x0000000f
     .word 0x00000000
-    .word 0x00000060
+    .word 0x00000020
     .word 0x00000000
-    .word 0x00000048
+    .word 0x00000008
     .word 0x00000000
-    .word 0x0000003a
+    .word 0x00000005
     .word 0x00000000
-    .word 0x00000045
+    .word 0x0000000f
     .word 0x00000000
-    .word 0x0000004f
-    .word 0x00000000
-    .word 0x0000005c
+    .word 0x0000001c
     .word 0x00000000
     .word 0x00000002
     .word 0x00000000
     .word 0x00000013
     .word 0x00000000
-    .word 0x0000003a
-    .word 0x00000000
     .word 0x00000023
     .word 0x00000000
     .word 0x00000012
     .word 0x00000000
-    .word 0x00000059
+    .word 0x00000019
     .word 0x00000000
-    .word 0x00000042
+    .word 0x00000002
     .word 0x00000000
     .word 0x00000012
     .word 0x00000000
     .word 0x00000013
     .word 0x00000000
-    .word 0x0000005f
+    .word 0x0000001f
     .word 0x00000000
-    .word 0x00000046
+    .word 0x00000006
     .word 0x00000000
-    .word 0x00000033
+    .word 0x00000028
     .word 0x00000000
     .word 0x00000020
     .word 0x00000000
@@ -563,17 +541,17 @@ a:
     .word 0x00000000
     .word 0x00000026
     .word 0x00000000
-    .word 0x00000051
+    .word 0x00000011
+    .word 0x00000000
+    .word 0x00000027
     .word 0x00000000
     .word 0x00000000
     .word 0x00000000
     .word 0x0000000a
     .word 0x00000000
-    .word 0x0000005b
+    .word 0x0000001b
     .word 0x00000000
-    .word 0x00000038
-    .word 0x00000000
-    .word 0x00000058
+    .word 0x00000018
     .word 0x00000000
     .word 0x00000031
     .word 0x00000000
@@ -581,19 +559,21 @@ a:
     .word 0x00000000
     .word 0x0000001e
     .word 0x00000000
-    .word 0x0000005d
+    .word 0x0000001d
     .word 0x00000000
     .word 0x00000029
     .word 0x00000000
-    .word 0x00000062
+    .word 0x00000022
     .word 0x00000000
     .word 0x00000006
     .word 0x00000000
     .word 0x0000000f
     .word 0x00000000
-    .word 0x00000059
+    .word 0x00000019
     .word 0x00000000
-    .word 0x0000003b
+    .word 0x0000002f
+    .word 0x00000000
+    .word 0x00000030
     .word 0x00000000
     .word 0x00000001
     .word 0x00000000
@@ -603,7 +583,7 @@ a:
     .word 0x00000000
     .word 0x0000000b
     .word 0x00000000
-    .word 0x00000044
+    .word 0x00000004
     .word 0x00000000
     .word 0x00000024
     .word 0x00000000
@@ -611,32 +591,52 @@ a:
     .word 0x00000000
     .word 0x00000008
     .word 0x00000000
-    .word 0x00000062
+    .word 0x00000028
+    .word 0x00000000
+    .word 0x00000022
     .word 0x00000000
     .word 0x00000012
     .word 0x00000000
     .word 0x0000002f
     .word 0x00000000
+    .word 0x0000000f
+    .word 0x00000000
+    .word 0x00000002
+    .word 0x00000000
+    .word 0x00000013
+    .word 0x00000000
+    .word 0x00000017
+    .word 0x00000000
+    .word 0x00000020
+    .word 0x00000000
+    .word 0x00000017
+    .word 0x00000000
+    .word 0x0000000a
+    .word 0x00000000
+    .word 0x00000030
+    .word 0x00000000
+    .word 0x00000007
+    .word 0x00000000
 .global k
 .balign NR_LANES*4
 k:
-    .word 0x00000005
-    .word 0x00000000
-    .word 0x0000002e
-    .word 0x00000000
-    .word 0x00000015
-    .word 0x00000000
-    .word 0x00000055
-    .word 0x00000000
     .word 0x0000000e
     .word 0x00000000
-    .word 0x00000047
+    .word 0x0000002b
     .word 0x00000000
-    .word 0x00000051
+    .word 0x00000010
     .word 0x00000000
-    .word 0x00000012
     .word 0x00000000
-    .word 0x00000056
+    .word 0x00000000
+    .word 0x00000003
+    .word 0x00000000
+    .word 0x0000002c
+    .word 0x00000000
+    .word 0x0000001f
+    .word 0x00000000
+    .word 0x00000013
+    .word 0x00000000
+    .word 0x00000027
     .word 0x00000000
 .global c
 .balign NR_LANES*4

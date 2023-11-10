@@ -1,18 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <float.h> // Include the header for DBL_MAX
-#include <time.h>
-#include "kmeans.h"
-#include <string.h>
 
+#include "kmeans.h"
 
 
 
 void assignPointsToClusters(const int64_t *points,  const int64_t *centers, int64_t *clusters) {
     printf("Assign Points to Clusters\n");
     for (int i = 0; i < NUM_POINTS; i++) {
-        int64_t minDist = DBL_MAX;
+        int64_t minDist =INT64_MAX;
         for (int c = 0; c < NUM_CLUSTERS; c++) {
             int64_t sum = 0;
             for (int j = 0; j < SIZE_DATAPOINT; j++) {
@@ -34,13 +28,6 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     int64_t sum[NUM_CLUSTERS][SIZE_DATAPOINT] = {0};
     int numbersInCluster[NUM_CLUSTERS] = {0};
 
-    // Reset sums and counters
-    for (int i = 0; i < NUM_CLUSTERS; i++) {
-        for (int d = 0; d < SIZE_DATAPOINT; d++) {
-            sum[i][d] = 0;
-        }
-        numbersInCluster[i] = 0;
-    }
 
     // Accumulate sum of points for each cluster and count numbers in each cluster
     for (int j = 0; j < NUM_POINTS; j++) {
@@ -62,6 +49,19 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
                 centers[ d * NUM_CLUSTERS + i] = (int64_t)(sum[i][d] / numbersInCluster[i]);
             }
         }
+    }
+
+    // Print cluster centers
+    printf("Cluster Centers:\n");
+    for (int i = 0; i < NUM_CLUSTERS; i++) {
+        printf("Cluster %d: (", i);
+        for (int d = 0; d < SIZE_DATAPOINT; d++) {
+            printf("%lld", centers[d * NUM_CLUSTERS + i]);
+            if (d < SIZE_DATAPOINT - 1) {
+                printf(", ");
+            }
+        }
+        printf(")\n");
     }
 }
 
@@ -106,11 +106,10 @@ void assessQualityCluster(const int64_t *points,  int64_t *centers, int64_t *clu
 
 
 void custom_memcpy(int64_t*dest, int64_t *src, size_t size){
-    printf("custom memcpy");
-    int64_t *d = (int64_t *)dest;
-    const int64_t *s = (const int64_t *)src;
+    printf("custom memcpy\n");
+   
     for (size_t i = 0; i < size; i++) {
-        d[i] = s[i];
+        dest[i] = src[i];
     }
 }
 
@@ -130,43 +129,59 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
     int max_iteration=20;
     
     printf("MAIN\n");
-    size_t clusters_sz = NUM_POINTS * sizeof(int64_t);
+    size_t clusters_sz = NUM_POINTS;
     
     while (1)
     {
+        printf("iteration number: %d \n", iterations);
 
 
-        printf("Max iterations %d", max_iteration);
-        printf("iteration number %d",iterations);
+        
         /* Store the previous state of the clustering */
         custom_memcpy(clusters_last, clusters, clusters_sz);
 
 
         assignPointsToClusters(points, centers,clusters);
 
+        printf("Matrix clusters:\n");
+        for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+            
+            printf("%ld ", clusters[i]);
+            printf("\t");
+        }
+        printf("\n");
+        printf("Matrix clusters copied version:\n");
+        for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+            
+            printf("%ld ", clusters_last[i]);
+            printf("\t");
+        }
+        printf("\n");
+
+
         updateClusterCenters(points, centers,clusters);
         assessQualityCluster(points,centers,clusters);
 
-        // char filename[256];
-        // snprintf(filename, sizeof(filename), "cluster_data_iteration_%d.csv", iterations);
+        char filename[256];
+        snprintf(filename, sizeof(filename), "cluster_data_iteration_%d.csv", iterations);
 
-        // FILE *fptr = fopen("cluster_data.csv", "w");
-        // if (fptr == NULL) {
-        //     printf("Error opening file\n");
-        //     return 1;
-        // }
+        FILE *fptr = fopen("cluster_data.csv", "w");
+        if (fptr == NULL) {
+            printf("Error opening file\n");
+            return 1;
+        }
 
-        // fprintf(fptr, "x,y,z,cluster\n"); // Header
-        // for (uint64_t j = 0; j < NUM_POINTS; ++j) {
-        //     fprintf(fptr, "%ld,%ld,%ld,%ld\n",
-        //         points[0 * NUM_POINTS + j], // X-coordinate
-        //         points[1 * NUM_POINTS + j], // Y-coordinate
-        //         points[2 * NUM_POINTS + j], // Z-coordinate
-        //         clusters[j]);               // Cluster assignment
-        // }
+        fprintf(fptr, "x,y,z,cluster\n"); // Header
+        for (uint64_t j = 0; j < NUM_POINTS; ++j) {
+            fprintf(fptr, "%ld,%ld,%ld,%ld\n",
+                points[0 * NUM_POINTS + j], // X-coordinate
+                points[1 * NUM_POINTS + j], // Y-coordinate
+                points[2 * NUM_POINTS + j], // Z-coordinate
+                clusters[j]);               // Cluster assignment
+        }
 
-        // fclose(fptr);
-        // printf("CSV file created.\n");
+        fclose(fptr);
+        printf("CSV file created.\n");
 
 
         /*

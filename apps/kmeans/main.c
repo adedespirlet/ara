@@ -44,26 +44,6 @@ int main() {
   printf("\n");
   printf("\n");
 
-// #ifdef VCD_DUMP
-//   // Measure only the full-size matmul
-//   for (uint64_t s = M; s <= M; s *= 2) {
-// #else
-//   for (int s = 4; s <= M; s *= 2) {
-// #endif
-    // printf("\n");
-    // printf("------------------------------------------------------------\n");
-    // printf("Calculating a (%d x %d) x (%d x %d) matrix multiplication...\n", s,
-    //        s, s, s);
-    // printf("------------------------------------------------------------\n");
-    // printf("\n");
-
-    // printf("Matrix A:\n");
-    // for (uint64_t i = 0; i < M; ++i) {
-    //     for (uint64_t j = 0; j < N; ++j) {
-    //         printf("%lld ", a[i * N + j]);
-    //     }
-    //     printf("\n");
-    // }
 
     printf("Matrix k:\n");
     for (uint64_t i = 0; i < 3; ++i) {
@@ -79,7 +59,7 @@ int main() {
         printf("%ld ", c[i]);
         printf("\t");
     }
-    
+
     kmeans_result result;
 
     // Matrices are initialized --> Start calculating

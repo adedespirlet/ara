@@ -1,12 +1,15 @@
 #ifndef KMEANS_H
 #define KMEANS_H
 #include <stdio.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <math.h>
 #include <float.h> // Include the header for DBL_MAX
 #include <time.h>
 #include <stddef.h>
 #include <stdbool.h>
+
+
 
 #define NUM_POINTS 100
 #define NUM_CLUSTERS 3
