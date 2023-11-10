@@ -162,26 +162,26 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
         updateClusterCenters(points, centers,clusters);
         assessQualityCluster(points,centers,clusters);
 
-        char filename[256];
-        snprintf(filename, sizeof(filename), "cluster_data_iteration_%d.csv", iterations);
+        // char filename[256];
+        // snprintf(filename, sizeof(filename), "cluster_data_iteration_%d.csv", iterations);
 
-        FILE *fptr = fopen("cluster_data.csv", "w");
-        if (fptr == NULL) {
-            printf("Error opening file\n");
-            return 1;
-        }
+        // FILE *fptr = fopen("cluster_data.csv", "w");
+        // if (fptr == NULL) {
+        //     printf("Error opening file\n");
+        //     return 1;
+        // }
 
-        fprintf(fptr, "x,y,z,cluster\n"); // Header
-        for (uint64_t j = 0; j < NUM_POINTS; ++j) {
-            fprintf(fptr, "%ld,%ld,%ld,%ld\n",
-                points[0 * NUM_POINTS + j], // X-coordinate
-                points[1 * NUM_POINTS + j], // Y-coordinate
-                points[2 * NUM_POINTS + j], // Z-coordinate
-                clusters[j]);               // Cluster assignment
-        }
+        // fprintf(fptr, "x,y,z,cluster\n"); // Header
+        // for (uint64_t j = 0; j < NUM_POINTS; ++j) {
+        //     fprintf(fptr, "%ld,%ld,%ld,%ld\n",
+        //         points[0 * NUM_POINTS + j], // X-coordinate
+        //         points[1 * NUM_POINTS + j], // Y-coordinate
+        //         points[2 * NUM_POINTS + j], // Z-coordinate
+        //         clusters[j]);               // Cluster assignment
+        // }
 
-        fclose(fptr);
-        printf("CSV file created.\n");
+        // fclose(fptr);
+        // printf("CSV file created.\n");
 
 
         /*
