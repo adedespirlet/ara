@@ -10,6 +10,7 @@
 
 
 void assignPointsToClusters(const int64_t *points,  const int64_t *centers, int64_t *clusters) {
+    printf("Assign Points to Clusters\n");
     for (int i = 0; i < NUM_POINTS; i++) {
         int64_t minDist = DBL_MAX;
         for (int c = 0; c < NUM_CLUSTERS; c++) {
@@ -105,6 +106,7 @@ void assessQualityCluster(const int64_t *points,  int64_t *centers, int64_t *clu
 
 
 void custom_memcpy(int64_t*dest, int64_t *src, size_t size){
+    printf("custom memcpy");
     int64_t *d = (int64_t *)dest;
     const int64_t *s = (const int64_t *)src;
     for (size_t i = 0; i < size; i++) {
@@ -122,124 +124,75 @@ bool custom_memcmp(const int64_t *array1, const int64_t *array2, size_t size){
 }
 
 
+
 kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *clusters,int64_t *clusters_last){
-	int iterations = 0;
-	int max_iter=5;
+    int iterations = 0;
+    int max_iteration=20;
+    
+    printf("MAIN\n");
     size_t clusters_sz = NUM_POINTS * sizeof(int64_t);
-    printf("entered kmeans function\n");
+    
+    while (1)
+    {
 
-	
-	while (1)
-	{
-        printf("Iteration number : %d",iterations);
-		/* Store the previous state of the clustering */
-	    custom_memcpy(clusters_last, clusters, clusters_sz);
 
-		assignPointsToClusters(points, centers,clusters);
+        printf("Max iterations %d", max_iteration);
+        printf("iteration number %d",iterations);
+        /* Store the previous state of the clustering */
+        custom_memcpy(clusters_last, clusters, clusters_sz);
 
-		printf("Matrix C:\n");
-		for (uint64_t i = 0; i < NUM_POINTS; ++i) {
-        		printf("%ld ", clusters[i]);
-			printf("\t");
-		}
-		updateClusterCenters(points, centers,clusters);
-       	assessQualityCluster(points,centers,clusters);
 
-		/*
-		 * if all the cluster numbers are unchanged since last time,
-		 * we are at a stable solution, so we can stop here
-		 */
-		if (custom_memcmp(clusters_last, clusters, clusters_sz)){
-		
-			//kmeans_free(clusters_last);
-			//total_iterations = iterations;
-			return KMEANS_OK;
-		}
+        assignPointsToClusters(points, centers,clusters);
 
-		if (iterations++ > max_iter)
-		{
-			//kmeans_free(clusters_last);
-			//total_iterations = iterations;
-			return KMEANS_EXCEEDED_MAX_ITERATIONS;
-		}
-	}
+        updateClusterCenters(points, centers,clusters);
+        assessQualityCluster(points,centers,clusters);
 
-	//kmeans_free(clusters_last);
-	//total_iterations = iterations;
-	return KMEANS_ERROR;
+        // char filename[256];
+        // snprintf(filename, sizeof(filename), "cluster_data_iteration_%d.csv", iterations);
+
+        // FILE *fptr = fopen("cluster_data.csv", "w");
+        // if (fptr == NULL) {
+        //     printf("Error opening file\n");
+        //     return 1;
+        // }
+
+        // fprintf(fptr, "x,y,z,cluster\n"); // Header
+        // for (uint64_t j = 0; j < NUM_POINTS; ++j) {
+        //     fprintf(fptr, "%ld,%ld,%ld,%ld\n",
+        //         points[0 * NUM_POINTS + j], // X-coordinate
+        //         points[1 * NUM_POINTS + j], // Y-coordinate
+        //         points[2 * NUM_POINTS + j], // Z-coordinate
+        //         clusters[j]);               // Cluster assignment
+        // }
+
+        // fclose(fptr);
+        // printf("CSV file created.\n");
+
+
+        /*
+         * if all the cluster numbers are unchanged since last time,
+         * we are at a stable solution, so we can stop here
+         */
+        if (custom_memcmp(clusters_last, clusters, clusters_sz)){
+        
+            //kmeans_free(clusters_last);
+            //total_iterations = iterations;
+            printf("KMEANS succeeded");
+            return KMEANS_OK;
+        }
+
+        if (iterations++ > max_iteration)
+        {   
+            //kmeans_free(clusters_last);
+            //total_iterations = iterations;
+            printf("Exceeded Max Iterations");
+            return KMEANS_EXCEEDED_MAX_ITERATIONS;
+            
+        }
+    }
+
+    //kmeans_free(clusters_last);
+    //total_iterations = iterations;
+    printf("ERROR");
+    return KMEANS_ERROR;
 }
-
-
-// int main() {
-//     // unsigned int* total_iterations;
-  
-//     kmeans_result result;
-    
-//     // Allocate memory 
-//     double** points = (double**)malloc(NUM_POINTS * sizeof(double*));
-//     double** centers= (double**)malloc(NUM_CLUSTERS * sizeof(double*));
-//     int* clusters= (int*)malloc(NUM_POINTS* sizeof(int));
-//     srand(time(NULL)); // Set the seed based on the current time
-
-//     if (points) {
-//         // Populate the array with coordinate values
-//         for (int i = 0; i < NUM_POINTS; i++) {
-//             points[i] = (double*)malloc(SIZE_DATAPOINT * sizeof(double));
-
-//             if (!points[i]) {
-//                 // Handle allocation failure
-//                 return 1;
-//             }
-
-//             // Fill in the coordinates for the current point
-//             for (int j = 0; j < SIZE_DATAPOINT; j++) {
-//                 points[i][j] = (rand() % 1000) / 10.0;  // Example: Assigning the same value for simplicity
-//                 //printf("%f\n",points[i][j]);
-//             }
-//         }
-//     }
-//     if (centers){
-//     // Populate the array with coordinate values
-//         for (int i = 0; i < NUM_CLUSTERS; i++) {
-//             centers[i] = (double*)malloc(SIZE_DATAPOINT * sizeof(double));
-
-//             if (!centers[i]) {
-//                 // Handle allocation failure
-//                 return 1;
-//             }
-
-//             // Fill in the coordinates for the current point
-//             for (int j = 0; j < SIZE_DATAPOINT; j++) {
-//                 int randomIndex = rand() % NUM_POINTS;
-//                 centers[i][j] = points[randomIndex][j]; 
-//                 printf("%f\n",centers[i][j]);
-
-//             }
-//         }
-//     }
-
-    
-//     result= kmeans(points, centers, clusters) ;
-//     printf("K-Means result: %d\n", result);
-
-//     //assessQualityCluster(points, NUM_POINTS, clusters, NUM_CLUSTERS);
-
-//     // for (int i = 0; i < NUM_CLUSTERS; i++) {
-//     //         totalVariation += clusters[i].variation;
-//     //     }
-//     //     printf("for Init Points %d, the total Variation we get is : %f\n",init,totalVariation);
-
-
-// ///////////////////free points
-//     for (int i = 0; i < NUM_POINTS; i++) {
-//                 free(points[i]);
-//     }
-//     free(points);
-//     for (int i = 0; i < NUM_CLUSTERS; i++) {
-//                 free(centers[i]);
-//     }
-//     free(centers);
-//     free(clusters);
-
-//         return 0;
-// }
