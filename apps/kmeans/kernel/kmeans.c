@@ -144,12 +144,12 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 
         assignPointsToClusters(points, centers,clusters);
 
-        printf("---\n");
+        printf("---");
         for (uint64_t i = 0; i < NUM_POINTS; ++i) {
             
-            printf("%ld, ", clusters[i]);
+            printf("%ld,", clusters[i]);
         }
-        printf("\n");
+       
         printf("---\n");
         
 

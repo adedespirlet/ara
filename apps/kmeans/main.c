@@ -56,11 +56,11 @@ int main() {
     printf("---");
     for (uint64_t i = 0; i < 3; ++i) {
         for (uint64_t j = 0; j < M; ++j) {
-            printf("%ld ,", a[i * N + j]);
+            printf("%ld,", a[i * N + j]);
         }
         printf("\n");
     }
-    printf("---");
+    
 
     // printf("Matrix c:\n");
     // for (uint64_t i = 0; i < M; ++i) {
