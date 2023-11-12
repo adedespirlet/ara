@@ -54,7 +54,7 @@ int main() {
     
     //printf("Matrix A:\n");
     printf("---");
-    printf("\n")
+    printf("\n");
     for (uint64_t i = 0; i < 3; ++i) {
         for (uint64_t j = 0; j < M; ++j) {
             printf("%ld ", a[i * N + j]);
