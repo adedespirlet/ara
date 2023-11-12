@@ -620,23 +620,23 @@ a:
 .global k
 .balign NR_LANES*4
 k:
-    .word 0x0000002f
-    .word 0x00000000
-    .word 0x00000025
-    .word 0x00000000
-    .word 0x00000018
-    .word 0x00000000
-    .word 0x00000013
-    .word 0x00000000
-    .word 0x00000021
-    .word 0x00000000
     .word 0x0000002b
     .word 0x00000000
-    .word 0x00000030
+    .word 0x00000001
     .word 0x00000000
-    .word 0x0000001f
+    .word 0x00000020
     .word 0x00000000
-    .word 0x0000001f
+    .word 0x00000022
+    .word 0x00000000
+    .word 0x00000006
+    .word 0x00000000
+    .word 0x00000016
+    .word 0x00000000
+    .word 0x00000019
+    .word 0x00000000
+    .word 0x00000001
+    .word 0x00000000
+    .word 0x00000012
     .word 0x00000000
 .global c
 .balign NR_LANES*4
