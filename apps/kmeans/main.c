@@ -37,12 +37,12 @@ extern int64_t b[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
 // }
 
 int main() {
-    printf("\n");
-    printf("=============\n");
-    printf("=  KMEANS  =\n");
-    printf("=============\n");
-    printf("\n");
-    printf("\n");
+    // printf("\n");
+    // printf("=============\n");
+    // printf("=  KMEANS  =\n");
+    // printf("=============\n");
+    // printf("\n");
+    // printf("\n");
     int64_t runtime_s, runtime_v;   
 
     // printf("Matrix k:\n");
@@ -53,6 +53,7 @@ int main() {
     //     printf("\n");
     
     //printf("Matrix A:\n");
+    printf("---");
     for (uint64_t i = 0; i < 3; ++i) {
         for (uint64_t j = 0; j < M; ++j) {
             printf("%ld ", a[i * N + j]);
