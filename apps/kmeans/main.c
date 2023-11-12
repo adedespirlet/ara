@@ -51,7 +51,7 @@ int main() {
     //         printf("%ld ", k[i * N + j]);
     //     }
     //     printf("\n");
-    }
+    
     printf("Matrix A:\n");
     for (uint64_t i = 0; i < 3; ++i) {
         for (uint64_t j = 0; j < M; ++j) {
@@ -72,13 +72,13 @@ int main() {
 
     // Matrices are initialized --> Start calculating
     //printf("Calculating kmeans...\n");
-    start_timer();
+    //start_timer();
     //imatmul(c, a, b, s, s, s);
     result= kmeans(a, k, c,b) ;
     //printf("K-Means result: %d\n", result);
-    stop_timer();
+    //stop_timer();
 
-    runtime_s = get_timer();
+    //runtime_s = get_timer();
    // printf("Scalar runtime: %ld\n", runtime_s);
  
 
