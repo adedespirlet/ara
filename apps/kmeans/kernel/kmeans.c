@@ -51,7 +51,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         }
     }
 
-    Print cluster centers
+    //Print cluster centers
     printf("Cluster Centers:\n");
     for (int i = 0; i < NUM_CLUSTERS; i++) {
         //printf("Cluster %d: (", i);
