@@ -56,7 +56,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     for (int i = 0; i < NUM_CLUSTERS; i++) {
         //printf("Cluster %d: (", i);
         for (int d = 0; d < SIZE_DATAPOINT; d++) {
-            printf("%lld", centers[d * NUM_CLUSTERS + i]);
+            printf("%ld", centers[d * NUM_CLUSTERS + i]);
             if (d < SIZE_DATAPOINT - 1) {
                 printf(", ");
             }
