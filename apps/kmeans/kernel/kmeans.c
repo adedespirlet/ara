@@ -151,13 +151,13 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
             printf("\t");
         }
         printf("\n");
-        printf("Matrix clusters copied version:\n");
-        for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+        // printf("Matrix clusters copied version:\n");
+        // for (uint64_t i = 0; i < NUM_POINTS; ++i) {
             
-            printf("%ld ", clusters_last[i]);
-            printf("\t");
-        }
-        printf("\n");
+        //     printf("%ld ", clusters_last[i]);
+        //     printf("\t");
+        // }
+        // printf("\n");
 
 
         updateClusterCenters(points, centers,clusters);

@@ -60,12 +60,12 @@ int main() {
         printf("\n");
     }
 
-    printf("Matrix c:\n");
-    for (uint64_t i = 0; i < M; ++i) {
+    // printf("Matrix c:\n");
+    // for (uint64_t i = 0; i < M; ++i) {
         
-        printf("%ld ", c[i]);
-        printf("\t");
-    }
+    //     printf("%ld ", c[i]);
+    //     printf("\t");
+    // }
 
     kmeans_result result;
 
