@@ -13,6 +13,7 @@ z_coordinates = str_to_int_list("38,18,22,10,10,23,35,39,23,2,21,1,23,43,29,37,1
 # Cluster assignments and centroid positions for each iteration
 # Replace with your data
 cluster_iterations = [
+    str_to_int_list("2,2,1,0,1,2,2,2,2,2,2,2,2,0,2,1,2,1,2,2,2,0,1,0,2,1,2,0,0,0,2,0,2,1,2,0,0,1,2,1,1,1,2,2,1,2,1,2,1,0,1,2,0,0,1,2,1,0,2,2,2,2,0,0,1,1,1,2,1,2,1,0,0,2,1,2,2,0,2,2,1,2,2,0,2,1,0,1,0,2,2,2,2,0,2,2,0,1,0,1"),
     str_to_int_list("2,2,1,0,1,2,2,2,2,1,1,2,2,0,0,1,2,1,2,2,2,0,1,0,2,1,2,0,0,0,2,0,0,1,2,0,0,1,2,1,2,1,2,2,1,2,1,2,1,0,1,2,0,0,1,2,1,0,2,2,0,2,0,0,1,1,1,2,1,2,1,0,0,2,1,2,0,0,0,1,1,1,2,0,2,1,0,1,0,2,0,2,2,0,2,2,0,1,0,1"),  # Iteration 1
     str_to_int_list("2,2,1,0,1,2,2,2,2,1,1,0,2,0,0,1,2,1,2,2,2,0,1,0,2,1,0,0,0,0,2,0,0,2,1,0,0,1,2,1,2,1,2,0,1,2,1,2,1,0,1,1,0,0,1,2,1,0,2,1,0,2,0,0,1,1,1,2,1,2,2,0,0,2,1,0,0,0,2,1,1,1,2,0,0,2,0,2,0,2,0,2,2,0,2,1,0,1,0,1"),          # Iteration 2
     str_to_int_list("2,2,2,0,1,1,2,2,2,1,1,0,2,0,0,1,1,1,2,2,2,0,1,0,2,1,0,0,0,0,2,0,0,2,1,0,0,1,2,1,2,1,2,0,1,2,1,2,1,0,1,1,0,0,1,2,1,0,2,1,0,2,0,0,1,1,1,2,1,0,2,0,0,2,1,0,1,0,2,1,1,1,2,0,0,2,0,2,0,2,0,2,2,0,2,1,0,1,0,1"),
@@ -31,8 +32,6 @@ centroid_iterations = [
    [(34, 37),(9, 26),(29, 8)],
    [(34, 37),(9, 26),(29, 8)]]
 
-
-
 # Plotting function
 def plot_kmeans_iteration(x, y, z, clusters, centroids, iteration):
     fig = plt.figure()
@@ -46,4 +45,12 @@ def plot_kmeans_iteration(x, y, z, clusters, centroids, iteration):
         ax.scatter(cx, cy, cz, c='red', marker='x', s=100)
 
     ax.set_title(f'K-means Iteration {iteration}')
-    ax.set_xlabel('X Co
+    ax.set_xlabel('X Coordinate')
+    ax.set_ylabel('Y Coordinate')
+    ax.set_zlabel('Z Coordinate')
+
+    plt.show()
+
+# Plot each iteration
+for i, (clusters, centroids) in enumerate(zip(cluster_iterations, centroid_iterations), start=1):
+    plot_kmeans_iteration(x_coordinates, y_coordinates, z_coordinates, clusters, centroids, i)
