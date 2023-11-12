@@ -97,7 +97,7 @@ void assessQualityCluster(const int64_t *points,  int64_t *centers, int64_t *clu
            // clusterVariance = sumOfSquaredDistances / numPointsInCluster;
             clusterVariance = sumOfSquaredDistances;
             totalVariation += clusterVariance;
-            printf("Cluster %d Variance: %ld\n", clusterIndex, clusterVariance);
+            //printf("Cluster %d Variance: %ld\n", clusterIndex, clusterVariance);
         }
     }
 
