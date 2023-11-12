@@ -4,7 +4,7 @@
 
 
 void assignPointsToClusters(const int64_t *points,  const int64_t *centers, int64_t *clusters) {
-    printf("Assign Points to Clusters\n");
+    //printf("Assign Points to Clusters\n");
     for (int i = 0; i < NUM_POINTS; i++) {
         int64_t minDist =INT64_MAX;
         for (int c = 0; c < NUM_CLUSTERS; c++) {
@@ -52,17 +52,17 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     }
 
     // Print cluster centers
-    printf("Cluster Centers:\n");
-    for (int i = 0; i < NUM_CLUSTERS; i++) {
-        printf("Cluster %d: (", i);
-        for (int d = 0; d < SIZE_DATAPOINT; d++) {
-            printf("%lld", centers[d * NUM_CLUSTERS + i]);
-            if (d < SIZE_DATAPOINT - 1) {
-                printf(", ");
-            }
-        }
-        printf(")\n");
-    }
+    //printf("Cluster Centers:\n");
+    // for (int i = 0; i < NUM_CLUSTERS; i++) {
+    //     //printf("Cluster %d: (", i);
+    //     for (int d = 0; d < SIZE_DATAPOINT; d++) {
+    //         printf("%lld", centers[d * NUM_CLUSTERS + i]);
+    //         if (d < SIZE_DATAPOINT - 1) {
+    //             printf(", ");
+    //         }
+    //     }
+    //     printf(")\n");
+    // }
 }
 
 
@@ -101,13 +101,13 @@ void assessQualityCluster(const int64_t *points,  int64_t *centers, int64_t *clu
         }
     }
 
-    printf("Total Variation: %ld\n", totalVariation);
+    //printf("Total Variation: %ld\n", totalVariation);
 }
 
 
 
 void custom_memcpy(int64_t*dest, int64_t *src, size_t size){
-    printf("custom memcpy\n");
+   // printf("custom memcpy\n");
    
     for (size_t i = 0; i < size; i++) {
         dest[i] = src[i];
@@ -129,12 +129,12 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
     int iterations = 0;
     int max_iteration=20;
     
-    printf("MAIN\n");
+    //printf("MAIN\n");
     size_t clusters_sz = NUM_POINTS;
     
     while (1)
     {
-        printf("iteration number: %d \n", iterations);
+        //printf("iteration number: %d \n", iterations);
 
 
         
@@ -144,13 +144,15 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 
         assignPointsToClusters(points, centers,clusters);
 
-        printf("Matrix clusters:\n");
+        printf("---\n");
         for (uint64_t i = 0; i < NUM_POINTS; ++i) {
             
             printf("%ld ", clusters[i]);
             printf("\t");
         }
         printf("\n");
+        printf("---\n");
+
         // printf("Matrix clusters copied version:\n");
         // for (uint64_t i = 0; i < NUM_POINTS; ++i) {
             
@@ -193,7 +195,7 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
         
             //kmeans_free(clusters_last);
             //total_iterations = iterations;
-            printf("KMEANS succeeded");
+            //printf("KMEANS succeeded");
             return KMEANS_OK;
         }
 
@@ -201,7 +203,7 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
         {   
             //kmeans_free(clusters_last);
             //total_iterations = iterations;
-            printf("Exceeded Max Iterations");
+            //printf("Exceeded Max Iterations");
             return KMEANS_EXCEEDED_MAX_ITERATIONS;
             
         }
