@@ -45,18 +45,18 @@ int main() {
     // printf("\n");
     int64_t runtime_s, runtime_v;   
 
-    // printf("Matrix k:\n");
-    // for (uint64_t i = 0; i < 3; ++i) {
-    //     for (uint64_t j = 0; j < N; ++j) {
-    //         printf("%ld ", k[i * N + j]);
-    //     }
-    //     printf("\n");
+    printf("Matrix k:\n");
+    for (uint64_t i = 0; i < 3; ++i) {
+        for (uint64_t j = 0; j < N; ++j) {
+            printf("%ld ", k[i * N + j]);
+        }
+        printf("\n");
     
-    //printf("Matrix A:\n");
+    printf("Matrix A:\n");
     printf("---");
     for (uint64_t i = 0; i < 3; ++i) {
         for (uint64_t j = 0; j < M; ++j) {
-            printf("%ld,", a[i * N + j]);
+            printf("%ld", a[i * N + j]);
         }
         printf("\n");
     }
