@@ -51,6 +51,7 @@ int main() {
             printf("%ld ", k[i * N + j]);
         }
         printf("\n");
+    }
     
     printf("Matrix A:\n");
     printf("---");
