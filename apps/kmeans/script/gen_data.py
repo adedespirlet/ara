@@ -55,7 +55,7 @@ np.random.seed(42)
 # Generate random data points
 A = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(N, M)).astype(dtype)    ## rows contain the features and each column is a datapoint
 
-np.random.seed(None)  # Resetting/setting the seed for reproducibility
+np.random.seed(42)  # Resetting/setting the seed for reproducibility
 
 # Create an array of column indices
 column_indices = np.arange(A.shape[1])  # This creates an array [0, 1, 2, ..., M-1]
