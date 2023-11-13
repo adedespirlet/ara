@@ -319,6 +319,13 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 
 
 		assignPointsToClusters(points, centers,clusters);
+        printf("Matrix c:\n");
+        for (uint64_t i = 0; i < M; ++i) {
+            
+            printf("%ld ", c[i]);
+            printf("\t");
+        }
+
 
 		updateClusterCenters(points, centers,clusters);
         assessQualityCluster(points,centers,clusters);
