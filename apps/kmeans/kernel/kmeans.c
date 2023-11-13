@@ -68,7 +68,6 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 }
 
 
-
 void assessQualityCluster(const int64_t *points,  int64_t *centers, int64_t *clusters) {
     int64_t totalVariation = 0;
     int64_t clusterVariance = 0;
@@ -105,7 +104,6 @@ void assessQualityCluster(const int64_t *points,  int64_t *centers, int64_t *clu
 
     //printf("Total Variation: %ld\n", totalVariation);
 }
-
 
 
 void custom_memcpy(int64_t*dest, int64_t *src, size_t size){
