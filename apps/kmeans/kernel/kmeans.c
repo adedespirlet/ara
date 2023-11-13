@@ -43,7 +43,9 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
     // Calculate new cluster centers
     for (int i = 0; i < NUM_CLUSTERS; i++) {
+        printf("%ld",SIZE_DATAPOINT);
         if (numbersInCluster[i] > 0) {
+
             for (int d = 0; d < SIZE_DATAPOINT; d++) {
                 // Cast to int64_t if necessary, or consider changing the type of centers to double
                 centers[ d * NUM_CLUSTERS + i] = (int64_t)(sum[i][d] / numbersInCluster[i]);
