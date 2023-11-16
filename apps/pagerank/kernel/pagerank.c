@@ -4,7 +4,7 @@
 #include <math.h>
 #include "pagerank.h"
 
-void init_link_matrix(unsigned int num_pages, float *link_matrix) {
+void init_link_matrix(unsigned int num_pages, double *link_matrix) {
     // Initialize and populate the link matrix 
 
     unsigned int num_entries=num_pages*num_pages;
@@ -15,21 +15,21 @@ void init_link_matrix(unsigned int num_pages, float *link_matrix) {
 }
 
 
-void calculate_page_rank(unsigned int num_pages, float *link_matrix, float *score_column, float *mean_column) {
+void calculate_page_rank(unsigned int num_pages, double *link_matrix, double *score_column, double *mean_column) {
     // Implement the PageRank calculation here
     // compute PR_+1= (1-t)*A*PR + t*v 
     printf("Calculating PageRank...\n");
     //initialize score and mean column
     init_link_matrix(num_pages,link_matrix);
     for (unsigned int i = 0; i < num_pages; i++) {
-		float entry = 1 / (float) num_pages;
+		double entry = 1 / (double) num_pages;
 		mean_column[i] = entry;
 		score_column[i] = entry;
 	}
-    float sum_of_differences = 0.0;
+    double sum_of_differences = 0.0;
     do{
         // Store score column before operations
-        float prev_score_column[num_pages]; //might have to be alllocate on the heap
+        double prev_score_column[num_pages]; //might have to be alllocate on the heap
         for (unsigned int i = 0; i < num_pages; i++){
             prev_score_column[i] = score_column[i];
         }
@@ -48,7 +48,7 @@ void calculate_page_rank(unsigned int num_pages, float *link_matrix, float *scor
 
         //multiple score (pagerank) vector with link matrix 
         for (unsigned int i=0; i<num_pages; i++){
-            float sum =0;
+            double sum =0;
             for (int j=0; j<num_pages;j++){
                 sum+= link_matrix[i*num_pages+j] * score_column[j];
             }
