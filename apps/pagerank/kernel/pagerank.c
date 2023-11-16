@@ -4,7 +4,7 @@
 #include <math.h>
 #include "pagerank.h"
 
-void init_link_matrix(int num_pages, float *link_matrix) {
+void init_link_matrix(unsigned int num_pages, float *link_matrix) {
     // Initialize and populate the link matrix 
 
     unsigned int num_entries=num_pages*num_pages;
@@ -15,7 +15,7 @@ void init_link_matrix(int num_pages, float *link_matrix) {
 }
 
 
-void calculate_page_rank(int num_pages, float *link_matrix, float *score_column, float *mean_column) {
+void calculate_page_rank(unsigned int num_pages, float *link_matrix, float *score_column, float *mean_column) {
     // Implement the PageRank calculation here
     // compute PR_+1= (1-t)*A*PR + t*v 
     printf("Calculating PageRank...\n");
