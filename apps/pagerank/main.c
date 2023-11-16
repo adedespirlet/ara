@@ -21,13 +21,13 @@ extern double m[] __attribute__((aligned(32 * NR_LANES), section(".l2"))); // me
 
 int main() {
   
-    init_link_matrix(num_pages, link_matrix);   
+    init_link_matrix(num_pages, a);   
     calculate_page_rank(num_pages, a, pr,m);
 
     // Print the PageRank scores
     printf("PageRank Scores:\n");
     for (int i = 0; i < num_pages; i++) {
-        printf("Page %d: %f\n", i + 1, score_column[i]);
+        printf("Page %d: %f\n", i + 1, pr[i]);
     }
 
     return 0;
