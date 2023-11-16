@@ -25,7 +25,7 @@ void calculate_page_rank(int num_pages, float *link_matrix, float *score_column,
 		mean_column[i] = entry;
 		score_column[i] = entry;
 	}
-
+    float sum_of_differences = 0.0;
     do{
         // Store score column before operations
         float prev_score_column[num_pages]; //might have to be alllocate on the heap
@@ -46,10 +46,10 @@ void calculate_page_rank(int num_pages, float *link_matrix, float *score_column,
         }
 
         //multiple score (pagerank) vector with link matrix 
-        for (unsigned int i=0; i<num_pages, i++){
+        for (unsigned int i=0; i<num_pages; i++){
             float sum =0;
             for (int j=0; j<num_pages;j++){
-                sum+= link_matrix[i*num_pages+j] * score_column[j]:
+                sum+= link_matrix[i*num_pages+j] * score_column[j];
             }
             score_column[i]= sum;
             printf("score column: %f \t", score_column[i]);
@@ -62,7 +62,7 @@ void calculate_page_rank(int num_pages, float *link_matrix, float *score_column,
 
         //compute abs difference and see if it converges
         
-        float sum_of_differences = 0.0;
+        sum_of_differences = 0.0;
         for (unsigned int i = 0; i < num_pages; i++) {
             sum_of_differences += fabs(score_column[i] - prev_score_column[i]);
         }
