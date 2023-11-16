@@ -36,21 +36,20 @@ void calculate_page_rank(int num_pages, float *link_matrix, float *score_column,
         //weigh link matrix 
         unsigned int num_entries=num_pages*num_pages;
         for (unsigned int i = 0; i < num_entries; i++){
-            *link_matrix++ *= (1-WEIGHT);
+            link_matrix[i] *= (1-WEIGHT);
         }
 
         //weigh mean vector
         num_entries=num_pages;
         for (unsigned int i = 0; i < num_entries; i++){
-            *mean_column++ *= WEIGHT;
+            mean_column[i] *= WEIGHT;
         }
 
         //multiple score (pagerank) vector with link matrix 
         for (unsigned int i=0; i<num_pages, i++){
             float sum =0;
-            float *temp= score_column;
             for (int j=0; j<num_pages;j++){
-                sum+= *(link_matrix++) * *(temp++):
+                sum+= link_matrix[i*num_pages+j] * score_column[j]:
             }
             score_column[i]= sum;
             printf("score column: %f \t", score_column[i]);
@@ -58,7 +57,7 @@ void calculate_page_rank(int num_pages, float *link_matrix, float *score_column,
 
         //add score column with weigthed mean vector
         for (unsigned int i = 0; i < num_pages; i++){
-            *score_column++ += *mean_column++;
+            score_column[i] += mean_column[i];
         }
 
         //compute abs difference and see if it converges
