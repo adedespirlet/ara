@@ -4,20 +4,18 @@
 #include <math.h>
 #include "pagerank.h"
 
-void init_link_matrix(int num_pages, float link_matrix[][num_pages]) {
+void init_link_matrix(int num_pages, float *link_matrix) {
     // Initialize and populate the link matrix 
 
-    uint num_entries=num_pages*num_pages;
+    unsigned int num_entries=num_pages*num_pages;
     for (int i = 0; i < num_entries; i++){
-        *link_matrix++ = 1/5;
+        *link_matrix = 1/5;
     }
-
-
 
 }
 
 
-void calculate_page_rank(int num_pages, float link_matrix[][num_pages], float score_column[]), float mean_column[] {
+void calculate_page_rank(int num_pages, float *link_matrix, float *score_column, float *mean_column) {
     // Implement the PageRank calculation here
     // compute PR_+1= (1-t)*A*PR + t*v 
     printf("Calculating PageRank...\n")
@@ -36,7 +34,7 @@ void calculate_page_rank(int num_pages, float link_matrix[][num_pages], float sc
         }
 
         //weigh link matrix 
-        uint num_entries=num_pages*num_pages;
+        unsigned int num_entries=num_pages*num_pages;
         for (int i = 0; i < num_entries; i++){
             *link_matrix++ *= (1-WEIGHT);
         }
@@ -74,14 +72,9 @@ void calculate_page_rank(int num_pages, float link_matrix[][num_pages], float sc
     }
     while (sum_of_differences>CONVERGENCES);
 
-    printf("Page Rank has converged\");
+    printf("Page Rank has converged\n");
 
 }
 
 
 
-
-    
-
-
-}
