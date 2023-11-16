@@ -20,6 +20,7 @@ void calculate_page_rank(int num_pages, float *link_matrix, float *score_column,
     // compute PR_+1= (1-t)*A*PR + t*v 
     printf("Calculating PageRank...\n");
     //initialize score and mean column
+    init_link_matrix(num_pages,link_matrix);
     for (unsigned int i = 0; i < num_pages; i++) {
 		float entry = 1 / (float) num_pages;
 		mean_column[i] = entry;
