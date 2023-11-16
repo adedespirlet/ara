@@ -82,13 +82,5 @@ emit("k", K, 'NR_LANES*4')
 emit("c", C, 'NR_LANES*4')
 emit("b", B, 'NR_LANES*4')
 
-# # Create the file
-# print(".section .data,\"aw\",@progbits")
-# emit("M", np.array(M, dtype=np.uint64))
-# emit("N", np.array(N, dtype=np.uint64))
-# emit("P", np.array(P, dtype=np.uint64))
-# emit("a", A, 'NR_LANES*4')
-# emit("b", B, 'NR_LANES*4')
-# emit("c", C, 'NR_LANES*4')
-# emit("g", G, 'NR_LANES*4')
+
 

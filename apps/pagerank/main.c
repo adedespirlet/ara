@@ -1,7 +1,15 @@
 // main.c
-
+#include <stdint.h>
 #include <stdio.h>
+#include <string.h>
 #include "kernel/pagerank.h"
+#include "runtime.h"
+#include "util.h"
+
+#ifndef SPIKE
+#include "printf.h"
+#endif
+
 
 
 extern uint64_t num_pages;
