@@ -1,7 +1,7 @@
 // main.c
 
 #include <stdio.h>
-#include "pagerank.h"
+#include "kernel/pagerank.h"
 
 
 extern uint64_t num_pages;
