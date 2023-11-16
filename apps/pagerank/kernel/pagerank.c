@@ -20,7 +20,7 @@ void init_link_matrix(int num_pages, float link_matrix[][num_pages]) {
 void calculate_page_rank(int num_pages, float link_matrix[][num_pages], float score_column[]), float mean_column[] {
     // Implement the PageRank calculation here
     // compute PR_+1= (1-t)*A*PR + t*v 
-
+    printf("Calculating PageRank...\n")
     //initialize score and mean column
     for (int i = 0; i < num_pages; i++) {
 		float entry = 1 / (float) num_pages;
@@ -56,7 +56,7 @@ void calculate_page_rank(int num_pages, float link_matrix[][num_pages], float sc
                 sum+= *link_matrix++ * *temp++:
             }
             score_column[i]= sum;
-            printf("score column: %f", score_column[i]);
+            printf("score column: %f \t", score_column[i]);
         }
 
         //add score column with weigthed mean vector
@@ -71,11 +71,10 @@ void calculate_page_rank(int num_pages, float link_matrix[][num_pages], float sc
             sum_of_differences += fabs(score_column[i] - prev_score_column[i]);
         }
 
-
     }
     while (sum_of_differences>CONVERGENCES);
 
-
+    printf("Page Rank has converged\");
 
 }
 
