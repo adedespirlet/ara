@@ -72,6 +72,36 @@ B= np.zeros([1,M],dtype=dtype) ##set empty array to copy last clusters values
 # Golden result matrix
 #G = np.matmul(A, B).astype(dtype)
 
+##GOLDEN MODEL
+
+def kmeans(data, centers, max_iter=100):
+    num_points = data.shape[1]
+    num_clusters = centers.shape[1]
+    clusters = np.zeros(num_points, dtype=np.int64)
+
+    for iteration in range(max_iter):
+        # Assignment step
+        for i in range(num_points):
+            distances = np.sum((data[:, i, None] - centers) ** 2, axis=0)
+            clusters[i] = np.argmin(distances)
+
+        # Update step
+        new_centers = np.zeros_like(centers)
+        for k in range(num_clusters):
+            cluster_points = data[:, clusters == k]
+            if cluster_points.size > 0:
+                new_centers[:, k] = np.sum(cluster_points, axis=1) // cluster_points.shape[1]
+
+        # Check for convergence
+        if np.array_equal(centers, new_centers):
+            break
+
+        centers = new_centers
+
+    return clusters, centers
+
+result, updated_centers = kmeans(A, K)
+
 # Create the file
 print(".section .data,\"aw\",@progbits")
 emit("M", np.array(M, dtype=np.uint64))
@@ -81,6 +111,7 @@ emit("a", A, 'NR_LANES*4')
 emit("k", K, 'NR_LANES*4')
 emit("c", C, 'NR_LANES*4')
 emit("b", B, 'NR_LANES*4')
+emit("golden_o", result, 'NR_LANES*4')
 
 
 

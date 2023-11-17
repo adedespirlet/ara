@@ -20,6 +20,7 @@ extern int64_t a[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
 extern int64_t k[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
 extern int64_t c[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
 extern int64_t b[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
+extern int64_t golden_o[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
 // Gold results
 //extern int64_t g[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
 
@@ -77,6 +78,21 @@ int main() {
     //start_timer();
     //imatmul(c, a, b, s, s, s);
     result= kmeans(a, k, c,b) ;
+    
+
+    printf("Matrix c:\n");
+    for (uint64_t i = 0; i < M; ++i) {
+        
+        printf("%ld ,", c[i]);
+    }
+
+    printf("Golden Model output for Cluster vector:\n");
+    for (uint64_t i = 0; i < M; ++i) {
+        
+        printf("%ld ,", golden_o[i]);
+    }
+
+
     //printf("K-Means result: %d\n", result);
     //stop_timer();
 
