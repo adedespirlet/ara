@@ -11,11 +11,8 @@
 
 
 
-#define NUM_POINTS 100
 #define NUM_CLUSTERS 3
 #define MAX_ITERATIONS 50   // How many times is the cluster updated
-#define NUM_RANDOMPOINTS 3  // Picking different initialization values 
-#define SIZE_DATAPOINT 3
 
 
 typedef enum {
@@ -27,13 +24,13 @@ typedef enum {
 
 // Function prototypes for distance and centroid methods
 
-void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64_t *clusters);
-void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters);
-void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clusters);
+void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64_t *clusters,unsigned long int num_points, unsigned long int dimension);
+void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters,unsigned long int num_points, unsigned long int dimension);
+void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clusters,unsigned long int num_points, unsigned long int dimension);
 void custom_memcpy(int64_t *dest, int64_t *src, size_t size);
 bool custom_memcmp(const int64_t *array1, const int64_t *array2, size_t size);
 
-kmeans_result kmeans(const int64_t *points, int64_t *centers, int64_t *clusters, int64_t *clusters_last);
+kmeans_result kmeans(const int64_t *points, int64_t *centers, int64_t *clusters, int64_t *clusters_last,unsigned long int num_points, unsigned long int dimension);
 
 
 #endif

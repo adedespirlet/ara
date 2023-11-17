@@ -40,8 +40,8 @@ def emit(name, array, alignment='8'):
 ############
 
 
-M = 100
-N = 3
+data_points = 50
+dimension = 3
 P = 3
 
 
@@ -53,7 +53,7 @@ LOWER_LIMIT = 0
 np.random.seed(42)
 # Matrices and results
 # Generate random data points
-A = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(N, M)).astype(dtype)    ## rows contain the features and each column is a datapoint
+A = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(dimension, data_points)).astype(dtype)    ## rows contain the features and each column is a datapoint
 
 np.random.seed(42)  # Resetting/setting the seed for reproducibility
 
@@ -67,8 +67,8 @@ selected_columns = np.random.choice(column_indices, P, replace=False)
 K = A[:, selected_columns]
 
 
-C = np.zeros([1,M], dtype=dtype) # contains the assigned cluster to each data point
-B= np.zeros([1,M],dtype=dtype) ##set empty array to copy last clusters values
+C = np.zeros([1,data_points], dtype=dtype) # contains the assigned cluster to each data point
+B= np.zeros([1,data_points],dtype=dtype) ##set empty array to copy last clusters values
 # Golden result matrix
 #G = np.matmul(A, B).astype(dtype)
 
@@ -104,8 +104,8 @@ result, updated_centers = kmeans(A, K)
 
 # Create the file
 print(".section .data,\"aw\",@progbits")
-emit("M", np.array(M, dtype=np.uint64))
-emit("N", np.array(N, dtype=np.uint64))
+emit("data_points", np.array(data_points, dtype=np.uint64))
+emit("dimension", np.array(dimension, dtype=np.uint64))
 emit("P", np.array(P, dtype=np.uint64))
 emit("a", A, 'NR_LANES*4')
 emit("k", K, 'NR_LANES*4')

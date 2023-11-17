@@ -3,15 +3,15 @@
 
 
 
-void assignPointsToClusters(const int64_t *points,  const int64_t *centers, int64_t *clusters) {
+void assignPointsToClusters(const int64_t *points,  const int64_t *centers, int64_t *clusters,unsigned long int num_points, unsigned long int dimension) {
     //printf("Assign Points to Clusters\n");
-    for (int i = 0; i < NUM_POINTS; i++) {
+    for (int i = 0; i < num_points; i++) {
         int64_t minDist =INT64_MAX;
         for (int c = 0; c < NUM_CLUSTERS; c++) {
             int64_t sum = 0;
-            for (int j = 0; j < SIZE_DATAPOINT; j++) {
+            for (int j = 0; j < dimension; j++) {
                 // Access the j-th coordinate of the i-th point
-                int64_t diff = points[j * NUM_POINTS + i] - centers[ j * NUM_CLUSTERS + c];
+                int64_t diff = points[j * num_points + i] - centers[ j * NUM_CLUSTERS + c];
                 sum += diff * diff;
             }
             int64_t dist = sum;
@@ -24,18 +24,29 @@ void assignPointsToClusters(const int64_t *points,  const int64_t *centers, int6
 }
 
 
-void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters) {
-    int64_t sum[NUM_CLUSTERS][SIZE_DATAPOINT] = {0};
-    int numbersInCluster[NUM_CLUSTERS] = {0};
+void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters,unsigned long int num_points, unsigned long int dimension) {
+    int64_t sum[NUM_CLUSTERS][dimension];
+    int numbersInCluster[NUM_CLUSTERS];
+
+    for (int i = 0; i < NUM_CLUSTERS; i++) {
+        for (int j = 0; j < dimension; j++) {
+            sum[i][j] = 0;
+        }
+    }
+
+      for (int i = 0; i < NUM_CLUSTERS; i++) {
+            numbersInCluster[i] = 0;
+    }
+
 
 
     // Accumulate sum of points for each cluster and count numbers in each cluster
-    for (int j = 0; j < NUM_POINTS; j++) {
+    for (int j = 0; j < num_points; j++) {
         int cluster = clusters[j];
         if (cluster >= 0 && cluster < NUM_CLUSTERS) {
-            for (int d = 0; d < SIZE_DATAPOINT; d++) {
+            for (int d = 0; d < dimension; d++) {
                 // Corrected indexing for accessing j-th point's d-th dimension
-                sum[cluster][d] += points[d * NUM_POINTS + j];
+                sum[cluster][d] += points[d * num_points + j];
             }
             numbersInCluster[cluster]++;
         }
@@ -43,10 +54,10 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
     // Calculate new cluster centers
     for (int i = 0; i < NUM_CLUSTERS; i++) {
-        printf("%ld",SIZE_DATAPOINT);
+        printf("%ld",dimension);
         if (numbersInCluster[i] > 0) {
 
-            for (int d = 0; d < SIZE_DATAPOINT; d++) {
+            for (int d = 0; d < dimension; d++) {
                 // Cast to int64_t if necessary, or consider changing the type of centers to double
                 centers[ d * NUM_CLUSTERS + i] = (int64_t)(sum[i][d] / numbersInCluster[i]);
             }
@@ -58,10 +69,10 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     
     for (int i = 0; i < NUM_CLUSTERS; i++) {
         //printf("Cluster %d: (", i);
-        for (int d = 0; d < SIZE_DATAPOINT; d++) {
+        for (int d = 0; d < dimension; d++) {
             
             printf("%ld", centers[d * NUM_CLUSTERS + i]);
-            if (d < SIZE_DATAPOINT - 1) {
+            if (d < dimension - 1) {
                 printf(", ");
             }
         }
@@ -70,7 +81,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 }
 
 
-void assessQualityCluster(const int64_t *points,  int64_t *centers, int64_t *clusters) {
+void assessQualityCluster(const int64_t *points,  int64_t *centers, int64_t *clusters,unsigned long int num_points, unsigned long int dimension) {
     int64_t totalVariation = 0;
     int64_t clusterVariance = 0;
 
@@ -80,14 +91,14 @@ void assessQualityCluster(const int64_t *points,  int64_t *centers, int64_t *clu
         int64_t numPointsInCluster = 0;
 
         // For each data point
-        for (int dataIndex = 0; dataIndex < NUM_POINTS; dataIndex++) {
+        for (int dataIndex = 0; dataIndex < num_points; dataIndex++) {
             // Check if the data point belongs to the current cluster
             if (clusters[dataIndex] == clusterIndex) {
                 // Calculate the squared distance between the data point and the cluster center
                 int64_t squaredDistance = 0;
-                for (int dimension = 0; dimension < SIZE_DATAPOINT; dimension++) {
+                for (int d = 0; d < dimension; d++) {
                     // Adjust indexing to match the row-wise layout of points
-                    int64_t diff = points[dimension * NUM_POINTS + dataIndex] - centers[dimension * NUM_CLUSTERS + clusterIndex];
+                    int64_t diff = points[d * num_points + dataIndex] - centers[d * NUM_CLUSTERS + clusterIndex];
                     squaredDistance += diff * diff;
                 }
                 sumOfSquaredDistances += squaredDistance;
@@ -127,12 +138,12 @@ bool custom_memcmp(const int64_t *array1, const int64_t *array2, size_t size){
 
 
 
-kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *clusters,int64_t *clusters_last){
+kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *clusters,int64_t *clusters_last,unsigned long int num_points, unsigned long int dimension){
     int iterations = 0;
     int max_iteration=20;
     
     //printf("MAIN\n");
-    size_t clusters_sz = NUM_POINTS;
+    size_t clusters_sz = num_points;
     
     while (1)
     {
@@ -144,10 +155,10 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
         custom_memcpy(clusters_last, clusters, clusters_sz);
 
 
-        assignPointsToClusters(points, centers,clusters);
+        assignPointsToClusters(points, centers,clusters,num_points,dimension);
 
         printf("---");
-        for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+        for (uint64_t i = 0; i < num_points; ++i) {
             
             printf("%ld,", clusters[i]);
         }
@@ -156,7 +167,7 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
         
 
         // printf("Matrix clusters copied version:\n");
-        // for (uint64_t i = 0; i < NUM_POINTS; ++i) {
+        // for (uint64_t i = 0; i < num_points; ++i) {
             
         //     printf("%ld ", clusters_last[i]);
         //     printf("\t");
@@ -164,31 +175,10 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
         // printf("\n");
 
 
-        updateClusterCenters(points, centers,clusters);
-        assessQualityCluster(points,centers,clusters);
+        updateClusterCenters(points, centers,clusters,num_points,dimension);
+        assessQualityCluster(points,centers,clusters,num_points,dimension);
 
-        // char filename[256];
-        // snprintf(filename, sizeof(filename), "cluster_data_iteration_%d.csv", iterations);
-
-        // FILE *fptr = fopen("cluster_data.csv", "w");
-        // if (fptr == NULL) {
-        //     printf("Error opening file\n");
-        //     return 1;
-        // }
-
-        // fprintf(fptr, "x,y,z,cluster\n"); // Header
-        // for (uint64_t j = 0; j < NUM_POINTS; ++j) {
-        //     fprintf(fptr, "%ld,%ld,%ld,%ld\n",
-        //         points[0 * NUM_POINTS + j], // X-coordinate
-        //         points[1 * NUM_POINTS + j], // Y-coordinate
-        //         points[2 * NUM_POINTS + j], // Z-coordinate
-        //         clusters[j]);               // Cluster assignment
-        // }
-
-        // fclose(fptr);
-        // printf("CSV file created.\n");
-
-
+      
         /*
          * if all the cluster numbers are unchanged since last time,
          * we are at a stable solution, so we can stop here

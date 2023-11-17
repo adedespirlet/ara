@@ -12,8 +12,8 @@
 
 // Define Matrix dimensions:
 // C = AB with A=[MxN], B=[NxP], C=[MxP]
-extern uint64_t M;
-extern uint64_t N;
+extern uint64_t data_points;
+extern uint64_t dimension;
 extern uint64_t P;
 
 extern int64_t a[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
@@ -48,8 +48,8 @@ int main() {
 
     printf("Matrix k:\n");
     for (uint64_t i = 0; i < 3; ++i) {
-        for (uint64_t j = 0; j < N; ++j) {
-            printf("%ld ", k[i * N + j]);
+        for (uint64_t j = 0; j < dimension; ++j) {
+            printf("%ld ", k[i * dimension + j]);
         }
         printf("\n");
     }
@@ -57,15 +57,15 @@ int main() {
     printf("Matrix A:\n");
     printf("---");
     for (uint64_t i = 0; i < 3; ++i) {
-        for (uint64_t j = 0; j < M; ++j) {
-            printf("%ld", a[i * N + j]);
+        for (uint64_t j = 0; j < data_points; ++j) {
+            printf("%ld", a[i * dimension + j]);
         }
         printf("\n");
     }
     
 
     // printf("Matrix c:\n");
-    // for (uint64_t i = 0; i < M; ++i) {
+    // for (uint64_t i = 0; i < data_points; ++i) {
         
     //     printf("%ld ", c[i]);
     //     printf("\t");
@@ -77,17 +77,17 @@ int main() {
     //printf("Calculating kmeans...\n");
     //start_timer();
     //imatmul(c, a, b, s, s, s);
-    result= kmeans(a, k, c,b) ;
+    result= kmeans(a, k, c,b,data_points,dimension) ;
     
 
     printf("Matrix c:\n");
-    for (uint64_t i = 0; i < M; ++i) {
+    for (uint64_t i = 0; i < data_points; ++i) {
         
         printf("%ld ,", c[i]);
     }
 
     printf("Golden Model output for Cluster vector:\n");
-    for (uint64_t i = 0; i < M; ++i) {
+    for (uint64_t i = 0; i < data_points; ++i) {
         
         printf("%ld ,", golden_o[i]);
     }
