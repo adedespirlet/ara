@@ -33,11 +33,41 @@ def emit(name, array, alignment='8'):
 ## SCRIPT ##
 ############
 
+# Number of pages
+NUM_PAGES= 25
 
-NUM_PAGES= 100
+# Probability of an edge existing between two nodes
+p = 0.4
+
+# Create an empty adjacency matrix
+adj_matrix = [[0 for _ in range(NUM_PAGES)] for _ in range(NUM_PAGES)]
+
+# Populate the adjacency matrix with edges
+for i in range(NUM_PAGES):
+    for j in range(NUM_PAGES):
+        if i != j and rand.random() < p:
+            adj_matrix[i][j] = 1
+
+# Function to normalize columns of the matrix
+def normalize_columns(matrix):
+  n = len(matrix)
+  column_sums = [sum(column) for column in zip(*matrix)]
+  return [
+      [1/n if column_sums[i] == 0 else row[i]/column_sums[i] for i in range(len(row))] 
+      for row in matrix
+  ]
+
+
+# Create the link matrix
+link_matrix = normalize_columns(adj_matrix)
+# Convert list to numpy array
+A = np.array(link_matrix, dtype=np.float64)
+
+
 dtype = np.float64
-A= np.zeros([NUM_PAGES,NUM_PAGES], dtype=dtype) #init linking matrix
+#A= np.zeros([NUM_PAGES,NUM_PAGES], dtype=dtype) #init linking matrix
 PR= np.zeros([NUM_PAGES,1], dtype=dtype) #init pagerank vector
+PR_prev=np.zeros([NUM_PAGES,1], dtype=dtype) #init pagerank vector
 M= np.zeros([NUM_PAGES,1], dtype=dtype) #init mean vector
 
 # Golden result matrix
@@ -48,6 +78,7 @@ print(".section .data,\"aw\",@progbits")
 emit("num_pages", np.array(NUM_PAGES, dtype=np.uint64))
 emit("a", A, 'NR_LANES*4')
 emit("pr", PR, 'NR_LANES*4')
+emit("pr_prev", PR_prev, 'NR_LANES*4')
 emit("m", M, 'NR_LANES*4')
 
 
