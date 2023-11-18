@@ -92,6 +92,7 @@ int main() {
         printf("%ld ,", golden_o[i]);
     }
 
+    printf("\nfinished printing");
 
     //printf("K-Means result: %d\n", result);
     //stop_timer();
