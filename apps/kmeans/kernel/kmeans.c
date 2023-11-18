@@ -25,7 +25,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
     //         printf("%ld ", points[i * num_points + j]);
     //     }
     // printf("\n");
-    }
+    
 
     ///// MAKING THREE CLUSTERS
     for (; avl > 0; avl -= vl) {
@@ -96,9 +96,9 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         //fetch next group
         points_+=vl;
         clusters_+=vl;  
-    }     
+    }
+}     
         
-}
 
 
 
