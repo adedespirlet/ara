@@ -86,7 +86,7 @@ int main() {
         printf("%ld ,", c[i]);
     }
 
-    printf("Golden Model output for Cluster vector:\n");
+    printf("\n Golden Model output for Cluster vector:\n");
     for (uint64_t i = 0; i < data_points; ++i) {
         
         printf("%ld ,", golden_o[i]);
