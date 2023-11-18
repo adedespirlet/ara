@@ -1,10 +1,13 @@
+
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 
+
 #include "kernel/kmeans.h"
 #include "runtime.h"
 #include "util.h"
+
 
 #ifndef SPIKE
 #include "printf.h"
@@ -12,16 +15,18 @@
 
 // Define Matrix dimensions:
 // C = AB with A=[MxN], B=[NxP], C=[MxP]
-extern uint64_t M;
-extern uint64_t N;
+extern uint64_t data_points;
+extern uint64_t dimension;
 extern uint64_t P;
 
 extern int64_t a[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
 extern int64_t k[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
 extern int64_t c[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
 extern int64_t b[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
+extern int64_t golden_o[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
 // Gold results
 //extern int64_t g[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
+
 
 // // Verify the matrix
 // int verify_matrix(int64_t *result, int64_t *gold, size_t R, size_t C) {
@@ -36,88 +41,76 @@ extern int64_t b[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
 //   return 0;
 // }
 
+
 int main() {
-  printf("\n");
-  printf("=============\n");
-  printf("=  KMEANS  =\n");
-  printf("=============\n");
-  printf("\n");
-  printf("\n");
-
-// #ifdef VCD_DUMP
-//   // Measure only the full-size matmul
-//   for (uint64_t s = M; s <= M; s *= 2) {
-// #else
-//   for (int s = 4; s <= M; s *= 2) {
-// #endif
-    // printf("\n");
-    // printf("------------------------------------------------------------\n");
-    // printf("Calculating a (%d x %d) x (%d x %d) matrix multiplication...\n", s,
-    //        s, s, s);
-    // printf("------------------------------------------------------------\n");
-    // printf("\n");
-
-    // printf("Matrix A:\n");
-    // for (uint64_t i = 0; i < M; ++i) {
-    //     for (uint64_t j = 0; j < N; ++j) {
-    //         printf("%lld ", a[i * N + j]);
-    //     }
-    //     printf("\n");
-    // }
-
-    printf("Matrix k:\n");
-    for (uint64_t i = 0; i < 3; ++i) {
-        for (uint64_t j = 0; j < N; ++j) {
-            printf("%ld ", k[i * N + j]);
-        }
-        printf("\n");
-    }
-
-    printf("Matrix c:\n");
-    for (uint64_t i = 0; i < M; ++i) {
-        
-        printf("%ld ", c[i]);
-        printf("\n");
-    }
+   // printf("\n");
+   // printf("=============\n");
+   // printf("=  KMEANS  =\n");
+   // printf("=============\n");
+   // printf("\n");
+   // printf("\n");
+   int64_t runtime_s, runtime_v;  
 
 
+   printf("Matrix k:\n");
+   for (uint64_t i = 0; i < 3; ++i) {
+       for (uint64_t j = 0; j < dimension; ++j) {
+           printf("%ld ", k[i * dimension + j]);
+       }
+       printf("\n");
+   }
+  
+   printf("Matrix A:\n");
+   printf("---");
+   for (uint64_t i = 0; i < 3; ++i) {
+       for (uint64_t j = 0; j < data_points; ++j) {
+           printf("%ld", a[i * dimension + j]);
+       }
+       printf("\n");
+   }
+  
 
 
-    
-    kmeans_result result;
+   // printf("Matrix c:\n");
+   // for (uint64_t i = 0; i < data_points; ++i) {
+      
+   //     printf("%ld ", c[i]);
+   //     printf("\t");
+   // }
 
-    // Matrices are initialized --> Start calculating
-    printf("Calculating kmeans...\n");
-    printf("does it work?");
-    start_timer();
-    //imatmul(c, a, b, s, s, s);
-    result= kmeans(a, k, c,b) ;
-    printf("K-Means result: %d\n", result);
-    stop_timer();
 
-  //   // Metrics
-  //   int64_t runtime = get_timer();
-  //   float performance = 2.0 * s * s * s / runtime;
-  //   float utilization = 100 * performance / (2.0 * NR_LANES);
+   kmeans_result result;
 
-  //   printf("The execution took %d cycles.\n", runtime);
-  //   printf("The performance is %f OP/cycle (%f%% utilization).\n", performance,
-  //          utilization);
+   // Matrices are initialized --> Start calculating
+   //printf("Calculating kmeans...\n");
+   //start_timer();
+   //imatmul(c, a, b, s, s, s);
+   result= kmeans(a, k, c,b,data_points,dimension) ;
+  
 
-  //   // Verify the result only for s == M (to keep it simple)
-  //   if (s == M) {
-  //     // Verify the result
-  //     printf("Verifying result...\n");
-  //     int error = verify_matrix(c, g, s, s);
-  //     if (error != 0) {
-  //       printf("Error code %d\n", error);
-  //       printf("c[%d]=%d\n", error, c[error]);
-  //       return error;
-  //     } else {
-  //       printf("Passed.\n");
-  //     }
-  //   }
-  // }
+   printf("Matrix c:\n");
+   for (uint64_t i = 0; i < data_points; ++i) {
+      
+       printf("%ld ,", c[i]);
+   }
 
-  return 0;
+   printf("\n Golden Model output for Cluster vector:\n");
+   for (uint64_t i = 0; i < data_points; ++i) {
+      
+       printf("%ld ,", golden_o[i]);
+   }
+
+
+   printf("\nfinished printing");
+
+   //printf("K-Means result: %d\n", result);
+   //stop_timer();
+
+   //runtime_s = get_timer();
+  // printf("Scalar runtime: %ld\n", runtime_s);
+
+ return 0;
 }
+
+
+
