@@ -19,12 +19,12 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
     int64_t *points_ = (int64_t *)points ;
     int64_t *clusters_ = (int64_t *)clusters;
 
-    printf("Matrix A:\n");
-    for (uint64_t i = 0; i < dimension; ++i) {
-        for (uint64_t j = 0; j < num_points; ++j) {
-            printf("%ld ", points[i * num_points + j]);
-        }
-    printf("\n");
+    // printf("Matrix A:\n");
+    // for (uint64_t i = 0; i < dimension; ++i) {
+    //     for (uint64_t j = 0; j < num_points; ++j) {
+    //         printf("%ld ", points[i * num_points + j]);
+    //     }
+    // printf("\n");
     }
 
     ///// MAKING THREE CLUSTERS
@@ -53,9 +53,7 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             int64_t centers1_ = *((int64_t *)centers +i*NUM_CLUSTERS+1);
             int64_t centers2_ = *((int64_t *)centers +i*NUM_CLUSTERS+2);
 
-            // printf("center0= %ld \n", centers0_);
-            // printf("center1  %ld\n",centers1_);
-            // printf("center2= %ld \n", centers2_);
+            
 
             //LOAD first coordinate
             asm volatile("vle64.v v20,  (%0)" ::"r"(points_ )); //load datapoints to v20
@@ -68,11 +66,6 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
             asm volatile("vmul.vv v20, v20, v20");
             asm volatile("vadd.vv v4 , v4, v20");  //accumulate v4 with first coordinate 
 
-            // asm volatile("vse64.v   v4, (%0)"::"r"(acc_vctor));  
-            // asm volatile("vse64.v   v20, (%0)"::"r"(load_vctor));  
-            
-            // printf("distance value second datapoint%ld \n", load_vctor[1]);
-            // printf("acc second datapoint%ld \n", acc_vctor[1]);
             
             //Subtract the scalar value from all elements of the vector
             asm volatile("vsub.vx v24, v24, %0":: "r"(centers1_));
@@ -90,15 +83,6 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
         asm volatile("vse64.v   v8, (%0)"::"r"(acc_vctor1)); 
         asm volatile("vse64.v   v12, (%0)"::"r"(acc_vctor2)); 
 
-        // printf("acc fourth datapoint %ld \n", acc_vctor0[3]);
-        // printf("acc fourth datapoint %ld \n", acc_vctor1[3]);
-        // printf("acc fourth datapoint %ld \n", acc_vctor2[3]);
-
-        // printf("acc last datapoint %ld \n", acc_vctor0[99]);
-        // printf("acc last datapoint %ld \n", acc_vctor1[99]);
-        // printf("acc last datapoint %ld \n", acc_vctor2[99]);
-            
-        
         //check to which cluster the data points is closest and assign cluster number accordingly
 
         asm volatile("vmslt.vv v0, v8, v4");    //mask vector set if elements in v8 are smaller than v4
@@ -132,9 +116,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         points_= points+ i*num_points; 
         
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
-        // int64_t mask[100]={0};
-        // int64_t mask1[100]={0};
-        // int64_t mask2[100]={0};
+    
         int64_t vectorCount=0, vectorCount0=0, vectorCount1=0, vectorCount2=0;
 
         asm volatile("vmv.v.i v12, 0"); // Initialize group2 to zero
@@ -142,10 +124,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
         asm volatile("vmv.v.i v20, 0"); // Initialize group0 to zero
         asm volatile("vmv.v.i v24, 0"); // Initialize group0 to zero
         asm volatile("vmv.v.i v0, 0"); // Initialize group0 to zero
-   
-        //asm volatile("vmv.v.i v8, 0"); // Initialize group0 to zero
 
-        
     
         for (; avl > 0; avl -= vl) {
             printf("Vl value is: %ld and avl value is: %ld \n", vl,avl);
@@ -180,25 +159,10 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
             points_+=vl;
     
         }
-       
-        // int64_t acc[100]={0};
-        // int64_t acc1[100]={0};
-        // int64_t acc2[100]={0};
-
-       // asm volatile("vse64.v   v20, (%0)"::"r"(acc));  
-        // asm volatile("vse64.v   v16, (%0)"::"r"(acc1));  
-        // asm volatile("vse64.v   v12, (%0)"::"r"(acc2));  
-        // printf("accumulation cluster0 %ld\n", acc[0]);
-        // printf("accumulation cluster1 %ld\n", acc1[0]);
-        // printf("accumulation cluster2 %ld\n", acc2[0]);
 
 
         //divide total sum by number of elements for each cluster
         asm volatile("vdivu.vx v20, v20, %0"::"r"(vectorCount0)); 
-        //asm volatile("vse64.v   v20, (%0)"::"r"(acc)); 
-        //printf("division%ld\n", acc[0]);
-
-
         asm volatile("vdivu.vx v16, v16, %0":: "r"(vectorCount1)); 
         asm volatile("vdivu.vx v12, v12, %0":: "r"(vectorCount2)); 
        
@@ -278,7 +242,7 @@ void assessQualityCluster(const int64_t *points, int64_t *centers, int64_t *clus
     asm volatile("vse64.v v4, (%0)" :: "r"(&variance0)); // Store v8 to scalar_value
     asm volatile("vse64.v v8, (%0)" :: "r"(&variance1)); // Store v8 to scalar_value
     asm volatile("vse64.v v12, (%0)" :: "r"(&variance2)); // Store v8 to scalar_value
-    printf("Variance of cluster 0 is : %ld, of cluster 1 is : %ld , of cluster 2 is : %ld \n", variance0, variance1, variance2 );
+    //printf("Variance of cluster 0 is : %ld, of cluster 1 is : %ld , of cluster 2 is : %ld \n", variance0, variance1, variance2 );
     
 }
 
@@ -310,8 +274,6 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 	while (1)
 	{
 
-
-        printf("Max iterations %d", max_iteration);
         printf("iteration number %d",iterations);
 		/* Store the previous state of the clustering */
         custom_memcpy(clusters_last, clusters, clusters_sz);
@@ -319,37 +281,15 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 
 
 		assignPointsToClusters(points, centers,clusters,num_points,dimension);
-        printf("Matrix c:\n");
-        for (uint64_t i = 0; i < num_points; ++i) {
-            printf("%ld ", clusters[i]);
-            printf("\t");
-        }
+        // printf("Matrix c:\n");
+        // for (uint64_t i = 0; i < num_points; ++i) {
+        //     printf("%ld ", clusters[i]);
+        //     printf("\t");
+        // }
 
 
 		updateClusterCenters(points, centers,clusters,num_points,dimension);
         assessQualityCluster(points,centers,clusters,num_points,dimension);
-
-        // char filename[256];
-        // snprintf(filename, sizeof(filename), "cluster_data_iteration_%d.csv", iterations);
-
-        // FILE *fptr = fopen("cluster_data.csv", "w");
-        // if (fptr == NULL) {
-        //     printf("Error opening file\n");
-        //     return 1;
-        // }
-
-        // fprintf(fptr, "x,y,z,cluster\n"); // Header
-        // for (uint64_t j = 0; j < num_points; ++j) {
-        //     fprintf(fptr, "%ld,%ld,%ld,%ld\n",
-        //         points[0 * num_points + j], // X-coordinate
-        //         points[1 * num_points + j], // Y-coordinate
-        //         points[2 * num_points + j], // Z-coordinate
-        //         clusters[j]);               // Cluster assignment
-        // }
-
-        // fclose(fptr);
-        // printf("CSV file created.\n");
-
 
 		/*
 		 * if all the cluster numbers are unchanged since last time,
