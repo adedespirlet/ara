@@ -29,7 +29,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     int numbersInCluster[NUM_CLUSTERS];
 
     for (unsigned long int i = 0; i < NUM_CLUSTERS; i++) {
-        for (int j = 0; j < dimension; j++) {
+        for (uint64_t j = 0; j < dimension; j++) {
             sum[i][j] = 0;
         }
     }
