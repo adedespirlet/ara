@@ -15,10 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Author: Matteo Perotti
+# Author: 
 
-# C = AB with A=[MxN], B=[NxP], C=[MxP]
-# arg1, arg2, arg3: M, N, P
 
 import random as rand
 import numpy as np
@@ -40,8 +38,8 @@ def emit(name, array, alignment='8'):
 ############
 
 
-M = 100
-N = 3
+data_points = 50
+dimension = 3
 P = 3
 
 
@@ -49,11 +47,11 @@ dtype = np.int64
 
 UPPER_LIMIT = 50
 LOWER_LIMIT = 0
-np.random.seed(42)
 
+np.random.seed(42)
 # Matrices and results
 # Generate random data points
-A = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(N, M)).astype(dtype)    ## rows contain the features and each column is a datapoint
+A = np.random.randint(LOWER_LIMIT, UPPER_LIMIT, size=(dimension, data_points)).astype(dtype)    ## rows contain the features and each column is a datapoint
 
 np.random.seed(42)  # Resetting/setting the seed for reproducibility
 
@@ -67,28 +65,52 @@ selected_columns = np.random.choice(column_indices, P, replace=False)
 K = A[:, selected_columns]
 
 
-C = np.zeros([1,M], dtype=dtype) # contains the assigned cluster to each data point
-B= np.zeros([1,M],dtype=dtype) ##set empty array to copy last clusters values
+C = np.zeros([1,data_points], dtype=dtype) # contains the assigned cluster to each data point
+B= np.zeros([1,data_points],dtype=dtype) ##set empty array to copy last clusters values
 # Golden result matrix
 #G = np.matmul(A, B).astype(dtype)
 
+##GOLDEN MODEL
+
+def kmeans(data, centers, max_iter=100):
+    num_points = data.shape[1]
+    num_clusters = centers.shape[1]
+    clusters = np.zeros(num_points, dtype=np.int64)
+
+    for iteration in range(max_iter):
+        # Assignment step
+        for i in range(num_points):
+            distances = np.sum((data[:, i, None] - centers) ** 2, axis=0)
+            clusters[i] = np.argmin(distances)
+
+        # Update step
+        new_centers = np.zeros_like(centers)
+        for k in range(num_clusters):
+            cluster_points = data[:, clusters == k]
+            if cluster_points.size > 0:
+                new_centers[:, k] = np.sum(cluster_points, axis=1) // cluster_points.shape[1]
+
+        # Check for convergence
+        if np.array_equal(centers, new_centers):
+            break
+
+        centers = new_centers
+
+    return clusters, centers
+
+result, updated_centers = kmeans(A, K)
+
 # Create the file
 print(".section .data,\"aw\",@progbits")
-emit("M", np.array(M, dtype=np.uint64))
-emit("N", np.array(N, dtype=np.uint64))
+emit("data_points", np.array(data_points, dtype=np.uint64))
+emit("dimension", np.array(dimension, dtype=np.uint64))
 emit("P", np.array(P, dtype=np.uint64))
 emit("a", A, 'NR_LANES*4')
 emit("k", K, 'NR_LANES*4')
 emit("c", C, 'NR_LANES*4')
 emit("b", B, 'NR_LANES*4')
+emit("golden_o", result, 'NR_LANES*4')
 
-# # Create the file
-# print(".section .data,\"aw\",@progbits")
-# emit("M", np.array(M, dtype=np.uint64))
-# emit("N", np.array(N, dtype=np.uint64))
-# emit("P", np.array(P, dtype=np.uint64))
-# emit("a", A, 'NR_LANES*4')
-# emit("b", B, 'NR_LANES*4')
-# emit("c", C, 'NR_LANES*4')
-# emit("g", G, 'NR_LANES*4')
+
+
 
