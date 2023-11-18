@@ -54,7 +54,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
 
     // Calculate new cluster centers
     for (int i = 0; i < NUM_CLUSTERS; i++) {
-        printf("%ld",dimension);
+        
         if (numbersInCluster[i] > 0) {
 
             for (int d = 0; d < dimension; d++) {
@@ -68,7 +68,7 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     printf("Cluster Centers:\n");
     
     for (int i = 0; i < NUM_CLUSTERS; i++) {
-        //printf("Cluster %d: (", i);
+        printf("(", i);
         for (int d = 0; d < dimension; d++) {
             
             printf("%ld", centers[d * NUM_CLUSTERS + i]);
@@ -162,7 +162,6 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
             
             printf("%ld,", clusters[i]);
         }
-       
         printf("---\n");
         
 
