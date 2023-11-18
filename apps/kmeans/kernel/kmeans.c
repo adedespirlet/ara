@@ -318,7 +318,7 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
 
 
 
-		assignPointsToClusters(points, centers,clusters);
+		assignPointsToClusters(points, centers,clusters,num_points,dimension);
         printf("Matrix c:\n");
         for (uint64_t i = 0; i < num_points; ++i) {
             printf("%ld ", clusters[i]);
@@ -326,8 +326,8 @@ kmeans_result kmeans( const int64_t *points,  int64_t *centers,  int64_t *cluste
         }
 
 
-		updateClusterCenters(points, centers,clusters);
-        assessQualityCluster(points,centers,clusters);
+		updateClusterCenters(points, centers,clusters,num_points,dimension);
+        assessQualityCluster(points,centers,clusters,num_points,dimension);
 
         // char filename[256];
         // snprintf(filename, sizeof(filename), "cluster_data_iteration_%d.csv", iterations);
