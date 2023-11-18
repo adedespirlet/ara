@@ -9,7 +9,7 @@ void assignPointsToClusters(const int64_t *points,  const int64_t *centers, int6
         int64_t minDist =INT64_MAX;
         for (int c = 0; c < NUM_CLUSTERS; c++) {
             int64_t sum = 0;
-            for (int j = 0; j < dimension; j++) {
+            for (uint64_t j = 0; j < dimension; j++) {
                 // Access the j-th coordinate of the i-th point
                 int64_t diff = points[j * num_points + i] - centers[ j * NUM_CLUSTERS + c];
                 sum += diff * diff;
@@ -65,19 +65,19 @@ void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clus
     }
 
     //Print cluster centers
-    printf("Cluster Centers:\n");
+    // printf("Cluster Centers:\n");
     
-    for (unsigned long int i = 0; i < NUM_CLUSTERS; i++) {
-        printf("(", i);
-        for (unsigned long int d = 0; d < dimension; d++) {
+    // for (unsigned long int i = 0; i < NUM_CLUSTERS; i++) {
+    //     printf("(");
+    //     for (unsigned long int d = 0; d < dimension; d++) {
             
-            printf("%ld", centers[d * NUM_CLUSTERS + i]);
-            if (d < dimension - 1) {
-                printf(", ");
-            }
-        }
-        printf(")\n");
-    }
+    //         printf("%ld", centers[d * NUM_CLUSTERS + i]);
+    //         if (d < dimension - 1) {
+    //             printf(", ");
+    //         }
+    //     }
+    //     printf(")\n");
+    // }
 }
 
 
