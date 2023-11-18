@@ -31,7 +31,6 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
     for (; avl > 0; avl -= vl) {
         printf("Vl value is: %ld and avl value is: %ld \n", vl,avl);
         
-        double minDist = DBL_MAX;
         //set distance vector to each cluster to 0
         asm volatile("vmv.v.i v4, 0");
         asm volatile("vmv.v.i v8, 0");
@@ -99,8 +98,6 @@ void assignPointsToClusters(const int64_t *points, const int64_t *centers, int64
     }
 }     
         
-
-
 
 void updateClusterCenters(const int64_t *points, int64_t *centers, int64_t *clusters,unsigned long int num_points, unsigned long int dimension){
     printf("update clusters centers\n");
