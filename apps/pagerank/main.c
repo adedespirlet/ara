@@ -24,7 +24,7 @@ int main() {
     for (uint64_t i = 0; i < 25; ++i) {
         for (uint64_t j = 0; j < 25; ++j) {
             //printf("%ld \t", (int64_t)(a[i * 25 + j]*1000));
-            printf("%x \t", (a[i * 25 + j]);
+            printf("%x \t", a[i * 25 + j]);
             //printf("%f \t", a[i * 25 + j]);
         }
         printf("\n");
@@ -36,7 +36,7 @@ int main() {
     // Print the PageRank scores
     printf("PageRank Scores:\n");
     for (int i = 0; i < num_pages; i++) {
-        printf("Page %d: %ld \n", i + 1,(int64_t)(pr[i]*100));
+        //printf("Page %d: %ld \n", i + 1,(int64_t)(pr[i]*100));
         printf("Page %d: %x \n", i + 1,pr[i]*100);
        
     }
