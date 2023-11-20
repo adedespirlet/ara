@@ -16,7 +16,8 @@
 #include <stdbool.h>
 
 
-#define WEIGHT 0.85
+
+#define DAMPING 0.85
 #define CONVERGENCE 0.001
 
 

@@ -15,7 +15,7 @@ extern uint64_t num_pages;
 extern double a[] __attribute__((aligned(32 * NR_LANES), section(".l2")));  //linking matrix
 extern double pr[] __attribute__((aligned(32 * NR_LANES), section(".l2")));  //score vector
 extern double m[] __attribute__((aligned(32 * NR_LANES), section(".l2"))); // mean vector
-extern double pr_prev[] __attribute__((aligned(32 * NR_LANES), section(".l2")));  //score vector
+extern double pr_new[] __attribute__((aligned(32 * NR_LANES), section(".l2")));  //score vector
 
 int main() {
 
@@ -31,7 +31,7 @@ int main() {
     }
 
     //init_link_matrix(num_pages, a);   
-    calculate_page_rank(num_pages, a, pr,m,pr_prev);
+    calculate_page_rank(num_pages, a, pr,m,pr_new);
 
     // Print the PageRank scores
     printf("PageRank Scores:\n");
