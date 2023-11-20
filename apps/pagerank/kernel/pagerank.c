@@ -4,14 +4,14 @@
 #include "pagerank.h"
 
 
-void calculate_page_rank(unsigned int num_pages, double *link_matrix, double *score_column, double *mean_column,double *score_column_new) {
+void calculate_page_rank(uint64_t num_pages, double *link_matrix, double *score_column, double *mean_column,double *score_column_new) {
     // Implement the PageRank calculation here
     // compute PR_+1= (1-t)*A*PR + t*v 
     printf("Calculating PageRank...\n");
     //initialize score and mean column
     printf("Num_pages :%ld \n",num_pages);
     printf("INitialized score column\n");
-    for (unsigned int i = 0; i < num_pages; i++) {
+    for (uint64_t i = 0; i < num_pages; i++) {
 		double entry = 1 / (double) num_pages;
 		mean_column[i] = entry;
 		score_column[i] = entry;
@@ -27,9 +27,9 @@ void calculate_page_rank(unsigned int num_pages, double *link_matrix, double *sc
         
         printf("Multiplying linking matrix with score column:\n");
         //multiple score (pagerank) vector with link matrix 
-        for (unsigned int i=0; i<num_pages; i++){
+        for (uint64_t i=0; i<num_pages; i++){
             double sum =0;
-            for (int j=0; j<num_pages;j++){
+            for (uint64_t j=0; j<num_pages;j++){
                 sum+= link_matrix[i*num_pages+j] * score_column[j];
             }
             score_column_new[i]= sum;
@@ -40,20 +40,19 @@ void calculate_page_rank(unsigned int num_pages, double *link_matrix, double *sc
 
         //add damping factor
         unsigned int num_entries=num_pages;
-        for (unsigned int i = 0; i < num_entries; i++){
+        for (uint64_t i = 0; i < num_entries; i++){
             score_column_new[i] = DAMPING* score_column_new[i] + (1-DAMPING)*mean_column[i];
             //printf("%ld \t",(int64_t)(link_matrix[i]*100));
         }
 
           //compute abs difference and see if it converges
         sum_of_differences = 0.0;
-        for (unsigned int i = 0; i < num_pages; i++) {
+        for (uint64_t i = 0; i < num_pages; i++) {
             sum_of_differences += fabs(score_column_new[i] - score_column[i]);
         }
 
         //update score column
-        unsigned int num_entries=num_pages;
-        for (unsigned int i = 0; i < num_entries; i++){
+        for (uint64_t i = 0; i < num_entries; i++){
             score_column[i] = score_column_new[i];
         }
 

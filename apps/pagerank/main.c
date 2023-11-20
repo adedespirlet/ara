@@ -35,7 +35,7 @@ int main() {
 
     // Print the PageRank scores
     printf("PageRank Scores:\n");
-    for (int i = 0; i < num_pages; i++) {
+    for (uint64_t i = 0; i < num_pages; i++) {
         printf("Page %d: %ld \n", i + 1,(int64_t)(pr[i]*10000));
         //printf("Page %d: %e \n", i + 1,pr[i]*100);
        

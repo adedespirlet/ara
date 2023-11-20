@@ -21,6 +21,6 @@
 #define CONVERGENCE 0.001
 
 
-void calculate_page_rank(unsigned int num_pages, double *link_matrix, double *score_column, double *mean_column, double *score_column_prev);
+void calculate_page_rank(uint64_t num_pages, double *link_matrix, double *score_column, double *mean_column, double *score_column_new);
 
 #endif
