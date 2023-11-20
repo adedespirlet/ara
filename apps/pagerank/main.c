@@ -37,7 +37,7 @@ int main() {
     printf("PageRank Scores:\n");
     for (int i = 0; i < num_pages; i++) {
         //printf("Page %d: %ld \n", i + 1,(int64_t)(pr[i]*100));
-        printf("Page %d: %a \n", i + 1,pr[i]*100);
+        printf("Page %d: %e \n", i + 1,pr[i]*100);
        
     }
 
