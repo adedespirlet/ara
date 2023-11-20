@@ -16,7 +16,7 @@ void calculate_page_rank(unsigned int num_pages, double *link_matrix, double *sc
 		mean_column[i] = entry;
 		score_column[i] = entry;
         //printf("%ld \t", (int64_t)(score_column[i]*1000));
-        printf("%x \t", score_column[i]);
+        printf("%a \t", score_column[i]);
 	}
 
     double sum_of_differences = 0.0;
@@ -52,7 +52,7 @@ void calculate_page_rank(unsigned int num_pages, double *link_matrix, double *sc
             }
             score_column[i]= sum;
             //printf("%ld \t",(int64_t)(score_column[i]*1000));
-            printf("%x \t", score_column[i]);
+            printf("%a \t", score_column[i]);
             //printf("score column: %ld \t", (int64_t)(score_column[i]*100));
         }
 
@@ -61,7 +61,7 @@ void calculate_page_rank(unsigned int num_pages, double *link_matrix, double *sc
         for (unsigned int i = 0; i < num_pages; i++){
             score_column[i] += mean_column[i];
             //printf("%ld \t",(int64_t)(score_column[i]*1000));
-            printf("%x \t", score_column[i]);
+            printf("%a \t", score_column[i]);
         }
 
         //compute abs difference and see if it converges
