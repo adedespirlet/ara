@@ -16,7 +16,7 @@
 #include <stdbool.h>
 
 
-#define WEIGHT 0.15
+#define WEIGHT 0.85
 #define CONVERGENCE 0.001
 
 
