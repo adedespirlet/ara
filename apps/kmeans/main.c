@@ -38,12 +38,12 @@ extern int64_t golden_o[] __attribute__((aligned(32 * NR_LANES), section(".l2"))
 // }
 
 int main() {
-    // printf("\n");
-    // printf("=============\n");
-    // printf("=  KMEANS  =\n");
-    // printf("=============\n");
-    // printf("\n");
-    // printf("\n");
+    printf("\n");
+    printf("=============\n");
+    printf("=  KMEANS  =\n");
+    printf("=============\n");
+    printf("\n");
+    printf("\n");
     int64_t runtime_s, runtime_v;   
 
     printf("Matrix k:\n");

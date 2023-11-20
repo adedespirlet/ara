@@ -39,6 +39,11 @@ NUM_PAGES= 25
 # Probability of an edge existing between two nodes
 p = 0.4
 
+DAMPING = 0.85
+CONVERGENCE = 1e-6
+
+
+
 # Create an empty adjacency matrix
 adj_matrix = [[0 for _ in range(NUM_PAGES)] for _ in range(NUM_PAGES)]
 
@@ -70,6 +75,25 @@ PR= np.zeros([NUM_PAGES,1], dtype=dtype) #init pagerank vector
 PR_new=np.zeros([NUM_PAGES,1], dtype=dtype) #init pagerank vector
 M= np.zeros([NUM_PAGES,1], dtype=dtype) #init mean vector
 
+
+# Initialize score and mean column
+PR_ = np.ones(NUM_PAGES) / NUM_PAGES
+mean_column_ = np.ones(NUM_PAGES) / NUM_PAGES
+
+# Calculate PageRank
+def calculate_page_rank(A, PR_, mean_column_, damping=DAMPING, convergence=CONVERGENCE):
+    num_pages = len(PR_)
+    while True:
+        PR_new_ = np.dot(A, PR_)
+        PR_new_ = damping * PR_new_ + (1 - damping) * mean_column_
+        if np.sum(np.abs(PR_new_ - PR_)) < convergence:
+            break
+        PR_ = PR_new_
+    return PR_new_
+
+# Compute and display PageRank scores
+result = calculate_page_rank(A, PR_, mean_column_)
+
 # Golden result matrix
 #G = np.matmul(A, B).astype(dtype)
 
@@ -80,5 +104,5 @@ emit("a", A, 'NR_LANES*4')
 emit("pr", PR, 'NR_LANES*4')
 emit("pr_new", PR_new, 'NR_LANES*4')
 emit("m", M, 'NR_LANES*4')
-
+emit("golden_o", result, 'NR_LANES*4')
 
