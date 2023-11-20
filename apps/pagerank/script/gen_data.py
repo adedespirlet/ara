@@ -67,7 +67,7 @@ A = np.array(link_matrix, dtype=np.float64)
 dtype = np.float64
 #A= np.zeros([NUM_PAGES,NUM_PAGES], dtype=dtype) #init linking matrix
 PR= np.zeros([NUM_PAGES,1], dtype=dtype) #init pagerank vector
-PR_prev=np.zeros([NUM_PAGES,1], dtype=dtype) #init pagerank vector
+PR_new=np.zeros([NUM_PAGES,1], dtype=dtype) #init pagerank vector
 M= np.zeros([NUM_PAGES,1], dtype=dtype) #init mean vector
 
 # Golden result matrix
@@ -78,7 +78,7 @@ print(".section .data,\"aw\",@progbits")
 emit("num_pages", np.array(NUM_PAGES, dtype=np.uint64))
 emit("a", A, 'NR_LANES*4')
 emit("pr", PR, 'NR_LANES*4')
-emit("pr_prev", PR_prev, 'NR_LANES*4')
+emit("pr_new", PR_new, 'NR_LANES*4')
 emit("m", M, 'NR_LANES*4')
 
 
