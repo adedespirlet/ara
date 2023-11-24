@@ -17,6 +17,8 @@
 import random as rand
 import numpy as np
 import sys
+from scipy.io import mmread
+from scipy.sparse import csr_matrix
 
 def emit(name, array, alignment='8'):
   print(".global %s" % name)
@@ -33,8 +35,6 @@ def emit(name, array, alignment='8'):
 ## SCRIPT ##
 ############
 
-# Number of pages
-NUM_PAGES= 25
 
 # Probability of an edge existing between two nodes
 p = 0.4
@@ -42,43 +42,48 @@ p = 0.4
 DAMPING = 0.85
 CONVERGENCE = 1e-6
 
+dtype = np.float64
+# Read the sparse matrix
+sparse_matrix = mmread('Harvard500.mtx')
 
+# Convert the sparse matrix to a dense format and create an adjacency matrix
+NUM_NODES = 500  # Assuming 500 nodes
+adj_matrix = np.zeros((NUM_NODES, NUM_NODES))
 
-# Create an empty adjacency matrix
-adj_matrix = [[0 for _ in range(NUM_PAGES)] for _ in range(NUM_PAGES)]
-
-# Populate the adjacency matrix with edges
-for i in range(NUM_PAGES):
-    for j in range(NUM_PAGES):
-        if i != j and rand.random() < p:
-            adj_matrix[i][j] = 1
+for x, y in zip(sparse_matrix.row, sparse_matrix.col):
+    if x != y:  # Assuming no self-links
+        adj_matrix[x, y] = 1
 
 # Function to normalize columns of the matrix
 def normalize_columns(matrix):
-  n = len(matrix)
-  column_sums = [sum(column) for column in zip(*matrix)]
-  return [
-      [1/n if column_sums[i] == 0 else row[i]/column_sums[i] for i in range(len(row))] 
-      for row in matrix
-  ]
+    n = len(matrix)
+    column_sums = np.sum(matrix, axis=0)
+    return np.array([
+        [1/n if column_sums[i] == 0 else row[i]/column_sums[i] for i in range(len(row))] 
+        for row in matrix
+    ])
 
-
-# Create the link matrix
+# Create the link matrix and normalize it
 link_matrix = normalize_columns(adj_matrix)
 # Convert list to numpy array
 A = np.array(link_matrix, dtype=np.float64)
+# Convert the link matrix to Compressed Sparse Row (CSR) format
+csr_A = csr_matrix(A)
+data_array = csr_A.data.astype(dtype)
+col_array = csr_A.indices.astype(np.uint64)
+row_ptr = csr_A.indptr.astype(np.uint64)
 
 
-dtype = np.float64
-#A= np.zeros([NUM_PAGES,NUM_PAGES], dtype=dtype) #init linking matrix
-PR= np.zeros([NUM_PAGES,1], dtype=dtype) #init pagerank vector
-PR_new=np.zeros([NUM_PAGES,1], dtype=dtype) #init pagerank vector
-M= np.zeros([NUM_PAGES,1], dtype=dtype) #init mean vector
+
+PR= np.zeros([NUM_NODES,1], dtype=dtype) #init pagerank vector
+PR_new=np.zeros([NUM_NODES,1], dtype=dtype) #init pagerank vector
+M= np.zeros([NUM_NODES,1], dtype=dtype) #init mean vector
 
 
+#########################GOLDEN MODEL#########################
 # Initialize score and mean column
-PR_ = np.ones(NUM_PAGES) / NUM_PAGES
-mean_column_ = np.ones(NUM_PAGES) / NUM_PAGES
+PR_ = np.ones(NUM_NODES) / NUM_NODES
+mean_column_ = np.ones(NUM_NODES) / NUM_NODES
 
 # Calculate PageRank
 def calculate_page_rank(A, PR_, mean_column_, damping=DAMPING, convergence=CONVERGENCE):
@@ -99,8 +104,10 @@ result = calculate_page_rank(A, PR_, mean_column_)
 
 # Create the file
 print(".section .data,\"aw\",@progbits")
-emit("num_pages", np.array(NUM_PAGES, dtype=np.uint64))
-emit("a", A, 'NR_LANES*4')
+emit("num_pages", np.array(NUM_NODES, dtype=np.uint64))
+emit("data_array", data_array, 'NR_LANES*4')
+emit("col_array", col_array, 'NR_LANES*4')
+emit("row_ptr", row_ptr, 'NR_LANES*4')
 emit("pr", PR, 'NR_LANES*4')
 emit("pr_new", PR_new, 'NR_LANES*4')
 emit("m", M, 'NR_LANES*4')
