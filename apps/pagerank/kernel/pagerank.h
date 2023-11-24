@@ -3,21 +3,19 @@
 #ifndef PAGERANK_H
 #define PAGERANK_H
 #include <math.h>
-
-
 #include <string.h>
-#include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
-
 #include <float.h> 
 #include <time.h>
 #include <stddef.h>
 #include <stdbool.h>
+
 #ifndef SPIKE
 #include "printf.h"
+#else
+#include <stdio.h>
 #endif
-
 
 
 #define DAMPING 0.85
