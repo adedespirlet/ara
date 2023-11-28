@@ -72,14 +72,17 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
         //matrix_vector_Mult_Scalar(num_pages,data_array,col_array,row_ptr, score_column,score_column_new);
         printf("HELLLOOOOOOOOO");
         size_t avl=num_pages;
+        printf("test1");
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
-        
+        printf("test2");
         asm volatile("vmv.v.i v4, 0");
         asm volatile("vmv.v.i v8, 0");
         asm volatile("vmv.v.i v16, 0");
+        printf("test3");
         double *score_column_new_=score_column_new;
-        
+        printf("test4");
         double *score_column_=score_column;
+        printf("test5");
 
         for (; avl > 0; avl -= vl) {
             printf("entered avl loop");
