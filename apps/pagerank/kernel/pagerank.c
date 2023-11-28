@@ -21,7 +21,7 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
     //     printf("%d \t",col_array[i]);
     // }
     printf("\nPrinting data array\n");
-    for (uint64_t i = 0; i < 2563; i++) {
+    for (uint64_t i = 0; i < 4000; i++) {
         printf("%ld \t", (int64_t)data_array[i]*10000);
     }
     // printf("\nPrinting pntr array\n");
