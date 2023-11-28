@@ -10,7 +10,7 @@ void matrix_vector_Mult_Scalar(uint64_t num_pages, double *data_array,uint64_t *
                sum += data_array[idx] * score_column[col_array[idx]];
            }
            score_column_new[i] = sum;
-       printf("%ld \t", (int64_t)(score_column_new[i] * 10000));
+       //printf("%ld \t", (int64_t)(score_column_new[i] * 10000));
        }
 }
 
@@ -20,7 +20,7 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
     printf("Calculating PageRank...\n");
         
     for (uint64_t i = 0; i < num_pages; i++) {
-        printf("for loop");
+
 		double entry = 1 / (double) num_pages;
 		mean_column[i] = entry;
 		score_column[i] = entry;
@@ -39,15 +39,17 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
         //v8 for mean_column
         //v12 for temp values
         
-        printf("entered the do while loop");
+        printf("entered the do while loop\n");
         matrix_vector_Mult_Scalar(num_pages,data_array,col_array,row_ptr, score_column,score_column_new);
            
-        uint64_t avl=num_pages;
+        size_t avl=num_pages;
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
+        
         asm volatile("vmv.v.i v4, 0");
         asm volatile("vmv.v.i v8, 0");
         asm volatile("vmv.v.i v16, 0");
         double *score_column_new_=score_column_new;
+        
         double *score_column_=score_column;
 
         for (; avl > 0; avl -= vl) {
