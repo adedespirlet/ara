@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 # Copyright 2022 ETH Zurich and University of Bologna.
 #
@@ -113,6 +112,3 @@ emit("pr", PR, 'NR_LANES*4')
 emit("pr_new", PR_new, 'NR_LANES*4')
 emit("m", M, 'NR_LANES*4')
 emit("golden_o", result, 'NR_LANES*4')
-
-
-
