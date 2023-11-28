@@ -12,6 +12,18 @@ void matrix_vector_Mult_Scalar(uint64_t num_pages, double *data_array,uint64_t *
            score_column_new[i] = sum;
        //printf("%ld \t", (int64_t)(score_column_new[i] * 10000));
        }
+    printf("Printing col data array\n");
+    for (uint64_t i = 0; i < 2563; i++) {
+        printf("%d \t",col_array[i]);
+    }
+    printf("\nPrinting data array\n");
+    for (uint64_t i = 0; i < 2563; i++) {
+        printf("%ld \t", (int64_t)data_array[i]*10000);
+    }
+    printf("\nPrinting pntr array\n");
+    for (uint64_t i = 0; i < (num_pages+1); i++) {
+        printf("%d \t",row_ptr[i]);
+    }
 }
 
 void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_array,uint64_t *row_ptr, double *score_column, double *mean_column,double *score_column_new) {
@@ -32,18 +44,7 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
     double dampingvalue= DAMPING;
     double dampingmean= 1-DAMPING;
 
-    // printf("Printing col data array\n");
-    // for (uint64_t i = 0; i < 2563; i++) {
-    //     printf("%d \t",col_array[i]);
-    // }
-    // printf("\nPrinting data array\n");
-    // for (uint64_t i = 0; i < 2563; i++) {
-    //     printf("%ld \t", (int64_t)data_array[i]*10000);
-    // }
-    // printf("\nPrinting pntr array\n");
-    // for (uint64_t i = 0; i < (num_pages+1); i++) {
-    //     printf("%d \t",row_ptr[i]);
-    // }
+   
     
 
    do{

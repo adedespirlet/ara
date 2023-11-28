@@ -13,8 +13,6 @@
 
 #ifndef SPIKE
 #include "printf.h"
-#else
-#include <stdio.h>
 #endif
 
 
