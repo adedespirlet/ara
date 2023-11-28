@@ -41,7 +41,7 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
                 sum += data_array[idx] * score_column[col_array[idx]];
             }
             score_column_new[i] = sum;
-        //printf("%ld \t", (int64_t)(score_column_new[i] * 10000));
+        printf("%ld \t", (int64_t)(score_column_new[i] * 10000));
         }
 
         //add damping factor
