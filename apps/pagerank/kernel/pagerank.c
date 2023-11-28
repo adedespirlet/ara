@@ -26,12 +26,14 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
 
     size_t vl;
     
-    int64_t *link_matrix_ = (int64_t *)link_matrix ;
     int64_t *score_column_ = (int64_t *)score_column;
-
+    double sum_of_differences=0.0;
+    uint64_t avl=num_pages;
     asm volatile("vmv.v.i v4, 0");
     asm volatile("vmv.v.i v8, 0");
     asm volatile("vmv.v.i v16, 0");
+    double dampingvalue= DAMPING;
+    double dampingmean= 1-DAMPING;
     
 
    do{
@@ -44,10 +46,10 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
         
         matrix_vector_Mult_Scalar(num_pages,data_array,col_array,row_ptr, score_column,score_column_new);
            
-        avl=num_pages;
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
-        score_column_new_=score_column_new;
-        score_column_=score_column;
+        double *score_column_new_=score_column_new;
+        double *score_column_=score_column;
+
         for (; avl > 0; avl -= vl) {
             asm volatile("vmv.v.i v12, 0"); //init temp vector to 0
             asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
@@ -55,10 +57,11 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
             //load score_column
             asm volatile("vle64.v v16,  (%0)" ::"r"(score_column_));
             asm volatile("vle64.v v4,  (%0)" ::"r"(score_column_new_));
-            asm volatile("vmul.vx v16, v16, %0", DAMPING); //weigh score column
+            asm volatile("vmul.vx v16, v16, %0":: "r" (dampingvalue)); //weigh score column
+
 
             asm volatile("vle64.v v8,  (%0)" ::"r"(mean_column ));
-            asm volatile("vmul.vx v8, v8, %0", 1-DAMPING); //weigh mean column
+            asm volatile("vmul.vx v8, v8, %0":: "r"(dampingmean)); //weigh mean column
 
 
             asm volatile("vadd.vv v4, v16, v8"); // add both weighted vectors and store in score column new
