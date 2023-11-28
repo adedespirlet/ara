@@ -24,6 +24,10 @@ void matrix_vector_Mult_Scalar(uint64_t num_pages, double *data_array,uint64_t *
     // for (uint64_t i = 0; i < (num_pages+1); i++) {
     //     printf("%d \t",row_ptr[i]);
     // }
+    printf("\nPrinting pntr array\n");
+    for (uint64_t i = 0; i < (num_pages); i++) {
+        printf("%ld \t",(int64_t)score_column_new[i]*10000);
+    }
 }
 
 void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_array,uint64_t *row_ptr, double *score_column, double *mean_column,double *score_column_new) {
