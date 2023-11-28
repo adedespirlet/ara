@@ -3,7 +3,7 @@
 #include "pagerank.h"
 
 void matrix_vector_Mult_Scalar(uint64_t num_pages, double *data_array,uint64_t *col_array,uint64_t *row_ptr, double *score_column,double *score_column_new){
-    printf("Matrix-vector multiplication")
+    printf("Matrix-vector multiplication");
     for (uint64_t i = 0; i < num_pages; i++) {
            double sum = 0.0;
            for (int64_t idx = row_ptr[i]; idx < row_ptr[i + 1]; idx++) {
