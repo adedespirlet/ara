@@ -10,6 +10,7 @@
 #include <time.h>
 #include <stddef.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 #ifndef SPIKE
 #include "printf.h"
