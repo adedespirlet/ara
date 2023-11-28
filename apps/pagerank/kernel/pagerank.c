@@ -82,7 +82,7 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
         double *score_column_=score_column;
 
         for (; avl > 0; avl -= vl) {
-            printf("entered avl loop")
+            printf("entered avl loop");
             asm volatile("vmv.v.i v12, 0"); //init temp vector to 0
             asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
             
