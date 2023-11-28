@@ -26,6 +26,9 @@ void matrix_vector_Mult_Scalar(uint64_t num_pages, double *data_array,uint64_t *
     // }
 }
 
+
+
+
 void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_array,uint64_t *row_ptr, double *score_column, double *mean_column,double *score_column_new) {
     // Implement the PageRank calculation here
     // compute PR_+1= (1-t)*A*PR + t*v 
@@ -46,14 +49,17 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
     double dampingvalue= DAMPING;
     double dampingmean= 1-DAMPING;
 
-   do{
+    // Define a maximum number of iterations to prevent infinite loops
+    const uint64_t max_iterations = 1000;
+
+    for (uint64_t iteration = 0; iteration < max_iterations; iteration++) {
+
         //v4 for score_column_new
         //v16 for score_column
         //v8 for mean_column
         //v12 for temp values
         
-        printf("entered the do while loop\n");
-
+       
         for (uint64_t i = 0; i < num_pages; i++) {
             double sum = 0.0;
             for (int64_t idx = row_ptr[i]; idx < row_ptr[i + 1]; idx++) {
@@ -62,9 +68,10 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
             score_column_new[i] = sum;
         printf("%ld \t", (int64_t)(score_column_new[i] * 10000));
         }
+
         //matrix_vector_Mult_Scalar(num_pages,data_array,col_array,row_ptr, score_column,score_column_new);
         printf("HELLLOOOOOOOOO");
-        //size_t avl=num_pages;
+        size_t avl=num_pages;
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
         
         asm volatile("vmv.v.i v4, 0");
@@ -75,6 +82,7 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
         double *score_column_=score_column;
 
         for (; avl > 0; avl -= vl) {
+            printf("entered avl loop")
             asm volatile("vmv.v.i v12, 0"); //init temp vector to 0
             asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
             
@@ -102,12 +110,19 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
             score_column_new_+=vl;
             score_column_+=vl;
         }
-       sum_of_differences = 0.0;
+        sum_of_differences = 0.0;
 
-       asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(1));
-       asm volatile("vse64.v   v12, (%0)" :: "r"(sum_of_differences));
-   }while (sum_of_differences>CONVERGENCE);
-  
-   printf("Page Rank has converged\n");
+        asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(1));
+        asm volatile("vse64.v   v12, (%0)" :: "r"(sum_of_differences));
+        
+
+        // Check for convergence
+        if (sum_of_differences <= CONVERGENCE) {
+            break;
+        }
+    }
+
+    printf("PageRank has %s\n", (sum_of_differences <= CONVERGENCE) ? "converged" : "reached maximum iterations");
+
 
 }
