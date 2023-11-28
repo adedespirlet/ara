@@ -28,11 +28,11 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
     // for (uint64_t i = 0; i < (num_pages+1); i++) {
     //     printf("%d \t",row_ptr[i]);
     // }
-
+    uint64_t i=0;
     double sum_of_differences = 0.0;
     do{
-
-        printf("entered the do-while loop\n");
+        i++;
+        printf("Iteration Number: %d",i);
         printf("Multiplying linking matrix with score column:\n");
      
         for (uint64_t i = 0; i < num_pages; i++) {
@@ -41,7 +41,7 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
                 sum += data_array[idx] * score_column[col_array[idx]];
             }
             score_column_new[i] = sum;
-        printf("%ld \t", (int64_t)(score_column_new[i] * 10000));
+        //printf("%ld \t", (int64_t)(score_column_new[i] * 10000));
         }
 
         //add damping factor
