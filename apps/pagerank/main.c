@@ -33,9 +33,10 @@ int main() {
   
 	calculate_page_rank(num_pages, data_array,col_array,row_ptr, pr,m,pr_new);
 
+	
 	// Print the PageRank scores
 	printf("\nPageRank Scores:\n");
-	for (uint64_t i = 0; i < num_pages; i++) {
+	for (uint64_t i = 0; i < 200; i++) {
     	printf("Page %d: %ld \t", i + 1,(int64_t)(pr[i]*10000));
     	//printf("Page %d: %e \n", i + 1,pr[i]*100);
   	 
@@ -43,12 +44,11 @@ int main() {
 
 	// Print the PageRank scores from golden model
 	printf("\n Golden Model PageRank Scores:\n");
-	for (uint64_t i = 0; i < num_pages; i++) {
+	for (uint64_t i = 0; i < 200; i++) {
     	printf("Page %d: %ld \t", i + 1,(int64_t)(golden_o[i]*10000));
     	//printf("Page %d: %e \n", i + 1,pr[i]*100);
   	 
 	}
-
 	return 0;
 }
 

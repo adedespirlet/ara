@@ -44,8 +44,8 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
     unsigned long int vl;
     
     double sum_of_differences=0.0;
-    double dampingvalue= DAMPING;
-    double dampingmean= 1-DAMPING;
+    double dampingvalue= (double)DAMPING;
+    double dampingmean= (double)(1-DAMPING);
 
     // Define a maximum number of iterations to prevent infinite loops
     const uint64_t max_iterations = 1000;
@@ -57,7 +57,7 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
         //v8 for mean_column
         //v12 for temp values
         
-       
+       printf("Printing Matrix vector multiplication\n");
         for (uint64_t i = 0; i < num_pages; i++) {
             double sum = 0.0;
             for (int64_t idx = row_ptr[i]; idx < row_ptr[i + 1]; idx++) {
@@ -68,42 +68,58 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
         }
 
         //matrix_vector_Mult_Scalar(num_pages,data_array,col_array,row_ptr, score_column,score_column_new);
-        printf("HELLLOOOOOOOOO");
-        
-        printf("test1");
+       
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
-        printf("test2");
+      
         asm volatile("vmv.v.i v4, 0");
         asm volatile("vmv.v.i v8, 0");
         asm volatile("vmv.v.i v16, 0");
-        printf("test3");
+        asm volatile("vmv.v.i v20, 0");
+        
         double *score_column_new_=score_column_new;
-        printf("test4");
+    
         double *score_column_=score_column;
-        printf("test5");
+     
 
         for (; avl > 0; avl -= vl) {
-            printf("entered avl loop");
+            printf("Avl value is: %ld and vl value is: %ld \n",avl ,vl);
+            
             asm volatile("vmv.v.i v12, 0"); //init temp vector to 0
             asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
-            
+             printf("\nPrinting score column before weigning \n");
+            for (uint64_t i = 0; i < (vl); i++) {
+                printf("%d \t",(int64_t)(score_column_new_[i]*10000));
+            }
+
+            printf("damping value is : %ld",dampingvalue);
             //load score_column
             asm volatile("vle64.v v16,  (%0)" ::"r"(score_column_));
             asm volatile("vle64.v v4,  (%0)" ::"r"(score_column_new_));
-            asm volatile("vmul.vx v16, v16, %0":: "r" (dampingvalue)); //weigh score column
 
+            //double fv_temp;
+           // asm volatile("fmv.d.x %0, %1" : "=f"(fv_temp) : "r"(dampingvalue));
+            asm volatile("vfmul.vf v4, v4, %0":: "f" (dampingvalue)); //weigh score columnnew
+            
 
+            asm volatile("vse64.v   v4, (%0)" :: "r"(score_column_new_));
+            printf("\nPrinting score column after weigning \n");
+            for (uint64_t i = 0; i < (vl); i++) {
+                printf("%d \t",(int64_t)(score_column_new_[i]*10000));
+            }
+
+           // asm volatile("fmv.d.x %0, %1" : "=f"(fv_temp) : "r"(dampingmean));
             asm volatile("vle64.v v8,  (%0)" ::"r"(mean_column ));
-            asm volatile("vmul.vx v8, v8, %0":: "r"(dampingmean)); //weigh mean column
+            asm volatile("vfmul.vf v8, v8, %0":: "f"(dampingmean)); //weigh mean column
+           
 
-
-            asm volatile("vadd.vv v4, v16, v8"); // add both weighted vectors and store in score column new
+            asm volatile("vfadd.vv v4, v4, v8"); // add both weighted vectors and store in score column new
+            asm volatile("vse64.v   v4, (%0)" :: "r"(score_column_new_));
             
 
             //compute abs difference and add it all up to see if it converges
             asm volatile("vsub.vv v12, v16, v4");
             asm volatile("vfsgnjx.vv v12,v12,v12"); //take absolute value
-            asm volatile("vredsum.vs v12, v12, v12") ; //add elements together
+            asm volatile("vredsum.vs v20, v20, v12") ; //add elements together
 
             //copy new score column to score column for next iteration
             asm volatile("vse64.v   v4, (%0)" :: "r"(score_column_));
@@ -114,7 +130,8 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
         sum_of_differences = 0.0;
 
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(1));
-        asm volatile("vse64.v   v12, (%0)" :: "r"(sum_of_differences));
+        asm volatile("vse64.v   v20, (%0)" :: "r"(&sum_of_differences));
+
         
 
         // Check for convergence
@@ -122,6 +139,11 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
             break;
         }
     }
+    double sum=0.0;
+    for (uint64_t i = 0; i < (num_pages); i++) {
+                sum+=score_column[i];
+    } 
+    printf("sum of all score is %ld \n",(int64_t)sum*10000);
 
     printf("PageRank has %s\n", (sum_of_differences <= CONVERGENCE) ? "converged" : "reached maximum iterations");
 
