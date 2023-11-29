@@ -26,6 +26,31 @@ void matrix_vector_Mult_Scalar(uint64_t num_pages, double *data_array,uint64_t *
     // }
 }
 
+void matrix_vector_Mult_Vector(uint64_t num_pages, double *data_array,uint64_t *col_array,uint64_t *row_ptr, double *score_column,double *score_column_new){
+
+    unsigned long int vl;
+    for (uint64_t i = 0; i < num_pages; i++) {
+        int64_t idx= row_ptr[i];
+        int64_t end= row_ptr[i+1];
+        int64_t length = idx - end;
+        double *data_array_= data_array+idx;
+        double *col_array_= col_array+idx;
+        asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(length));
+        asm volatile("vle64.v v4,  (%0)" ::"r"(data_array_));
+        asm volatile("vle64.v v8,  (%0)" ::"r"(col_array_)); //contains indexes for scatter gather
+
+        asm volatile("vloxei64.v v12,%0,v8"::"r"(score_column)); 
+
+        //perform vresdum on both vectors v12 and v4 assign reuslt to scorecolumn_new[i]
+
+        vsetvli
+           double sum = 0.0;
+           for (int64_t idx = row_ptr[i]; idx < row_ptr[i + 1]; idx++) {
+               sum += data_array[idx] * score_column[col_array[idx]];
+           }
+
+    }
+
 
 
 
@@ -57,17 +82,7 @@ void calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *col_ar
         //v8 for mean_column
         //v12 for temp values
         
-       printf("Printing Matrix vector multiplication\n");
-        for (uint64_t i = 0; i < num_pages; i++) {
-            double sum = 0.0;
-            for (int64_t idx = row_ptr[i]; idx < row_ptr[i + 1]; idx++) {
-                sum += data_array[idx] * score_column[col_array[idx]];
-            }
-            score_column_new[i] = sum;
-        printf("%ld \t", (int64_t)(score_column_new[i] * 10000));
-        }
-
-        //matrix_vector_Mult_Scalar(num_pages,data_array,col_array,row_ptr, score_column,score_column_new);
+        matrix_vector_Mult_Scalar(num_pages,data_array,col_array,row_ptr, score_column,score_column_new);
        
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
       
