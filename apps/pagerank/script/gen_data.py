@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 # Copyright 2022 ETH Zurich and University of Bologna.
 #
@@ -35,18 +36,14 @@ def emit(name, array, alignment='8'):
 ## SCRIPT ##
 ############
 
-
-# Probability of an edge existing between two nodes
-p = 0.4
-
 DAMPING = 0.85
 CONVERGENCE = 1e-6
-
 dtype = np.float64
+
 # Read the sparse matrix
 sparse_matrix = mmread('Harvard500.mtx')
 
-# Convert the sparse matrix to a dense format and create an adjacency matrix
+
 NUM_NODES = 500  # Assuming 500 nodes
 adj_matrix = np.zeros((NUM_NODES, NUM_NODES))
 
@@ -67,12 +64,12 @@ def normalize_columns(matrix):
 link_matrix = normalize_columns(adj_matrix)
 # Convert list to numpy array
 A = np.array(link_matrix, dtype=np.float64)
+
 # Convert the link matrix to Compressed Sparse Row (CSR) format
 csr_A = csr_matrix(A)
 data_array = csr_A.data.astype(dtype)
 col_array = csr_A.indices.astype(np.uint64)
 row_ptr = csr_A.indptr.astype(np.uint64)
-
 
 
 PR= np.zeros([NUM_NODES,1], dtype=dtype) #init pagerank vector
@@ -112,3 +109,6 @@ emit("pr", PR, 'NR_LANES*4')
 emit("pr_new", PR_new, 'NR_LANES*4')
 emit("m", M, 'NR_LANES*4')
 emit("golden_o", result, 'NR_LANES*4')
+
+
+

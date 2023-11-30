@@ -1,7 +1,7 @@
 
 // main.c
 
-#include <stdio.h>
+
 #include <string.h>
 
 #include "kernel/pagerank.h"
@@ -10,6 +10,8 @@
 
 #ifndef SPIKE
 #include "printf.h"
+#else
+#include <stdio.h>
 #endif
 
 
@@ -36,7 +38,7 @@ int main() {
 	
 	// Print the PageRank scores
 	printf("\nPageRank Scores:\n");
-	for (uint64_t i = 0; i < 200; i++) {
+	for (uint64_t i = 0; i < 10; i++) {
     	printf("Page %d: %ld \t", i + 1,(int64_t)(pr[i]*10000));
     	//printf("Page %d: %e \n", i + 1,pr[i]*100);
   	 
@@ -44,7 +46,7 @@ int main() {
 
 	// Print the PageRank scores from golden model
 	printf("\n Golden Model PageRank Scores:\n");
-	for (uint64_t i = 0; i < 200; i++) {
+	for (uint64_t i = 0; i < 10; i++) {
     	printf("Page %d: %ld \t", i + 1,(int64_t)(golden_o[i]*10000));
     	//printf("Page %d: %e \n", i + 1,pr[i]*100);
   	 
