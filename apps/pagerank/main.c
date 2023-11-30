@@ -32,10 +32,27 @@ int main() {
 	printf("=============\n");
 	printf("\n");
 	printf("\n");
-  
-	calculate_page_rank(num_pages, data_array,col_array,row_ptr, pr,m,pr_new);
 
+  	start_timer();
+	uint64_t num_iterations=calculate_page_rank(num_pages, data_array,col_array,row_ptr, pr,m,pr_new);
+	stop_timer();
+
+	// Performance metrics
+  	int64_t runtime = get_timer();
+
+
+  	float num_nonzero_elements=2563;
+  
+  	
 	
+
+
+	float performance = (num_pages+num_iterations*(num_nonzero_elements+3*num_pages+num_nonzero_elements-num_pages))/ runtime;
+  	float utilization = 100 * performance / (2.0 * NR_LANES);
+
+  	printf("The execution took %d cycles.\n", runtime);
+    printf("The performance is %f DPFLOP/cycle (%f%% utilization).\n", performance, utilization);
+
 	// Print the PageRank scores
 	printf("\nPageRank Scores:\n");
 	for (uint64_t i = 0; i < 10; i++) {
