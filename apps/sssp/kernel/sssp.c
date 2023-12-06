@@ -123,7 +123,9 @@ void processBucket(int bucketIndex) {
     B[bucketIndex] = NULL; // Empty the bucket
 }
 
-int sssp(){
+int sssp(uint64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,uint64_t *distances,uint64_t *B, uint64_t *List,uint64_t S, uint64_t num_nodes,uint64_t delta, uint64_t source){
+
+    //initiliaze
 
 	while (1) {
         int bucketIndex = findSmallestNonEmptyBucket();
