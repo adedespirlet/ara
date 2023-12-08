@@ -5,7 +5,8 @@ import sys
 from scipy.io import mmread
 from scipy.sparse import csr_matrix
 import ctypes
-
+import networkx as nx
+import pandas as pd
 
 dtype = np.int64
 
@@ -51,7 +52,45 @@ buckets = BucketArrayType()
 nodes_array = (Node * num_nodes)()
 
 
-print(buckets)
-print(nodes_array)
+print(len(data_array))
 
-#tranform adjancy matrix to 
+######GOLDEN MODEL##############
+
+
+# Load the data from the football.mtx file
+file_path = 'football.mtx'  # Adjusted file path for your dataset
+data = pd.read_csv(file_path, delim_whitespace=True, header=None, names=['source', 'destination', 'weight'], comment='%')
+
+# Create a directed graph
+G_directed = nx.DiGraph()
+
+# Add edges to the graph
+for index, row in data.iterrows():
+    G_directed.add_edge(row['source'], row['destination'], weight=row['weight'])
+
+# Compute the shortest path distances from vertex 1
+shortest_paths_from_1 = nx.single_source_dijkstra_path_length(G_directed, 1)
+
+# Display the results
+for node, distance in shortest_paths_from_1.items():
+    print(f"Vertex 1 to Vertex {node}: {distance}")
+
+shortest_paths_2d_array = [[vertex, distance] for vertex, distance in shortest_paths_from_1.items()]
+print(shortest_paths_2d_array)
+
+# Get the largest node number to define array size
+
+max_node = max(G_directed.nodes())
+
+# Initialize the array with -1 (indicating no path)
+distances_array = np.full(max_node + 1, -1)  # Adding 1 because nodes are 1-indexed
+
+# Update the array with distances where paths exis
+for node, distance in shortest_paths_from_1.items():
+    distances_array[node] = distance
+
+# Setting the distance from vertex 1 to itself as 0
+distances_array[1] = 0
+distances_array=distances_array[1:]  # Exclude the 0th index as it's not used in this graph
+
+print(distances_array)

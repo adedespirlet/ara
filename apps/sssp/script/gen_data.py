@@ -21,6 +21,8 @@ from scipy.io import mmread
 from scipy.sparse import csr_matrix
 import math
 import ctypes
+import networkx as nx
+import pandas as pd
 
 def emit(name, array, alignment='8'):
   print(".global %s" % name)
@@ -38,11 +40,10 @@ def emit(name, array, alignment='8'):
 ############
 
 dtype = np.uint64
-source_node= 0
+source_node= 33
 num_nodes= 35
 # Read the .mtx file to get a sparse matrix
 weighted_graph = mmread('football.mtx')
-print(weighted_graph)
 
 # Ensure the matrix is in CSR format
 csr_weighted_graph = csr_matrix(weighted_graph)
@@ -55,7 +56,7 @@ row_ptr = csr_weighted_graph.indptr.astype(dtype)
 distances = np.zeros([1,num_nodes], dtype=dtype) # contains the assigned cluster to each data point
 
 ##set delta, to be tuned, good estimate would be the avarge or mean of theedges weight
-DELTA=2
+DELTA=3
 
 ##allocate memory for the buckets , max amount of buckets is (max_edge_weight x number_of_vertices )/delta
 max_edge_weight= np.max(data_array)
@@ -66,10 +67,39 @@ B = np.zeros([1,number_buckets], dtype=dtype)
 #allocate mmeory for the linked lists, one structure takes 2x64bits (for the int vertex and for the pointer to the next vertex)
 #we have 35 nodes so since each node requires 2x64bits we need an array of 70entries of 64bits
 List= np.zeros([1,70], dtype=dtype)
-S= np.zeros([1,num_nodes], dtype=dtype) #allocate space for deleted vertices 
-
+max_edges = num_nodes * (num_nodes - 1) #Worst-case number of light edges
+ReqL= np.zeros([1,max_edges*2], dtype=dtype) #allocate space for heavy requests 
+ReqH=np.zeros([1,max_edges*2], dtype=dtype) #allocate space for light requests
 
 #########################GOLDEN MODEL#########################
+# Load the data from the football.mtx file
+file_path = 'football.mtx'  # Adjusted file path for your dataset
+data = pd.read_csv(file_path, delim_whitespace=True, header=None, names=['source', 'destination', 'weight'], comment='%')
+
+# Create a directed graph
+G_directed = nx.DiGraph()
+
+# Add edges to the graph
+for index, row in data.iterrows():
+    G_directed.add_edge(row['source'], row['destination'], weight=row['weight'])
+
+# Compute the shortest path distances from vertex 1
+shortest_paths_from_1 = nx.single_source_dijkstra_path_length(G_directed, source_node+1)  ##add 1 to source node because python code counts vertexes from 1 
+
+# Get the largest node number to define array size
+
+max_node = max(G_directed.nodes())
+
+# Initialize the array with -1 (indicating no path)
+distances_array = np.full(max_node + 1, -1)  # Adding 1 because nodes are 1-indexed
+
+# Update the array with distances where paths exis
+for node, distance in shortest_paths_from_1.items():
+    distances_array[node] = distance
+
+# Setting the distance from vertex 1 to itself as 0
+distances_array[source_node+1] = 0
+result=distances_array[1:]  # Exclude the 0th index as it's not used in this graph
 
 
 # Golden result matrix
@@ -85,7 +115,9 @@ emit("col_array", col_array, 'NR_LANES*4')
 emit("row_ptr", row_ptr, 'NR_LANES*4')
 emit("distances", distances, 'NR_LANES*4')
 emit("B", B, 'NR_LANES*4')
-emit("list", List, 'NR_LANES*4')
-emit("S", S, 'NR_LANES*4')
+emit("List", List, 'NR_LANES*4')
+emit("ReqH", ReqH, 'NR_LANES*4')
+emit("ReqL", ReqL, 'NR_LANES*4')
 emit("golden_o", result, 'NR_LANES*4')
+
 
