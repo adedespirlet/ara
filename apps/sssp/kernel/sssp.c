@@ -146,7 +146,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     printf("h value is %d\n",totalHeavyedges);
     if (totalHeavyedges>0){
             relax(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
-        }
+    }
     
     
     //empty Reqh
@@ -200,7 +200,7 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
         asm volatile ("vcpop.m %0, v0":"=r"(numberOfupdate)) ;
 
 
-        asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(numberOfupdate)); //numberofupdate gives the number of elements to store back and put in Buckets
+        asm volatile("vsetvli %0, %1, e64, m4, ta, ma" :: "r"(numberOfupdate)); //numberofupdate gives the number of elements to store back and put in Buckets
         asm volatile("vse64.v v12, (%0)"::"r"(Req_ds_));
         asm volatile("vse64.v v16, (%0)" ::"r"(Req_vs_));
         Req_ds_+= numberOfupdate;
