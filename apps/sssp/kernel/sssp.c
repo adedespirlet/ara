@@ -200,7 +200,7 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
         asm volatile ("vcpop.m %0, v0":"=r"(numberOfupdate)) ;
 
 
-        asm volatile("vsetvli %0, %1, e64, m4, ta, ma" :: "r"(numberOfupdate)); //numberofupdate gives the number of elements to store back and put in Buckets
+        asm volatile("vsetvli x0, %0, e64, m4, ta, ma" :: "r"(numberOfupdate)); //numberofupdate gives the number of elements to store back and put in Buckets
         asm volatile("vse64.v v12, (%0)"::"r"(Req_ds_));
         asm volatile("vse64.v v16, (%0)" ::"r"(Req_vs_));
         Req_ds_+= numberOfupdate;
