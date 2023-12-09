@@ -135,13 +135,19 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
 
         //relax light edges 
         printf("l value is %d \n",totalLightedges );
-        relax(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
+        if (totalLightedges>0){
+            relax(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
+        }
+       
 
     //check the while loop if there vertexes have been placed in the current bucket otherwise exit looop
     }
     //relax heavy edges
     printf("h value is %d\n",totalHeavyedges);
-    relax(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
+    if (totalHeavyedges>0){
+            relax(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
+        }
+    
     
     //empty Reqh
      for (uint64_t i=0; i<totalHeavyedges;i++){
