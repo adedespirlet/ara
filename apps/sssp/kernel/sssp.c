@@ -34,91 +34,85 @@ int findSmallestNonEmptyBucket(Node **B, uint64_t num_nodes,int64_t delta) {
 }
 
 // Function to process a bucket
-void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Node **B, int64_t bucketIndex, uint64_t num_nodes, int64_t delta, int64_t *distances, int64_t *Req_l, int64_t *Req_h,Node *List) {
-    //initialise Req and S
+void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Node **B, int64_t bucketIndex, uint64_t num_nodes, int64_t delta, int64_t *distances, int64_t *Req_dl,int64_t *Req_dh, int64_t *Req_vl, int64_t *Req_vh,Node *List) {
     printf("processBucket function\n");
     Node* current = B[bucketIndex];
-    int64_t new_dist;
-    uint64_t limit;
-    uint64_t j;
-    uint64_t stride=8;
-    uint64_t l=0, n=0,h=0;
-    uint64_t numberHeavyEdge,numberLightEdge;
     printf("Busy with BUcket index: %d \n",bucketIndex );
- 
+    uint64_t avl,vl;
+    uint64_t limit;
+    uint64_t totalLightedges=0, n=0,totalHeavyedges=0;
+    uint64_t numberHeavyEdge,numberLightEdge;
+   
+    int64_t *Req_dl_= Req_dl;
+    int64_t *Req_vl_= Req_vl;
+    int64_t *Req_dh_= Req_dh;
+    int64_t *Req_vh_= Req_vh;
+    int64_t data_array_= data_array;
+    uint64_t col_array_=col_array;
+   
     while (B[bucketIndex] != NULL){ //check if bucket is not empty
         printf("First while loop\n");
         current = B[bucketIndex];
-        
         limit= num_nodes*(num_nodes -1)*2;
         //empty reqL
         for (uint64_t i; i<limit;i++){
-            Req_l[i]=0;
+            Req_dl[i]=0;
+            Req_vl[i]=0;
         }
-        l=0;
+        
+        totalLightedges=0;
         while (current != NULL) {
             printf("Second while loop\n");
             int vertex = current->vertex;
             // Check for outgoing light edges
-             // Start and end positions in CSR arrays for the current vertex
+            // Start and end positions in CSR arrays for the current vertex
             uint64_t start_edge = row_ptr[vertex];
             uint64_t end_edge = row_ptr[vertex + 1];
 
-            unsigned long int avl = start_edge - end_edge;
+            avl = start_edge - end_edge;
             asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
-            int64_t distance= distances[vertex]
+            int64_t distance= distances[vertex];
             for (; avl > 0; avl -= vl) {
                 asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
                 
                 asm volatile("vle64.v v4,  (%0)" ::"r"(data_array_)); //contains weight
                 asm volatile("vle64.v v8,  (%0)" ::"r"(col_array_)); 
 
-                asm volatile("vadd.vx v12 , v4, %0":: "r"(distances));  //contains new dist
+                asm volatile("vadd.vx v12 , v4, %0":: "r"(distance));  //contains new dist
                 asm volatile("vmslt.vx v0, v4, %0"::"r"(delta));
 
-                asm volatile ("vcpop.m %0, v0"::"=r"(numberLightEdge)) ;
-                asm volatile("vcompress.vm v16, v12, v0");
-                asm volatile("vcompress.vm v20, v8, v0");
+                asm volatile("vcpop.m %0, v0"::"=r"(numberLightEdge)) ;
+                asm volatile("vcompress.vm v16, v12, v0"); //contains new dist values for weight smaller than delta
+                asm volatile("vcompress.vm v20, v8, v0"); //contains vertex values for weight smaller than delta
 
                 asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(numberLightEdge));
-                asm volatile("vse64.v v16, (%0), %1"::"r"(Req_dl_));
-                asm volatile("vsse64.v v20, (%0), %1" ::"r"(Req_vl_));
+                asm volatile("vse64.v v16, (%0)"::"r"(Req_dl_));
+                asm volatile("vse64.v v20, (%0)" ::"r"(Req_vl_));
+                Req_dl_+=numberLightEdge;
+                Req_vl_+=numberLightEdge;
+                totalLightedges+=numberLightEdge;
 
                 numberHeavyEdge=avl- numberLightEdge;
 
                 asm volatile("vmnot.m v0, v0 ");
                 asm volatile("vcompress.vm v16, v12, v0");
+                asm volatile("vcompress.vm v20, v8, v0");
+
                 asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(numberHeavyEdge));
-                
-                asm volatile("vse64.v v16, (%0), %1"::"r"(Req_d_));
-                asm volatile("vsse64.v v20, (%0), %1" ::"r"(Req_vh_));
+                asm volatile("vse64.v v16, (%0)"::"r"(Req_dh_));
+                asm volatile("vse64.v v20, (%0)" ::"r"(Req_vh_));
 
-            }   
+                Req_dh_+=numberHeavyEdge;
+                Req_vh_+=numberHeavyEdge;
+                totalHeavyedges+=numberHeavyEdge;
 
-            // Check for outgoing edges
-            for (uint64_t i = start_edge; i < end_edge; i++) {
-                int64_t target_vertex = col_array[i];
-                int64_t edge_weight = data_array[i];
+                data_array_+=vl;
+                col_array_+=vl;
 
-                if (edge_weight < delta) { // Check if the edge is light
-                    new_dist = distances[vertex] + edge_weight;
-                    Req_l[l*2] = target_vertex;  // Store vertex
-                    Req_l[l*2+1] = new_dist;  // Store new distance
-                    l++;
-                    printf("L value is %d\n",l );
-                }
-                else if (edge_weight >= delta) {
-                    new_dist = distances[vertex] + edge_weight;
-                    Req_h[h*2] = target_vertex;  // Store vertex
-                    Req_h[h*2 +1] = new_dist;  // Store new distance
-                    h++;
-                    printf("H value is %d\n",h);
-                }
             }
             Node* temp = current;
-            current = current->next;
+            current = current->next;   
         }
-
         // Reset only the nodes in the current bucket's chain
         current = B[bucketIndex];
         while (current != NULL) {
@@ -129,41 +123,77 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
         }
          // Finally, set the head of the current bucket to NULL
         B[bucketIndex] = NULL;
-    
+
         //relax light edges 
-        printf("l value is %d \n",l );
-        for (int64_t k = 0; k < l; k++) {
-            printf("relaxing light edge\n");
-            relax(Req_l[k*2], Req_l[k*2 + 1],delta, distances,B,List,num_nodes);
-        }
+        printf("l value is %d \n",totalLightedges );
+        relax(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
+
     //check the while loop if there vertexes have been placed in the current bucket otherwise exit looop
     }
-
     //relax heavy edges
-    printf("h value is %d\n",h);
-    for (int64_t k = 0; k < h; k++) {
-        printf("relaxing heavy edge\n");
-        relax(Req_h[k*2], Req_h[k*2 + 1],delta, distances,B,List,num_nodes);
-    }
+    printf("h value is %d\n",totalHeavyedges);
+    relax(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
+    
     //empty Reqh
      for (uint64_t i; i<n;i++){
-            Req_h[i]=0;
+            Req_dh[i]=0;
+            Req_vh[i]=0;
     }
 
 }
 
-void relax(int64_t v, int64_t new_dist,  int64_t delta,  int64_t *distances,Node **B, Node *List, uint64_t num_nodes) {
+void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, Node **B, Node *List, uint64_t num_nodes, uint64_t totaledge) {
     printf("relax function\n");
-    if (distances[v]==-1){
-        int64_t new_bucket_index = floor(new_dist / delta);
-        addToBucket(List, B, v,new_bucket_index,num_nodes);
-        distances[v] = new_dist;
+    uint64_t numberOfupdate=0;
+    uint64_t avl= totaledge;
+    uint64_t vl;
+    asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
+    asm volatile("vmv.v.i v28, 0");
+
+    int64_t *distances_=distances;
+    int64_t *Req_d_= Req_d;
+    int64_t *Req_v_= Req_v;
+    int64_t *Req_ds_= Req_d; //address to store updated elements
+    int64_t *Req_vs_= Req_v;
+    uint64_t totalNumberofUpdate=0;
+
+    for (; avl > 0; avl -= vl) {
+        asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
+        
+        asm volatile("vle64.v v4,  (%0)" ::"r"(Req_d_)); //contains new computed distances
+        asm volatile("vle64.v v8,  (%0)" ::"r"(Req_v_)); // containes associated vertexes
+        //empty or set to zero space in array Req
+        asm volatile("vse64.v v28,  (%0)" ::"r"(Req_d_)); //empty location 
+        asm volatile("vse64.v v28,  (%0)" ::"r"(Req_v_));
+        
+        //scatter gather to fetch current distance associated to loaded vertexes
+        asm volatile("vloxei64.v v12,(%0),v8"::"r"(distances_)); //v12 contains current distance associated to each node
+
+        asm volatile("vmslt.vv v0, v4, v12"); // set mask if v4 < v12
+
+        asm volatile("vse64.v v4, (%0), v0.t" ::"r"(distances_)); //update distance value if smaller 
+
+        //compress updates vertexs with distances in two vectors and store them in memory to update BUcket and list afterwards
+        asm volatile("vcompress.vm v12, v4, v0"); //contains new distance
+        asm volatile("vcompress.vm v16, v8, v0"); // contains vertex
+        asm volatile ("vcpop.m %0, v0"::"=r"(numberOfupdate)) ;
+
+
+        asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(numberOfupdate)); //numberofupdate gives the number of elements to store back and put in Buckets
+        asm volatile("vse64.v v12, (%0), %1"::"r"(Req_ds_));
+        asm volatile("vse64.v v16, (%0), %1" ::"r"(Req_vs_));
+        Req_dls_+= numberOfupdate;
+        Req_vls_+= numberOfupdate;
+        totalNumberofUpdate+=numberOfupdate; //remember total to know how many iteration in loop for updating buckets
+
+        Req_d_+=vl;
+        Req_v_+=vl;
+        distances_+=vl;
     }
-    else if (new_dist < distances[v]) {
-        int64_t old_bucket_index = floor(distances[v] / delta);
-        int64_t new_bucket_index = floor(new_dist / delta);
-        addToBucket(List, B, v,new_bucket_index,num_nodes);
-        distances[v] = new_dist;
+
+    for (uint64_t i; i<totalNumberofUpdate; i++){
+        int64_t new_bucket_index = floor(Req_d[i] / delta);
+        addToBucket(List, B, Req_v[i],new_bucket_index,num_nodes);
     }
     printf("distances array:\n");
     for (uint64_t j = 0; j < num_nodes; ++j) {
@@ -172,7 +202,7 @@ void relax(int64_t v, int64_t new_dist,  int64_t delta,  int64_t *distances,Node
     printf("\n");
 }
 
-void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *distances,int64_t *B, int64_t *List, uint64_t num_nodes,int64_t delta, uint64_t source, int64_t *ReqL, int64_t *ReqH){
+void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *distances,int64_t *B, int64_t *List, uint64_t num_nodes,int64_t delta, uint64_t source, int64_t *ReqdL, int64_t *ReqdH,int64_t *ReqvL, int64_t *ReqvH){
     printf("SSSP function\n");
     Node *list = (Node *)List;
     Node **buckets = (Node **)B;
@@ -217,7 +247,7 @@ void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *dis
             // All buckets are empty, algorithm is finished
             break;
         }
-        processBucket(data_array,col_array,row_ptr, buckets,  bucketIndex,  num_nodes,  delta, distances, ReqL, ReqH,list);
+        processBucket(data_array,col_array,row_ptr, buckets,  bucketIndex,  num_nodes,  delta, distances, ReqdL,ReqdH, ReqvL,ReqvH, list);
     }
 
 }

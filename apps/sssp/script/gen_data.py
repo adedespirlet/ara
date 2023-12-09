@@ -68,9 +68,10 @@ B = np.zeros([1,number_buckets], dtype=dtype)
 #we have 35 nodes so since each node requires 2x64bits we need an array of 70entries of 64bits
 List= np.zeros([1,70], dtype=dtype)
 max_edges = num_nodes * (num_nodes - 1) #Worst-case number of light edges
-ReqL= np.zeros([1,max_edges*2], dtype=dtype) #allocate space for heavy requests 
-ReqH=np.zeros([1,max_edges*2], dtype=dtype) #allocate space for light requests
-
+ReqdL= np.zeros([1,max_edges], dtype=dtype) #allocate space for heavy requests 
+ReqdH=np.zeros([1,max_edges], dtype=dtype) #allocate space for light requests
+ReqvL= np.zeros([1,max_edges], dtype=dtype) #allocate space for heavy requests 
+ReqvH=np.zeros([1,max_edges], dtype=dtype) #allocate space for light requests
 #########################GOLDEN MODEL#########################
 # Load the data from the football.mtx file
 file_path = 'football.mtx'  # Adjusted file path for your dataset
@@ -116,8 +117,10 @@ emit("row_ptr", row_ptr, 'NR_LANES*4')
 emit("distances", distances, 'NR_LANES*4')
 emit("B", B, 'NR_LANES*4')
 emit("List", List, 'NR_LANES*4')
-emit("ReqH", ReqH, 'NR_LANES*4')
-emit("ReqL", ReqL, 'NR_LANES*4')
+emit("ReqdH", ReqH, 'NR_LANES*4')
+emit("ReqdL", ReqL, 'NR_LANES*4')
+emit("ReqvH", ReqH, 'NR_LANES*4')
+emit("ReqvL", ReqL, 'NR_LANES*4')
 emit("golden_o", result, 'NR_LANES*4')
 
 

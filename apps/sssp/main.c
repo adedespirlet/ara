@@ -19,8 +19,10 @@ extern uint64_t row_ptr[] __attribute__((aligned(32 * NR_LANES), section(".l2"))
 extern int64_t distances[] __attribute__((aligned(32 * NR_LANES), section(".l2"))); // mean vector
 extern int64_t B[] __attribute__((aligned(32 * NR_LANES), section(".l2")));  //score vector new
 extern int64_t List[] __attribute__((aligned(32 * NR_LANES), section(".l2")));  //score vector
-extern int64_t ReqL[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
-extern int64_t ReqH[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
+extern int64_t ReqdL[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
+extern int64_t ReqdH[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
+extern int64_t ReqvL[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
+extern int64_t ReqvH[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
 extern int64_t golden_o[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
 // Gold results
 //extern int64_t g[] __attribute__((aligned(32 * NR_LANES), section(".l2")));
@@ -54,7 +56,7 @@ int main() {
     //     printf("\n");
     // }
    
-    sssp(data_array,col_array,row_ptr,distances,B,List,num_nodes,delta, source, ReqL, ReqH) ;
+    sssp(data_array,col_array,row_ptr,distances,B,List,num_nodes,delta, source, ReqdL, ReqdH,ReqvL,ReqvH) ;
 
     printf("distances array:\n");
  

@@ -1,0 +1,188 @@
+// Assuming a predefined maximum number of vertices
+#define MAX_VERTICES 1000
+#define INFINITY 1000000
+#define DELTA 10  // Example delta value
+
+// Tentative distances array
+int tent[MAX_VERTICES];
+
+// 2D array to store edge weights
+int C[MAX_VERTICES][MAX_VERTICES];
+
+// Bucket structure - a simple array of lists
+// Each list node represents a vertex
+typedef struct Node {
+    int vertex;
+    struct Node* next;
+} Node;
+
+Node* B[MAX_VERTICES / DELTA];  // Array of pointers to bucket lists
+Node* R = NULL; // Set R to store vertices after processing light edges
+
+void relax(int v, int new_dist) {
+    if (new_dist < tent[v]) {
+        int old_bucket_index = floor(tent[v] / DELTA);
+        int new_bucket_index = floor(new_dist / DELTA);
+
+        if (isInBucket(old_bucket_index, v)) {
+            removeFromBucket(old_bucket_index, v);
+        }
+
+        addToBucket(new_bucket_index, v);
+        tent[v] = new_dist;
+    }
+}
+
+// Function to check if a vertex is in a bucket
+int isInBucket(int bucketIndex, int vertex) {
+    Node* current = B[bucketIndex];
+    while (current != NULL) {
+        if (current->vertex == vertex) {
+            return 1;
+        }
+        current = current->next;
+    }
+    return 0;
+}
+
+// Function to remove a vertex from a bucket
+void removeFromBucket(int bucketIndex, int vertex) {
+    Node* current = B[bucketIndex];
+    Node* prev = NULL;
+    while (current != NULL) {
+        if (current->vertex == vertex) {
+            if (prev == NULL) {
+                B[bucketIndex] = current->next;
+            } else {
+                prev->next = current->next;
+            }
+            free(current);
+            return;
+        }
+        prev = current;
+        current = current->next;
+    }
+}
+
+
+// Function to create a new list node
+Node* createNode(int v) {
+    Node* newNode = (Node*) malloc(sizeof(Node));
+    if (!newNode) {
+        fprintf(stderr, "Memory allocation error\n");
+        exit(EXIT_FAILURE);
+    }
+    newNode->vertex = v;
+    newNode->next = NULL;
+    return newNode;
+}
+
+void addToR(int vertex) {
+    Node* newNode = (Node*) malloc(sizeof(Node));
+    newNode->vertex = vertex;
+    newNode->next = R;
+    R = newNode;
+}
+
+####################################################### MAINLOOOP####
+
+
+
+void addToBucket(Node *List, Node **B, int64_t vertex, uint64_t bucketid, uint64_t num_nodes) {
+        // Find the next available Node in List
+        uint64_t i = 0;
+        while (i < num_nodes && List[i].vertex != -1) {
+            i++;
+        }
+        if (i == num_nodes) {
+            // List is full, handle error
+            printf( "Error: List is full.\n");
+        }
+
+        // Initialize the node
+        List[i].vertex = vertex;
+        List[i].next = B[bucketid]; // New node points to the current head of the bucket
+
+        // Update the bucket to point to the new node
+        B[bucketid] = &List[i];
+    }
+
+int findSmallestNonEmptyBucket(Node **B, uint64_t num_nodes,uint64_t delta) {
+    for (uint64_t i = 0; i < num_nodes / delta; ++i) {
+        if (B[i] != NULL) {  // Check if the bucket is not empty
+            return i;
+        }
+    }
+    return -1;  // Return -1 if all buckets are empty
+}
+
+// Function to process a bucket
+void processBucket(Node **B, int bucketIndex, int num_nodes, int delta, int **C, int *distances, int **Req) {
+    Node* current = B[bucketIndex];
+    int j = 0;  // Index for Req array
+
+    while (current != NULL) {
+        int vertex = current->vertex;
+
+        // Check for outgoing light edges
+        for (int i = 0; i < num_nodes; i++) {
+            if (C[vertex][i] != -1 && C[vertex][i] < delta) { // Check if the edge is light
+                int new_dist = distances[vertex] + C[vertex][i];
+                Req[j][0] = i;  // Store vertex
+                Req[j][1] = new_dist;  // Store new distance
+                j++;
+                // relax(i, new_dist);  // You might want to relax after processing all edges
+            }
+        }
+        S[n]=vertex; //save node in S
+        n++;
+
+        Node* temp = current;
+        current = current->next;
+
+
+    }
+    B[bucketIndex] = NULL; // Empty the bucket
+    for (int k = 0; k < j; k++) {
+        relax(Req[k][0], Req[k][1]);
+    }
+    //check if more have been added to the same bucket
+    current = B[bucketIndex];
+
+
+
+    // Process heavy edges from S here
+    // ...
+
+    
+}
+
+
+
+void findrequests()
+int sssp(uint64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,uint64_t *distances,uint64_t *B, int64_t *List,uint64_t S, uint64_t num_nodes,uint64_t delta, uint64_t source){
+
+
+    Node *nodes = (Node *)List;
+    Node **buckets = (Node **)B;
+
+    //initiliaze distance matrix
+    for (uint64_t int i = 0; i < num_nodes; i++) {
+        distances[i]=-1;
+    }
+    distances[source]=0;
+    //set source node into first bucket
+    addToBucket(nodes, buckets, source,0,num_nodes);
+
+    
+	while (1) {
+        int bucketIndex = findSmallestNonEmptyBucket();
+        if (bucketIndex == -1) {
+            // All buckets are empty, algorithm is finished
+            break;
+        }
+
+        processBucket(bucketIndex);
+    }
+
+}
