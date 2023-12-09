@@ -55,7 +55,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
         current = B[bucketIndex];
         limit= num_nodes*(num_nodes -1)*2;
         //empty reqL
-        for (uint64_t i; i<limit;i++){
+        for (uint64_t i=0; i<limit;i++){
             Req_dl[i]=0;
             Req_vl[i]=0;
         }
