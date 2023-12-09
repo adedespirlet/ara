@@ -161,6 +161,7 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
     printf("relax function\n");
     uint64_t numberOfupdate=0;
     uint64_t avl= totaledge;
+    printf("Total edge (avl) is : %ld \n", avl);
     uint64_t vl;
     asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
     asm volatile("vmv.v.i v28, 0");
@@ -205,10 +206,11 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
         Req_ds_+= numberOfupdate;
         Req_vs_+= numberOfupdate;
         totalNumberofUpdate+=numberOfupdate; //remember total to know how many iteration in loop for updating buckets
-        printf("total numver of updates: %ld",totalNumberofUpdate);
+        printf("total numver of updates: %ld \n",totalNumberofUpdate);
         Req_d_+=vl;
         Req_v_+=vl;
         distances_+=vl;
+        break;
     }
 
     for (uint64_t i=0; i<totalNumberofUpdate; i++){
