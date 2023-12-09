@@ -135,7 +135,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     relax(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
     
     //empty Reqh
-     for (uint64_t i; i<n;i++){
+     for (uint64_t i=0; i<totalHeavyedges;i++){
             Req_dh[i]=0;
             Req_vh[i]=0;
     }
@@ -191,7 +191,7 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
         distances_+=vl;
     }
 
-    for (uint64_t i; i<totalNumberofUpdate; i++){
+    for (uint64_t i=0; i<totalNumberofUpdate; i++){
         int64_t new_bucket_index = floor(Req_d[i] / delta);
         addToBucket(List, B, Req_v[i],new_bucket_index,num_nodes);
     }
