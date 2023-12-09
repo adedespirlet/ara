@@ -194,9 +194,11 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
         //empty or set to zero space in array Req
         asm volatile("vse64.v v28,  (%0)" ::"r"(Req_d_)); //empty location 
         asm volatile("vse64.v v28,  (%0)" ::"r"(Req_v_));
-        
+        uint64_t factor=8;
+        asm volatile ("vmul.vx v8,v8,%0"::"r"(factor));
         //scatter gather to fetch current distance associated to loaded vertexes
         asm volatile("vloxei64.v v12,(%0),v8"::"r"(distances_)); //v12 contains current distance associated to each node
+        
         int64_t number=-1;
         asm volatile("vmseq.vx  v20, v12, %0"::"r"(number));
         asm volatile("vmslt.vv v24, v4, v12"); // set mask if v4 < v12
