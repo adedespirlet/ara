@@ -70,6 +70,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
             uint64_t end_edge = row_ptr[vertex + 1];
 
             avl = start_edge - end_edge;
+            printf("NUmber of edges (avl) : %ld", avl);
             asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
             int64_t distance= distances[vertex];
 
