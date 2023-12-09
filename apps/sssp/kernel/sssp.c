@@ -47,8 +47,8 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     int64_t *Req_vl_= Req_vl;
     int64_t *Req_dh_= Req_dh;
     int64_t *Req_vh_= Req_vh;
-    int64_t data_array_= data_array;
-    uint64_t col_array_=col_array;
+    int64_t *data_array_= data_array;
+    uint64_t *col_array_=col_array;
    
     while (B[bucketIndex] != NULL){ //check if bucket is not empty
         printf("First while loop\n");
@@ -81,7 +81,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
                 asm volatile("vadd.vx v12 , v4, %0":: "r"(distance));  //contains new dist
                 asm volatile("vmslt.vx v0, v4, %0"::"r"(delta));
 
-                asm volatile("vcpop.m %0, v0"::"=r"(numberLightEdge)) ;
+                asm volatile("vcpop.m %0, v0":"=r"(numberLightEdge)) ;
                 asm volatile("vcompress.vm v16, v12, v0"); //contains new dist values for weight smaller than delta
                 asm volatile("vcompress.vm v20, v8, v0"); //contains vertex values for weight smaller than delta
 
@@ -176,14 +176,14 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
         //compress updates vertexs with distances in two vectors and store them in memory to update BUcket and list afterwards
         asm volatile("vcompress.vm v12, v4, v0"); //contains new distance
         asm volatile("vcompress.vm v16, v8, v0"); // contains vertex
-        asm volatile ("vcpop.m %0, v0"::"=r"(numberOfupdate)) ;
+        asm volatile ("vcpop.m %0, v0":"=r"(numberOfupdate)) ;
 
 
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(numberOfupdate)); //numberofupdate gives the number of elements to store back and put in Buckets
-        asm volatile("vse64.v v12, (%0), %1"::"r"(Req_ds_));
-        asm volatile("vse64.v v16, (%0), %1" ::"r"(Req_vs_));
-        Req_dls_+= numberOfupdate;
-        Req_vls_+= numberOfupdate;
+        asm volatile("vse64.v v12, (%0)"::"r"(Req_ds_));
+        asm volatile("vse64.v v16, (%0)" ::"r"(Req_vs_));
+        Req_ds_+= numberOfupdate;
+        Req_vs_+= numberOfupdate;
         totalNumberofUpdate+=numberOfupdate; //remember total to know how many iteration in loop for updating buckets
 
         Req_d_+=vl;
