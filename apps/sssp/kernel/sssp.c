@@ -94,7 +94,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
                 asm volatile("vcompress.vm v16, v12, v0"); //contains new dist values for weight smaller than delta
                 asm volatile("vcompress.vm v20, v8, v0"); //contains vertex values for weight smaller than delta
 
-                asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(numberLightEdge));
+                asm volatile("vsetvli x0, %0, e64, m4, ta, ma" :: "r"(numberLightEdge));
                 asm volatile("vse64.v v16, (%0)"::"r"(Req_dl_));
                 asm volatile("vse64.v v20, (%0)" ::"r"(Req_vl_));
                 Req_dl_+=numberLightEdge;
@@ -106,8 +106,8 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
                 asm volatile("vmnot.m v0, v0 ");
                 asm volatile("vcompress.vm v16, v12, v0");
                 asm volatile("vcompress.vm v20, v8, v0");
-
-                asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(numberHeavyEdge));
+                printf("Number heavy Edge")
+                asm volatile("vsetvli x0, %0, e64, m4, ta, ma" :: "r"(numberHeavyEdge));
                 asm volatile("vse64.v v16, (%0)"::"r"(Req_dh_));
                 asm volatile("vse64.v v20, (%0)" ::"r"(Req_vh_));
 
