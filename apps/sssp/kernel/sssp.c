@@ -150,7 +150,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     
     
     //empty Reqh
-     for (uint64_t i=0; i<totalHeavyedges;i++){
+    for (uint64_t i=0; i<totalHeavyedges;i++){
             Req_dh[i]=0;
             Req_vh[i]=0;
     }
@@ -169,7 +169,6 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
     asm volatile("vmv.v.i v12, 0");
     asm volatile("vmv.v.i v16, 0");
       
-
     int64_t *distances_=distances;
     int64_t *Req_d_= Req_d;
     int64_t *Req_v_= Req_v;
@@ -178,6 +177,7 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
     uint64_t totalNumberofUpdate=0;
 
     for (; avl > 0; avl -= vl) {
+        printf("Avl value is: %ld, Vl value is : %ld \n",avl,vl);
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
         
         asm volatile("vle64.v v4,  (%0)" ::"r"(Req_d_)); //contains new computed distances
@@ -205,7 +205,7 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
         Req_ds_+= numberOfupdate;
         Req_vs_+= numberOfupdate;
         totalNumberofUpdate+=numberOfupdate; //remember total to know how many iteration in loop for updating buckets
-
+        printf("total numver of updates: %ld",totalNumberofUpdate);
         Req_d_+=vl;
         Req_v_+=vl;
         distances_+=vl;
