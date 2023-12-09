@@ -144,6 +144,10 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     }
     //relax heavy edges
     printf("h value is %d\n",totalHeavyedges);
+     for (uint64_t i=0;i<10;i++){
+        printf("Req_dl is: %ld, Req_vl is : %ld \n", Req_dl[i], Req_vl[i]);
+        printf("Req_dh is: %ld, Req_vh is : %ld \n", Req_dh[i], Req_vh[i]);
+    }
     if (totalHeavyedges>0){
             relax(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
     }
@@ -179,10 +183,7 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
     int64_t *Req_vs_= Req_v;
     uint64_t totalNumberofUpdate=0;
 
-    for (uint64_t i=0;i<10;i++){
-        printf("Req_dl is: %ld, Req_vl is : %ld \n", Req_dl[i], Req_vl[i]);
-        printf("Req_dh is: %ld, Req_vh is : %ld \n", Req_dh[i], Req_vh[i]);
-    }
+   
 
     for (; avl > 0; avl -= vl) {
         printf("Avl value is: %ld, Vl value is : %ld \n",avl,vl);
