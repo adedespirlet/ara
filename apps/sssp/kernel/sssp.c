@@ -102,11 +102,11 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
                 totalLightedges+=numberLightEdge;
 
                 numberHeavyEdge=avl- numberLightEdge;
-
+                asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
                 asm volatile("vmnot.m v0, v0 ");
                 asm volatile("vcompress.vm v16, v12, v0");
                 asm volatile("vcompress.vm v20, v8, v0");
-                printf("Number heavy Edge")
+                printf("Number heavy Edge %ld \n", numberHeavyEdge);
                 asm volatile("vsetvli x0, %0, e64, m4, ta, ma" :: "r"(numberHeavyEdge));
                 asm volatile("vse64.v v16, (%0)"::"r"(Req_dh_));
                 asm volatile("vse64.v v20, (%0)" ::"r"(Req_vh_));
