@@ -210,7 +210,7 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
         Req_d_+=vl;
         Req_v_+=vl;
         distances_+=vl;
-        break;
+        
     }
 
     for (uint64_t i=0; i<totalNumberofUpdate; i++){
