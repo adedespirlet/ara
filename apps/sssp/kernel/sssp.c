@@ -72,7 +72,15 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
             avl = start_edge - end_edge;
             asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
             int64_t distance= distances[vertex];
+
+            asm volatile("vmv.v.i v4, 0");
+            asm volatile("vmv.v.i v8, 0");
+            asm volatile("vmv.v.i v12, 0");
+            asm volatile("vmv.v.i v16, 0");
+            asm volatile("vmv.v.i v20, 0");
             for (; avl > 0; avl -= vl) {
+                printf("Avl value is: %ld, Vl value is : %ld \n",avl,vl);
+
                 asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
                 
                 asm volatile("vle64.v v4,  (%0)" ::"r"(data_array_)); //contains weight
@@ -149,6 +157,11 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
     uint64_t vl;
     asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
     asm volatile("vmv.v.i v28, 0");
+    asm volatile("vmv.v.i v4, 0");
+    asm volatile("vmv.v.i v8, 0");
+    asm volatile("vmv.v.i v12, 0");
+    asm volatile("vmv.v.i v16, 0");
+      
 
     int64_t *distances_=distances;
     int64_t *Req_d_= Req_d;
