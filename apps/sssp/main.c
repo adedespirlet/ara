@@ -53,8 +53,18 @@ int main() {
     //     }
     //     printf("\n");
     // }
-   
-    sssp(data_array,col_array,row_ptr,distances,B,List,num_nodes,delta, source, ReqL, ReqH) ;
+    start_timer();
+	sssp(data_array,col_array,row_ptr,distances,B,List,num_nodes,delta, source, ReqL, ReqH) ;
+	stop_timer();
+
+	// Performance metrics
+  	int64_t runtime = get_timer();
+
+  	//float num_nonzero_elements=2563;
+  
+	//float performance = (num_pages+num_iterations*(num_nonzero_elements+3*num_pages+num_nonzero_elements-num_pages))/ runtime;
+  	//float utilization = 100 * performance / (2.0 * NR_LANES);
+    
 
     printf("distances array:\n");
  
