@@ -102,10 +102,6 @@ for node, distance in shortest_paths_from_1.items():
 distances_array[source_node+1] = 0
 result=distances_array[1:]  # Exclude the 0th index as it's not used in this graph
 
-
-# Golden result matrix
-#G = np.matmul(A, B).astype(dtype)
-
 # Create the file
 print(".section .data,\"aw\",@progbits")
 emit("num_nodes", np.array(num_nodes, dtype=np.uint64))
