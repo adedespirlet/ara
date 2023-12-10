@@ -44,15 +44,7 @@ int main() {
     }
     printf("\n");
     
-    
-    // printf("Matrix A:\n");
-    // printf("---");
-    // for (uint64_t i = 0; i < 3; ++i) {
-    //     for (uint64_t j = 0; j < data_points; ++j) {
-    //         printf("%ld", a[i * dimension + j]);
-    //     }
-    //     printf("\n");
-    // }
+ 
     start_timer();
 	sssp(data_array,col_array,row_ptr,distances,B,List,num_nodes,delta, source, ReqL, ReqH) ;
 	stop_timer();
@@ -66,8 +58,7 @@ int main() {
   	//float utilization = 100 * performance / (2.0 * NR_LANES);
     
 
-    printf("distances array:\n");
- 
+    printf("Final computed distance array:\n");
     for (uint64_t j = 0; j < num_nodes; ++j) {
         printf("%ld ", distances[j]);
     }
