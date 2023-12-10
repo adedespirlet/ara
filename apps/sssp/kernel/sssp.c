@@ -58,7 +58,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     while (B[bucketIndex] != NULL){ //check if bucket is not empty
         printf("First while loop\n");
         current = B[bucketIndex];
-        limit= num_nodes*(num_nodes -1)*2;
+        limit= num_nodes*(num_nodes -1);
         //empty reqL
         for (uint64_t i=0; i<limit;i++){
             Req_dl[i]=0;
