@@ -142,6 +142,11 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
         B[bucketIndex] = NULL;
 
         //relax light edges 
+        printf("printing light edges array:\n");
+        for (uint64_t i=0;i<10;i++){
+            printf("Req_dl is: %ld, Req_vl is : %ld \n", Req_dl[i], Req_vl[i]);
+            
+        }
         printf("l value is %d \n",totalLightedges );
         if (totalLightedges>0){
             relax(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
@@ -152,11 +157,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     }
     //relax heavy edges
     printf("h value is %d\n",totalHeavyedges);
-    printf("printing light edges array:\n");
-     for (uint64_t i=0;i<10;i++){
-        printf("Req_dl is: %ld, Req_vl is : %ld \n", Req_dl[i], Req_vl[i]);
-        
-    }
+    
     printf("printing heavy edges array:\n");
     for (uint64_t i=0;i<10;i++){
         printf("Req_dh is: %ld, Req_vh is : %ld \n", Req_dh[i], Req_vh[i]);
