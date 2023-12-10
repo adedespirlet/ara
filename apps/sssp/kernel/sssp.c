@@ -22,10 +22,6 @@ void addToBucket(Node *List, Node **B, int64_t vertex, int64_t bucketid, uint64_
         // Update the bucket to point to the new node
         B[bucketid] = &List[i];
 
-        for (uint64_t i = 0; i < num_nodes; i++) {
-        printf("%ld \t %ld \t ", List[i].vertex, List[i].next);
-    }
-    printf("\n");
 }
 
 int findSmallestNonEmptyBucket(Node **B, uint64_t num_nodes,int64_t delta) {
@@ -72,18 +68,15 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
         while (current != NULL) {
             printf("Second while loop\n");
             int vertex = current->vertex;
-            printf("busy with vertex %ld", vertex);
+
             // Check for outgoing light edges
             // Start and end positions in CSR arrays for the current vertex
             uint64_t start_edge = row_ptr[vertex];
             uint64_t end_edge = row_ptr[vertex + 1];
 
             avl = end_edge-start_edge ;
-            printf("NUmber of edges (avl) : %ld", avl);
             asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
             int64_t distance= distances[vertex];
-            printf("distance for vertex %ld is : %ld \n", vertex, distance);
-
             asm volatile("vmv.v.i v4, 0");
             asm volatile("vmv.v.i v8, 0");
             asm volatile("vmv.v.i v12, 0");
@@ -145,15 +138,15 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
         B[bucketIndex] = NULL;
 
         //relax light edges 
-        printf("printing light edges array:\n");
-        for (uint64_t i=0;i<10;i++){
-            printf("Req_dl is: %ld, Req_vl is : %ld \n", Req_dl[i], Req_vl[i]);
+        // printf("printing light edges array:\n");
+        // for (uint64_t i=0;i<10;i++){
+        //     printf("Req_dl is: %ld, Req_vl is : %ld \n", Req_dl[i], Req_vl[i]);
             
-        }
-        printf("l value is %d \n",totalLightedges );
-        if (totalLightedges>0){
-            relax(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
-        }
+        // }
+        // printf("l value is %d \n",totalLightedges );
+        // if (totalLightedges>0){
+        //     relax(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
+        // }
        
 
     //check the while loop if there vertexes have been placed in the current bucket otherwise exit looop
@@ -170,13 +163,11 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
             relax(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
     }
     
-    
     //empty Reqh
     for (uint64_t i=0; i<totalHeavyedges;i++){
             Req_dh[i]=0;
             Req_vh[i]=0;
     }
-
 }
 
 void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, Node **B, Node *List, uint64_t num_nodes, uint64_t totaledge) {
@@ -237,7 +228,7 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
         Req_ds_+= numberOfupdate;
         Req_vs_+= numberOfupdate;
         totalNumberofUpdate+=numberOfupdate; //remember total to know how many iteration in loop for updating buckets
-        printf("total numver of updates: %ld \n",totalNumberofUpdate);
+       // printf("total numver of updates: %ld \n",totalNumberofUpdate);
         Req_d_+=vl;
         Req_v_+=vl;
         distances_+=vl;
@@ -246,15 +237,8 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
 
     for (uint64_t i=0; i<totalNumberofUpdate; i++){
         int64_t new_bucket_index = floor(Req_d[i] / delta);
-        printf("New bucket index is : %ld \n", new_bucket_index);
-        printf("Vrtex value is %ld \n",Req_v[i]);
         addToBucket(List, B, Req_v[i],new_bucket_index,num_nodes);
     }
-    printf("distances array:\n");
-    for (uint64_t j = 0; j < num_nodes; ++j) {
-        printf("%ld ", distances[j]);
-    }
-    printf("\n");
 }
 
 void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *distances,int64_t *B, int64_t *List, uint64_t num_nodes,int64_t delta, uint64_t source, int64_t *ReqdL, int64_t *ReqdH,int64_t *ReqvL, int64_t *ReqvH){
@@ -268,12 +252,6 @@ void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *dis
         distances[i]=-1;
     }
     distances[source]=0;
-    printf("distances array:\n");
-
-    for (uint64_t j = 0; j < num_nodes; ++j) {
-        printf("%ld ", distances[j]);
-    }
-    printf("\n");
     
     // Initialize buckets to NULL meaning they're empty
     for (uint64_t i = 0; i < num_nodes; i++) {
@@ -285,12 +263,6 @@ void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *dis
         list[i].vertex = -1;  // Set vertex to -1
         list[i].next = NULL;  // Set next pointer to NULL
     }
-    printf("List array\n");
-    //initialize List to empty list
-    for (uint64_t i = 0; i < num_nodes; i++) {
-        printf("%ld \t %ld \t ", list[i].vertex, list[i].next);
-    }
-    printf("\n");
     
     //set source node into first bucket
     addToBucket(list, buckets, source,0,num_nodes);
