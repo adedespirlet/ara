@@ -24,6 +24,7 @@ void addToBucket(Node *List, Node **B, int64_t vertex, int64_t bucketid, uint64_
 
         for (uint64_t i = 0; i < num_nodes; i++) {
         printf("%ld \t %ld \t ", List[i].vertex, List[i].next);
+        printf("\n")
     }
 }
 
@@ -238,7 +239,7 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
 
     for (uint64_t i=0; i<totalNumberofUpdate; i++){
         int64_t new_bucket_index = floor(Req_d[i] / delta);
-        printf("New bucket index is : %ld", new_bucket_index);
+        printf("New bucket index is : %ld \n", new_bucket_index);
         addToBucket(List, B, Req_v[i],new_bucket_index,num_nodes);
     }
     printf("distances array:\n");
