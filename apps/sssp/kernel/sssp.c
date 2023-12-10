@@ -204,18 +204,18 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
         asm volatile("vse64.v v28,  (%0)" ::"r"(Req_d_)); //empty location 
         asm volatile("vse64.v v28,  (%0)" ::"r"(Req_v_));
         uint64_t factor=8;
-        asm volatile ("vmul.vx v8,v8,%0"::"r"(factor));
+        asm volatile ("vmul.vx v20,v8,%0"::"r"(factor));
         //scatter gather to fetch current distance associated to loaded vertexes
-        asm volatile("vloxei64.v v12,(%0),v8"::"r"(distances_)); //v12 contains current distance associated to each node
+        asm volatile("vloxei64.v v12,(%0),v20"::"r"(distances_)); //v12 contains current distance associated to each node
         
         int64_t number=-1;
-        asm volatile("vmseq.vx  v20, v12, %0"::"r"(number));
+        asm volatile("vmseq.vx  v0, v12, %0"::"r"(number));
         asm volatile("vmslt.vv v24, v4, v12"); // set mask if v4 < v12
 
-        asm volatile("vor.vv v0, v20, v24"); //combine the masks
+        asm volatile("vor.vv v0, v0, v24"); //combine the masks
 
         //asm volatile("vse64.v v4, (%0), v0.t" ::"r"(distances_)); //update distance value if smaller 
-        asm volatile("vsoxei64.v v4, (%0), v8,v0.t"::"r"(distances_)); //scatter gather store 
+        asm volatile("vsoxei64.v v4, (%0), v20,v0.t"::"r"(distances_)); //scatter gather store 
       
 
         //compress updates vertexs with distances in two vectors and store them in memory to update BUcket and list afterwards
