@@ -78,6 +78,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
             printf("NUmber of edges (avl) : %ld", avl);
             asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
             int64_t distance= distances[vertex];
+            printf("distance for vertex %ld is : %ld \n", vertex, distance);
 
             asm volatile("vmv.v.i v4, 0");
             asm volatile("vmv.v.i v8, 0");
@@ -88,7 +89,8 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
                 printf("Avl value is: %ld, Vl value is : %ld \n",avl,vl);
 
                 asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
-                
+                data_array_=data_array+start_edge;
+                col_array_=col_array+start_edge;
                 asm volatile("vle64.v v4,  (%0)" ::"r"(data_array_)); //contains weight
                 asm volatile("vle64.v v8,  (%0)" ::"r"(col_array_)); 
 
