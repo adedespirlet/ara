@@ -23,7 +23,7 @@ void addToBucket(Node *List, Node **B, int64_t vertex, int64_t bucketid, uint64_
         B[bucketid] = &List[i];
 
         for (uint64_t i = 0; i < num_nodes; i++) {
-        printf("%ld \t %ld \t ", list[i].vertex, list[i].next);
+        printf("%ld \t %ld \t ", List[i].vertex, List[i].next);
     }
 }
 
@@ -148,12 +148,12 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     }
     //relax heavy edges
     printf("h value is %d\n",totalHeavyedges);
-    printf("printing light edges array:")
+    printf("printing light edges array:");
      for (uint64_t i=0;i<10;i++){
         printf("Req_dl is: %ld, Req_vl is : %ld \n", Req_dl[i], Req_vl[i]);
         
     }
-    printf("printing heavy edges array:")
+    printf("printing heavy edges array:");
     for (uint64_t i=0;i<10;i++){
         printf("Req_dh is: %ld, Req_vh is : %ld \n", Req_dh[i], Req_vh[i]);
     }
