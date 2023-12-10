@@ -64,6 +64,8 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
             Req_dl[i]=0;
             Req_vl[i]=0;
         }
+        Req_dh_=Req_dh;
+        Req_vh_=Req_vh;
         
         totalLightedges=0;
         while (current != NULL) {
