@@ -1,0 +1,177 @@
+
+=============
+=  SSSP  =
+=============
+
+
+Data array:
+4 9 7 1 1 1 1 2 2 2 2 4 1 1 4 4 1 5 1 1 1 1 1 1 1 2 7 1 2 2 2 2 3 2 1 1 2 1 1 2 3 1 6 1 1 3 1 1 2 4 2 4 1 3 2 1 2 7 1 4 3 4 1 1 3 1 2 1 1 4 3 2 3 3 1 1 1 5 4 2 3 1 12 2 1 3 10 2 1 1 2 6 2 2 1 4 1 7 2 3 2 2 1 1 9 1 1 7 2 1 1 2 2 1 4 1 2 3 
+SSSP function
+distances array:
+-1 -1 -1 -1 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 
+List array
+-1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 
+addToBucket function
+4 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 
+findSmallestNonEmptyBucket function
+processBucket function
+Busy with BUcket index: 0 
+First while loop
+Second while loop
+busy with vertex 4NUmber of edges (avl) : 5distance for vertex 4 is : 0 
+Avl value is: 5, Vl value is : 5 
+Number heavy Edge 2 
+printing light edges array:
+Req_dl is: 1, Req_vl is : 12 
+Req_dl is: 1, Req_vl is : 19 
+Req_dl is: 1, Req_vl is : 26 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+l value is 3 
+relax function
+Total edge (avl) is : 3 
+Avl value is: 3, Vl value is : 3 
+total numver of updates: 3 
+New bucket index is : 0 
+Vrtex value is 12 
+addToBucket function
+12 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 
+New bucket index is : 0 
+Vrtex value is 19 
+addToBucket function
+12 	 0 	 19 	 2147499552 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 
+New bucket index is : 0 
+Vrtex value is 26 
+addToBucket function
+12 	 0 	 19 	 2147499552 	 26 	 2147499568 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 
+distances array:
+-1 -1 -1 -1 0 -1 -1 -1 -1 -1 -1 -1 1 -1 -1 -1 -1 -1 -1 1 -1 -1 -1 -1 -1 -1 1 -1 -1 -1 -1 -1 -1 -1 -1 
+First while loop
+Second while loop
+busy with vertex 26NUmber of edges (avl) : 0distance for vertex 26 is : 1 
+Second while loop
+busy with vertex 19NUmber of edges (avl) : 0distance for vertex 19 is : 1 
+Second while loop
+busy with vertex 12NUmber of edges (avl) : 0distance for vertex 12 is : 1 
+printing light edges array:
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+l value is 0 
+h value is 2
+printing heavy edges array:
+Req_dh is: 4, Req_vh is : 11 
+Req_dh is: 5, Req_vh is : 17 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+relax function
+Total edge (avl) is : 2 
+Avl value is: 2, Vl value is : 2 
+total numver of updates: 2 
+New bucket index is : 1 
+Vrtex value is 11 
+addToBucket function
+11 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 
+New bucket index is : 1 
+Vrtex value is 17 
+addToBucket function
+11 	 0 	 17 	 2147499552 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 
+distances array:
+-1 -1 -1 -1 0 -1 -1 -1 -1 -1 -1 4 1 -1 -1 -1 -1 5 -1 1 -1 -1 -1 -1 -1 -1 1 -1 -1 -1 -1 -1 -1 -1 -1 
+findSmallestNonEmptyBucket function
+processBucket function
+Busy with BUcket index: 1 
+First while loop
+Second while loop
+busy with vertex 17NUmber of edges (avl) : 3distance for vertex 17 is : 5 
+Avl value is: 3, Vl value is : 3 
+Number heavy Edge 0 
+Second while loop
+busy with vertex 11NUmber of edges (avl) : 0distance for vertex 11 is : 4 
+printing light edges array:
+Req_dl is: 7, Req_vl is : 11 
+Req_dl is: 6, Req_vl is : 12 
+Req_dl is: 7, Req_vl is : 13 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+l value is 3 
+relax function
+Total edge (avl) is : 3 
+Avl value is: 3, Vl value is : 3 
+total numver of updates: 1 
+New bucket index is : 2 
+Vrtex value is 13 
+addToBucket function
+13 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 -1 	 0 	 
+distances array:
+-1 -1 -1 -1 0 -1 -1 -1 -1 -1 -1 4 1 7 -1 -1 -1 5 -1 1 -1 -1 -1 -1 -1 -1 1 -1 -1 -1 -1 -1 -1 -1 -1 
+h value is 0
+printing heavy edges array:
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+findSmallestNonEmptyBucket function
+processBucket function
+Busy with BUcket index: 2 
+First while loop
+Second while loop
+busy with vertex 13NUmber of edges (avl) : 0distance for vertex 13 is : 7 
+printing light edges array:
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+Req_dl is: 0, Req_vl is : 0 
+l value is 0 
+h value is 0
+printing heavy edges array:
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+Req_dh is: 0, Req_vh is : 0 
+findSmallestNonEmptyBucket function
+distances array:
+-1 -1 -1 -1 0 -1 -1 -1 -1 -1 -1 4 1 7 -1 -1 -1 5 -1 1 -1 -1 -1 -1 -1 -1 1 -1 -1 -1 -1 -1 -1 -1 -1 
+Golden Output
+-1 -1 -1 -1 0 -1 -1 -1 -1 -1 -1 4 1 7 -1 -1 -1 5 -1 1 -1 -1 -1 -1 -1 -1 1 -1 -1 -1 -1 -1 -1 -1 -1 
