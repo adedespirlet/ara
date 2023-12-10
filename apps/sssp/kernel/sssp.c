@@ -24,8 +24,8 @@ void addToBucket(Node *List, Node **B, int64_t vertex, int64_t bucketid, uint64_
 
         for (uint64_t i = 0; i < num_nodes; i++) {
         printf("%ld \t %ld \t ", List[i].vertex, List[i].next);
-        printf("\n");
     }
+    printf("\n");
 }
 
 int findSmallestNonEmptyBucket(Node **B, uint64_t num_nodes,int64_t delta) {
