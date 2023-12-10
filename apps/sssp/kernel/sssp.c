@@ -69,6 +69,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
         while (current != NULL) {
             printf("Second while loop\n");
             int vertex = current->vertex;
+            printf("busy with vertex %ld", vertex);
             // Check for outgoing light edges
             // Start and end positions in CSR arrays for the current vertex
             uint64_t start_edge = row_ptr[vertex];
