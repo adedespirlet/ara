@@ -21,7 +21,11 @@ void addToBucket(Node *List, Node **B, int64_t vertex, int64_t bucketid, uint64_
 
         // Update the bucket to point to the new node
         B[bucketid] = &List[i];
+
+        for (uint64_t i = 0; i < num_nodes; i++) {
+        printf("%ld \t %ld \t ", list[i].vertex, list[i].next);
     }
+}
 
 int findSmallestNonEmptyBucket(Node **B, uint64_t num_nodes,int64_t delta) {
     printf("findSmallestNonEmptyBucket function\n");
@@ -144,10 +148,16 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     }
     //relax heavy edges
     printf("h value is %d\n",totalHeavyedges);
+    printf("printing light edges array:")
      for (uint64_t i=0;i<10;i++){
         printf("Req_dl is: %ld, Req_vl is : %ld \n", Req_dl[i], Req_vl[i]);
+        
+    }
+    printf("printing heavy edges array:")
+    for (uint64_t i=0;i<10;i++){
         printf("Req_dh is: %ld, Req_vh is : %ld \n", Req_dh[i], Req_vh[i]);
     }
+    
     if (totalHeavyedges>0){
             relax(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
     }
@@ -183,8 +193,6 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
     int64_t *Req_vs_= Req_v;
     uint64_t totalNumberofUpdate=0;
 
-   
-
     for (; avl > 0; avl -= vl) {
         printf("Avl value is: %ld, Vl value is : %ld \n",avl,vl);
         asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
@@ -205,7 +213,9 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
 
         asm volatile("vor.vv v0, v20, v24"); //combine the masks
 
-        asm volatile("vse64.v v4, (%0), v0.t" ::"r"(distances_)); //update distance value if smaller 
+        //asm volatile("vse64.v v4, (%0), v0.t" ::"r"(distances_)); //update distance value if smaller 
+        asm volatile("vsoxei64.v v4, (%0), v8,v0.t"::"r"(distances_)); //scatter gather store 
+      
 
         //compress updates vertexs with distances in two vectors and store them in memory to update BUcket and list afterwards
         asm volatile("vcompress.vm v12, v4, v0"); //contains new distance
@@ -228,6 +238,7 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
 
     for (uint64_t i=0; i<totalNumberofUpdate; i++){
         int64_t new_bucket_index = floor(Req_d[i] / delta);
+        printf("New bucket index is : %ld", new_bucket_index);
         addToBucket(List, B, Req_v[i],new_bucket_index,num_nodes);
     }
     printf("distances array:\n");
