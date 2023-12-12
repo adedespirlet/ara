@@ -9,9 +9,10 @@
 
 #ifndef SPIKE
 #include "printf.h"
-#else 
+#else
 #include <stdio.h>
 #endif
+
 
 extern uint64_t num_pages;
 
