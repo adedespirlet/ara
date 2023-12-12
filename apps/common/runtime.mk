@@ -65,7 +65,7 @@ SPIKE_CCFLAGS ?= -DPREALLOCATE=1 -DSPIKE=1 $(SPIKE_INC)
 SPIKE_LDFLAGS ?= -nostdlib -T$(spike_env_dir)/benchmarks/common/test.ld
 RISCV_SIM     ?= $(ISA_SIM_INSTALL_DIR)/bin/spike
 RISCV_SIM_MOD ?= $(ISA_SIM_MOD_INSTALL_DIR)/bin/spike
-RISCV_SIM_OPT ?= --isa=rv64gcv_zfh --varch="vlen:4096,elen:64" -d 
+RISCV_SIM_OPT ?= --isa=rv64gcv_zfh --varch="vlen:4096,elen:64" 
 RISCV_SIM_MOD_OPT ?= --isa=rv64gcv_zfh --varch="vlen:4096,elen:64" -d
 
 # Python
