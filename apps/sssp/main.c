@@ -44,20 +44,21 @@ int main() {
     }
     printf("\n");
     
-    
-    // printf("Matrix A:\n");
-    // printf("---");
-    // for (uint64_t i = 0; i < 3; ++i) {
-    //     for (uint64_t j = 0; j < data_points; ++j) {
-    //         printf("%ld", a[i * dimension + j]);
-    //     }
-    //     printf("\n");
-    // }
-   
-    sssp(data_array,col_array,row_ptr,distances,B,List,num_nodes,delta, source, ReqL, ReqH) ;
-
-    printf("distances array:\n");
  
+    start_timer();
+	sssp(data_array,col_array,row_ptr,distances,B,List,num_nodes,delta, source, ReqL, ReqH) ;
+	stop_timer();
+
+	// Performance metrics
+  	int64_t runtime = get_timer();
+
+  	//float num_nonzero_elements=2563;
+  
+	//float performance = (num_pages+num_iterations*(num_nonzero_elements+3*num_pages+num_nonzero_elements-num_pages))/ runtime;
+  	//float utilization = 100 * performance / (2.0 * NR_LANES);
+    
+
+    printf("Final computed distance array:\n");
     for (uint64_t j = 0; j < num_nodes; ++j) {
         printf("%ld ", distances[j]);
     }

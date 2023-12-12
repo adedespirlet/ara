@@ -74,14 +74,14 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
                     Req_l[l*2] = target_vertex;  // Store vertex
                     Req_l[l*2+1] = new_dist;  // Store new distance
                     l++;
-                    printf("L value is %d\n",l );
+                    //printf("L value is %d\n",l );
                 }
                 else if (edge_weight >= delta) {
                     new_dist = distances[vertex] + edge_weight;
                     Req_h[h*2] = target_vertex;  // Store vertex
                     Req_h[h*2 +1] = new_dist;  // Store new distance
                     h++;
-                    printf("H value is %d\n",h);
+                    //printf("relaxing light edge\n");
                 }
             }
             Node* temp = current;
@@ -101,17 +101,18 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     
         //relax light edges 
         printf("l value is %d \n",l );
+        printf("relaxing light edge\n");
         for (int64_t k = 0; k < l; k++) {
-            printf("relaxing light edge\n");
+            //printf("relaxing light edge\n");
             relax(Req_l[k*2], Req_l[k*2 + 1],delta, distances,B,List,num_nodes);
         }
     //check the while loop if there vertexes have been placed in the current bucket otherwise exit looop
     }
 
     //relax heavy edges
-    printf("h value is %d\n",h);
+   // printf("h value is %d\n",h);
+    printf("relaxing heavy edge\n");
     for (int64_t k = 0; k < h; k++) {
-        printf("relaxing heavy edge\n");
         relax(Req_h[k*2], Req_h[k*2 + 1],delta, distances,B,List,num_nodes);
     }
     //empty Reqh
@@ -134,11 +135,6 @@ void relax(int64_t v, int64_t new_dist,  int64_t delta,  int64_t *distances,Node
         addToBucket(List, B, v,new_bucket_index,num_nodes);
         distances[v] = new_dist;
     }
-    printf("distances array:\n");
-    for (uint64_t j = 0; j < num_nodes; ++j) {
-        printf("%ld ", distances[j]);
-    }
-    printf("\n");
 }
 
 void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *distances,int64_t *B, int64_t *List, uint64_t num_nodes,int64_t delta, uint64_t source, int64_t *ReqL, int64_t *ReqH){
@@ -152,16 +148,7 @@ void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *dis
         distances[i]=-1;
     }
     distances[source]=0;
-
-
-    printf("distances array:\n");
-
-    for (uint64_t j = 0; j < num_nodes; ++j) {
-        printf("%ld ", distances[j]);
-    }
-    printf("\n");
     
-
     // Initialize buckets to NULL meaning they're empty
     for (uint64_t i = 0; i < num_nodes; i++) {
         buckets[i] = NULL;
@@ -172,13 +159,7 @@ void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *dis
         list[i].vertex = -1;  // Set vertex to -1
         list[i].next = NULL;  // Set next pointer to NULL
     }
-    printf("List array\n");
-    //initialize List to empty list
-    for (uint64_t i = 0; i < num_nodes; i++) {
-        printf("%ld \t %ld \t ", list[i].vertex, list[i].next);
-    }
-    printf("\n");
-    
+   
     //set source node into first bucket
     addToBucket(list, buckets, source,0,num_nodes);
 
