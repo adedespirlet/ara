@@ -4,95 +4,24 @@
 =============
 
 
-Link matrix:
----0 	0 	0 	833 	0 	1250 	909 	0 	0 	1428 	1000 	1000 	0 	1000 	1111 	0 	0 	0 	909 	0 	0 	1428 	0 	1111 	0 	
-0 	0 	0 	0 	666 	0 	0 	0 	833 	0 	0 	1000 	909 	0 	1111 	1111 	0 	1000 	0 	1111 	0 	0 	769 	0 	0 	
-1111 	1250 	0 	833 	0 	0 	0 	0 	833 	0 	1000 	0 	0 	1000 	0 	1111 	0 	0 	0 	0 	0 	1428 	769 	0 	0 	
-0 	0 	769 	0 	666 	0 	0 	2500 	833 	0 	0 	0 	909 	0 	1111 	0 	0 	1000 	0 	0 	0 	0 	0 	0 	0 	
-0 	0 	769 	833 	0 	0 	0 	0 	833 	1428 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	
-1111 	1250 	769 	833 	666 	0 	0 	2500 	0 	1428 	1000 	0 	909 	0 	0 	1111 	1111 	1000 	909 	1111 	0 	0 	769 	0 	0 	
-1111 	1250 	0 	833 	666 	1250 	0 	0 	0 	1428 	1000 	0 	0 	1000 	1111 	1111 	0 	0 	0 	0 	0 	0 	769 	0 	1111 	
-0 	0 	0 	0 	666 	1250 	909 	0 	0 	0 	0 	1000 	909 	0 	0 	0 	1111 	0 	0 	0 	0 	1428 	0 	1111 	0 	
-0 	0 	0 	833 	0 	0 	909 	0 	0 	1428 	0 	0 	909 	1000 	1111 	0 	1111 	1000 	0 	0 	0 	0 	769 	0 	1111 	
-1111 	1250 	0 	833 	666 	0 	909 	0 	833 	0 	1000 	0 	0 	1000 	0 	0 	0 	0 	0 	1111 	0 	0 	769 	0 	0 	
-0 	0 	0 	0 	666 	1250 	0 	0 	833 	0 	0 	0 	909 	0 	1111 	1111 	0 	0 	0 	1111 	3333 	0 	0 	0 	1111 	
-1111 	0 	769 	0 	666 	1250 	0 	2500 	0 	0 	1000 	0 	0 	0 	0 	0 	0 	0 	909 	0 	0 	1428 	769 	1111 	1111 	
-0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	0 	1000 	0 	0 	0 	1111 	0 	0 	909 	1111 	0 	0 	769 	1111 	0 	
-0 	1250 	769 	833 	666 	0 	909 	0 	0 	0 	0 	1000 	909 	0 	1111 	0 	1111 	1000 	0 	0 	0 	1428 	0 	0 	1111 	
-0 	0 	769 	833 	666 	0 	909 	0 	833 	0 	0 	1000 	0 	1000 	0 	0 	1111 	1000 	909 	0 	0 	0 	769 	0 	1111 	
-0 	0 	769 	0 	666 	0 	0 	2500 	833 	0 	1000 	0 	0 	0 	0 	0 	0 	0 	909 	1111 	0 	0 	769 	1111 	0 	
-0 	0 	0 	0 	666 	1250 	909 	0 	0 	0 	0 	0 	909 	0 	0 	0 	0 	0 	909 	0 	3333 	0 	769 	1111 	1111 	
-1111 	1250 	0 	833 	0 	0 	909 	0 	833 	0 	1000 	0 	0 	0 	0 	1111 	1111 	0 	0 	0 	0 	1428 	0 	0 	0 	
-0 	0 	0 	0 	666 	0 	0 	0 	0 	0 	0 	1000 	0 	0 	1111 	1111 	1111 	0 	0 	0 	0 	1428 	769 	0 	1111 	
-1111 	0 	769 	0 	0 	0 	0 	0 	0 	1428 	0 	1000 	909 	0 	0 	1111 	0 	1000 	0 	0 	0 	0 	0 	0 	1111 	
-0 	1250 	769 	0 	0 	1250 	909 	0 	0 	0 	0 	1000 	0 	1000 	1111 	0 	1111 	1000 	909 	0 	0 	0 	0 	0 	0 	
-0 	0 	769 	833 	666 	0 	0 	0 	0 	0 	0 	1000 	0 	1000 	0 	0 	0 	1000 	909 	0 	0 	0 	769 	1111 	0 	
-1111 	1250 	769 	0 	0 	1250 	909 	0 	833 	1428 	1000 	0 	909 	0 	0 	0 	0 	0 	909 	1111 	0 	0 	0 	1111 	0 	
-1111 	0 	769 	0 	0 	0 	0 	0 	833 	0 	0 	0 	0 	1000 	0 	0 	0 	0 	909 	1111 	3333 	0 	0 	0 	0 	
-0 	0 	769 	833 	666 	0 	909 	0 	833 	0 	1000 	0 	909 	1000 	0 	0 	1111 	1000 	0 	1111 	0 	0 	0 	1111 	0 	
 Calculating PageRank...
-Num_pages :25 
-INitialized score column
-400 	400 	400 	400 	400 	400 	400 	400 	400 	400 	400 	400 	400 	400 	400 	400 	400 	400 	400 	400 	400 	400 	400 	400 	400 	entered the do-while loop
-Multiplying linking matrix with score column:
-479 	340 	373 	311 	154 	659 	505 	335 	407 	379 	457 	505 	240 	483 	436 	386 	438 	383 	332 	337 	412 	322 	503 	362 	450 	entered the do-while loop
-Multiplying linking matrix with score column:
-512 	325 	377 	272 	144 	611 	537 	344 	418 	381 	463 	508 	240 	461 	447 	354 	454 	384 	335 	339 	456 	313 	514 	368 	429 	entered the do-while loop
-Multiplying linking matrix with score column:
-507 	325 	371 	276 	143 	612 	526 	342 	418 	382 	467 	507 	239 	459 	447 	359 	463 	384 	332 	338 	453 	310 	516 	383 	430 	entered the do-while loop
-Multiplying linking matrix with score column:
-507 	325 	371 	275 	143 	612 	526 	343 	418 	381 	467 	507 	240 	458 	446 	360 	463 	384 	333 	338 	452 	310 	516 	381 	431 	entered the do-while loop
-Multiplying linking matrix with score column:
-507 	325 	371 	275 	142 	612 	526 	343 	418 	381 	467 	507 	240 	458 	446 	360 	463 	385 	333 	338 	453 	310 	516 	381 	431 	Page Rank has converged
+Iteration Number: 0Multiplying linking matrix with score column:
+Iteration Number: 1Multiplying linking matrix with score column:
+Iteration Number: 2Multiplying linking matrix with score column:
+Iteration Number: 3Multiplying linking matrix with score column:
+Iteration Number: 4Multiplying linking matrix with score column:
+Iteration Number: 5Multiplying linking matrix with score column:
+Iteration Number: 6Multiplying linking matrix with score column:
+Iteration Number: 7Multiplying linking matrix with score column:
+Iteration Number: 8Multiplying linking matrix with score column:
+Iteration Number: 9Multiplying linking matrix with score column:
+Iteration Number: 10Multiplying linking matrix with score column:
+Iteration Number: 11Multiplying linking matrix with score column:
+Iteration Number: 12Multiplying linking matrix with score column:
+sum of all score is 0 
+PageRank has converged
+
 PageRank Scores:
-Page 1: 491 
-Page 2: 336 
-Page 3: 376 
-Page 4: 293 
-Page 5: 181 
-Page 6: 580 
-Page 7: 507 
-Page 8: 352 
-Page 9: 415 
-Page 10: 384 
-Page 11: 457 
-Page 12: 491 
-Page 13: 264 
-Page 14: 449 
-Page 15: 439 
-Page 16: 366 
-Page 17: 453 
-Page 18: 387 
-Page 19: 343 
-Page 20: 347 
-Page 21: 445 
-Page 22: 324 
-Page 23: 498 
-Page 24: 384 
-Page 25: 426 
-Golden Model PageRank Scores:
-Page 1: 491 
-Page 2: 336 
-Page 3: 376 
-Page 4: 293 
-Page 5: 181 
-Page 6: 580 
-Page 7: 507 
-Page 8: 351 
-Page 9: 415 
-Page 10: 384 
-Page 11: 457 
-Page 12: 491 
-Page 13: 264 
-Page 14: 449 
-Page 15: 439 
-Page 16: 366 
-Page 17: 453 
-Page 18: 387 
-Page 19: 343 
-Page 20: 347 
-Page 21: 445 
-Page 22: 324 
-Page 23: 498 
-Page 24: 384 
-Page 25: 426 
+Page 1: 843 	Page 2: 45 	Page 3: 76 	Page 4: 48 	Page 5: 47 	Page 6: 59 	Page 7: 68 	Page 8: 61 	Page 9: 114 	Page 10: 166 	
+ Golden Model PageRank Scores:
+Page 1: 842 	Page 2: 44 	Page 3: 76 	Page 4: 48 	Page 5: 47 	Pag
