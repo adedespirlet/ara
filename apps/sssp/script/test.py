@@ -1,19 +1,3 @@
-#!/usr/bin/env python3
-# Copyright 2022 ETH Zurich and University of Bologna.
-#
-# SPDX-License-Identifier: Apache-2.0
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#    http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 import random as rand
 import numpy as np
 import sys
@@ -24,27 +8,11 @@ import ctypes
 import networkx as nx
 import pandas as pd
 
-def emit(name, array, alignment='8'):
-  print(".global %s" % name)
-  print(".balign " + alignment)
-  print("%s:" % name)
-  bs = array.data.tobytes()
-  for i in range(0, len(bs), 4):
-    s = ""
-    for n in range(4):
-      s += "%02x" % bs[i+3-n]
-    print("    .word 0x%s" % s)
-
-############
-## SCRIPT ##
-############
-
 dtype = np.uint64
 source_node= 0
-num_nodes= 35
+
 # Read the .mtx file to get a sparse matrix
 weighted_graph = mmread('Journals.mtx')
-
 weights = weighted_graph.data
 
 # Calculate the average and median
@@ -53,6 +21,9 @@ median_weight = np.median(weights)
 print(average_weight)
 print(median_weight)
 
+num_rows = weighted_graph.shape[0]
+print(num_rows)
+num_nodes= num_rows
 # Ensure the matrix is in CSR format
 csr_weighted_graph = csr_matrix(weighted_graph)
 
@@ -60,11 +31,14 @@ data_array = csr_weighted_graph.data.astype(dtype)
 col_array = csr_weighted_graph.indices.astype(dtype)
 row_ptr = csr_weighted_graph.indptr.astype(dtype)
 
+print(len(data_array))
+print(col_array)
+
 ##created tentaive distance array for each vertex
 distances = np.zeros([1,num_nodes], dtype=dtype) # contains the assigned cluster to each data point
 
 ##set delta, to be tuned, good estimate would be the avarge or mean of theedges weight
-DELTA=3
+DELTA=500
 
 ##allocate memory for the buckets , max amount of buckets is (max_edge_weight x number_of_vertices )/delta
 max_edge_weight= np.max(data_array)
@@ -80,9 +54,8 @@ ReqdL= np.zeros([1,max_edges], dtype=dtype) #allocate space for heavy requests
 ReqdH=np.zeros([1,max_edges], dtype=dtype) #allocate space for light requests
 ReqvL= np.zeros([1,max_edges], dtype=dtype) #allocate space for heavy requests 
 ReqvH=np.zeros([1,max_edges], dtype=dtype) #allocate space for light requests
-
-
 #########################GOLDEN MODEL#########################
+
 # Load the data from the football.mtx file
 file_path = 'Journals.mtx'  # Adjusted file path for your dataset
 data = pd.read_csv(file_path, delim_whitespace=True, header=None, names=['source', 'destination', 'weight'], comment='%')
@@ -111,6 +84,4 @@ for node, distance in shortest_paths_from_1.items():
 # Setting the distance from vertex 1 to itself as 0
 distances_array[source_node+1] = 0
 result=distances_array[1:]  # Exclude the 0th index as it's not used in this graph
-
 print(result)
-
