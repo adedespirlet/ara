@@ -162,12 +162,13 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
             rearrangeArray(Req_vl,num_nodes);
             rearrangeArray(Req_dl,num_nodes);
 
-            totalLightedges= sorting(Req_vl,Req_dl,totalLightedges);
+            //totalLightedges= sorting(Req_vl,Req_dl,totalLightedges);  //only if testing vector relax
             for (uint64_t i=0;i<10;i++){
                 printf("Req_dl is: %ld, Req_vl is : %ld \n", Req_dl[i], Req_vl[i]);
             }
 
-            relax(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
+            relax_scalar(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
+            //relax_vector(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
         }
        
 
@@ -184,13 +185,13 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     if (totalHeavyedges>0){
         rearrangeArray(Req_vh,num_nodes);
         rearrangeArray(Req_dh,num_nodes);
-        totalHeavyedges= sorting(Req_vh,Req_dh,totalHeavyedges);
+        //totalHeavyedges= sorting(Req_vh,Req_dh,totalHeavyedges);
         printf("after sorting\n");
         for (uint64_t i=0;i<10;i++){
                 printf("Req_dl is: %ld, Req_vl is : %ld \n", Req_dh[i], Req_vh[i]);
         }
-
-        relax(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
+        relax_scalar(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
+        //relax_vector(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
     }
     
     //empty Reqh
@@ -225,7 +226,7 @@ void rearrangeArray(int64_t *arr, uint64_t num_nodes) {
 }
 
 
-void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, Node **B, Node *List, uint64_t num_nodes, uint64_t totaledge) {
+void relax_vector(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, Node **B, Node *List, uint64_t num_nodes, uint64_t totaledge) {
     //receives vertexes and new potential distance to be updated if smaller than current distance and to be added to bucket accordingly
 
     printf("relax function\n");
@@ -305,6 +306,23 @@ void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, N
     }
 }
 
+
+void relax_scalar(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, Node **B, Node *List, uint64_t num_nodes, uint64_t totaledge){
+    for (int64_t i = 0; i < totaledge; i++) {
+        int64_t v=Req_v[i];
+        int64_t new_dist=Req_d[i];
+        if (distances[v]==-1){
+            int64_t new_bucket_index = floor(new_dist / delta);
+            addToBucket(List, B, v,new_bucket_index,num_nodes);
+            distances[v] = new_dist;
+        }
+        else if (new_dist < distances[v]) {
+            int64_t new_bucket_index = floor(new_dist / delta);
+            addToBucket(List, B, v,new_bucket_index,num_nodes);
+            distances[v] = new_dist;
+        }
+    }
+}
 
 uint64_t sorting(int64_t *array1, int64_t *array2, uint64_t size) {
  // Bubble sort for simplicity - not efficient for large arrays
