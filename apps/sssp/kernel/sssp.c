@@ -41,7 +41,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     printf("Busy with BUcket index: %d \n",bucketIndex );
     uint64_t avl,vl;
     uint64_t limit;
-    uint64_t totalLightedges=0, n=0,totalHeavyedges=0;
+    uint64_t totalLightedges=0, n=0,totalHeavyedges=0,totalvl=0;
     uint64_t numberHeavyEdge,numberLightEdge;
    
     int64_t *Req_dl_= Req_dl;
@@ -113,19 +113,26 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
                 totalLightedges+=numberLightEdge;
 
                 numberHeavyEdge=avl- numberLightEdge;
-                asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
                 asm volatile("vmnot.m v0, v0 ");
-                asm volatile("vcompress.vm v16, v12, v0");
-                asm volatile("vcompress.vm v20, v8, v0");
-                printf("Number heavy Edge %ld \n", numberHeavyEdge);
-                asm volatile("vsetvli x0, %0, e64, m4, ta, ma" :: "r"(numberHeavyEdge));
-                asm volatile("vse64.v v16, (%0)"::"r"(Req_dh_));
-                asm volatile("vse64.v v20, (%0)" ::"r"(Req_vh_));
 
-                Req_dh_+=numberHeavyEdge;
-                Req_vh_+=numberHeavyEdge;
+                // asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
+                // asm volatile("vcompress.vm v16, v12, v0");
+                // asm volatile("vcompress.vm v20, v8, v0");
+                // printf("Number heavy Edge %ld \n", numberHeavyEdge);
+                // asm volatile("vsetvli x0, %0, e64, m4, ta, ma" :: "r"(numberHeavyEdge));
+                // asm volatile("vse64.v v16, (%0)"::"r"(Req_dh_));
+                // asm volatile("vse64.v v20, (%0)" ::"r"(Req_vh_));
+                // Req_dh_+=numberHeavyEdge;
+                // Req_vh_+=numberHeavyEdge;
+
+                asm volatile("vse64.v v12, (%0),v0.t"::"r"(Req_dh_));
+                asm volatile("vse64.v v8, (%0),v0.t" ::"r"(Req_vh_));
+
                 totalHeavyedges+=numberHeavyEdge;
+                totalvl+=vl;
 
+                Req_dh_+=vl;
+                Req_vh_+=vl;
                 data_array_+=vl;
                 col_array_+=vl;
 
@@ -175,18 +182,26 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     }
     
     if (totalHeavyedges>0){
-    
+        rearrangeArray(Req_vh,num_nodes);
+        rearrangeArray(Req_dh,num_nodes);
+        totalHeavyedges= sorting(Req_vh,Req_dh,totalHeavyedges);
+        printf("after sorting\n");
+        for (uint64_t i=0;i<10;i++){
+                printf("Req_dl is: %ld, Req_vl is : %ld \n", Req_dh[i], Req_vh[i]);
+        }
+
         relax(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
     }
     
     //empty Reqh
-    for (uint64_t i=0; i<totalHeavyedges;i++){
+    for (uint64_t i=0; i<totalvl;i++){
             Req_dh[i]=-1;
             Req_vh[i]=-1;
     }
 }
 
 void rearrangeArray(int64_t *arr, uint64_t num_nodes) {
+    //this function makes sure elementa are next to each other in array with no -1 values in between;
     int64_t i = 0, j = 0;
     int64_t temp;
     int64_t limit = (int64_t) num_nodes * (num_nodes - 1);
