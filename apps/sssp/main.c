@@ -8,6 +8,8 @@
 
 #ifndef SPIKE
 #include "printf.h"
+#else 
+#include <stdio.h>
 #endif
 
 extern uint64_t num_nodes;
@@ -39,14 +41,7 @@ int main() {
     int64_t runtime_s, runtime_v;   
     uint64_t nonzeros=118;
 
-    printf("Data array:\n");
     
-    for (uint64_t j = 0; j < nonzeros; ++j) {
-        printf("%ld ", data_array[j]);
-    }
-    printf("\n");
-    
-
     start_timer();
     sssp(data_array,col_array,row_ptr,distances,B,List,num_nodes,delta, source, ReqdL, ReqdH,ReqvL,ReqvH) ;
  	stop_timer();
