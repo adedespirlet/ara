@@ -12,7 +12,7 @@ delta:
 .global source
 .balign 8
 source:
-    .word 0x00000000
+    .word 0x00000020
     .word 0x00000000
 .global data_array
 .balign NR_LANES*4
@@ -10601,8 +10601,6 @@ ReqvL:
 .global golden_o
 .balign NR_LANES*4
 golden_o:
-    .word 0x00000000
-    .word 0x00000000
     .word 0xffffffff
     .word 0xffffffff
     .word 0xffffffff
@@ -10621,21 +10619,15 @@ golden_o:
     .word 0xffffffff
     .word 0xffffffff
     .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0x00000004
-    .word 0x00000000
-    .word 0x0000000a
-    .word 0x00000000
-    .word 0x0000000b
+    .word 0x00000002
     .word 0x00000000
     .word 0xffffffff
     .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0x00000009
+    .word 0x00000003
+    .word 0x00000000
+    .word 0x00000003
+    .word 0x00000000
+    .word 0x00000002
     .word 0x00000000
     .word 0xffffffff
     .word 0xffffffff
@@ -10643,6 +10635,22 @@ golden_o:
     .word 0xffffffff
     .word 0xffffffff
     .word 0xffffffff
+    .word 0x00000003
+    .word 0x00000000
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0x00000001
+    .word 0x00000000
     .word 0xffffffff
     .word 0xffffffff
     .word 0xffffffff
@@ -10657,16 +10665,8 @@ golden_o:
     .word 0xffffffff
     .word 0xffffffff
     .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
+    .word 0x00000000
+    .word 0x00000000
     .word 0xffffffff
     .word 0xffffffff
     .word 0xffffffff

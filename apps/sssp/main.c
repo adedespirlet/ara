@@ -49,11 +49,13 @@ int main() {
 	// Performance metrics
   	int64_t runtime = get_timer();
 
-  	//float num_nonzero_elements=2563;
-  
-	//float performance = (num_pages+num_iterations*(num_nonzero_elements+3*num_pages+num_nonzero_elements-num_pages))/ runtime;
-  	//float utilization = 100 * performance / (2.0 * NR_LANES);
-   
+  	
+
+    //float performance = (num_pages+num_iterations*(num_nonzero_elements+3*num_pages+num_nonzero_elements-num_pages))/ runtime;
+    //float utilization = 100 * performance / (2.0 * NR_LANES);
+
+    printf("The execution took %d cycles.\n", runtime);
+    //printf("The performance is %f DPFLOP/cycle (%f%% utilization).\n", performance, utilization);
 
     printf("distances array:\n");
  

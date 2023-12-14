@@ -25,7 +25,7 @@ void addToBucket(Node *List, Node **B, int64_t vertex, int64_t bucketid, uint64_
 }
 
 int findSmallestNonEmptyBucket(Node **B, uint64_t num_nodes,int64_t delta) {
-    printf("findSmallestNonEmptyBucket function\n");
+    //printf("findSmallestNonEmptyBucket function\n");
     for (uint64_t i = 0; i < num_nodes / delta; ++i) {
         if (B[i] != NULL) {  // Check if the bucket is not empty
             return i;
@@ -36,12 +36,12 @@ int findSmallestNonEmptyBucket(Node **B, uint64_t num_nodes,int64_t delta) {
 
 // Function to process a bucket
 void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Node **B, int64_t bucketIndex, uint64_t num_nodes, int64_t delta, int64_t *distances, int64_t *Req_dl,int64_t *Req_dh, int64_t *Req_vl, int64_t *Req_vh,Node *List) {
-    printf("processBucket function\n");
+    //printf("processBucket function\n");
     Node* current = B[bucketIndex];
     //printf("Busy with BUcket index: %d \n",bucketIndex );
     uint64_t avl,vl;
     uint64_t limit;
-    uint64_t totalLightedges=0, n=0,totalHeavyedges=0;
+    uint64_t totalLightedges=0, n=0,totalHeavyedges=0, totalvl=0;
     uint64_t numberHeavyEdge,numberLightEdge;
    
     int64_t *Req_dl_= Req_dl;
@@ -52,7 +52,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     uint64_t *col_array_=col_array;
    
     while (B[bucketIndex] != NULL){ //check if bucket is not empty
-        printf("First while loop\n");
+        //printf("First while loop\n");
         current = B[bucketIndex];
         limit= num_nodes*(num_nodes -1);
         //empty reqL
@@ -66,7 +66,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
         
         totalLightedges=0;
         while (current != NULL) {
-            printf("Second while loop\n");
+            //printf("Second while loop\n");
             int vertex = current->vertex;
 
             // Check for outgoing light edges
@@ -112,18 +112,26 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
                 totalLightedges+=numberLightEdge;
 
                 numberHeavyEdge=avl- numberLightEdge;
-                asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
                 asm volatile("vmnot.m v0, v0 ");
+
+                asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
                 asm volatile("vcompress.vm v16, v12, v0");
                 asm volatile("vcompress.vm v20, v8, v0");
                 //printf("Number heavy Edge %ld \n", numberHeavyEdge);
                 asm volatile("vsetvli x0, %0, e64, m4, ta, ma" :: "r"(numberHeavyEdge));
                 asm volatile("vse64.v v16, (%0)"::"r"(Req_dh_));
                 asm volatile("vse64.v v20, (%0)" ::"r"(Req_vh_));
-
                 Req_dh_+=numberHeavyEdge;
                 Req_vh_+=numberHeavyEdge;
+
+                // asm volatile("vse64.v v12, (%0),v0.t"::"r"(Req_dh_));
+                // asm volatile("vse64.v v8, (%0),v0.t" ::"r"(Req_vh_));
+                // Req_dh_+=vl;
+                // Req_vh_+=vl;
+
+                
                 totalHeavyedges+=numberHeavyEdge;
+                totalvl+=vl;
 
                 data_array_+=vl;
                 col_array_+=vl;
@@ -160,14 +168,15 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     // for (uint64_t i=0;i<10;i++){
     //     printf("Req_dh is: %ld, Req_vh is : %ld \n", Req_dh[i], Req_vh[i]);
     // }
-    
+
+    rearrangeArray(Req_vh,num_nodes);
+    rearrangeArray(Req_dh,num_nodes);
     if (totalHeavyedges>0){
-    
         relax(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
     }
     
     //empty Reqh
-    for (uint64_t i=0; i<totalHeavyedges;i++){
+    for (uint64_t i=0; i<totalvl;i++){
             Req_dh[i]=-1;
             Req_vh[i]=-1;
     }
@@ -200,7 +209,6 @@ void rearrangeArray(int64_t *arr, uint64_t num_nodes) {
 void relax(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *distances, Node **B, Node *List, uint64_t num_nodes, uint64_t totaledge) {
     //receives vertexes and new potential distance to be updated if smaller than current distance and to be added to bucket accordingly
 
-    printf("relax function\n");
     uint64_t numberOfupdate=0;
     uint64_t avl= totaledge;
   
