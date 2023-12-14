@@ -40,7 +40,7 @@ def emit(name, array, alignment='8'):
 ############
 
 dtype = np.uint64
-source_node= 16
+source_node= 32
 num_nodes= 35
 # Read the .mtx file to get a sparse matrix
 weighted_graph = mmread('football.mtx')
