@@ -24,9 +24,9 @@ void addToBucket(Node *List, Node **B, int64_t vertex, int64_t bucketid, uint64_
 
 }
 
-int findSmallestNonEmptyBucket(Node **B, uint64_t num_nodes,int64_t delta) {
+int findSmallestNonEmptyBucket(Node **B, uint64_t num_nodes,int64_t delta,uint64_t num_buckets) {
   
-    for (uint64_t i = 0; i < num_nodes / delta; ++i) {
+    for (uint64_t i = 0; i < num_buckets; ++i) {
         if (B[i] != NULL) {  // Check if the bucket is not empty
             return i;
         }
@@ -363,7 +363,7 @@ uint64_t sorting(int64_t *array1, int64_t *array2, uint64_t size) {
 }
 
 
-void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *distances,int64_t *B, int64_t *List, uint64_t num_nodes,int64_t delta, uint64_t source, int64_t *ReqdL, int64_t *ReqdH,int64_t *ReqvL, int64_t *ReqvH){
+void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *distances,int64_t *B, int64_t *List, uint64_t num_nodes,int64_t delta, uint64_t source, int64_t *ReqdL, int64_t *ReqdH,int64_t *ReqvL, int64_t *ReqvH,uint64_t num_buckets){
     printf("SSSP function\n");
     Node *list = (Node *)List;
     Node **buckets = (Node **)B;
@@ -400,7 +400,7 @@ void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *dis
 
     //start algortihm
     while (1) {
-        bucketIndex = findSmallestNonEmptyBucket(B,num_nodes,delta);
+        bucketIndex = findSmallestNonEmptyBucket(B,num_nodes,delta,num_buckets);
         if (bucketIndex == -1) {
             // All buckets are empty, algorithm is finished
             break;

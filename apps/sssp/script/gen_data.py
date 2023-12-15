@@ -43,11 +43,11 @@ def emit(name, array, alignment='8'):
 dtype = np.int64
 source_node= 0
 
-multiplication_factor=1
+multiplication_factor=100000
 
 
 # Read the .mtx file to get a sparse matrix
-weighted_graph = mmread('football.mtx')
+weighted_graph = mmread('HB.mtx')
 
 ##set delta, to be tuned, good estimate would be the avarge or mean of theedges weight
 
@@ -85,8 +85,8 @@ distances = np.zeros([1,num_nodes], dtype=dtype) # contains the assigned cluster
 
 ##allocate memory for the buckets , max amount of buckets is (max_edge_weight x number_of_vertices )/delta
 max_edge_weight= np.max(data_array)
-number_buckets= ((max_edge_weight*num_nodes)/DELTA).astype(dtype)
-B = np.zeros([1,number_buckets], dtype=np.int64)
+num_buckets= ((max_edge_weight*num_nodes)/DELTA).astype(dtype)
+B = np.zeros([1,num_buckets], dtype=np.int64)
 
 #allocate mmeory for the linked lists, one structure takes 2x64bits (for the int vertex and for the pointer to the next vertex)
 #we have 35 nodes so since each node requires 2x64bits we need an array of 70entries of 64bits
@@ -122,6 +122,7 @@ result = np.where(np.isinf(distances), -1, distances).astype(np.int64)
 
 # Create the file
 print(".section .data,\"aw\",@progbits")
+emit("num_buckets", np.array(num_buckets, dtype=np.uint64))
 emit("num_nodes", np.array(num_nodes, dtype=np.uint64))
 emit("delta", np.array(DELTA, dtype=np.uint64))
 emit("source", np.array(source_node, dtype=np.uint64))
