@@ -42,9 +42,9 @@ def emit(name, array, alignment='8'):
 
 dtype = np.int64
 source_node= 0
-multiplication_factor=100000
+multiplication_factor=1
 # Read the .mtx file to get a sparse matrix
-weighted_graph = mmread('HB.mtx')
+weighted_graph = mmread('football.mtx')
 
 ##set delta, to be tuned, good estimate would be the avarge or mean of theedges weight
 
@@ -63,7 +63,7 @@ data_array=data_array.astype(dtype)
 ##compute delta
 average_weight= math.floor(np.mean(data_array))
 #average_weight=average_weight.astype(np.uint64)
-DELTA=20000
+DELTA=average_weight
 
 
 col_array = csr_weighted_graph.indices.astype(dtype)
