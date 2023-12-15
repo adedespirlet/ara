@@ -19,6 +19,7 @@ import numpy as np
 import sys
 from scipy.io import mmread
 from scipy.sparse import csr_matrix
+import scipy.sparse.csgraph as csgraph
 import math
 import ctypes
 import networkx as nx
@@ -39,68 +40,75 @@ def emit(name, array, alignment='8'):
 ## SCRIPT ##
 ############
 
-dtype = np.uint64
+dtype = np.int64
 source_node= 0
-num_nodes= 35
+multiplication_factor=100000
 # Read the .mtx file to get a sparse matrix
-weighted_graph = mmread('football.mtx')
+weighted_graph = mmread('HB.mtx')
+
+##set delta, to be tuned, good estimate would be the avarge or mean of theedges weight
+
+
+#compute number of nodes
+num_nodes= weighted_graph.shape[0]
+
 
 # Ensure the matrix is in CSR format
 csr_weighted_graph = csr_matrix(weighted_graph)
 
-data_array = csr_weighted_graph.data.astype(dtype)
+data_array = csr_weighted_graph.data
+data_array*=multiplication_factor
+data_array=data_array.astype(dtype)
+
+##compute delta
+average_weight= math.floor(np.mean(data_array))
+#average_weight=average_weight.astype(np.uint64)
+DELTA=average_weight
+
+
 col_array = csr_weighted_graph.indices.astype(dtype)
 row_ptr = csr_weighted_graph.indptr.astype(dtype)
 
 ##created tentaive distance array for each vertex
 distances = np.zeros([1,num_nodes], dtype=dtype) # contains the assigned cluster to each data point
 
-##set delta, to be tuned, good estimate would be the avarge or mean of theedges weight
-DELTA=3
 
 ##allocate memory for the buckets , max amount of buckets is (max_edge_weight x number_of_vertices )/delta
 max_edge_weight= np.max(data_array)
 number_buckets= ((max_edge_weight*num_nodes)/DELTA).astype(dtype)
+B = np.zeros([1,number_buckets], dtype=np.int64)
 
-#allocate memory for an array B that contains pointers to begin of their linked list
-B = np.zeros([1,number_buckets], dtype=dtype)
 #allocate mmeory for the linked lists, one structure takes 2x64bits (for the int vertex and for the pointer to the next vertex)
 #we have 35 nodes so since each node requires 2x64bits we need an array of 70entries of 64bits
-List= np.zeros([1,70], dtype=dtype)
+
+
+degrees = np.diff(row_ptr)
+
+# Find the maximum degree
+max_degree = np.max(degrees)
+max_size= num_nodes*max_degree*2
+List= np.zeros([1,max_size], dtype=dtype)
+
 max_edges = num_nodes * (num_nodes - 1) #Worst-case number of light edges
 ReqdL= np.zeros([1,max_edges], dtype=dtype) #allocate space for heavy requests 
 ReqdH=np.zeros([1,max_edges], dtype=dtype) #allocate space for light requests
 ReqvL= np.zeros([1,max_edges], dtype=dtype) #allocate space for heavy requests 
 ReqvH=np.zeros([1,max_edges], dtype=dtype) #allocate space for light requests
+
 #########################GOLDEN MODEL#########################
-# Load the data from the football.mtx file
-file_path = 'football.mtx'  # Adjusted file path for your dataset
-data = pd.read_csv(file_path, delim_whitespace=True, header=None, names=['source', 'destination', 'weight'], comment='%')
 
-# Create a directed graph
-G_directed = nx.DiGraph()
+# Convert the matrix to a Compressed Sparse Row (CSR) format for efficient computation
+csr_graph = weighted_graph.tocsr()
 
-# Add edges to the graph
-for index, row in data.iterrows():
-    G_directed.add_edge(row['source'], row['destination'], weight=row['weight'])
+# Multiply the weights by the specified factor
+csr_graph.data *= multiplication_factor
 
-# Compute the shortest path distances from vertex 1
-shortest_paths_from_1 = nx.single_source_dijkstra_path_length(G_directed, source_node+1)  ##add 1 to source node because python code counts vertexes from 1 
 
-# Get the largest node number to define array size
+# Compute the single source shortest paths using Dijkstra's algorithm
+distances, predecessors = csgraph.dijkstra(csr_graph, return_predecessors=True, indices=source_node)
 
-max_node = max(G_directed.nodes())
+result = np.where(np.isinf(distances), -1, distances).astype(np.int64)
 
-# Initialize the array with -1 (indicating no path)
-distances_array = np.full(max_node + 1, -1)  # Adding 1 because nodes are 1-indexed
-
-# Update the array with distances where paths exis
-for node, distance in shortest_paths_from_1.items():
-    distances_array[node] = distance
-
-# Setting the distance from vertex 1 to itself as 0
-distances_array[source_node+1] = 0
-result=distances_array[1:]  # Exclude the 0th index as it's not used in this graph
 
 # Create the file
 print(".section .data,\"aw\",@progbits")
