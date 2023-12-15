@@ -44,7 +44,7 @@ dtype = np.int64
 source_node= 2
 multiplication_factor=100000 #mutliply wieghts suchh that it is not in float format
 # Read the .mtx file to get a sparse matrix
-weighted_graph = mmread('HB.mtx')
+weighted_graph = mmread('Cage7.mtx')
 
 ##set delta, to be tuned, good estimate would be the avarge or mean of theedges weight
 
