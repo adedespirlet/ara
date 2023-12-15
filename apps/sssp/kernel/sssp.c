@@ -6,27 +6,44 @@
 
 void addToBucket(Node *List, Node **B, int64_t vertex, int64_t bucketid, uint64_t num_nodes) {
     //printf("addToBucket function\n");
-        // Find the next available Node in List
-        uint64_t i = 0;
-        while (i < num_nodes && List[i].vertex != -1) {
-            i++;
-        }
-        if (i == num_nodes) {
-            // List is full, handle error
-            printf( "Error: List is full.\n");
-        }
-
-        // Initialize the node
-        List[i].vertex = vertex;
-        List[i].next = B[bucketid]; // New node points to the current head of the bucket
-
-        // Update the bucket to point to the new node
-        B[bucketid] = &List[i];
+    // Find the next available Node in List
+    uint64_t i = 0;
+    //printf("vertex :%ld\n",vertex);
+    //printf("bucketid: %ld\n",bucketid);
+    while (i < num_nodes && List[i].vertex != -1) {
+        i++;
+    }
+    if (i == num_nodes) {
+        // List is full, handle error
+        printf( "Error: List is full.\n");
     }
 
-int findSmallestNonEmptyBucket(Node **B, uint64_t num_nodes,int64_t delta) {
+    // Initialize the node
+    List[i].vertex = vertex;
+    List[i].next = B[bucketid]; // New node points to the current head of the bucket
+
+    // Update the bucket to point to the new node
+    B[bucketid] = &List[i];
+
+
+    //  //initialize List to empty list
+    // printf("printing list \n");
+    // for (uint64_t i = 0; i < num_nodes; i++) {
+    //     printf(" %ld, %ld\n", List[i].vertex ,  List[i].next );
+    // }
+
+    // printf("printing bucket ");
+    //  //initialize List to empty list
+    // for (uint64_t i = 0; i < 10; i++) {
+    //     printf(" %ld\n", B[i]);
+    // }
+    }
+
+int findSmallestNonEmptyBucket(Node **B, uint64_t num_nodes,int64_t delta, uint64_t num_buckets) {
     //printf("findSmallestNonEmptyBucket function\n");
-    for (uint64_t i = 0; i < num_nodes / delta; ++i) {
+    int64_t set= num_nodes/delta;
+    //printf("set: %ld",set);
+    for (uint64_t i = 0; i < num_buckets; ++i) {
         if (B[i] != NULL) {  // Check if the bucket is not empty
             return i;
         }
@@ -35,8 +52,8 @@ int findSmallestNonEmptyBucket(Node **B, uint64_t num_nodes,int64_t delta) {
 }
 
 // Function to process a bucket
-void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Node **B, int64_t bucketIndex, uint64_t num_nodes, int64_t delta, int64_t *distances, int64_t *Req_l, int64_t *Req_h,Node *List) {
-    
+void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Node **B, int64_t bucketIndex, uint64_t num_nodes, int64_t delta, int64_t *distances, int64_t *Req_l, int64_t *Req_h,Node *List ) {
+    //printf("processBucket function");
     Node* current = B[bucketIndex];
     int64_t new_dist;
     uint64_t limit;
@@ -98,9 +115,9 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
          // Finally, set the head of the current bucket to NULL
         B[bucketIndex] = NULL;
     
-        //relax light edges 
-        //printf("l value is %d \n",l );
-        //printf("relaxing light edge\n");
+        // //relax light edges 
+        // printf("l value is %d \n",l );
+        // printf("relaxing light edge\n");
         for (int64_t k = 0; k < l; k++) {
             //printf("relaxing light edge\n");
             relax(Req_l[k*2], Req_l[k*2 + 1],delta, distances,B,List,num_nodes);
@@ -136,8 +153,8 @@ void relax(int64_t v, int64_t new_dist,  int64_t delta,  int64_t *distances,Node
     }
 }
 
-void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *distances,int64_t *B, int64_t *List, uint64_t num_nodes,int64_t delta, uint64_t source, int64_t *ReqL, int64_t *ReqH){
-    //printf("SSSP function\n");
+void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *distances,int64_t *B, int64_t *List, uint64_t num_nodes,int64_t delta, uint64_t source, int64_t *ReqL, int64_t *ReqH, uint64_t num_buckets){
+    printf("SSSP function\n");
     Node *list = (Node *)List;
     Node **buckets = (Node **)B;
     int64_t bucketIndex;
@@ -158,13 +175,19 @@ void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *dis
         list[i].vertex = -1;  // Set vertex to -1
         list[i].next = NULL;  // Set next pointer to NULL
     }
+
+    //  //initialize List to empty list
+    // for (uint64_t i = 0; i < num_nodes; i++) {
+    //     printf("List vertex: %ld, List pointer: %ld", list[i].vertex ,  list[i].next );
+    // }
    
     //set source node into first bucket
     addToBucket(list, buckets, source,0,num_nodes);
 
     //start algortihm
     while (1) {
-        bucketIndex = findSmallestNonEmptyBucket(B,num_nodes,delta);
+        bucketIndex = findSmallestNonEmptyBucket(B,num_nodes,delta,num_buckets);
+        //printf("Busy with bucket index:\%ld\n", bucketIndex);
         if (bucketIndex == -1) {
             // All buckets are empty, algorithm is finished
             break;

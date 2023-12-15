@@ -13,6 +13,7 @@
 #endif
 
 extern uint64_t num_nodes;
+extern uint64_t num_buckets;
 extern int64_t delta;
 extern uint64_t source;
 extern int64_t data_array[] __attribute__((aligned(32 * NR_LANES), section(".l2")));  //CSR data
@@ -41,7 +42,7 @@ int main() {
 
     
     start_timer();
-	sssp(data_array,col_array,row_ptr,distances,B,List,num_nodes,delta, source, ReqL, ReqH) ;
+	sssp(data_array,col_array,row_ptr,distances,B,List,num_nodes,delta, source, ReqL, ReqH,num_buckets) ;
 	stop_timer();
 
 	// Performance metrics
