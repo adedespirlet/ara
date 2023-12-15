@@ -2,6 +2,11 @@
 #define SSSP_H
 
 #include <stdint.h>
+#ifndef SPIKE
+#include "printf.h"
+#else
+#include <stdio.h>
+#endif
 
 // Assuming a predefined maximum number of vertices
 #define MAX_VERTICES 1000

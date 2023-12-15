@@ -5,9 +5,10 @@
 #include "kernel/sssp.h"
 #include "runtime.h"
 #include "util.h"
-
 #ifndef SPIKE
 #include "printf.h"
+#else
+#include <stdio.h>
 #endif
 
 extern uint64_t num_nodes;
@@ -39,13 +40,6 @@ int main() {
     int64_t runtime_s, runtime_v;   
     uint64_t nonzeros=118;
 
-    printf("Data array:\n");
-    
-    for (uint64_t j = 0; j < nonzeros; ++j) {
-        printf("%ld ", data_array[j]);
-    }
-    printf("\n");
-    
 
     start_timer();
     sssp(data_array,col_array,row_ptr,distances,B,List,num_nodes,delta, source, ReqdL, ReqdH,ReqvL,ReqvH) ;
@@ -54,11 +48,11 @@ int main() {
 	// Performance metrics
   	int64_t runtime = get_timer();
 
-  	//float num_nonzero_elements=2563;
-  
-	//float performance = (num_pages+num_iterations*(num_nonzero_elements+3*num_pages+num_nonzero_elements-num_pages))/ runtime;
-  	//float utilization = 100 * performance / (2.0 * NR_LANES);
-   
+  	// float performance = (num_pages+num_iterations*(num_nonzero_elements+3*num_pages+num_nonzero_elements-num_pages))/ runtime;
+   //  float utilization = 100 * performance / (2.0 * NR_LANES);
+
+    printf("The execution took %d cycles.\n", runtime);
+  //  printf("The performance is %f DPFLOP/cycle (%f%% utilization).\n", performance, utilization);
 
     printf("distances array:\n");
  
@@ -72,16 +66,6 @@ int main() {
         printf("%ld ", golden_o[j]);
     }
 
-    
-    // printf("Matrix c:\n");
-    // for (uint64_t i = 0; i < data_points; ++i) {
-        
-    //     printf("%ld ,", c[i]);
-    // }
-
- 
-
-    printf("\nfinished printing");
 
 
   return 0;
