@@ -42,9 +42,19 @@ def emit(name, array, alignment='8'):
 
 dtype = np.int64
 source_node= 0
+
 multiplication_factor=1
+
+
 # Read the .mtx file to get a sparse matrix
 weighted_graph = mmread('football.mtx')
+
+##set delta, to be tuned, good estimate would be the avarge or mean of theedges weight
+
+
+#compute number of nodes
+num_nodes= weighted_graph.shape[0]
+
 
 ##set delta, to be tuned, good estimate would be the avarge or mean of theedges weight
 
