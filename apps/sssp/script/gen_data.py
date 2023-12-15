@@ -47,7 +47,7 @@ multiplication_factor=100000
 
 
 # Read the .mtx file to get a sparse matrix
-weighted_graph = mmread('HB.mtx')
+weighted_graph = mmread('Cage7.mtx')
 
 ##set delta, to be tuned, good estimate would be the avarge or mean of theedges weight
 
@@ -57,11 +57,6 @@ num_nodes= weighted_graph.shape[0]
 
 
 ##set delta, to be tuned, good estimate would be the avarge or mean of theedges weight
-
-
-#compute number of nodes
-num_nodes= weighted_graph.shape[0]
-
 
 # Ensure the matrix is in CSR format
 csr_weighted_graph = csr_matrix(weighted_graph)
@@ -104,6 +99,7 @@ ReqdL= np.zeros([1,max_edges], dtype=dtype) #allocate space for heavy requests
 ReqdH=np.zeros([1,max_edges], dtype=dtype) #allocate space for light requests
 ReqvL= np.zeros([1,max_edges], dtype=dtype) #allocate space for heavy requests 
 ReqvH=np.zeros([1,max_edges], dtype=dtype) #allocate space for light requests
+
 
 #########################GOLDEN MODEL#########################
 

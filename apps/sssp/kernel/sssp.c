@@ -242,6 +242,8 @@ void relax_vector(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *dista
     asm volatile("vmv.v.i v16, 0");
     asm volatile("vmv.v.i v20, 0");
     asm volatile("vmv.v.i v24, 0");
+
+
       
     int64_t *distances_=distances;
     int64_t *Req_d_= Req_d;
@@ -270,8 +272,12 @@ void relax_vector(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *dista
 
         asm volatile("vor.vv v0, v0, v24"); //combine the masks
 
+
         //asm volatile("vse64.v v4, (%0), v0.t" ::"r"(distances_)); //update distance value if smaller 
         asm volatile("vsoxei64.v v4, (%0), v20,v0.t"::"r"(distances_)); //scatter gather store 
+
+        //asm volatile("vdiv.vx v12, %0 , v4, v0.t "::"r"(delta));
+
         asm volatile ("vcpop.m %0, v0":"=r"(numberOfupdate));
 
         //compress updates vertexs with distances in two vectors and store them in memory to update BUcket and list afterwards
@@ -323,20 +329,20 @@ void relax_scalar(int64_t *Req_v,int64_t *Req_d,  int64_t delta,  int64_t *dista
     }
 }
 
-uint64_t sorting(int64_t *array1, int64_t *array2, uint64_t size) {
+uint64_t sorting(int64_t *vertex, int64_t *distance, uint64_t size) {
  // Bubble sort for simplicity - not efficient for large arrays
     for (size_t i = 0; i < size; i++) {
         for (size_t j = i + 1; j < size; j++) {
-            if ((array1[i] > array1[j]) || (array1[i] == array1[j] && array2[i] > array2[j])) {
+            if ((vertex[i] > vertex[j]) || (vertex[i] == vertex[j] && distance[i] > distance[j])) {
                 // Swap array1[i] and array1[j]
-                int64_t temp = array1[i];
-                array1[i] = array1[j];
-                array1[j] = temp;
+                int64_t temp = vertex[i];
+                vertex[i] = vertex[j];
+                vertex[j] = temp;
 
                 // Swap array2[i] and array2[j]
-                temp = array2[i];
-                array2[i] = array2[j];
-                array2[j] = temp;
+                temp = distance[i];
+                distance[i] = distance[j];
+                distance[j] = temp;
             }
         }
     }
@@ -344,19 +350,19 @@ uint64_t sorting(int64_t *array1, int64_t *array2, uint64_t size) {
     // Filter out duplicates
     uint64_t writeIndex = 0;
     for (size_t i = 0; i < size; i++) {
-        if (array1[i] == -1) continue; // Ignore -1 values
+        if (vertex[i] == -1) continue; // Ignore -1 values
 
-        if (i == 0 || array1[i] != array1[writeIndex - 1]) {
-            array1[writeIndex] = array1[i];
-            array2[writeIndex] = array2[i];
+        if (i == 0 || vertex[i] != vertex[writeIndex - 1]) {
+            vertex[writeIndex] = vertex[i];
+            distance[writeIndex] = distance[i];
             writeIndex++;
         }
     }
 
     // Mark the rest as -1
     for (size_t i = writeIndex; i < size; i++) {
-        array1[i] = -1;
-        array2[i] = -1;
+        vertex[i] = -1;
+        distance[i] = -1;
     }
 
     return writeIndex;
