@@ -15,7 +15,7 @@
 
 
 extern uint64_t num_pages;
-
+extern uint64_t avg_nonzeros;
 extern double data_array[] __attribute__((aligned(32 * NR_LANES), section(".l2")));  //CSR data
 extern uint64_t col_array[] __attribute__((aligned(32 * NR_LANES), section(".l2")));  //CSR col array
 extern uint64_t row_ptr[] __attribute__((aligned(32 * NR_LANES), section(".l2")));  //CSR rowpointer array
@@ -31,9 +31,19 @@ int main() {
 	printf("=============\n");
 	printf("\n");
 	printf("\n");
-  
-	calculate_page_rank(num_pages, data_array,col_array,row_ptr, pr,m,pr_new);
 
+	start_timer();
+	calculate_page_rank(num_pages, data_array,col_array,row_ptr, pr,m,pr_new);
+	stop_timer();
+	int64_t runtime = get_timer();
+
+	uint64_t operations= 2*avg_nonzeros*num_pages+5*num_pages;
+
+	float performance = (operations)/ runtime;
+  	float utilization = 100 * performance / (2.0 * NR_LANES);
+
+  	printf("The execution took %d cycles.\n", runtime);
+    printf("The performance is %f DPFLOP/cycle (%f%% utilization).\n", performance, utilization);
 	// Print the PageRank scores
 	printf("\nPageRank Scores:\n");
 	for (uint64_t i = 0; i < 10; i++) {
