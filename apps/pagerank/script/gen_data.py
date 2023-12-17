@@ -41,7 +41,7 @@ DAMPING = 0.85
 CONVERGENCE = 0.001
 dtype = np.float64
 
-sparse_matrix= mmread('Harvard500.mtx')
+sparse_matrix= mmread('jazz.mtx')
 
 # Convert the sparse matrix to a dense format and create an adjacency matrix
 NUM_NODES = sparse_matrix.shape[0]
@@ -185,12 +185,12 @@ M2= np.zeros([NUM_NODES2,1], dtype=dtype) #init mean vector
 
 # Create the file
 print(".section .data,\"aw\",@progbits")
-emit("num_pages", np.array(NUM_NODES2, dtype=np.uint64))
-emit("data_array", data_array2, 'NR_LANES*4')
-emit("col_array", col_array2, 'NR_LANES*4')
-emit("row_ptr", row_ptr2, 'NR_LANES*4')
-emit("pr", PR2, 'NR_LANES*4')
-emit("pr_new", PR_new2, 'NR_LANES*4')
-emit("m", M2, 'NR_LANES*4')
-emit("golden_o", result2, 'NR_LANES*4')
+emit("num_pages", np.array(NUM_NODES, dtype=np.uint64))
+emit("data_array", data_array, 'NR_LANES*4')
+emit("col_array", col_array, 'NR_LANES*4')
+emit("row_ptr", row_ptr, 'NR_LANES*4')
+emit("pr", PR, 'NR_LANES*4')
+emit("pr_new", PR_new, 'NR_LANES*4')
+emit("m", M, 'NR_LANES*4')
+emit("golden_o", result, 'NR_LANES*4')
 

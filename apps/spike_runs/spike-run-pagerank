@@ -17,11 +17,10 @@ Iteration Number: 8Multiplying linking matrix with score column:
 Iteration Number: 9Multiplying linking matrix with score column:
 Iteration Number: 10Multiplying linking matrix with score column:
 Iteration Number: 11Multiplying linking matrix with score column:
-Iteration Number: 12Multiplying linking matrix with score column:
-sum of all score is 0 
+sum of all score is 10000 
 PageRank has converged
 
 PageRank Scores:
-Page 1: 843 	Page 2: 45 	Page 3: 76 	Page 4: 48 	Page 5: 47 	Page 6: 59 	Page 7: 68 	Page 8: 61 	Page 9: 114 	Page 10: 166 	
+Page 1: 40 	Page 2: 11 	Page 3: 17 	Page 4: 36 	Page 5: 93 	Page 6: 23 	Page 7: 89 	Page 8: 36 	Page 9: 39 	Page 10: 46 	
  Golden Model PageRank Scores:
-Page 1: 843 	Page 2: 45 	Page 3: 76 	Page 4: 48 	Page 5: 47 	Pag
+Page 1: 40 	Page 2: 11 	Page 3: 17 	Page 4: 36 	Page 5: 93 	Page

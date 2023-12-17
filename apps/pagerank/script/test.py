@@ -12,7 +12,7 @@ dtype = np.float64
 # Read the sparse matrix
 
 
-sparse_matrix= mmread('Harvard500.mtx')
+sparse_matrix= mmread('jazz.mtx')
 
 # Convert the sparse matrix to a dense format and create an adjacency matrix
 NUM_NODES = sparse_matrix.shape[0]
@@ -140,27 +140,27 @@ def average_nonzeros_per_row(matrix):
 
 
 # Compute the average number of nonzeros per row
-avg_nonzeros = average_nonzeros_per_row(csr_A2)
+avg_nonzeros = average_nonzeros_per_row(csr_A)
 print("Average nonzeros per row:", avg_nonzeros)
 
 # Assuming csr_A is your CSR matrix
-total_nonzeros = len(data_array2)
+total_nonzeros = len(data_array)
 print("Total number of nonzeros in the CSR matrix:", total_nonzeros)
 
 # Print the CSR arrays
 print("Data Array (Non-zero elements):")
-print(data_array2)
+print(data_array)
 
 print("\nColumn Indices Array:")
-print(col_array2)
+print(col_array)
 
 # print("\nRow Pointer Array:")
 # print(row_ptr)
 
-print("Size of data_array:", data_array2.size)
-print("Size of col_array:", col_array2.size)
-print("Size of row_ptr:", row_ptr2.size)
+print("Size of data_array:", data_array.size)
+print("Size of col_array:", col_array.size)
+print("Size of row_ptr:", row_ptr.size)
 
 
-print(len(result_csr)
-print(len(result_csr2))
+
+print(result_csr)
