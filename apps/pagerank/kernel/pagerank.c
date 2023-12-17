@@ -72,12 +72,7 @@ uint64_t calculate_page_rank(uint64_t num_pages, double *data_array,uint64_t *co
         
     }
 
-    double sum=0.0;
-    for (uint64_t i = 0; i < (num_pages); i++) {
-                sum+=score_column[i];
-    } 
-    printf("sum of all score is %ld \n",(int64_t)sum*10000);
-
+   
     printf("PageRank has %s\n", (sum_of_differences <= CONVERGENCE) ? "converged" : "reached maximum iterations");
     
     return iteration;
