@@ -69,23 +69,10 @@ int main() {
        printf("\n");
    }
   
-
-
-   // printf("Matrix c:\n");
-   // for (uint64_t i = 0; i < data_points; ++i) {
-      
-   //     printf("%ld ", c[i]);
-   //     printf("\t");
-   // }
-
-
    kmeans_result result;
 
-   // Matrices are initialized --> Start calculating
-   //printf("Calculating kmeans...\n");
-   //start_timer();
-   //imatmul(c, a, b, s, s, s);
-   result= kmeans(a, k, c,b,data_points,dimension) ;
+   //result= kmeans(a, k, c,b,data_points,dimension) ;
+    result= kmeans(a, k, c,b,data_points,dimension,P) ;
   
 
    printf("Matrix c:\n");
@@ -103,11 +90,6 @@ int main() {
 
    printf("\nfinished printing");
 
-   //printf("K-Means result: %d\n", result);
-   //stop_timer();
-
-   //runtime_s = get_timer();
-  // printf("Scalar runtime: %ld\n", runtime_s);
 
  return 0;
 }

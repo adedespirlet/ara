@@ -40,7 +40,7 @@ def emit(name, array, alignment='8'):
 
 data_points = 50
 dimension = 3
-P = 3
+P = 10
 
 
 dtype = np.int64
