@@ -5,9 +5,25 @@
 
 
 SSSP function
+first while loop
+Second while loop
+start_edge: 0, end_edge: 2, avl:2
+avl value is :2
 l value is 0 
+first while loop
+Second while loop
+start_edge: 47, end_edge: 47, avl:0
 l value is 0 
+first while loop
+Second while loop
+start_edge: 54, end_edge: 57, avl:3
+avl value is :3
 l value is 1 
+first while loop
+Second while loop
+start_edge: 47, end_edge: 47, avl:0
+Second while loop
+start_edge: 47, end_edge: 47, avl:0
 l value is 0 
 The execution took 0 cycles.
 distances array:

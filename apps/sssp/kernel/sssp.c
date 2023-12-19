@@ -39,7 +39,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
    
     Node* current = B[bucketIndex];
  
-    uint64_t avl,vl;
+    int64_t avl,vl;
     uint64_t limit;
     uint64_t totalLightedges=0, n=0,totalHeavyedges=0,totalvl=0;
     uint64_t numberHeavyEdge,numberLightEdge;
@@ -52,7 +52,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     uint64_t *col_array_=col_array;
    
     while (B[bucketIndex] != NULL){ //check if bucket is not empty
-       
+        printf("first while loop\n");
         current = B[bucketIndex];
         limit= num_nodes*(num_nodes -1);
         //empty reqL
@@ -66,7 +66,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
         
         totalLightedges=0;
         while (current != NULL) {
-            
+            printf("Second while loop\n");
             int vertex = current->vertex;
 
             // Check for outgoing light edges
@@ -75,6 +75,8 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
             uint64_t end_edge = row_ptr[vertex + 1];
 
             avl = end_edge-start_edge ;
+            printf("start_edge: %ld, end_edge: %ld, avl:%ld\n",start_edge,end_edge,avl);
+
             asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
             int64_t distance= distances[vertex];
             asm volatile("vmv.v.i v4, 0");
@@ -83,8 +85,16 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
             asm volatile("vmv.v.i v16, 0");
             asm volatile("vmv.v.i v20, 0");
             asm volatile("vmv.v.i v24, -1");
+            
+            if (avl < 0) {
+                // Handle error or exit the function/block
+                printf( "Error: 'avl' is negative (%ld)\n", avl);
+                break; // or continue; or break; depending on the context
+            }
+
 
             for (; avl > 0; avl -= vl) {
+                printf("avl value is :%ld\n",avl );
                 
 
                 asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
@@ -109,6 +119,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
 
                 asm volatile("vse64.v v12, (%0),v0.t"::"r"(Req_dl_));
                 asm volatile("vse64.v v8, (%0),v0.t" ::"r"(Req_vl_));
+                //numberLightEdge=0;
 
                 Req_dl_+=vl;
                 Req_vl_+=vl;  
@@ -118,7 +129,11 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
                 //asm volatile("vmnot.m v0, v0 ");
                 asm volatile("vmxor.mm v0, v0, v24");
 
-                
+                //   //count numerb of points per cluster
+                // int64_t cnt_array[num_cluster];
+                // for (int64_t i=0;i<(num_cluster); i++){
+                //     cnt_array[i] = 0;
+                // }
 
                 // asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
                 // asm volatile("vcompress.vm v16, v12, v0");
@@ -167,13 +182,13 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
             rearrangeArray(Req_vl,num_nodes);
             rearrangeArray(Req_dl,num_nodes);
 
-            totalLightedges= sorting(Req_vl,Req_dl,totalLightedges);  //only if testing vector relax
+            //totalLightedges= sorting(Req_vl,Req_dl,totalLightedges);  //only if testing vector relax
             // for (uint64_t i=0;i<10;i++){
             //     printf("Req_dl is: %ld, Req_vl is : %ld \n", Req_dl[i], Req_vl[i]);
             // }
 
-            //relax_scalar(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
-            relax_vector(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
+            relax_scalar(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
+            //relax_vector(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
         }
        
 
@@ -190,9 +205,9 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     if (totalHeavyedges>0){
         rearrangeArray(Req_vh,num_nodes);
         rearrangeArray(Req_dh,num_nodes);
-        totalHeavyedges= sorting(Req_vh,Req_dh,totalHeavyedges);
-        //relax_scalar(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
-        relax_vector(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
+        //totalHeavyedges= sorting(Req_vh,Req_dh,totalHeavyedges);
+        relax_scalar(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
+        //relax_vector(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
     }
     
     //empty Reqh
