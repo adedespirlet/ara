@@ -368,12 +368,23 @@ uint64_t sorting(int64_t *vertex, int64_t *distance, uint64_t size) {
     return writeIndex;
 }
 
+void reset_vrf() {
+    asm volatile("vsetvli x0, %0, e64, m8, ta, ma" :: "r"(-1));
+    asm volatile("vmv.v.i v0, 0");
+    asm volatile("vmv.v.i v8, 0");
+    asm volatile("vmv.v.i v16, 0");
+    asm volatile("vmv.v.i v24, 0");
+}
+
 
 void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *distances,int64_t *B, int64_t *List, uint64_t num_nodes,int64_t delta, uint64_t source, int64_t *ReqdL, int64_t *ReqdH,int64_t *ReqvL, int64_t *ReqvH,uint64_t num_buckets){
     printf("SSSP function\n");
     Node *list = (Node *)List;
     Node **buckets = (Node **)B;
     int64_t bucketIndex;
+
+    // Reset VRF (due to MASKU bug)
+    reset_vrf();
 
     //initiliaze distance matrix
     for (uint64_t i = 0; i < num_nodes; i++) {

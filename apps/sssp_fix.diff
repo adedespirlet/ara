@@ -1,0 +1,128 @@
+diff --git a/apps/sssp/kernel/sssp.c b/apps/sssp/kernel/sssp.c
+index 8015a356..d021c3ba 100644
+--- a/apps/sssp/kernel/sssp.c
++++ b/apps/sssp/kernel/sssp.c
+@@ -368,6 +368,14 @@ uint64_t sorting(int64_t *vertex, int64_t *distance, uint64_t size) {
+     return writeIndex;
+ }
+
++void reset_vrf() {
++    asm volatile("vsetvli x0, %0, e64, m8, ta, ma" :: "r"(-1));
++    asm volatile("vmv.v.i v0, 0");
++    asm volatile("vmv.v.i v8, 0");
++    asm volatile("vmv.v.i v16, 0");
++    asm volatile("vmv.v.i v24, 0");
++}
++
+
+ void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *distances,int64_t *B, int64_t *List, uint64_t num_nodes,int64_t delta, uint64_t source, int64_t *ReqdL, int64_t *ReqdH,int64_t *ReqvL, int64_t *ReqvH,uint64_t num_buckets){
+     printf("SSSP function\n");
+@@ -375,6 +383,9 @@ void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *dis
+     Node **buckets = (Node **)B;
+     int64_t bucketIndex;
+
++    // Reset VRF (due to MASKU bug)
++    reset_vrf();
++
+     //initiliaze distance matrix
+     for (uint64_t i = 0; i < num_nodes; i++) {
+         distances[i]=-1;
+diff --git a/hardware/src/ara_dispatcher.sv b/hardware/src/ara_dispatcher.sv
+index b48f33c6..bb5dfdf5 100644
+--- a/hardware/src/ara_dispatcher.sv
++++ b/hardware/src/ara_dispatcher.sv
+@@ -145,6 +145,9 @@ module ara_dispatcher import ara_pkg::*; import rvv_pkg::*; #(
+   // We need to memorize the element width used to store each vector on the lanes, so that we are
+   // able to deshuffle it when needed.
+   rvv_pkg::vew_e [31:0] eew_d, eew_q;
++  // eew buffers for reshuffling
++  rvv_pkg::vew_e reshuffle_eew_vs1_d, reshuffle_eew_vs1_q;
++  rvv_pkg::vew_e reshuffle_eew_vs2_d, reshuffle_eew_vs2_q;
+   // If the reg was not written, the content is unknown. No need to reshuffle
+   // when writing with != EEW
+   logic [31:0] eew_valid_d, eew_valid_q;
+@@ -171,6 +174,8 @@ module ara_dispatcher import ara_pkg::*; import rvv_pkg::*; #(
+       rs_lmul_cnt_q       <= '0;
+       rs_lmul_cnt_limit_q <= '0;
+       rs_mask_request_q   <= 1'b0;
++      reshuffle_eew_vs1_q <= rvv_pkg::EW8;
++      reshuffle_eew_vs2_q <= rvv_pkg::EW8;
+     end else begin
+       state_q             <= state_d;
+       eew_q               <= eew_d;
+@@ -182,6 +187,8 @@ module ara_dispatcher import ara_pkg::*; import rvv_pkg::*; #(
+       rs_lmul_cnt_q       <= rs_lmul_cnt_d;
+       rs_lmul_cnt_limit_q <= rs_lmul_cnt_limit_d;
+       rs_mask_request_q   <= rs_mask_request_d;
++      reshuffle_eew_vs1_q <= reshuffle_eew_vs1_d;
++      reshuffle_eew_vs2_q <= reshuffle_eew_vs2_d;
+     end
+   end
+
+@@ -253,6 +260,8 @@ module ara_dispatcher import ara_pkg::*; import rvv_pkg::*; #(
+     eew_old_buffer_d = eew_old_buffer_q;
+     eew_new_buffer_d = eew_new_buffer_q;
+     vs_buffer_d      = vs_buffer_q;
++    reshuffle_eew_vs1_d = reshuffle_eew_vs1_q;
++    reshuffle_eew_vs2_d = reshuffle_eew_vs2_q;
+
+     rs_lmul_cnt_d       = '0;
+     rs_lmul_cnt_limit_d = '0;
+@@ -373,19 +382,14 @@ module ara_dispatcher import ara_pkg::*; import rvv_pkg::*; #(
+             // Prepare the information to reshuffle the vector registers during the next cycles
+             // Reshuffle in the following order: vd, v2, v1. The order is arbitrary.
+             unique casez (reshuffle_req_d)
+-              3'b??1: begin
+-                eew_old_buffer_d = eew_q[insn.vmem_type.rd];
+-                eew_new_buffer_d = ara_req_d.vtype.vsew;
+-                vs_buffer_d      = insn.varith_type.rd;
+-              end
+               3'b?10: begin
+                 eew_old_buffer_d = eew_q[insn.vmem_type.rs2];
+-                eew_new_buffer_d = ara_req_d.eew_vs2;
++                eew_new_buffer_d = reshuffle_eew_vs2_q;
+                 vs_buffer_d      = insn.varith_type.rs2;
+               end
+               3'b100: begin
+                 eew_old_buffer_d = eew_q[insn.vmem_type.rs1];
+-                eew_new_buffer_d = ara_req_d.eew_vs1;
++                eew_new_buffer_d = reshuffle_eew_vs1_q;
+                 vs_buffer_d      = insn.varith_type.rs1;
+               end
+               default:;
+@@ -3146,6 +3150,9 @@ module ara_dispatcher import ara_pkg::*; import rvv_pkg::*; #(
+           default: rs_lmul_cnt_limit_d = 0;
+         endcase
+
++        reshuffle_eew_vs1_d = ara_req_d.eew_vs1;
++        reshuffle_eew_vs2_d = ara_req_d.eew_vs2;
++
+         // Reshuffle
+         state_d = RESHUFFLE;
+       end
+diff --git a/hardware/src/lane/lane_sequencer.sv b/hardware/src/lane/lane_sequencer.sv
+index 386b9823..9f8d93be 100644
+--- a/hardware/src/lane/lane_sequencer.sv
++++ b/hardware/src/lane/lane_sequencer.sv
+@@ -274,7 +274,7 @@ module lane_sequencer import ara_pkg::*; import rvv_pkg::*; import cf_math_pkg::
+       // Exception 1: insn on mask vectors, as MASKU has to receive something from all lanes
+       // and the partial results come from VALU and VMFPU.
+       // Exception 2: during a reduction, all the lanes must cooperate anyway.
+-      if (vfu_operation_d.vl == '0 && (vfu_operation_d.vfu inside {VFU_Alu, VFU_MFpu}) && !(vfu_operation_d.op inside {[VREDSUM:VWREDSUM], [VFREDUSUM:VFWREDOSUM]})) begin
++      if (vfu_operation_d.vl == '0 && ((vfu_operation_d.vfu inside {VFU_Alu, VFU_MFpu}) || (vfu_operation_d.op inside {[VMFEQ:VMSGTU], VMSGT, VCPOP})) && !(vfu_operation_d.op inside {[VREDSUM:VWREDSUM], [VFREDUSUM:VFWREDOSUM]})) begin
+         vfu_operation_valid_d = 1'b0;
+         // We are already done with this instruction
+         vinsn_done_d[pe_req.id] |= 1'b1;
+diff --git a/hardware/src/masku/masku.sv b/hardware/src/masku/masku.sv
+index da6fb002..bd9aeebe 100644
+--- a/hardware/src/masku/masku.sv
++++ b/hardware/src/masku/masku.sv
+@@ -224,7 +224,7 @@ module masku import ara_pkg::*; import rvv_pkg::*; #(
+   logic  [NrLanes*DataWidth-1:0] alu_result_vm, alu_result_vm_m, alu_result_vm_seq;
+   logic  [NrLanes*DataWidth-1:0] masku_operand_vd;
+   logic  [NrLanes*DataWidth-1:0] alu_src_idx, alu_src_idx_m;
+-  logic  [4:0]                   iteration_count_d, iteration_count_q;
++  logic  [10:0]                  iteration_count_d, iteration_count_q;
+   logic                          not_found_one_d, not_found_one_q;
+
+   always_ff @(posedge clk_i or negedge rst_ni) begin: p_result_queue_ff
