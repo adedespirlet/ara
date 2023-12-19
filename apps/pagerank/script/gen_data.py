@@ -37,7 +37,7 @@ def emit(name, array, alignment='8'):
 ############
 
 DAMPING = 0.85
-CONVERGENCE = 1e-6
+CONVERGENCE = 0.001
 dtype = np.float64
 
 # Read the sparse matrix

@@ -167,13 +167,13 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
             rearrangeArray(Req_vl,num_nodes);
             rearrangeArray(Req_dl,num_nodes);
 
-            // //totalLightedges= sorting(Req_vl,Req_dl,totalLightedges);  //only if testing vector relax
+            totalLightedges= sorting(Req_vl,Req_dl,totalLightedges);  //only if testing vector relax
             // for (uint64_t i=0;i<10;i++){
             //     printf("Req_dl is: %ld, Req_vl is : %ld \n", Req_dl[i], Req_vl[i]);
             // }
 
-            relax_scalar(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
-            //relax_vector(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
+            //relax_scalar(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
+            relax_vector(Req_vl,Req_dl,delta, distances,B,List,num_nodes,totalLightedges);
         }
        
 
@@ -190,9 +190,9 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     if (totalHeavyedges>0){
         rearrangeArray(Req_vh,num_nodes);
         rearrangeArray(Req_dh,num_nodes);
-        //totalHeavyedges= sorting(Req_vh,Req_dh,totalHeavyedges);
-        relax_scalar(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
-        //relax_vector(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
+        totalHeavyedges= sorting(Req_vh,Req_dh,totalHeavyedges);
+        //relax_scalar(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
+        relax_vector(Req_vh,Req_dh,delta, distances,B,List,num_nodes,totalHeavyedges);
     }
     
     //empty Reqh
