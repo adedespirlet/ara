@@ -35,7 +35,7 @@ int findSmallestNonEmptyBucket(Node **B, uint64_t num_nodes,int64_t delta,uint64
 }
 
 // Function to process a bucket
-void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Node **B, int64_t bucketIndex, uint64_t num_nodes, int64_t delta, int64_t *distances, int64_t *Req_dl,int64_t *Req_dh, int64_t *Req_vl, int64_t *Req_vh,Node *List) {
+void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Node **B, int64_t bucketIndex, uint64_t num_nodes, int64_t delta, int64_t *distances, int64_t *Req_dl,int64_t *Req_dh, int64_t *Req_vl, int64_t *Req_vh,Node *List,uint64_t *mask) {
    
     Node* current = B[bucketIndex];
  
@@ -50,6 +50,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     int64_t *Req_vh_= Req_vh;
     int64_t *data_array_= data_array;
     uint64_t *col_array_=col_array;
+    uint64_t *mask_=mask;
    
     while (B[bucketIndex] != NULL){ //check if bucket is not empty
         printf("first while loop\n");
@@ -96,7 +97,9 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
             for (; avl > 0; avl -= vl) {
                 printf("avl value is :%ld\n",avl );
                 
-
+                for (int64_t i=0;i<8; i++){
+                    mask[i]=0;
+                }
                 asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
                 data_array_=data_array+start_edge;
                 col_array_=col_array+start_edge;
@@ -106,7 +109,9 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
                 asm volatile("vadd.vx v12 , v4, %0":: "r"(distance));  //contains new dist
                 asm volatile("vmslt.vx v0, v4, %0"::"r"(delta));
 
-                asm volatile("vcpop.m %0, v0":"=r"(numberLightEdge)) ;
+
+                //numberLightEdge=counter;
+
                 // asm volatile("vcompress.vm v16, v12, v0"); //contains new dist values for weight smaller than delta
                 // asm volatile("vcompress.vm v20, v8, v0"); //contains vertex values for weight smaller than delta
 
@@ -123,18 +128,38 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
 
                 Req_dl_+=vl;
                 Req_vl_+=vl;  
+
+                asm volatile("vcpop.m %0, v0":"=r"(numberLightEdge)) ;
+               
+
+                asm volatile("vsetvli x0, %0, e64, m4, ta, ma" :: "r"(8));
+                asm volatile("vmv.v.v v28, v0");
+                asm volatile("vse64.v v28, (%0)"::"r"(mask));
+
+                int64_t counter=0;
+                for (int64_t i=0;i<8; i++){
+                    printf("hex avlue : %x \n",mask[i]);
+                    counter += countSetBits(mask[i]);
+                }
+                printf("counter says: %ld",counter);
+                printf("Popc says: %ld\n",numberLightEdge );
+
+
                 totalLightedges+=numberLightEdge;
 
                 numberHeavyEdge=avl- numberLightEdge;
+
+                for (int64_t i = 0; i < 8; i++) {
+                    mask[i] = ~mask[i]; // Flips the value: 0 becomes 1 and 1 becomes 0
+                }
+                //asm volatile("vle64.v v0,  (%0)" ::"r"(mask_)); 
+
                 //asm volatile("vmnot.m v0, v0 ");
                 asm volatile("vmxor.mm v0, v0, v24");
 
                 //   //count numerb of points per cluster
-                // int64_t cnt_array[num_cluster];
-                // for (int64_t i=0;i<(num_cluster); i++){
-                //     cnt_array[i] = 0;
-                // }
-
+                
+                asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
                 // asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
                 // asm volatile("vcompress.vm v16, v12, v0");
                 // asm volatile("vcompress.vm v20, v8, v0");
@@ -216,7 +241,14 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
             Req_vh[i]=-1;
     }
 }
-
+int64_t countSetBits(int64_t n) {
+    int64_t count = 0;
+    while (n) {
+        count += n & 1;  // Increment count if the least significant bit is 1
+        n >>= 1;         // Shift the bits to the right
+    }
+    return count;
+}
 void rearrangeArray(int64_t *arr, uint64_t num_nodes) {
     //this function makes sure elementa are next to each other in array with no -1 values in between;
     int64_t i = 0, j = 0;
@@ -392,7 +424,7 @@ void reset_vrf() {
 }
 
 
-void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *distances,int64_t *B, int64_t *List, uint64_t num_nodes,int64_t delta, uint64_t source, int64_t *ReqdL, int64_t *ReqdH,int64_t *ReqvL, int64_t *ReqvH,uint64_t num_buckets){
+void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *distances,int64_t *B, int64_t *List, uint64_t num_nodes,int64_t delta, uint64_t source, int64_t *ReqdL, int64_t *ReqdH,int64_t *ReqvL, int64_t *ReqvH,uint64_t num_buckets,uint64_t *mask){
     printf("SSSP function\n");
     Node *list = (Node *)List;
     Node **buckets = (Node **)B;
@@ -437,7 +469,7 @@ void sssp(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,int64_t *dis
             // All buckets are empty, algorithm is finished
             break;
         }
-        processBucket(data_array,col_array,row_ptr, buckets,  bucketIndex,  num_nodes,  delta, distances, ReqdL,ReqdH, ReqvL,ReqvH, list);
+        processBucket(data_array,col_array,row_ptr, buckets,  bucketIndex,  num_nodes,  delta, distances, ReqdL,ReqdH, ReqvL,ReqvH, list,mask);
     }
 
 }

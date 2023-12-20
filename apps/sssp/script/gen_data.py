@@ -41,8 +41,7 @@ def emit(name, array, alignment='8'):
 ############
 
 dtype = np.int64
-source_node= 0
-
+source_node= 34
 multiplication_factor=1
 
 
@@ -99,6 +98,7 @@ ReqdL= np.zeros([1,max_edges], dtype=dtype) #allocate space for heavy requests
 ReqdH=np.zeros([1,max_edges], dtype=dtype) #allocate space for light requests
 ReqvL= np.zeros([1,max_edges], dtype=dtype) #allocate space for heavy requests 
 ReqvH=np.zeros([1,max_edges], dtype=dtype) #allocate space for light requests
+mask=np.zeros([1,512], dtype=dtype) #allocate space for light requests
 
 
 #########################GOLDEN MODEL#########################
@@ -132,6 +132,7 @@ emit("ReqdH", ReqdH, 'NR_LANES*4')
 emit("ReqdL", ReqdL, 'NR_LANES*4')
 emit("ReqvH", ReqvH, 'NR_LANES*4')
 emit("ReqvL", ReqvL, 'NR_LANES*4')
+emit("mask", mask, 'NR_LANES*4')
 emit("golden_o", result, 'NR_LANES*4')
 
 

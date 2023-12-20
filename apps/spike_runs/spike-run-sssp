@@ -7,26 +7,85 @@
 SSSP function
 first while loop
 Second while loop
-start_edge: 0, end_edge: 2, avl:2
-avl value is :2
-l value is 0 
-first while loop
-Second while loop
-start_edge: 47, end_edge: 47, avl:0
-l value is 0 
+start_edge: 109, end_edge: 118, avl:9
+avl value is :9
+hex avlue : 53 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+counter says: 4Popc says: 4
+l value is 4 
 first while loop
 Second while loop
 start_edge: 54, end_edge: 57, avl:3
 avl value is :3
-l value is 1 
+hex avlue : aa 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+counter says: 4Popc says: 1
+Second while loop
+start_edge: 47, end_edge: 47, avl:0
+Second while loop
+start_edge: 20, end_edge: 20, avl:0
+Second while loop
+start_edge: 2, end_edge: 7, avl:5
+avl value is :5
+hex avlue : 5e 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+counter says: 5Popc says: 4
+l value is 5 
 first while loop
 Second while loop
+start_edge: 31, end_edge: 0, avl:-31
+Error: 'avl' is negative (-31)
+l value is 0 
+first while loop
+Second while loop
+start_edge: 76, end_edge: 80, avl:4
+avl value is :4
+hex avlue : a1 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+counter says: 3Popc says: 1
+Second while loop
+start_edge: 37, end_edge: 40, avl:3
+avl value is :3
+hex avlue : 5b 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+hex avlue : 0 
+counter says: 5Popc says: 2
+Second while loop
 start_edge: 47, end_edge: 47, avl:0
 Second while loop
 start_edge: 47, end_edge: 47, avl:0
-l value is 0 
+l value is 3 
 The execution took 0 cycles.
 distances array:
-0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 4 10 11 -1 -1 -1 9 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 
+-1 1 -1 -1 -1 1 -1 -1 -1 2 -1 2 1 2 -1 -1 -1 1 -1 -1 -1 -1 -1 -1 2 -1 -1 -1 -1 -1 -1 -1 -1 -1 0 
 Golden Output
-0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 4 10 11 -1 -1 -1 9 -1 -1 -1 -1 -
+-1 1 -1 -1 -1 1 -1 -1 -1 2 -1 2 1 2 -1 -1 -1 1 -1 -1 -1 -1 -1 -1
