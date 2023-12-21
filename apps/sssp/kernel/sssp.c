@@ -53,7 +53,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
     uint64_t *mask_=mask;
    
     while (B[bucketIndex] != NULL){ //check if bucket is not empty
-        printf("first while loop\n");
+        //printf("first while loop\n");
         current = B[bucketIndex];
         limit= num_nodes*(num_nodes -1);
         //empty reqL
@@ -67,7 +67,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
         
         totalLightedges=0;
         while (current != NULL) {
-            printf("Second while loop\n");
+            //printf("Second while loop\n");
             int vertex = current->vertex;
 
             // Check for outgoing light edges
@@ -76,7 +76,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
             uint64_t end_edge = row_ptr[vertex + 1];
 
             avl = end_edge-start_edge ;
-            printf("start_edge: %ld, end_edge: %ld, avl:%ld\n",start_edge,end_edge,avl);
+           // printf("start_edge: %ld, end_edge: %ld, avl:%ld\n",start_edge,end_edge,avl);
 
             asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
             int64_t distance= distances[vertex];
@@ -95,9 +95,9 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
 
 
             for (; avl > 0; avl -= vl) {
-                printf("avl value is :%ld\n",avl );
+                //printf("avl value is :%ld\n",avl );
                 
-                for (int64_t i=0;i<8; i++){
+                for (int64_t i=0;i<3; i++){
                     mask[i]=0;
                 }
                 asm volatile("vsetvli %0, %1, e64, m4, ta, ma" : "=r"(vl) : "r"(avl));
@@ -129,33 +129,35 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
                 Req_dl_+=vl;
                 Req_vl_+=vl;  
 
-                asm volatile("vcpop.m %0, v0":"=r"(numberLightEdge)) ;
+                //asm volatile("vcpop.m %0, v0":"=r"(numberLightEdge)) ;
                
 
-                asm volatile("vsetvli x0, %0, e64, m4, ta, ma" :: "r"(8));
+                asm volatile("vsetvli x0, %0, e64, m4, ta, ma" :: "r"(2));
                 asm volatile("vmv.v.v v28, v0");
                 asm volatile("vse64.v v28, (%0)"::"r"(mask));
+                //printf("Mask: %x ,%x, %x \n", mask[2],mask[1], mask[0]);
 
                 int64_t counter=0;
-                for (int64_t i=0;i<8; i++){
-                    printf("hex avlue : %x \n",mask[i]);
+                for (int64_t i=0;i<2; i++){
+                    //printf("hex avlue : %x \n",mask[i]);
                     counter += countSetBits(mask[i]);
                 }
-                printf("counter says: %ld",counter);
-                printf("Popc says: %ld\n",numberLightEdge );
-
+                // printf("counter says: %ld",counter);
+                // printf("Popc says: %ld\n",numberLightEdge );
+                numberLightEdge=counter;
 
                 totalLightedges+=numberLightEdge;
 
                 numberHeavyEdge=avl- numberLightEdge;
 
-                for (int64_t i = 0; i < 8; i++) {
+                for (int64_t i = 0; i < 2; i++) {
                     mask[i] = ~mask[i]; // Flips the value: 0 becomes 1 and 1 becomes 0
                 }
-                //asm volatile("vle64.v v0,  (%0)" ::"r"(mask_)); 
+                asm volatile("vle64.v v0,  (%0)" ::"r"(mask_)); 
 
+                //printf("Mask: %x, %x \n",mask[1], mask[0]);
                 //asm volatile("vmnot.m v0, v0 ");
-                asm volatile("vmxor.mm v0, v0, v24");
+               //asm volatile("vmxor.mm v0, v0, v24");
 
                 //   //count numerb of points per cluster
                 
@@ -172,6 +174,7 @@ void processBucket(int64_t *data_array,uint64_t *col_array,uint64_t *row_ptr,Nod
 
                 asm volatile("vse64.v v12, (%0),v0.t"::"r"(Req_dh_));
                 asm volatile("vse64.v v8, (%0),v0.t" ::"r"(Req_vh_));
+                asm volatile("vmv.v.i v0, 0");
 
                 totalHeavyedges+=numberHeavyEdge;
                 totalvl+=vl;

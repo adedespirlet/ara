@@ -17,7 +17,7 @@ delta:
 .global source
 .balign 8
 source:
-    .word 0x00000022
+    .word 0x00000021
     .word 0x00000000
 .global data_array
 .balign NR_LANES*4
@@ -578,59 +578,31 @@ distances:
     .word 0x00000000
     .word 0x7ff00000
     .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
     .word 0x3ff00000
-    .word 0x00000000
-    .word 0x7ff00000
-    .word 0x00000000
-    .word 0x7ff00000
-    .word 0x00000000
-    .word 0x7ff00000
-    .word 0x00000000
-    .word 0x3ff00000
-    .word 0x00000000
-    .word 0x7ff00000
-    .word 0x00000000
-    .word 0x7ff00000
     .word 0x00000000
     .word 0x7ff00000
     .word 0x00000000
     .word 0x40000000
     .word 0x00000000
-    .word 0x7ff00000
-    .word 0x00000000
-    .word 0x40000000
-    .word 0x00000000
     .word 0x3ff00000
     .word 0x00000000
-    .word 0x40000000
-    .word 0x00000000
-    .word 0x7ff00000
-    .word 0x00000000
-    .word 0x7ff00000
-    .word 0x00000000
-    .word 0x7ff00000
-    .word 0x00000000
     .word 0x3ff00000
-    .word 0x00000000
-    .word 0x7ff00000
-    .word 0x00000000
-    .word 0x7ff00000
-    .word 0x00000000
-    .word 0x7ff00000
-    .word 0x00000000
-    .word 0x7ff00000
-    .word 0x00000000
-    .word 0x7ff00000
-    .word 0x00000000
-    .word 0x7ff00000
-    .word 0x00000000
-    .word 0x40000000
-    .word 0x00000000
-    .word 0x7ff00000
-    .word 0x00000000
-    .word 0x7ff00000
-    .word 0x00000000
-    .word 0x7ff00000
     .word 0x00000000
     .word 0x7ff00000
     .word 0x00000000
@@ -642,9 +614,37 @@ distances:
     .word 0x00000000
     .word 0x7ff00000
     .word 0x00000000
+    .word 0x40000000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
+    .word 0x7ff00000
+    .word 0x00000000
     .word 0x7ff00000
     .word 0x00000000
     .word 0x00000000
+    .word 0x00000000
+    .word 0x7ff00000
 .global B
 .balign NR_LANES*4
 B:
@@ -13035,60 +13035,32 @@ mask:
 golden_o:
     .word 0xffffffff
     .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
     .word 0x00000001
     .word 0x00000000
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0x00000001
-    .word 0x00000000
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
     .word 0xffffffff
     .word 0xffffffff
     .word 0x00000002
     .word 0x00000000
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0x00000002
+    .word 0x00000001
     .word 0x00000000
     .word 0x00000001
     .word 0x00000000
-    .word 0x00000002
-    .word 0x00000000
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0x00000001
-    .word 0x00000000
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0x00000002
-    .word 0x00000000
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
-    .word 0xffffffff
     .word 0xffffffff
     .word 0xffffffff
     .word 0xffffffff
@@ -13099,7 +13071,35 @@ golden_o:
     .word 0x00000000
     .word 0xffffffff
     .word 0xffffffff
+    .word 0x00000002
+    .word 0x00000000
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
+    .word 0xffffffff
     .word 0xffffffff
     .word 0xffffffff
     .word 0x00000000
     .word 0x00000000
+    .word 0xffffffff
+    .word 0xffffffff
